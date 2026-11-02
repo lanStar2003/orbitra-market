@@ -9,15 +9,15 @@ Orbitra 是以 harness 为核心的个人 AI 助理：桌面级软件，Windows�
 
 ## 下载
 
-Orbitra **1.5.0**。新版本 1.7.0 的安装包还在打包，下面是 1.5.0 的。
+Orbitra **1.7.0**，2026-11-02 发布（[Release 页面](https://github.com/lanStar2003/orbitra-market/releases/tag/v1.7.0)）。
 
 | 平台 | 简易版 | 完整版 |
 |---|---|---|
-| Windows（x64） | [Orbitra-Lite-Setup-1.5.0.exe](https://github.com/lanStar2003/orbitra-market/releases/download/v1.5.0/Orbitra-Lite-Setup-1.5.0.exe)（129 MB） | [Orbitra-Setup-1.5.0.exe](https://github.com/lanStar2003/orbitra-market/releases/download/v1.5.0/Orbitra-Setup-1.5.0.exe)（219 MB） |
-| macOS（Apple 芯片） | [Orbitra-Lite-1.5.0-arm64.dmg](https://github.com/lanStar2003/orbitra-market/releases/download/v1.5.0/Orbitra-Lite-1.5.0-arm64.dmg)（169 MB） | [Orbitra-1.5.0-arm64.dmg](https://github.com/lanStar2003/orbitra-market/releases/download/v1.5.0/Orbitra-1.5.0-arm64.dmg)（352 MB） |
-| macOS（Intel） | [Orbitra-Lite-1.5.0-x64.dmg](https://github.com/lanStar2003/orbitra-market/releases/download/v1.5.0/Orbitra-Lite-1.5.0-x64.dmg)（173 MB） | [Orbitra-1.5.0-x64.dmg](https://github.com/lanStar2003/orbitra-market/releases/download/v1.5.0/Orbitra-1.5.0-x64.dmg)（361 MB） |
-| Linux（AppImage） | [Orbitra-Lite-1.5.0.AppImage](https://github.com/lanStar2003/orbitra-market/releases/download/v1.5.0/Orbitra-Lite-1.5.0.AppImage)（168 MB） | [Orbitra-1.5.0.AppImage](https://github.com/lanStar2003/orbitra-market/releases/download/v1.5.0/Orbitra-1.5.0.AppImage)（305 MB） |
-| Linux（deb：Debian / Ubuntu） | [orbitra-lite_1.5.0_amd64.deb](https://github.com/lanStar2003/orbitra-market/releases/download/v1.5.0/orbitra-lite_1.5.0_amd64.deb)（131 MB） | [orbitra_1.5.0_amd64.deb](https://github.com/lanStar2003/orbitra-market/releases/download/v1.5.0/orbitra_1.5.0_amd64.deb)（246 MB） |
+| Windows（x64） | [Orbitra-Lite-Setup-1.7.0.exe](https://github.com/lanStar2003/orbitra-market/releases/download/v1.7.0/Orbitra-Lite-Setup-1.7.0.exe)（130 MB） | [Orbitra-Setup-1.7.0.exe](https://github.com/lanStar2003/orbitra-market/releases/download/v1.7.0/Orbitra-Setup-1.7.0.exe)（213 MB） |
+| macOS（Apple 芯片） | [Orbitra-Lite-1.7.0-arm64.dmg](https://github.com/lanStar2003/orbitra-market/releases/download/v1.7.0/Orbitra-Lite-1.7.0-arm64.dmg)（169 MB） | [Orbitra-1.7.0-arm64.dmg](https://github.com/lanStar2003/orbitra-market/releases/download/v1.7.0/Orbitra-1.7.0-arm64.dmg)（309 MB） |
+| macOS（Intel） | [Orbitra-Lite-1.7.0-x64.dmg](https://github.com/lanStar2003/orbitra-market/releases/download/v1.7.0/Orbitra-Lite-1.7.0-x64.dmg)（173 MB） | [Orbitra-1.7.0-x64.dmg](https://github.com/lanStar2003/orbitra-market/releases/download/v1.7.0/Orbitra-1.7.0-x64.dmg)（318 MB） |
+| Linux（AppImage） | [Orbitra-Lite-1.7.0.AppImage](https://github.com/lanStar2003/orbitra-market/releases/download/v1.7.0/Orbitra-Lite-1.7.0.AppImage)（169 MB） | [Orbitra-1.7.0.AppImage](https://github.com/lanStar2003/orbitra-market/releases/download/v1.7.0/Orbitra-1.7.0.AppImage)（284 MB） |
+| Linux（deb：Debian / Ubuntu） | [orbitra-lite_1.7.0_amd64.deb](https://github.com/lanStar2003/orbitra-market/releases/download/v1.7.0/orbitra-lite_1.7.0_amd64.deb)（131 MB） | [orbitra_1.7.0_amd64.deb](https://github.com/lanStar2003/orbitra-market/releases/download/v1.7.0/orbitra_1.7.0_amd64.deb)（219 MB） |
 
 - **简易版**：越小越好，只有 Orbitra 本体；第一次启动从 npm 下载 dsh 运行时（约两分钟，国内慢可以在 core.yml 里把 registry 换成 npmmirror），下完才能派活。
 - **完整版**：自带 dsh 运行时，装好就能离线用。

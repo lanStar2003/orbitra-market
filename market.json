@@ -1,7 +1,7 @@
 {
   "format": "orbitra-market/1",
   "repo": "lanStar2003/orbitra-market",
-  "updatedAt": "2026-11-02T10:05:32.977Z",
+  "updatedAt": "2026-11-02T10:14:15Z",
   "key": "2838-d425-6b4d-9b6c",
   "categories": [
     {
@@ -49,61 +49,60 @@
       "installers": {
         "lite": {
           "win-x64": {
-            "name": "Orbitra-Lite-Setup-1.5.0.exe",
-            "url": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.5.0/Orbitra-Lite-Setup-1.5.0.exe",
-            "size": 135765748
+            "name": "Orbitra-Lite-Setup-1.7.0.exe",
+            "url": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.7.0/Orbitra-Lite-Setup-1.7.0.exe",
+            "size": 136109751
           },
           "mac-arm64": {
-            "name": "Orbitra-Lite-1.5.0-arm64.dmg",
-            "url": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.5.0/Orbitra-Lite-1.5.0-arm64.dmg",
-            "size": 176781240
+            "name": "Orbitra-Lite-1.7.0-arm64.dmg",
+            "url": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.7.0/Orbitra-Lite-1.7.0-arm64.dmg",
+            "size": 177497680
           },
           "mac-x64": {
-            "name": "Orbitra-Lite-1.5.0-x64.dmg",
-            "url": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.5.0/Orbitra-Lite-1.5.0-x64.dmg",
-            "size": 181103197
+            "name": "Orbitra-Lite-1.7.0-x64.dmg",
+            "url": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.7.0/Orbitra-Lite-1.7.0-x64.dmg",
+            "size": 181791774
           },
           "linux-x64-appimage": {
-            "name": "Orbitra-Lite-1.5.0.AppImage",
-            "url": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.5.0/Orbitra-Lite-1.5.0.AppImage",
-            "size": 176508114
+            "name": "Orbitra-Lite-1.7.0.AppImage",
+            "url": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.7.0/Orbitra-Lite-1.7.0.AppImage",
+            "size": 177209546
           },
           "linux-x64-deb": {
-            "name": "orbitra-lite_1.5.0_amd64.deb",
-            "url": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.5.0/orbitra-lite_1.5.0_amd64.deb",
-            "size": 137273848
+            "name": "orbitra-lite_1.7.0_amd64.deb",
+            "url": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.7.0/orbitra-lite_1.7.0_amd64.deb",
+            "size": 137662400
           }
         },
         "full": {
           "win-x64": {
-            "name": "Orbitra-Setup-1.5.0.exe",
-            "url": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.5.0/Orbitra-Setup-1.5.0.exe",
-            "size": 230090910
+            "name": "Orbitra-Setup-1.7.0.exe",
+            "url": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.7.0/Orbitra-Setup-1.7.0.exe",
+            "size": 223834629
           },
           "mac-arm64": {
-            "name": "Orbitra-1.5.0-arm64.dmg",
-            "url": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.5.0/Orbitra-1.5.0-arm64.dmg",
-            "size": 369019445
+            "name": "Orbitra-1.7.0-arm64.dmg",
+            "url": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.7.0/Orbitra-1.7.0-arm64.dmg",
+            "size": 324189400
           },
           "mac-x64": {
-            "name": "Orbitra-1.5.0-x64.dmg",
-            "url": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.5.0/Orbitra-1.5.0-x64.dmg",
-            "size": 378578785
+            "name": "Orbitra-1.7.0-x64.dmg",
+            "url": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.7.0/Orbitra-1.7.0-x64.dmg",
+            "size": 333808452
           },
           "linux-x64-appimage": {
-            "name": "Orbitra-1.5.0.AppImage",
-            "url": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.5.0/Orbitra-1.5.0.AppImage",
-            "size": 319590169
+            "name": "Orbitra-1.7.0.AppImage",
+            "url": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.7.0/Orbitra-1.7.0.AppImage",
+            "size": 298031631
           },
           "linux-x64-deb": {
-            "name": "orbitra_1.5.0_amd64.deb",
-            "url": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.5.0/orbitra_1.5.0_amd64.deb",
-            "size": 257506224
+            "name": "orbitra_1.7.0_amd64.deb",
+            "url": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.7.0/orbitra_1.7.0_amd64.deb",
+            "size": 229546348
           }
         }
       },
-      "installersUrl": "https://github.com/lanStar2003/orbitra-market/releases/tag/v1.5.0",
-      "installersVersion": "1.5.0"
+      "installersUrl": "https://github.com/lanStar2003/orbitra-market/releases/tag/v1.7.0"
     },
     {
       "id": "dsh",
