@@ -2,11 +2,10 @@
   "id": "agent-code",
   "type": "agent",
   "name": "编码 Agent",
-  "description": "读写代码、复现问题、修复和重构；代码只在工作区里跑",
-  "version": "1.0.0",
+  "description": "读写代码、复现问题、修复和重构",
+  "version": "1.0.1",
   "core": false,
   "bundled": [
-    "lite",
     "full"
   ]
 }

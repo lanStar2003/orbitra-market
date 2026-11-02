@@ -1,7 +1,7 @@
 {
   "format": "orbitra-market/1",
   "repo": "lanStar2003/orbitra-market",
-  "updatedAt": "2026-11-02T10:14:15Z",
+  "updatedAt": "2026-11-02T11:53:08.825Z",
   "key": "2838-d425-6b4d-9b6c",
   "categories": [
     {
@@ -35,45 +35,17 @@
       "description": "Orbitra 本体：内核、界面、桌面外壳和 Orbitra 自己的 dsh 插件。",
       "core": true,
       "bundled": [
-        "lite",
         "full"
       ],
-      "version": "1.7.0",
-      "tag": "v1.7.0",
-      "at": "2026-11-02T10:05:32.977Z",
+      "version": "1.8.0",
+      "tag": "v1.8.0",
+      "at": "2026-11-02T11:52:47.908Z",
       "update": {
         "manifest": "https://raw.githubusercontent.com/lanStar2003/orbitra-market/main/plugins/app/orbitra/manifest.json",
         "bundle": "https://raw.githubusercontent.com/lanStar2003/orbitra-market/main/plugins/app/orbitra/files.zip",
-        "size": 2306818
+        "size": 2312084
       },
       "installers": {
-        "lite": {
-          "win-x64": {
-            "name": "Orbitra-Lite-Setup-1.7.0.exe",
-            "url": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.7.0/Orbitra-Lite-Setup-1.7.0.exe",
-            "size": 136109751
-          },
-          "mac-arm64": {
-            "name": "Orbitra-Lite-1.7.0-arm64.dmg",
-            "url": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.7.0/Orbitra-Lite-1.7.0-arm64.dmg",
-            "size": 177497680
-          },
-          "mac-x64": {
-            "name": "Orbitra-Lite-1.7.0-x64.dmg",
-            "url": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.7.0/Orbitra-Lite-1.7.0-x64.dmg",
-            "size": 181791774
-          },
-          "linux-x64-appimage": {
-            "name": "Orbitra-Lite-1.7.0.AppImage",
-            "url": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.7.0/Orbitra-Lite-1.7.0.AppImage",
-            "size": 177209546
-          },
-          "linux-x64-deb": {
-            "name": "orbitra-lite_1.7.0_amd64.deb",
-            "url": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.7.0/orbitra-lite_1.7.0_amd64.deb",
-            "size": 137662400
-          }
-        },
         "full": {
           "win-x64": {
             "name": "Orbitra-Setup-1.7.0.exe",
@@ -102,7 +74,8 @@
           }
         }
       },
-      "installersUrl": "https://github.com/lanStar2003/orbitra-market/releases/tag/v1.7.0"
+      "installersUrl": "https://github.com/lanStar2003/orbitra-market/releases/tag/v1.7.0",
+      "installersVersion": "1.7.0"
     },
     {
       "id": "dsh",
@@ -145,7 +118,6 @@
       "description": "没有对口的 Agent 时先把事办完，并记下能力缺口",
       "core": true,
       "bundled": [
-        "lite",
         "full"
       ],
       "version": "1.0.0",
@@ -166,7 +138,6 @@
       "description": "分析运行数据提出优化建议；按主人的需求改 Agent 的做事方式，或直接改 Orbitra 自己的代码（测过、复核过再等主人批准发布）",
       "core": true,
       "bundled": [
-        "lite",
         "full"
       ],
       "version": "1.1.0",
@@ -184,16 +155,15 @@
       "url": "https://github.com/lanStar2003/orbitra-market/tree/main/plugins/agent/code",
       "agent": "code",
       "name": "编码 Agent",
-      "description": "读写代码、复现问题、修复和重构；代码只在工作区里跑",
+      "description": "读写代码、复现问题、修复和重构",
       "core": false,
       "bundled": [
-        "lite",
         "full"
       ],
-      "version": "1.0.0",
-      "tag": "agent-code-v1.0.0",
+      "version": "1.0.1",
+      "tag": "agent-code-v1.0.1",
       "published": true,
-      "at": "2026-11-02T05:30:41.219Z",
+      "at": "2026-11-02T11:53:02.560Z",
       "update": {
         "manifest": "https://raw.githubusercontent.com/lanStar2003/orbitra-market/main/plugins/agent/code/manifest.json"
       }
@@ -208,7 +178,6 @@
       "description": "检索、读论文和文档，给出可核验的出处",
       "core": false,
       "bundled": [
-        "lite",
         "full"
       ],
       "version": "1.0.0",
@@ -229,7 +198,6 @@
       "description": "学习笔记、文章、周报；按主人的模板和语气写",
       "core": false,
       "bundled": [
-        "lite",
         "full"
       ],
       "version": "1.0.0",
@@ -250,7 +218,6 @@
       "description": "发布、部署、巡检服务器；生产环境的每次变更都要主人批准",
       "core": false,
       "bundled": [
-        "lite",
         "full"
       ],
       "version": "1.0.0",
@@ -271,13 +238,12 @@
       "description": "写测试、跑回归和端到端测试，给出能复现的失败报告",
       "core": false,
       "bundled": [
-        "lite",
         "full"
       ],
-      "version": "1.0.0",
-      "tag": "agent-test-v1.0.0",
+      "version": "1.0.1",
+      "tag": "agent-test-v1.0.1",
       "published": true,
-      "at": "2026-11-02T05:31:15.321Z",
+      "at": "2026-11-02T11:53:08.825Z",
       "update": {
         "manifest": "https://raw.githubusercontent.com/lanStar2003/orbitra-market/main/plugins/agent/test/manifest.json"
       }
@@ -292,7 +258,6 @@
       "description": "讲解视频：脚本、分镜、Remotion 工程和渲染",
       "core": false,
       "bundled": [
-        "lite",
         "full"
       ],
       "version": "1.0.0",
@@ -313,7 +278,6 @@
       "description": "日历、提醒、邮件摘要；替主人排时间，不替主人回复别人",
       "core": false,
       "bundled": [
-        "lite",
         "full"
       ],
       "version": "1.0.0",
@@ -330,10 +294,9 @@
       "path": "plugins/capability/safety-net",
       "url": "https://github.com/lanStar2003/orbitra-market/tree/main/plugins/capability/safety-net",
       "name": "命令安全检查",
-      "description": "cc-safety-net（MIT）：判断 Agent 要跑的命令有没有破坏性，决定程序直接放行还是送自动审查。不联网、不写文件，随本体。",
+      "description": "cc-safety-net（MIT）：判断 Agent 要跑的命令有没有破坏性，决定程序直接放行还是送自动审查。不联网、不写文件。随本体，跟随上游自动更新。",
       "core": true,
       "bundled": [
-        "lite",
         "full"
       ],
       "version": null

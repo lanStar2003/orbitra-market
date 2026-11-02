@@ -2,11 +2,10 @@
   "id": "safety-net",
   "type": "capability",
   "name": "命令安全检查",
-  "description": "cc-safety-net（MIT）：判断 Agent 要跑的命令有没有破坏性，决定程序直接放行还是送自动审查。不联网、不写文件，随本体。",
+  "description": "cc-safety-net（MIT）：判断 Agent 要跑的命令有没有破坏性，决定程序直接放行还是送自动审查。不联网、不写文件。随本体，跟随上游自动更新。",
   "version": null,
   "core": true,
   "bundled": [
-    "lite",
     "full"
   ]
 }

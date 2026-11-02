@@ -5,6 +5,6 @@
 - 类型：[能力](..)
 - 版本：4.3.2
 - 核心：否，可选
-- 简易版：用到再装；完整版：用到再装
+- 安装包：用到再装
 - 获取：[@huggingface/transformers](https://www.npmjs.com/package/@huggingface/transformers)
 - 大小：解开后约 490 MB
