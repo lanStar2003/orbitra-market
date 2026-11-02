@@ -1,7 +1,7 @@
 {
   "format": "orbitra-market/1",
   "repo": "lanStar2003/orbitra-market",
-  "updatedAt": "2026-11-02T04:01:32Z",
+  "updatedAt": "2026-11-02T04:32:30Z",
   "key": "2838-d425-6b4d-9b6c",
   "categories": [
     {
@@ -36,14 +36,14 @@
         "lite",
         "full"
       ],
-      "version": "1.4.1",
-      "tag": "v1.4.1",
-      "url": "https://github.com/lanStar2003/orbitra-market/releases/tag/v1.4.1",
-      "at": "2026-11-02T04:01:32Z",
+      "version": "1.4.2",
+      "tag": "v1.4.2",
+      "url": "https://github.com/lanStar2003/orbitra-market/releases/tag/v1.4.2",
+      "at": "2026-11-02T04:32:13Z",
       "update": {
-        "manifest": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.4.1/manifest.json",
-        "bundle": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.4.1/files.zip",
-        "size": 2284498
+        "manifest": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.4.2/manifest.json",
+        "bundle": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.4.2/files.zip",
+        "size": 2285187
       },
       "installers": {
         "lite": {
@@ -60,7 +60,8 @@
             "size": 230083859
           }
         }
-      }
+      },
+      "installersVersion": "1.4.1"
     },
     {
       "id": "dsh",
@@ -126,7 +127,15 @@
         "lite",
         "full"
       ],
-      "version": "1.0.0"
+      "version": "1.0.0",
+      "tag": "agent-code-v1.0.0",
+      "url": "https://github.com/lanStar2003/orbitra-market/releases/tag/agent-code-v1.0.0",
+      "at": "2026-11-02T04:32:30Z",
+      "update": {
+        "manifest": "https://github.com/lanStar2003/orbitra-market/releases/download/agent-code-v1.0.0/manifest.json",
+        "bundle": "https://github.com/lanStar2003/orbitra-market/releases/download/agent-code-v1.0.0/files.zip",
+        "size": 1542
+      }
     },
     {
       "id": "agent-research",
@@ -204,7 +213,15 @@
         "lite",
         "full"
       ],
-      "version": "1.0.0"
+      "version": "1.0.0",
+      "tag": "agent-calendar-v1.0.0",
+      "url": "https://github.com/lanStar2003/orbitra-market/releases/tag/agent-calendar-v1.0.0",
+      "at": "2026-11-02T04:32:22Z",
+      "update": {
+        "manifest": "https://github.com/lanStar2003/orbitra-market/releases/download/agent-calendar-v1.0.0/manifest.json",
+        "bundle": "https://github.com/lanStar2003/orbitra-market/releases/download/agent-calendar-v1.0.0/files.zip",
+        "size": 1295
+      }
     },
     {
       "id": "embed",

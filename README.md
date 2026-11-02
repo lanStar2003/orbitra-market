@@ -9,7 +9,7 @@ Orbitra 是以 harness 为核心的个人 AI 助理：桌面级软件，Windows�
 
 ## 下载
 
-Orbitra **1.4.1**，2026-11-02 发布（[Release 页面](https://github.com/lanStar2003/orbitra-market/releases/tag/v1.4.1)）。
+Orbitra **1.4.1**。新版本 1.4.2 的安装包还在打包，下面是 1.4.1 的。
 
 | 平台 | 简易版 | 完整版 |
 |---|---|---|
@@ -27,42 +27,42 @@ Orbitra **1.4.1**，2026-11-02 发布（[Release 页面](https://github.com/lanS
 
 内核、界面和桌面外壳；简易版和完整版的安装包，以及就地更新
 
-| 名称 | 版本 | 核心 | 简易版 | 完整版 | 说明 |
-|---|---|---|---|---|---|
-| Orbitra | [1.4.1](https://github.com/lanStar2003/orbitra-market/releases/tag/v1.4.1) | **核心** | 自带 | 自带 | Orbitra 本体：内核、界面、桌面外壳和 Orbitra 自己的 dsh 插件。 |
+| 名称 | 版本 | 核心 | 简易版 | 完整版 | 说明 | 获取 |
+|---|---|---|---|---|---|---|
+| Orbitra | [1.4.2](https://github.com/lanStar2003/orbitra-market/releases/tag/v1.4.2) | **核心** | 自带 | 自带 | Orbitra 本体：内核、界面、桌面外壳和 Orbitra 自己的 dsh 插件。 | [安装包](#下载) |
 
 ### 运行方式
 
 替 Orbitra 跑总指挥和各 Agent 的 harness；默认是 dsh
 
-| 名称 | 版本 | 核心 | 简易版 | 完整版 | 说明 |
-|---|---|---|---|---|---|
-| dsh 运行时 | 0.2.1-rc.2 | **核心** | 第一次启动下载 | 自带 | 私有的 dsh（DeepSeek Harness）、dsh-mnemon 和 Mnemon，钉死版本，装在数据文件夹里；Orbitra 的 7 个 dsh 插件随本体。默认的运行方式。（解开后约 850 MB） |
-| Claude Code | 稍后 | 可选 | 稍后 | 稍后 | 用 Claude Code 跑指定的 Agent。 |
+| 名称 | 版本 | 核心 | 简易版 | 完整版 | 说明 | 获取 |
+|---|---|---|---|---|---|---|
+| dsh 运行时 | 0.2.1-rc.2 | **核心** | 第一次启动下载 | 自带 | 私有的 dsh（DeepSeek Harness）、dsh-mnemon 和 Mnemon，钉死版本，装在数据文件夹里；Orbitra 的 7 个 dsh 插件随本体。默认的运行方式。（解开后约 850 MB） | [@deepseek-ai/dsh](https://www.npmjs.com/package/@deepseek-ai/dsh)、[@mnemon-dev/mnemon](https://www.npmjs.com/package/@mnemon-dev/mnemon)、[dsh-mnemon](https://www.npmjs.com/package/dsh-mnemon) |
+| Claude Code | 稍后 | 可选 | 稍后 | 稍后 | 用 Claude Code 跑指定的 Agent。 | — |
 
 ### Agent 包
 
 每个领域一个 Agent：它的说明、技能和工具清单
 
-| 名称 | 版本 | 核心 | 简易版 | 完整版 | 说明 |
-|---|---|---|---|---|---|
-| 通用 Agent | 1.0.0 | **核心** | 自带 | 自带 | 没有对口的 Agent 时先把事办完，并记下能力缺口 |
-| 自进化 Agent | 1.1.0 | **核心** | 自带 | 自带 | 分析运行数据提出优化建议；按主人的需求改 Agent 的做事方式，或直接改 Orbitra 自己的代码（测过、复核过再等主人批准发布） |
-| 编码 Agent | 1.0.0 | 可选 | 自带 | 自带 | 读写代码、复现问题、修复和重构；代码只在工作区里跑 |
-| 研究 Agent | 1.0.0 | 可选 | 自带 | 自带 | 检索、读论文和文档，给出可核验的出处 |
-| 写作 Agent | 1.0.0 | 可选 | 自带 | 自带 | 学习笔记、文章、周报；按主人的模板和语气写 |
-| 运维 Agent | 1.0.0 | 可选 | 自带 | 自带 | 发布、部署、巡检服务器；生产环境的每次变更都要主人批准 |
-| 测试 Agent | 1.0.0 | 可选 | 自带 | 自带 | 写测试、跑回归和端到端测试，给出能复现的失败报告 |
-| 视频 Agent | 1.0.0 | 可选 | 自带 | 自带 | 讲解视频：脚本、分镜、Remotion 工程和渲染 |
-| 日程 Agent | 1.0.0 | 可选 | 自带 | 自带 | 日历、提醒、邮件摘要；替主人排时间，不替主人回复别人 |
+| 名称 | 版本 | 核心 | 简易版 | 完整版 | 说明 | 获取 |
+|---|---|---|---|---|---|---|
+| 通用 Agent | 1.0.0 | **核心** | 自带 | 自带 | 没有对口的 Agent 时先把事办完，并记下能力缺口 | 随安装包 |
+| 自进化 Agent | 1.1.0 | **核心** | 自带 | 自带 | 分析运行数据提出优化建议；按主人的需求改 Agent 的做事方式，或直接改 Orbitra 自己的代码（测过、复核过再等主人批准发布） | 随安装包 |
+| 编码 Agent | [1.0.0](https://github.com/lanStar2003/orbitra-market/releases/tag/agent-code-v1.0.0) | 可选 | 自带 | 自带 | 读写代码、复现问题、修复和重构；代码只在工作区里跑 | [files.zip](https://github.com/lanStar2003/orbitra-market/releases/download/agent-code-v1.0.0/files.zip) |
+| 研究 Agent | 1.0.0 | 可选 | 自带 | 自带 | 检索、读论文和文档，给出可核验的出处 | 随安装包 |
+| 写作 Agent | 1.0.0 | 可选 | 自带 | 自带 | 学习笔记、文章、周报；按主人的模板和语气写 | 随安装包 |
+| 运维 Agent | 1.0.0 | 可选 | 自带 | 自带 | 发布、部署、巡检服务器；生产环境的每次变更都要主人批准 | 随安装包 |
+| 测试 Agent | 1.0.0 | 可选 | 自带 | 自带 | 写测试、跑回归和端到端测试，给出能复现的失败报告 | 随安装包 |
+| 视频 Agent | 1.0.0 | 可选 | 自带 | 自带 | 讲解视频：脚本、分镜、Remotion 工程和渲染 | 随安装包 |
+| 日程 Agent | [1.0.0](https://github.com/lanStar2003/orbitra-market/releases/tag/agent-calendar-v1.0.0) | 可选 | 自带 | 自带 | 日历、提醒、邮件摘要；替主人排时间，不替主人回复别人 | [files.zip](https://github.com/lanStar2003/orbitra-market/releases/download/agent-calendar-v1.0.0/files.zip) |
 
 ### 能力
 
 可选的本地能力，用到再下载
 
-| 名称 | 版本 | 核心 | 简易版 | 完整版 | 说明 |
-|---|---|---|---|---|---|
-| 本地向量模型 | 4.3.2 | 可选 | 用到再装 | 用到再装 | 记忆的向量召回：在本机 CPU 上算向量（transformers.js + onnxruntime，bge-small-zh-v1.5）。没装时召回用关键词和图。（解开后约 490 MB） |
+| 名称 | 版本 | 核心 | 简易版 | 完整版 | 说明 | 获取 |
+|---|---|---|---|---|---|---|
+| 本地向量模型 | 4.3.2 | 可选 | 用到再装 | 用到再装 | 记忆的向量召回：在本机 CPU 上算向量（transformers.js + onnxruntime，bge-small-zh-v1.5）。没装时召回用关键词和图。（解开后约 490 MB） | [@huggingface/transformers](https://www.npmjs.com/package/@huggingface/transformers) |
 
 ---
 
