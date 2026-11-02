@@ -2,7 +2,8 @@
 # private source repository and keeps the catalog at the root (docs/设计-1.4.md §1, §5, §6 in the
 # source). Kept in the source repository under market/; the owner pushes it into the market.
 #
-#   workflow_dispatch (tag)  the publisher (or the owner) asks for one version
+#   workflow_dispatch        with a tag: the publisher (or the owner) asks for one version;
+#                            without one: only the catalog
 #   schedule (hourly)        every v* tag ≥ v1.4.0 of the source repository whose market Release has
 #                            no installers yet (a tag the owner pushed by hand); one whose scheduled
 #                            builds left no installers three times is left for a dispatch
@@ -26,8 +27,8 @@ on:
   workflow_dispatch:
     inputs:
       tag:
-        description: Orbitra version tag in the source repository (v1.4.0 or newer)
-        required: true
+        description: Orbitra version tag in the source repository (v1.4.0 or newer); empty refreshes only the catalog
+        required: false
         type: string
   schedule:
     - cron: '23 * * * *'
@@ -40,7 +41,7 @@ permissions:
 # One build at a time (a scheduled run waits for a running build, then finds its installers there);
 # catalog-only runs on their own.
 concurrency:
-  group: ${{ github.event_name == 'release' && 'catalog' || 'build' }}
+  group: ${{ (github.event_name == 'release' || (github.event_name == 'workflow_dispatch' && inputs.tag == '')) && 'catalog' || 'build' }}
   cancel-in-progress: false
 
 env:
@@ -48,7 +49,7 @@ env:
 
 jobs:
   resolve:
-    if: github.event_name != 'release'
+    if: github.event_name != 'release' && !(github.event_name == 'workflow_dispatch' && inputs.tag == '')
     runs-on: ubuntu-latest
     outputs:
       tags: ${{ steps.resolve.outputs.tags }}
@@ -111,8 +112,8 @@ jobs:
   publish:
     needs: [resolve, build]
     # After the builds (also when some failed: finish leaves an incomplete Release alone, the
-    # catalog is refreshed anyway), and for every Release event.
-    if: ${{ !cancelled() && (github.event_name == 'release' || (needs.resolve.result == 'success' && needs.resolve.outputs.tags != '[]')) }}
+    # catalog is refreshed anyway), for every Release event, and for a dispatch without a tag.
+    if: ${{ !cancelled() && (github.event_name == 'release' || (github.event_name == 'workflow_dispatch' && inputs.tag == '') || (needs.resolve.result == 'success' && needs.resolve.outputs.tags != '[]')) }}
     runs-on: ubuntu-latest
     steps:
       - name: Check out the market (default branch, also for a Release event, whose tag may be gone)
@@ -135,7 +136,7 @@ jobs:
       - run: npm ci --ignore-scripts --no-audit --no-fund
         working-directory: source
       - name: Publish the Releases, mark the newest latest
-        if: github.event_name != 'release'
+        if: needs.resolve.result == 'success' && needs.resolve.outputs.tags != '[]'
         working-directory: source
         shell: bash
         env:
