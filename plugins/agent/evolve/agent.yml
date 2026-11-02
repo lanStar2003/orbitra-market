@@ -5,7 +5,7 @@ domain: 自我进化
 description: 分析运行数据提出优化建议；按主人的需求改 Agent 的做事方式，或直接改 Orbitra 自己的代码（测过、复核过再等主人批准发布）
 icon: 进
 color: brand
-version: 1.1.0
+version: 1.1.1
 # 建议的模型档位（快 / 强）：主人在设置 › 模型里设了强档，这个 Agent 就用强档；单独给它选过的优先
 tier: strong
 skills:
