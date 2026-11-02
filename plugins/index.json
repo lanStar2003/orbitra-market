@@ -1,10 +1,10 @@
 {
   "format": "orbitra-plugins/1",
   "software": {
-    "version": "1.8.1",
-    "at": "2026-11-02T14:12:28.965Z",
-    "title": "脚本也要过检查，更新看得到进度，安装更快",
-    "size": 2328434
+    "version": "1.8.2",
+    "at": "2026-11-02T14:59:33.611Z",
+    "title": "派发详情：全文可查、可进子 Agent",
+    "size": 2335423
   },
   "agents": {
     "calendar": {

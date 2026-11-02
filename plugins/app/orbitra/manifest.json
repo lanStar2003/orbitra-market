@@ -1,14 +1,14 @@
 {
   "format": "orbitra-release/2",
-  "version": "1.8.1",
-  "commit": "05425d6d1d8f1277bbc94e29cc78e8a79ef6fef6",
-  "previous": "1.8.0",
-  "title": "脚本也要过检查，更新看得到进度，安装更快",
-  "notes": "2026-11-02 · 脚本也要过检查，更新看得到进度，安装更快\n\n- **Agent 写的脚本也要过检查**：运行脚本前，程序先读脚本内容。里面有删除、运行别的命令、遮掩代码、联网发送的，或者这个任务刚写的脚本，都要审查员读过才放行。`npm test` 这种命令上看不出文件名的，也会带上 Agent 刚改过的文件。项目里原有的、内容没问题的脚本直接放行。\n- **更新时显示过程**：点「重启并更新」后，先显示停止任务、备份数据库、打开安装程序这几步，接着是带进度条的安装窗口，装完自动打开并提示已更新。下载时标题栏显示百分比，下载好显示「可以更新」。从 1.8.0 更新到这个版本就能看到安装窗口。\n- **安装更快**：文件直接写进安装目录，不再先解压到临时目录再复制一遍；旧版本一次移走，不再逐个文件跨盘搬；要写的文件从 2.6 万个降到 1.4 万个。同一台电脑上全新安装从 219 秒降到 27 秒，更新约 30 秒（实际时间看电脑和杀毒软件）。\n- **旧文件不再残留**：更新后旧版本的文件会被完整删掉，这次更新也会清掉之前留下的。\n- **不再提供 Mac Intel 安装包**：Apple 芯片的 Mac 不受影响。Intel Mac 上已装的版本还能用，但不再收到更新。",
-  "at": "2026-11-02T14:12:28.965Z",
+  "version": "1.8.2",
+  "commit": "73ea3c571e95b35f5d81be0432c18deba522b503",
+  "previous": "1.8.1",
+  "title": "派发详情：全文可查、可进子 Agent",
+  "notes": "任务图、自进化需求、定时任务运行都增加了可展开的派发全文和子 Agent 详情页；后端补了 job 原指令、任务来源、自进化发起轮次、定时运行详情接口，对话和任务动态都有了入口。",
+  "at": "2026-11-02T14:59:33.611Z",
   "key": "2838-d425-6b4d-9b6c",
-  "needsInstaller": true,
-  "reason": "依赖变了（package-lock.json）",
+  "needsInstaller": false,
+  "reason": null,
   "depsSince": "1.8.1",
   "installerSince": "1.8.1",
   "installerReason": "安装版的插件在打包的运行时里，改了插件要重新打安装包",
@@ -128,7 +128,7 @@
       "size": 1543
     },
     "apps/desktop/package.json": {
-      "sha256": "dcda78b3e043287f0d575cf6f51687e36b9203056603d8b28b35ce56d1ad04da",
+      "sha256": "f01025cce831da90dfaea0ca999b5a5eaa211db99f88896cf856d5f5ebe6c2de",
       "size": 496
     },
     "apps/desktop/src/main.js": {
@@ -163,13 +163,13 @@
       "sha256": "6819998a877faaa37d55aaa1db0b1a2995cfd85383f61333c1a768539d631401",
       "size": 18432
     },
-    "apps/web/dist/assets/app-25X3BY5V.js": {
-      "sha256": "3e7f8b806612103b7e5f1d344b424c577b784d1b2f178716e238fc556027f49c",
-      "size": 883251
+    "apps/web/dist/assets/app-MNWYX4HO.css": {
+      "sha256": "c41e96b013b4d02c63d81da0a868b2cd3866ee007d283da4e472097bfc6c895b",
+      "size": 321247
     },
-    "apps/web/dist/assets/app-DPB6S3S6.css": {
-      "sha256": "c73d6a44ad71f513a7a605cabced4bb11936c61866ddde562dba0eba49e61d6b",
-      "size": 315993
+    "apps/web/dist/assets/app-VIPHIXKD.js": {
+      "sha256": "3dc7b88e8a3d6147343c08e953e9871d21e584b0db8fbb1f7d1155f7e0727f4b",
+      "size": 903098
     },
     "apps/web/dist/favicon.svg": {
       "sha256": "bcb80e1e35769e211a50561885264eb368340a554314da769489964cd5062e76",
@@ -200,7 +200,7 @@
       "size": 1332
     },
     "apps/web/dist/index.html": {
-      "sha256": "57e40a5d85cbf083591884e2c34a672571bb6ed7c022b9eb81340295942fe02f",
+      "sha256": "c6aa65d0972b361d8e9aa4ba7aed01774e4bb087f9afe1fef0be359034f3daf7",
       "size": 1247
     },
     "apps/web/dist/manifest.webmanifest": {
@@ -208,7 +208,7 @@
       "size": 1198
     },
     "apps/web/dist/sw.js": {
-      "sha256": "175433dbac9d607338ba50aee344873331c5df081d7937a9d227a521d19bcd92",
+      "sha256": "2876afbafb33af63e9551df27fd13f3f281557c61c4caa9f7783e541b75ec444",
       "size": 8659
     },
     "apps/web/package.json": {
@@ -352,8 +352,8 @@
       "size": 15518
     },
     "core/modules/evolution/index.js": {
-      "sha256": "14a91f5350138be183fec006d4f31deb49b2dbd4963bbfe9b9f445ee892fc8b2",
-      "size": 99506
+      "sha256": "9b296085de20a13ad551034ae57884badbda9a8f023325bbb7ea478e02fb5e0f",
+      "size": 100606
     },
     "core/modules/evolution/map.js": {
       "sha256": "6bc243cd3454e2a6262da6532bece4fa5833db155862f87431b2d615d420dfc8",
@@ -388,8 +388,8 @@
       "size": 3004
     },
     "core/modules/jobs/index.js": {
-      "sha256": "47636525074579438dcd157cde8da7c4271302a7c271fd10d7e4ab3ca4bd661f",
-      "size": 34717
+      "sha256": "7c2244d23625f96cd8feaa169c2ecd93e465460556a0587ed5a7aff8c90f47f3",
+      "size": 35412
     },
     "core/modules/llm-gateway/index.js": {
       "sha256": "428c8e935aaac9d6a075a0fa974df4abefa9cd992e7c44757d117bf95acf06f9",
@@ -492,8 +492,8 @@
       "size": 2981
     },
     "core/modules/schedules/index.js": {
-      "sha256": "5d1a2cdcecec50885e19e0a4857371ced5c81d1d27fc57ba040005e3eeff36a7",
-      "size": 22561
+      "sha256": "dd10f118504acab750554829dbee9d41308b7b6b3feaa66493b7bed15fc3e5ad",
+      "size": 23339
     },
     "core/modules/stream/history.js": {
       "sha256": "8aedb20bd4733a2fb62b38748a7d4add8711df293d897995b9856e3b9ede116c",
@@ -520,8 +520,8 @@
       "size": 2875
     },
     "core/modules/tasks/index.js": {
-      "sha256": "adbaee1a20c7152455916e91a51234a46db5fef5b539f432b7499baa2ef01a13",
-      "size": 41252
+      "sha256": "6dcf69c4f56cfde51342a46d09ba0f4f7e7e6d5c462026d2f910820858e2300e",
+      "size": 41606
     },
     "core/modules/tasks/router.js": {
       "sha256": "88d7ae33bcb6118cefb1fcecf2373e12a033f087560ed68979eb0d16079fb665",
@@ -918,8 +918,8 @@
   },
   "bundle": {
     "name": "files.zip",
-    "sha256": "6db9e8a64b944a27074f81dae69a39b5c6a53d556b21a1d867daa9244b448a24",
-    "size": 2328434
+    "sha256": "12d9eee956aafe8968c9aae2459664b7b9b483b73dfdcafd0586b3da95a1502a",
+    "size": 2335423
   },
-  "signature": "zDz6GggJltRT5kjyhY3PhLN8FSGJQKWE-kQ3SS9743wo2N7JqoRdZJl4w_MyFyZ3uWA9DLjZzpBB1MNk7LQUCA"
+  "signature": "5XZYUDxtwWNlnpndEg6Iaho4MPWi80VbmrbgyWyOVFUj8-_axQfwnrY0Um62USIPxZQv_2Yg2VziU76cIKscAg"
 }
