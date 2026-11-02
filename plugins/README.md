@@ -22,6 +22,6 @@
 
 ## [能力](capability)
 
-可选的本地能力，用到再下载
+本地能力：核心的随本体，其余的用到再下载
 
-[本地向量模型](capability/embed)
+[命令安全检查](capability/safety-net) · [本地向量模型](capability/embed)

@@ -1,7 +1,7 @@
 {
   "format": "orbitra-market/1",
   "repo": "lanStar2003/orbitra-market",
-  "updatedAt": "2026-11-02T05:40:52Z",
+  "updatedAt": "2026-11-02T10:05:32.977Z",
   "key": "2838-d425-6b4d-9b6c",
   "categories": [
     {
@@ -22,7 +22,7 @@
     {
       "id": "capability",
       "name": "能力",
-      "description": "可选的本地能力，用到再下载"
+      "description": "本地能力：核心的随本体，其余的用到再下载"
     }
   ],
   "items": [
@@ -38,13 +38,13 @@
         "lite",
         "full"
       ],
-      "version": "1.5.0",
-      "tag": "v1.5.0",
-      "at": "2026-11-02T05:30:20.472Z",
+      "version": "1.7.0",
+      "tag": "v1.7.0",
+      "at": "2026-11-02T10:05:32.977Z",
       "update": {
         "manifest": "https://raw.githubusercontent.com/lanStar2003/orbitra-market/main/plugins/app/orbitra/manifest.json",
         "bundle": "https://raw.githubusercontent.com/lanStar2003/orbitra-market/main/plugins/app/orbitra/files.zip",
-        "size": 2286337
+        "size": 2306818
       },
       "installers": {
         "lite": {
@@ -102,7 +102,8 @@
           }
         }
       },
-      "installersUrl": "https://github.com/lanStar2003/orbitra-market/releases/tag/v1.5.0"
+      "installersUrl": "https://github.com/lanStar2003/orbitra-market/releases/tag/v1.5.0",
+      "installersVersion": "1.5.0"
     },
     {
       "id": "dsh",
@@ -323,6 +324,20 @@
       "update": {
         "manifest": "https://raw.githubusercontent.com/lanStar2003/orbitra-market/main/plugins/agent/calendar/manifest.json"
       }
+    },
+    {
+      "id": "safety-net",
+      "type": "capability",
+      "path": "plugins/capability/safety-net",
+      "url": "https://github.com/lanStar2003/orbitra-market/tree/main/plugins/capability/safety-net",
+      "name": "命令安全检查",
+      "description": "cc-safety-net（MIT）：判断 Agent 要跑的命令有没有破坏性，决定程序直接放行还是送自动审查。不联网、不写文件，随本体。",
+      "core": true,
+      "bundled": [
+        "lite",
+        "full"
+      ],
+      "version": null
     },
     {
       "id": "embed",
