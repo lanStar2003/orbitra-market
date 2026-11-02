@@ -1,0 +1,19 @@
+# Orbitra 内置 Agent 包。身份和规则写在同目录的 AGENTS.md 里（会话的工作区说明）。
+id: general
+name: 通用 Agent
+domain: 兜底
+description: 没有对口的 Agent 时先把事办完，并记下能力缺口
+icon: 通
+color: slate
+version: 1.0.0
+fallback: true
+skills:
+  - 整理与摘要
+  - 通用检索
+# 路由检索用的词（总指挥派活时按名片匹配，见 core/modules/tasks/router.js）
+keywords:
+  - 整理
+  - 摘要
+  - 总结
+  - 其他
+  - 杂事
