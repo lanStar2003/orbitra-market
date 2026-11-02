@@ -47,10 +47,20 @@
       },
       "installers": {
         "lite": {
+          "win-x64": {
+            "name": "Orbitra-Lite-Setup-1.4.2.exe",
+            "url": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.4.2/Orbitra-Lite-Setup-1.4.2.exe",
+            "size": 135769519
+          },
           "mac-arm64": {
             "name": "Orbitra-Lite-1.4.2-arm64.dmg",
             "url": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.4.2/Orbitra-Lite-1.4.2-arm64.dmg",
             "size": 176780298
+          },
+          "mac-x64": {
+            "name": "Orbitra-Lite-1.4.2-x64.dmg",
+            "url": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.4.2/Orbitra-Lite-1.4.2-x64.dmg",
+            "size": 181102564
           },
           "linux-x64-appimage": {
             "name": "Orbitra-Lite-1.4.2.AppImage",
@@ -61,6 +71,33 @@
             "name": "orbitra-lite_1.4.2_amd64.deb",
             "url": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.4.2/orbitra-lite_1.4.2_amd64.deb",
             "size": 137273780
+          }
+        },
+        "full": {
+          "win-x64": {
+            "name": "Orbitra-Setup-1.4.2.exe",
+            "url": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.4.2/Orbitra-Setup-1.4.2.exe",
+            "size": 230112387
+          },
+          "mac-arm64": {
+            "name": "Orbitra-1.4.2-arm64.dmg",
+            "url": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.4.2/Orbitra-1.4.2-arm64.dmg",
+            "size": 368990269
+          },
+          "mac-x64": {
+            "name": "Orbitra-1.4.2-x64.dmg",
+            "url": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.4.2/Orbitra-1.4.2-x64.dmg",
+            "size": 378608835
+          },
+          "linux-x64-appimage": {
+            "name": "Orbitra-1.4.2.AppImage",
+            "url": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.4.2/Orbitra-1.4.2.AppImage",
+            "size": 319590178
+          },
+          "linux-x64-deb": {
+            "name": "orbitra_1.4.2_amd64.deb",
+            "url": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.4.2/orbitra_1.4.2_amd64.deb",
+            "size": 257504564
           }
         }
       }

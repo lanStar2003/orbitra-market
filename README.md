@@ -13,9 +13,11 @@ Orbitra **1.4.2**，2026-11-02 发布（[Release 页面](https://github.com/lanS
 
 | 平台 | 简易版 | 完整版 |
 |---|---|---|
-| macOS（Apple 芯片） | [Orbitra-Lite-1.4.2-arm64.dmg](https://github.com/lanStar2003/orbitra-market/releases/download/v1.4.2/Orbitra-Lite-1.4.2-arm64.dmg)（169 MB） | — |
-| Linux（AppImage） | [Orbitra-Lite-1.4.2.AppImage](https://github.com/lanStar2003/orbitra-market/releases/download/v1.4.2/Orbitra-Lite-1.4.2.AppImage)（168 MB） | — |
-| Linux（deb：Debian / Ubuntu） | [orbitra-lite_1.4.2_amd64.deb](https://github.com/lanStar2003/orbitra-market/releases/download/v1.4.2/orbitra-lite_1.4.2_amd64.deb)（131 MB） | — |
+| Windows（x64） | [Orbitra-Lite-Setup-1.4.2.exe](https://github.com/lanStar2003/orbitra-market/releases/download/v1.4.2/Orbitra-Lite-Setup-1.4.2.exe)（129 MB） | [Orbitra-Setup-1.4.2.exe](https://github.com/lanStar2003/orbitra-market/releases/download/v1.4.2/Orbitra-Setup-1.4.2.exe)（219 MB） |
+| macOS（Apple 芯片） | [Orbitra-Lite-1.4.2-arm64.dmg](https://github.com/lanStar2003/orbitra-market/releases/download/v1.4.2/Orbitra-Lite-1.4.2-arm64.dmg)（169 MB） | [Orbitra-1.4.2-arm64.dmg](https://github.com/lanStar2003/orbitra-market/releases/download/v1.4.2/Orbitra-1.4.2-arm64.dmg)（352 MB） |
+| macOS（Intel） | [Orbitra-Lite-1.4.2-x64.dmg](https://github.com/lanStar2003/orbitra-market/releases/download/v1.4.2/Orbitra-Lite-1.4.2-x64.dmg)（173 MB） | [Orbitra-1.4.2-x64.dmg](https://github.com/lanStar2003/orbitra-market/releases/download/v1.4.2/Orbitra-1.4.2-x64.dmg)（361 MB） |
+| Linux（AppImage） | [Orbitra-Lite-1.4.2.AppImage](https://github.com/lanStar2003/orbitra-market/releases/download/v1.4.2/Orbitra-Lite-1.4.2.AppImage)（168 MB） | [Orbitra-1.4.2.AppImage](https://github.com/lanStar2003/orbitra-market/releases/download/v1.4.2/Orbitra-1.4.2.AppImage)（305 MB） |
+| Linux（deb：Debian / Ubuntu） | [orbitra-lite_1.4.2_amd64.deb](https://github.com/lanStar2003/orbitra-market/releases/download/v1.4.2/orbitra-lite_1.4.2_amd64.deb)（131 MB） | [orbitra_1.4.2_amd64.deb](https://github.com/lanStar2003/orbitra-market/releases/download/v1.4.2/orbitra_1.4.2_amd64.deb)（246 MB） |
 
 - **简易版**：越小越好，只有 Orbitra 本体；第一次启动从 npm 下载 dsh 运行时（约两分钟，国内慢可以在 core.yml 里把 registry 换成 npmmirror），下完才能派活。
 - **完整版**：自带 dsh 运行时，装好就能离线用。
