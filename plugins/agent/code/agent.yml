@@ -2,10 +2,10 @@
 id: code
 name: 编码 Agent
 domain: 开发
-description: 读写代码、复现问题、修复和重构；代码只在工作区里跑
+description: 读写代码、复现问题、修复和重构
 icon: 码
 color: blue
-version: 1.0.0
+version: 1.0.1
 # 不交给执行节点（家里的小主机）：要用这台电脑上的文件和工具
 offload: false
 # 建议的模型档位（快 / 强）：主人在设置 › 模型里设了强档，这个 Agent 就用强档；单独给它选过的优先
