@@ -47,21 +47,23 @@
       },
       "installers": {
         "lite": {
-          "win-x64": {
-            "name": "Orbitra-Lite-Setup-1.4.1.exe",
-            "url": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.4.1/Orbitra-Lite-Setup-1.4.1.exe",
-            "size": 135763180
-          }
-        },
-        "full": {
-          "win-x64": {
-            "name": "Orbitra-Setup-1.4.1.exe",
-            "url": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.4.1/Orbitra-Setup-1.4.1.exe",
-            "size": 230083859
+          "mac-arm64": {
+            "name": "Orbitra-Lite-1.4.2-arm64.dmg",
+            "url": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.4.2/Orbitra-Lite-1.4.2-arm64.dmg",
+            "size": 176780298
+          },
+          "linux-x64-appimage": {
+            "name": "Orbitra-Lite-1.4.2.AppImage",
+            "url": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.4.2/Orbitra-Lite-1.4.2.AppImage",
+            "size": 176508075
+          },
+          "linux-x64-deb": {
+            "name": "orbitra-lite_1.4.2_amd64.deb",
+            "url": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.4.2/orbitra-lite_1.4.2_amd64.deb",
+            "size": 137273780
           }
         }
-      },
-      "installersVersion": "1.4.1"
+      }
     },
     {
       "id": "dsh",
