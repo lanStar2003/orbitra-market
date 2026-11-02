@@ -1,0 +1,12 @@
+{
+  "id": "agent-video",
+  "type": "agent",
+  "name": "视频 Agent",
+  "description": "讲解视频：脚本、分镜、Remotion 工程和渲染",
+  "version": "1.0.0",
+  "core": false,
+  "bundled": [
+    "lite",
+    "full"
+  ]
+}

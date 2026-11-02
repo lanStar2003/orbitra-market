@@ -1,0 +1,24 @@
+{
+  "id": "embed",
+  "type": "capability",
+  "name": "本地向量模型",
+  "description": "记忆的向量召回：在本机 CPU 上算向量（transformers.js + onnxruntime，bge-small-zh-v1.5）。没装时召回用关键词和图。",
+  "version": "4.3.2",
+  "core": false,
+  "bundled": [],
+  "packages": {
+    "@huggingface/transformers": "4.3.2"
+  },
+  "models": [
+    {
+      "repo": "Xenova/bge-small-zh-v1.5",
+      "files": [
+        "config.json",
+        "tokenizer.json",
+        "tokenizer_config.json",
+        "onnx/model_quantized.onnx"
+      ]
+    }
+  ],
+  "sizeHint": "解开后约 490 MB"
+}

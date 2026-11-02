@@ -29,6 +29,8 @@
     {
       "id": "orbitra",
       "type": "app",
+      "path": "plugins/app/orbitra",
+      "url": "https://github.com/lanStar2003/orbitra-market/tree/main/plugins/app/orbitra",
       "name": "Orbitra",
       "description": "Orbitra 本体：内核、界面、桌面外壳和 Orbitra 自己的 dsh 插件。",
       "core": true,
@@ -38,13 +40,7 @@
       ],
       "version": "1.4.2",
       "tag": "v1.4.2",
-      "url": "https://github.com/lanStar2003/orbitra-market/releases/tag/v1.4.2",
       "at": "2026-11-02T04:32:13Z",
-      "update": {
-        "manifest": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.4.2/manifest.json",
-        "bundle": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.4.2/files.zip",
-        "size": 2285187
-      },
       "installers": {
         "lite": {
           "win-x64": {
@@ -100,11 +96,14 @@
             "size": 257504564
           }
         }
-      }
+      },
+      "installersUrl": "https://github.com/lanStar2003/orbitra-market/releases/tag/v1.4.2"
     },
     {
       "id": "dsh",
       "type": "harness",
+      "path": "plugins/harness/dsh",
+      "url": "https://github.com/lanStar2003/orbitra-market/tree/main/plugins/harness/dsh",
       "name": "dsh 运行时",
       "description": "私有的 dsh（DeepSeek Harness）、dsh-mnemon 和 Mnemon，钉死版本，装在数据文件夹里；Orbitra 的 7 个 dsh 插件随本体。默认的运行方式。",
       "core": true,
@@ -122,6 +121,8 @@
     {
       "id": "claude-code",
       "type": "harness",
+      "path": "plugins/harness/claude-code",
+      "url": "https://github.com/lanStar2003/orbitra-market/tree/main/plugins/harness/claude-code",
       "name": "Claude Code",
       "description": "用 Claude Code 跑指定的 Agent。",
       "core": false,
@@ -132,6 +133,8 @@
     {
       "id": "agent-general",
       "type": "agent",
+      "path": "plugins/agent/general",
+      "url": "https://github.com/lanStar2003/orbitra-market/tree/main/plugins/agent/general",
       "agent": "general",
       "name": "通用 Agent",
       "description": "没有对口的 Agent 时先把事办完，并记下能力缺口",
@@ -140,19 +143,13 @@
         "lite",
         "full"
       ],
-      "version": "1.0.0",
-      "tag": "agent-general-v1.0.0",
-      "url": "https://github.com/lanStar2003/orbitra-market/releases/tag/agent-general-v1.0.0",
-      "at": "2026-11-02T04:32:46Z",
-      "update": {
-        "manifest": "https://github.com/lanStar2003/orbitra-market/releases/download/agent-general-v1.0.0/manifest.json",
-        "bundle": "https://github.com/lanStar2003/orbitra-market/releases/download/agent-general-v1.0.0/files.zip",
-        "size": 1294
-      }
+      "version": "1.0.0"
     },
     {
       "id": "agent-evolve",
       "type": "agent",
+      "path": "plugins/agent/evolve",
+      "url": "https://github.com/lanStar2003/orbitra-market/tree/main/plugins/agent/evolve",
       "agent": "evolve",
       "name": "自进化 Agent",
       "description": "分析运行数据提出优化建议；按主人的需求改 Agent 的做事方式，或直接改 Orbitra 自己的代码（测过、复核过再等主人批准发布）",
@@ -161,19 +158,13 @@
         "lite",
         "full"
       ],
-      "version": "1.1.0",
-      "tag": "agent-evolve-v1.1.0",
-      "url": "https://github.com/lanStar2003/orbitra-market/releases/tag/agent-evolve-v1.1.0",
-      "at": "2026-11-02T04:32:38Z",
-      "update": {
-        "manifest": "https://github.com/lanStar2003/orbitra-market/releases/download/agent-evolve-v1.1.0/manifest.json",
-        "bundle": "https://github.com/lanStar2003/orbitra-market/releases/download/agent-evolve-v1.1.0/files.zip",
-        "size": 2333
-      }
+      "version": "1.1.0"
     },
     {
       "id": "agent-code",
       "type": "agent",
+      "path": "plugins/agent/code",
+      "url": "https://github.com/lanStar2003/orbitra-market/tree/main/plugins/agent/code",
       "agent": "code",
       "name": "编码 Agent",
       "description": "读写代码、复现问题、修复和重构；代码只在工作区里跑",
@@ -182,19 +173,13 @@
         "lite",
         "full"
       ],
-      "version": "1.0.0",
-      "tag": "agent-code-v1.0.0",
-      "url": "https://github.com/lanStar2003/orbitra-market/releases/tag/agent-code-v1.0.0",
-      "at": "2026-11-02T04:32:30Z",
-      "update": {
-        "manifest": "https://github.com/lanStar2003/orbitra-market/releases/download/agent-code-v1.0.0/manifest.json",
-        "bundle": "https://github.com/lanStar2003/orbitra-market/releases/download/agent-code-v1.0.0/files.zip",
-        "size": 1542
-      }
+      "version": "1.0.0"
     },
     {
       "id": "agent-research",
       "type": "agent",
+      "path": "plugins/agent/research",
+      "url": "https://github.com/lanStar2003/orbitra-market/tree/main/plugins/agent/research",
       "agent": "research",
       "name": "研究 Agent",
       "description": "检索、读论文和文档，给出可核验的出处",
@@ -203,19 +188,13 @@
         "lite",
         "full"
       ],
-      "version": "1.0.0",
-      "tag": "agent-research-v1.0.0",
-      "url": "https://github.com/lanStar2003/orbitra-market/releases/tag/agent-research-v1.0.0",
-      "at": "2026-11-02T04:33:03Z",
-      "update": {
-        "manifest": "https://github.com/lanStar2003/orbitra-market/releases/download/agent-research-v1.0.0/manifest.json",
-        "bundle": "https://github.com/lanStar2003/orbitra-market/releases/download/agent-research-v1.0.0/files.zip",
-        "size": 1283
-      }
+      "version": "1.0.0"
     },
     {
       "id": "agent-writing",
       "type": "agent",
+      "path": "plugins/agent/writing",
+      "url": "https://github.com/lanStar2003/orbitra-market/tree/main/plugins/agent/writing",
       "agent": "writing",
       "name": "写作 Agent",
       "description": "学习笔记、文章、周报；按主人的模板和语气写",
@@ -224,19 +203,13 @@
         "lite",
         "full"
       ],
-      "version": "1.0.0",
-      "tag": "agent-writing-v1.0.0",
-      "url": "https://github.com/lanStar2003/orbitra-market/releases/tag/agent-writing-v1.0.0",
-      "at": "2026-11-02T04:33:29Z",
-      "update": {
-        "manifest": "https://github.com/lanStar2003/orbitra-market/releases/download/agent-writing-v1.0.0/manifest.json",
-        "bundle": "https://github.com/lanStar2003/orbitra-market/releases/download/agent-writing-v1.0.0/files.zip",
-        "size": 1292
-      }
+      "version": "1.0.0"
     },
     {
       "id": "agent-ops",
       "type": "agent",
+      "path": "plugins/agent/ops",
+      "url": "https://github.com/lanStar2003/orbitra-market/tree/main/plugins/agent/ops",
       "agent": "ops",
       "name": "运维 Agent",
       "description": "发布、部署、巡检服务器；生产环境的每次变更都要主人批准",
@@ -245,19 +218,13 @@
         "lite",
         "full"
       ],
-      "version": "1.0.0",
-      "tag": "agent-ops-v1.0.0",
-      "url": "https://github.com/lanStar2003/orbitra-market/releases/tag/agent-ops-v1.0.0",
-      "at": "2026-11-02T04:32:55Z",
-      "update": {
-        "manifest": "https://github.com/lanStar2003/orbitra-market/releases/download/agent-ops-v1.0.0/manifest.json",
-        "bundle": "https://github.com/lanStar2003/orbitra-market/releases/download/agent-ops-v1.0.0/files.zip",
-        "size": 1431
-      }
+      "version": "1.0.0"
     },
     {
       "id": "agent-test",
       "type": "agent",
+      "path": "plugins/agent/test",
+      "url": "https://github.com/lanStar2003/orbitra-market/tree/main/plugins/agent/test",
       "agent": "test",
       "name": "测试 Agent",
       "description": "写测试、跑回归和端到端测试，给出能复现的失败报告",
@@ -266,19 +233,13 @@
         "lite",
         "full"
       ],
-      "version": "1.0.0",
-      "tag": "agent-test-v1.0.0",
-      "url": "https://github.com/lanStar2003/orbitra-market/releases/tag/agent-test-v1.0.0",
-      "at": "2026-11-02T04:33:13Z",
-      "update": {
-        "manifest": "https://github.com/lanStar2003/orbitra-market/releases/download/agent-test-v1.0.0/manifest.json",
-        "bundle": "https://github.com/lanStar2003/orbitra-market/releases/download/agent-test-v1.0.0/files.zip",
-        "size": 1354
-      }
+      "version": "1.0.0"
     },
     {
       "id": "agent-video",
       "type": "agent",
+      "path": "plugins/agent/video",
+      "url": "https://github.com/lanStar2003/orbitra-market/tree/main/plugins/agent/video",
       "agent": "video",
       "name": "视频 Agent",
       "description": "讲解视频：脚本、分镜、Remotion 工程和渲染",
@@ -287,19 +248,13 @@
         "lite",
         "full"
       ],
-      "version": "1.0.0",
-      "tag": "agent-video-v1.0.0",
-      "url": "https://github.com/lanStar2003/orbitra-market/releases/tag/agent-video-v1.0.0",
-      "at": "2026-11-02T04:33:22Z",
-      "update": {
-        "manifest": "https://github.com/lanStar2003/orbitra-market/releases/download/agent-video-v1.0.0/manifest.json",
-        "bundle": "https://github.com/lanStar2003/orbitra-market/releases/download/agent-video-v1.0.0/files.zip",
-        "size": 1324
-      }
+      "version": "1.0.0"
     },
     {
       "id": "agent-calendar",
       "type": "agent",
+      "path": "plugins/agent/calendar",
+      "url": "https://github.com/lanStar2003/orbitra-market/tree/main/plugins/agent/calendar",
       "agent": "calendar",
       "name": "日程 Agent",
       "description": "日历、提醒、邮件摘要；替主人排时间，不替主人回复别人",
@@ -308,19 +263,13 @@
         "lite",
         "full"
       ],
-      "version": "1.0.0",
-      "tag": "agent-calendar-v1.0.0",
-      "url": "https://github.com/lanStar2003/orbitra-market/releases/tag/agent-calendar-v1.0.0",
-      "at": "2026-11-02T04:32:22Z",
-      "update": {
-        "manifest": "https://github.com/lanStar2003/orbitra-market/releases/download/agent-calendar-v1.0.0/manifest.json",
-        "bundle": "https://github.com/lanStar2003/orbitra-market/releases/download/agent-calendar-v1.0.0/files.zip",
-        "size": 1295
-      }
+      "version": "1.0.0"
     },
     {
       "id": "embed",
       "type": "capability",
+      "path": "plugins/capability/embed",
+      "url": "https://github.com/lanStar2003/orbitra-market/tree/main/plugins/capability/embed",
       "name": "本地向量模型",
       "description": "记忆的向量召回：在本机 CPU 上算向量（transformers.js + onnxruntime，bge-small-zh-v1.5）。没装时召回用关键词和图。",
       "core": false,

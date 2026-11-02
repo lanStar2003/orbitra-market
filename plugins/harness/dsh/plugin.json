@@ -1,0 +1,17 @@
+{
+  "id": "dsh",
+  "type": "harness",
+  "name": "dsh 运行时",
+  "description": "私有的 dsh（DeepSeek Harness）、dsh-mnemon 和 Mnemon，钉死版本，装在数据文件夹里；Orbitra 的 7 个 dsh 插件随本体。默认的运行方式。",
+  "version": "0.2.1-rc.2",
+  "core": true,
+  "bundled": [
+    "full"
+  ],
+  "packages": {
+    "@deepseek-ai/dsh": "0.2.1-rc.2",
+    "@mnemon-dev/mnemon": "0.2.9",
+    "dsh-mnemon": "0.5.36"
+  },
+  "sizeHint": "解开后约 850 MB"
+}

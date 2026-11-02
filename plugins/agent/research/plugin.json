@@ -1,0 +1,12 @@
+{
+  "id": "agent-research",
+  "type": "agent",
+  "name": "研究 Agent",
+  "description": "检索、读论文和文档，给出可核验的出处",
+  "version": "1.0.0",
+  "core": false,
+  "bundled": [
+    "lite",
+    "full"
+  ]
+}

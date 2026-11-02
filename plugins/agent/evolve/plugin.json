@@ -1,0 +1,12 @@
+{
+  "id": "agent-evolve",
+  "type": "agent",
+  "name": "自进化 Agent",
+  "description": "分析运行数据提出优化建议；按主人的需求改 Agent 的做事方式，或直接改 Orbitra 自己的代码（测过、复核过再等主人批准发布）",
+  "version": "1.1.0",
+  "core": true,
+  "bundled": [
+    "lite",
+    "full"
+  ]
+}

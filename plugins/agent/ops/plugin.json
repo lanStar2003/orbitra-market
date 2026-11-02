@@ -1,0 +1,12 @@
+{
+  "id": "agent-ops",
+  "type": "agent",
+  "name": "运维 Agent",
+  "description": "发布、部署、巡检服务器；生产环境的每次变更都要主人批准",
+  "version": "1.0.0",
+  "core": false,
+  "bundled": [
+    "lite",
+    "full"
+  ]
+}

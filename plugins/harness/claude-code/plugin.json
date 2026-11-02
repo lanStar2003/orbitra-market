@@ -1,0 +1,10 @@
+{
+  "id": "claude-code",
+  "type": "harness",
+  "name": "Claude Code",
+  "description": "用 Claude Code 跑指定的 Agent。",
+  "version": null,
+  "core": false,
+  "bundled": [],
+  "upcoming": true
+}
