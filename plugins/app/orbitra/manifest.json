@@ -1,17 +1,17 @@
 {
   "format": "orbitra-release/2",
-  "version": "1.8.2",
-  "commit": "73ea3c571e95b35f5d81be0432c18deba522b503",
+  "version": "1.8.3",
+  "commit": "ea77a6ec4c109d438ea3d20a2d6c0d607899c57c",
   "previous": "1.8.1",
-  "title": "派发详情：全文可查、可进子 Agent",
-  "notes": "任务图、自进化需求、定时任务运行都增加了可展开的派发全文和子 Agent 详情页；后端补了 job 原指令、任务来源、自进化发起轮次、定时运行详情接口，对话和任务动态都有了入口。",
-  "at": "2026-11-02T14:59:33.611Z",
+  "title": "SSH 终端插件：保存服务器、浏览器里连、Agent 经审批执行",
+  "notes": "新增内核 ssh 模块（服务器增删改查、密码/口令密封保存、系统 ssh 交互会话 + SSE、测试连接、Agent 的 ssh_run 接口）、插件页 › SSH 终端界面（服务器列表 + ANSI 浏览器终端、快捷键、复制粘贴、断线重连、前后台主题、首次引导）、orbitra-ssh dsh 插件与 guard 规则 ssh-run（按审批方式执行）、假内核 SSH 接口，以及 docs/接口.md 与使用手册的说明。",
+  "at": "2026-11-02T15:23:50.841Z",
   "key": "2838-d425-6b4d-9b6c",
-  "needsInstaller": false,
-  "reason": null,
-  "depsSince": "1.8.1",
-  "installerSince": "1.8.1",
-  "installerReason": "安装版的插件在打包的运行时里，改了插件要重新打安装包",
+  "needsInstaller": true,
+  "reason": "依赖变了（plugins/orbitra-ssh/package.json）",
+  "depsSince": "1.8.3",
+  "installerSince": "1.8.3",
+  "installerReason": "安装版的 core.yml 打包时改过（指向自带的运行时），core.yml 变了要重新装安装包",
   "libraries": {
     "@orbitra/contracts": "packages/contracts",
     "orbitra-dispatch": "plugins/orbitra-dispatch",
@@ -20,6 +20,7 @@
     "orbitra-mcp": "plugins/orbitra-mcp",
     "orbitra-memory": "plugins/orbitra-memory",
     "orbitra-profile": "plugins/orbitra-profile",
+    "orbitra-ssh": "plugins/orbitra-ssh",
     "orbitra-web": "plugins/orbitra-web"
   },
   "files": {
@@ -128,7 +129,7 @@
       "size": 1543
     },
     "apps/desktop/package.json": {
-      "sha256": "f01025cce831da90dfaea0ca999b5a5eaa211db99f88896cf856d5f5ebe6c2de",
+      "sha256": "344815ee3d9289791bb7d1ac47ab5499062f6d981068da6877df23ace2cefd9b",
       "size": 496
     },
     "apps/desktop/src/main.js": {
@@ -163,13 +164,13 @@
       "sha256": "6819998a877faaa37d55aaa1db0b1a2995cfd85383f61333c1a768539d631401",
       "size": 18432
     },
-    "apps/web/dist/assets/app-MNWYX4HO.css": {
-      "sha256": "c41e96b013b4d02c63d81da0a868b2cd3866ee007d283da4e472097bfc6c895b",
-      "size": 321247
+    "apps/web/dist/assets/app-45CAENHY.css": {
+      "sha256": "219329947ba42104df6f3e6aac3a2429c96b8013dba2adc3c7e114c936b1213c",
+      "size": 329919
     },
-    "apps/web/dist/assets/app-VIPHIXKD.js": {
-      "sha256": "3dc7b88e8a3d6147343c08e953e9871d21e584b0db8fbb1f7d1155f7e0727f4b",
-      "size": 903098
+    "apps/web/dist/assets/app-MU355XE4.js": {
+      "sha256": "bc418c0787ef5199e37294dcf209f90e6c193b00f3f98c6fc64318d39db2a811",
+      "size": 929082
     },
     "apps/web/dist/favicon.svg": {
       "sha256": "bcb80e1e35769e211a50561885264eb368340a554314da769489964cd5062e76",
@@ -200,7 +201,7 @@
       "size": 1332
     },
     "apps/web/dist/index.html": {
-      "sha256": "c6aa65d0972b361d8e9aa4ba7aed01774e4bb087f9afe1fef0be359034f3daf7",
+      "sha256": "7e9ada0e6a831cf8d1e5f7183acf916fc90f2095621b58375ea549ea01cc5880",
       "size": 1247
     },
     "apps/web/dist/manifest.webmanifest": {
@@ -208,7 +209,7 @@
       "size": 1198
     },
     "apps/web/dist/sw.js": {
-      "sha256": "2876afbafb33af63e9551df27fd13f3f281557c61c4caa9f7783e541b75ec444",
+      "sha256": "b00c92e0c50e86c9290f55b218543887e60fac49f41cee09bcfe92f63401880a",
       "size": 8659
     },
     "apps/web/package.json": {
@@ -216,8 +217,8 @@
       "size": 477
     },
     "core/core.yml": {
-      "sha256": "f7b592944a13b60d3a8c840ab3d74721989a621c7f67df283c325942830f0792",
-      "size": 14145
+      "sha256": "0a5b26c392430d09444016c67840dfe76d893dcf309b0f91342be6ee9ba48992",
+      "size": 14587
     },
     "core/market/catalog.json": {
       "sha256": "d0f59b8bef3243e77e42935b391dd047f283d72a76599b8a3ad2a2763e269519",
@@ -495,6 +496,14 @@
       "sha256": "dd10f118504acab750554829dbee9d41308b7b6b3feaa66493b7bed15fc3e5ad",
       "size": 23339
     },
+    "core/modules/ssh/command.js": {
+      "sha256": "3ba280855d95372018cda564b6edf1bb30c281feb6dc0607cd50a4a543f05d5f",
+      "size": 12230
+    },
+    "core/modules/ssh/index.js": {
+      "sha256": "4248c54b03bf11d53981a5d4a40f33711520885999ebeacc349b5a7c442a70c0",
+      "size": 32405
+    },
     "core/modules/stream/history.js": {
       "sha256": "8aedb20bd4733a2fb62b38748a7d4add8711df293d897995b9856e3b9ede116c",
       "size": 6655
@@ -724,8 +733,8 @@
       "size": 2996
     },
     "node_modules/orbitra-guard/src/core/rules.js": {
-      "sha256": "ab20e0f9b87820517b50128dfeaf89bcd74e9e2a45496c28c758c9c55e2cbbdc",
-      "size": 16826
+      "sha256": "c127f9cabc510c8c11eb4bb4588f1a70b430fd00f9fba11576882c77e80aac04",
+      "size": 17177
     },
     "node_modules/orbitra-guard/src/core/scripts.js": {
       "sha256": "1b95fefb36f3b629a71667da14ebf115d870e5b0dc9ca088cfbb6e4d3e10b79a",
@@ -764,12 +773,24 @@
       "size": 1055
     },
     "node_modules/orbitra-profile/cordis.patch.yml": {
-      "sha256": "8f31a0e7dfeb8d9f9f614f5bc30ebbec35216144596c91265854e416856c701b",
-      "size": 10494
+      "sha256": "c75ba713d10ec614a9b18bf093aebf83ff2b8de3f7b82263f375580c496c5dd5",
+      "size": 10751
     },
     "node_modules/orbitra-profile/package.json": {
       "sha256": "c040710cc681c9b20cc92fe7490687d595278d1dc64aab08172c850423bf1383",
       "size": 510
+    },
+    "node_modules/orbitra-ssh/package.json": {
+      "sha256": "4141462b32969a667ea5ab821c45632917ec5720da8ec5dfad7c88efe5b6c7c2",
+      "size": 741
+    },
+    "node_modules/orbitra-ssh/src/core/tools.js": {
+      "sha256": "04729e753a62b8fad52705aa62e6444984606e17badee086bb167cd31fe67b21",
+      "size": 5088
+    },
+    "node_modules/orbitra-ssh/src/host/index.js": {
+      "sha256": "fb2a360419794bcf9e736f30175ed91b34bfca42c6021ac189fa16a511cb865d",
+      "size": 814
     },
     "node_modules/orbitra-web/package.json": {
       "sha256": "5a4f680ee3d04df68cbd9967e8cc89eaffe60c984ac8200026f23f3fd7b1d77b",
@@ -852,8 +873,8 @@
       "size": 2996
     },
     "plugins/orbitra-guard/src/core/rules.js": {
-      "sha256": "ab20e0f9b87820517b50128dfeaf89bcd74e9e2a45496c28c758c9c55e2cbbdc",
-      "size": 16826
+      "sha256": "c127f9cabc510c8c11eb4bb4588f1a70b430fd00f9fba11576882c77e80aac04",
+      "size": 17177
     },
     "plugins/orbitra-guard/src/core/scripts.js": {
       "sha256": "1b95fefb36f3b629a71667da14ebf115d870e5b0dc9ca088cfbb6e4d3e10b79a",
@@ -892,12 +913,24 @@
       "size": 1055
     },
     "plugins/orbitra-profile/cordis.patch.yml": {
-      "sha256": "8f31a0e7dfeb8d9f9f614f5bc30ebbec35216144596c91265854e416856c701b",
-      "size": 10494
+      "sha256": "c75ba713d10ec614a9b18bf093aebf83ff2b8de3f7b82263f375580c496c5dd5",
+      "size": 10751
     },
     "plugins/orbitra-profile/package.json": {
       "sha256": "c040710cc681c9b20cc92fe7490687d595278d1dc64aab08172c850423bf1383",
       "size": 510
+    },
+    "plugins/orbitra-ssh/package.json": {
+      "sha256": "4141462b32969a667ea5ab821c45632917ec5720da8ec5dfad7c88efe5b6c7c2",
+      "size": 741
+    },
+    "plugins/orbitra-ssh/src/core/tools.js": {
+      "sha256": "04729e753a62b8fad52705aa62e6444984606e17badee086bb167cd31fe67b21",
+      "size": 5088
+    },
+    "plugins/orbitra-ssh/src/host/index.js": {
+      "sha256": "fb2a360419794bcf9e736f30175ed91b34bfca42c6021ac189fa16a511cb865d",
+      "size": 814
     },
     "plugins/orbitra-web/package.json": {
       "sha256": "5a4f680ee3d04df68cbd9967e8cc89eaffe60c984ac8200026f23f3fd7b1d77b",
@@ -918,8 +951,8 @@
   },
   "bundle": {
     "name": "files.zip",
-    "sha256": "12d9eee956aafe8968c9aae2459664b7b9b483b73dfdcafd0586b3da95a1502a",
-    "size": 2335423
+    "sha256": "94a018b75dfd008609bc993300f003aa7785399a38cf5ab7519863a6d60a2ada",
+    "size": 2365883
   },
-  "signature": "5XZYUDxtwWNlnpndEg6Iaho4MPWi80VbmrbgyWyOVFUj8-_axQfwnrY0Um62USIPxZQv_2Yg2VziU76cIKscAg"
+  "signature": "q1mHZvFoFAjnyGZTrhqesiPMBfJkbohKG6xzvEYE19CKoX67DMle2-onZ_cHRi4ggY4eGmbCMA1FTuhyknhYCg"
 }

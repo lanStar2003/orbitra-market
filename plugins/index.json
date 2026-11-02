@@ -1,10 +1,10 @@
 {
   "format": "orbitra-plugins/1",
   "software": {
-    "version": "1.8.2",
-    "at": "2026-11-02T14:59:33.611Z",
-    "title": "派发详情：全文可查、可进子 Agent",
-    "size": 2335423
+    "version": "1.8.3",
+    "at": "2026-11-02T15:23:50.841Z",
+    "title": "SSH 终端插件：保存服务器、浏览器里连、Agent 经审批执行",
+    "size": 2365883
   },
   "agents": {
     "calendar": {
