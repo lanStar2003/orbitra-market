@@ -1,7 +1,7 @@
 {
   "format": "orbitra-market/1",
   "repo": "lanStar2003/orbitra-market",
-  "updatedAt": "2026-11-02T16:31:28Z",
+  "updatedAt": "2026-11-02T23:56:55.489Z",
   "key": "2838-d425-6b4d-9b6c",
   "categories": [
     {
@@ -42,13 +42,13 @@
       "bundled": [
         "full"
       ],
-      "version": "1.8.4",
-      "tag": "v1.8.4",
-      "at": "2026-11-02T16:23:17.273Z",
+      "version": "1.9.0",
+      "tag": "v1.9.0",
+      "at": "2026-11-02T23:56:41.691Z",
       "update": {
         "manifest": "https://raw.githubusercontent.com/lanStar2003/orbitra-market/main/plugins/app/orbitra/manifest.json",
         "bundle": "https://raw.githubusercontent.com/lanStar2003/orbitra-market/main/plugins/app/orbitra/files.zip",
-        "size": 2369784
+        "size": 2403074
       },
       "installers": {
         "full": {
@@ -74,7 +74,8 @@
           }
         }
       },
-      "installersUrl": "https://github.com/lanStar2003/orbitra-market/releases/tag/v1.8.4"
+      "installersUrl": "https://github.com/lanStar2003/orbitra-market/releases/tag/v1.8.4",
+      "installersVersion": "1.8.4"
     },
     {
       "id": "dsh",
@@ -152,10 +153,10 @@
       "bundled": [
         "full"
       ],
-      "version": "1.1.0",
-      "tag": "agent-evolve-v1.1.0",
+      "version": "1.1.1",
+      "tag": "agent-evolve-v1.1.1",
       "published": true,
-      "at": "2026-11-02T05:30:47.421Z",
+      "at": "2026-11-02T23:56:55.489Z",
       "update": {
         "manifest": "https://raw.githubusercontent.com/lanStar2003/orbitra-market/main/plugins/agent/evolve/manifest.json"
       }
