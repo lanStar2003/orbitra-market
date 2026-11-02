@@ -9,13 +9,12 @@ Orbitra 是以 harness 为核心的个人 AI 助理：桌面级软件，Windows�
 
 ## 下载
 
-Orbitra **1.8.0**，2026-11-02 发布（[Release 页面](https://github.com/lanStar2003/orbitra-market/releases/tag/v1.8.0)）。
+Orbitra **1.8.0**。新版本 1.8.1 的安装包还在打包，下面是 1.8.0 的。
 
 | 平台 | 安装包 |
 |---|---|
 | Windows（x64） | [Orbitra-Setup-1.8.0.exe](https://github.com/lanStar2003/orbitra-market/releases/download/v1.8.0/Orbitra-Setup-1.8.0.exe)（213 MB） |
 | macOS（Apple 芯片） | [Orbitra-1.8.0-arm64.dmg](https://github.com/lanStar2003/orbitra-market/releases/download/v1.8.0/Orbitra-1.8.0-arm64.dmg)（309 MB） |
-| macOS（Intel） | [Orbitra-1.8.0-x64.dmg](https://github.com/lanStar2003/orbitra-market/releases/download/v1.8.0/Orbitra-1.8.0-x64.dmg)（318 MB） |
 | Linux（AppImage） | [Orbitra-1.8.0.AppImage](https://github.com/lanStar2003/orbitra-market/releases/download/v1.8.0/Orbitra-1.8.0.AppImage)（284 MB） |
 | Linux（deb：Debian / Ubuntu） | [orbitra_1.8.0_amd64.deb](https://github.com/lanStar2003/orbitra-market/releases/download/v1.8.0/orbitra_1.8.0_amd64.deb)（219 MB） |
 
@@ -32,7 +31,7 @@ Orbitra **1.8.0**，2026-11-02 发布（[Release 页面](https://github.com/lanS
 
 | 名称 | 版本 | 核心 | 安装包 | 说明 | 获取 |
 |---|---|---|---|---|---|
-| [Orbitra](plugins/app/orbitra) | 1.8.0 | **核心** | 自带 | Orbitra 本体：内核、界面、桌面外壳和 Orbitra 自己的 dsh 插件。 | [安装包](#下载) |
+| [Orbitra](plugins/app/orbitra) | 1.8.1 | **核心** | 自带 | Orbitra 本体：内核、界面、桌面外壳和 Orbitra 自己的 dsh 插件。 | [安装包](#下载) |
 
 ### [运行方式](plugins/harness)
 

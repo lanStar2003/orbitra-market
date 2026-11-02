@@ -6,4 +6,4 @@
 
 | 名称 | 版本 | 核心 | 安装包 | 说明 |
 |---|---|---|---|---|
-| [Orbitra](orbitra) | 1.8.0 | **核心** | 自带 | Orbitra 本体：内核、界面、桌面外壳和 Orbitra 自己的 dsh 插件。 |
+| [Orbitra](orbitra) | 1.8.1 | **核心** | 自带 | Orbitra 本体：内核、界面、桌面外壳和 Orbitra 自己的 dsh 插件。 |
