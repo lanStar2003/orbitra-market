@@ -1,10 +1,10 @@
 {
   "format": "orbitra-plugins/1",
   "software": {
-    "version": "1.5.0",
-    "at": "2026-11-02T05:30:20.472Z",
-    "title": "插件放进市场仓库的文件夹",
-    "size": 2286337
+    "version": "1.7.0",
+    "at": "2026-11-02T10:05:32.977Z",
+    "title": "正式版、更快的总指挥、新的对话列表",
+    "size": 2306818
   },
   "agents": {
     "calendar": {
