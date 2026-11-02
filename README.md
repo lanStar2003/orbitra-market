@@ -50,10 +50,10 @@ Orbitra **1.4.1**。新版本 1.4.2 的安装包还在打包，下面是 1.4.1 �
 | 自进化 Agent | [1.1.0](https://github.com/lanStar2003/orbitra-market/releases/tag/agent-evolve-v1.1.0) | **核心** | 自带 | 自带 | 分析运行数据提出优化建议；按主人的需求改 Agent 的做事方式，或直接改 Orbitra 自己的代码（测过、复核过再等主人批准发布） | [files.zip](https://github.com/lanStar2003/orbitra-market/releases/download/agent-evolve-v1.1.0/files.zip) |
 | 编码 Agent | [1.0.0](https://github.com/lanStar2003/orbitra-market/releases/tag/agent-code-v1.0.0) | 可选 | 自带 | 自带 | 读写代码、复现问题、修复和重构；代码只在工作区里跑 | [files.zip](https://github.com/lanStar2003/orbitra-market/releases/download/agent-code-v1.0.0/files.zip) |
 | 研究 Agent | [1.0.0](https://github.com/lanStar2003/orbitra-market/releases/tag/agent-research-v1.0.0) | 可选 | 自带 | 自带 | 检索、读论文和文档，给出可核验的出处 | [files.zip](https://github.com/lanStar2003/orbitra-market/releases/download/agent-research-v1.0.0/files.zip) |
-| 写作 Agent | 1.0.0 | 可选 | 自带 | 自带 | 学习笔记、文章、周报；按主人的模板和语气写 | 随安装包 |
+| 写作 Agent | [1.0.0](https://github.com/lanStar2003/orbitra-market/releases/tag/agent-writing-v1.0.0) | 可选 | 自带 | 自带 | 学习笔记、文章、周报；按主人的模板和语气写 | [files.zip](https://github.com/lanStar2003/orbitra-market/releases/download/agent-writing-v1.0.0/files.zip) |
 | 运维 Agent | [1.0.0](https://github.com/lanStar2003/orbitra-market/releases/tag/agent-ops-v1.0.0) | 可选 | 自带 | 自带 | 发布、部署、巡检服务器；生产环境的每次变更都要主人批准 | [files.zip](https://github.com/lanStar2003/orbitra-market/releases/download/agent-ops-v1.0.0/files.zip) |
 | 测试 Agent | [1.0.0](https://github.com/lanStar2003/orbitra-market/releases/tag/agent-test-v1.0.0) | 可选 | 自带 | 自带 | 写测试、跑回归和端到端测试，给出能复现的失败报告 | [files.zip](https://github.com/lanStar2003/orbitra-market/releases/download/agent-test-v1.0.0/files.zip) |
-| 视频 Agent | 1.0.0 | 可选 | 自带 | 自带 | 讲解视频：脚本、分镜、Remotion 工程和渲染 | 随安装包 |
+| 视频 Agent | [1.0.0](https://github.com/lanStar2003/orbitra-market/releases/tag/agent-video-v1.0.0) | 可选 | 自带 | 自带 | 讲解视频：脚本、分镜、Remotion 工程和渲染 | [files.zip](https://github.com/lanStar2003/orbitra-market/releases/download/agent-video-v1.0.0/files.zip) |
 | 日程 Agent | [1.0.0](https://github.com/lanStar2003/orbitra-market/releases/tag/agent-calendar-v1.0.0) | 可选 | 自带 | 自带 | 日历、提醒、邮件摘要；替主人排时间，不替主人回复别人 | [files.zip](https://github.com/lanStar2003/orbitra-market/releases/download/agent-calendar-v1.0.0/files.zip) |
 
 ### 能力

@@ -1,7 +1,7 @@
 {
   "format": "orbitra-market/1",
   "repo": "lanStar2003/orbitra-market",
-  "updatedAt": "2026-11-02T04:33:13Z",
+  "updatedAt": "2026-11-02T04:33:29Z",
   "key": "2838-d425-6b4d-9b6c",
   "categories": [
     {
@@ -185,7 +185,15 @@
         "lite",
         "full"
       ],
-      "version": "1.0.0"
+      "version": "1.0.0",
+      "tag": "agent-writing-v1.0.0",
+      "url": "https://github.com/lanStar2003/orbitra-market/releases/tag/agent-writing-v1.0.0",
+      "at": "2026-11-02T04:33:29Z",
+      "update": {
+        "manifest": "https://github.com/lanStar2003/orbitra-market/releases/download/agent-writing-v1.0.0/manifest.json",
+        "bundle": "https://github.com/lanStar2003/orbitra-market/releases/download/agent-writing-v1.0.0/files.zip",
+        "size": 1292
+      }
     },
     {
       "id": "agent-ops",
@@ -240,7 +248,15 @@
         "lite",
         "full"
       ],
-      "version": "1.0.0"
+      "version": "1.0.0",
+      "tag": "agent-video-v1.0.0",
+      "url": "https://github.com/lanStar2003/orbitra-market/releases/tag/agent-video-v1.0.0",
+      "at": "2026-11-02T04:33:22Z",
+      "update": {
+        "manifest": "https://github.com/lanStar2003/orbitra-market/releases/download/agent-video-v1.0.0/manifest.json",
+        "bundle": "https://github.com/lanStar2003/orbitra-market/releases/download/agent-video-v1.0.0/files.zip",
+        "size": 1324
+      }
     },
     {
       "id": "agent-calendar",
