@@ -1,10 +1,10 @@
 {
   "format": "orbitra-plugins/1",
   "software": {
-    "version": "1.8.3",
-    "at": "2026-11-02T15:23:50.841Z",
-    "title": "SSH 终端插件：保存服务器、浏览器里连、Agent 经审批执行",
-    "size": 2365883
+    "version": "1.8.4",
+    "at": "2026-11-02T16:23:17.273Z",
+    "title": "任务说明不再失真，没做成就如实说",
+    "size": 2369784
   },
   "agents": {
     "calendar": {

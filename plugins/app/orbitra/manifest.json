@@ -1,15 +1,15 @@
 {
   "format": "orbitra-release/2",
-  "version": "1.8.3",
-  "commit": "ea77a6ec4c109d438ea3d20a2d6c0d607899c57c",
-  "previous": "1.8.1",
-  "title": "SSH 终端插件：保存服务器、浏览器里连、Agent 经审批执行",
-  "notes": "新增内核 ssh 模块（服务器增删改查、密码/口令密封保存、系统 ssh 交互会话 + SSE、测试连接、Agent 的 ssh_run 接口）、插件页 › SSH 终端界面（服务器列表 + ANSI 浏览器终端、快捷键、复制粘贴、断线重连、前后台主题、首次引导）、orbitra-ssh dsh 插件与 guard 规则 ssh-run（按审批方式执行）、假内核 SSH 接口，以及 docs/接口.md 与使用手册的说明。",
-  "at": "2026-11-02T15:23:50.841Z",
+  "version": "1.8.4",
+  "commit": "313f7300f4b60808298b9361e38aa450c1545f89",
+  "previous": "1.8.3",
+  "title": "任务说明不再失真，没做成就如实说",
+  "notes": "2026-11-03 · 任务说明不再失真，没做成就如实说\n\n- **Agent 直接读你的原话**：之前 Agent 只看得到总指挥转述的要求。现在你的原话会原样带给它，两边对不上时以原话为准；总指挥的要求也写得更短，只说这个任务负责哪部分。\n- **没做成就如实说**：Agent 交付时会写明任务是完成、受阻、失败还是不用做。受阻和失败的不再算完成，后面依赖它的任务不会开工，汇报也如实写没做完。你点名的文件不存在时，Agent 不再搜整个磁盘，很快告诉你缺什么。\n- **重启后不重复做事**：Orbitra 或 dsh 重启后接着跑的任务，会被告知这是接着跑：先看已经做了什么，发布、推送、发消息、删除这类操作做过就不再做；总指挥也会先看活是不是已经派出去了。\n- **新增插件也打得出安装包**：1.8.3 新增了一个插件，但依赖锁文件没跟上，CI 和安装包都失败了。现在锁文件已经修好，以后自进化新增插件时，内核收走改动时会自己同步它。\n- **这一版也带上了 1.8.2、1.8.3 的自进化内容**：派发详情（每个任务发出去的全文和子 Agent 的过程都能看）、SSH 终端插件（保存服务器、在界面里连、Agent 经审批执行命令）。1.8.3 没有安装包。",
+  "at": "2026-11-02T16:23:17.273Z",
   "key": "2838-d425-6b4d-9b6c",
   "needsInstaller": true,
-  "reason": "依赖变了（plugins/orbitra-ssh/package.json）",
-  "depsSince": "1.8.3",
+  "reason": "依赖变了（package-lock.json）",
+  "depsSince": "1.8.4",
   "installerSince": "1.8.3",
   "installerReason": "安装版的 core.yml 打包时改过（指向自带的运行时），core.yml 变了要重新装安装包",
   "libraries": {
@@ -129,7 +129,7 @@
       "size": 1543
     },
     "apps/desktop/package.json": {
-      "sha256": "344815ee3d9289791bb7d1ac47ab5499062f6d981068da6877df23ace2cefd9b",
+      "sha256": "e2c5a243400dc9bd45d413ae32b9e90241727db4391bb3e24dbdd31fa4b89629",
       "size": 496
     },
     "apps/desktop/src/main.js": {
@@ -168,9 +168,9 @@
       "sha256": "219329947ba42104df6f3e6aac3a2429c96b8013dba2adc3c7e114c936b1213c",
       "size": 329919
     },
-    "apps/web/dist/assets/app-MU355XE4.js": {
-      "sha256": "bc418c0787ef5199e37294dcf209f90e6c193b00f3f98c6fc64318d39db2a811",
-      "size": 929082
+    "apps/web/dist/assets/app-4FV6IKES.js": {
+      "sha256": "c97de567fd7ea1fa641e4dee69013136aaa68f7a3ab11e7b70f97eced3911a0f",
+      "size": 929519
     },
     "apps/web/dist/favicon.svg": {
       "sha256": "bcb80e1e35769e211a50561885264eb368340a554314da769489964cd5062e76",
@@ -201,7 +201,7 @@
       "size": 1332
     },
     "apps/web/dist/index.html": {
-      "sha256": "7e9ada0e6a831cf8d1e5f7183acf916fc90f2095621b58375ea549ea01cc5880",
+      "sha256": "bf9cea7aedb6c48d3c62dafeac8da9bc537cba30c00cca0100b647001e96e64b",
       "size": 1247
     },
     "apps/web/dist/manifest.webmanifest": {
@@ -209,7 +209,7 @@
       "size": 1198
     },
     "apps/web/dist/sw.js": {
-      "sha256": "b00c92e0c50e86c9290f55b218543887e60fac49f41cee09bcfe92f63401880a",
+      "sha256": "e73b8a963bf50ce92833cf1769d42de26be547332af328332998a428047be055",
       "size": 8659
     },
     "apps/web/package.json": {
@@ -281,8 +281,8 @@
       "size": 18210
     },
     "core/modules/conductor/AGENTS.md": {
-      "sha256": "fb37cfd1c670997a54bce14b8dcccb863dd5cda4185d83ceee82e11787243559",
-      "size": 8493
+      "sha256": "655d28de615057e3e759da020a1cad739e9269b67710a345de7412037db78d23",
+      "size": 9065
     },
     "core/modules/conductor/attachments.js": {
       "sha256": "dfb18d3b8db4db57b7d034d246a6b464cfd7178cf3ed9ab6828878666f2dae10",
@@ -341,12 +341,12 @@
       "size": 7096
     },
     "core/modules/evolution/analyze.js": {
-      "sha256": "3f160aa88791e5f13f98cb43f8357334cf5e9a000371ddd32c537c332f1eb9ab",
-      "size": 18394
+      "sha256": "796a068b66f13377302c22263bf9f4868877087f4afc9b6a307f048ca4a858fd",
+      "size": 18550
     },
     "core/modules/evolution/code.js": {
-      "sha256": "053ed6c1ba1a764df8a871b64e4fb50f57baab422688752b68dfa32fbee5aded",
-      "size": 31920
+      "sha256": "dbfaf28875f411aa6c7b7ccab9e0d53cf53fcf54847e90a9608c11d8eabb6a73",
+      "size": 33069
     },
     "core/modules/evolution/draft.js": {
       "sha256": "0e0b5245b86a81115d39e00a37c8e686f292222c151d5ab49546e74e71b8e403",
@@ -389,8 +389,8 @@
       "size": 3004
     },
     "core/modules/jobs/index.js": {
-      "sha256": "7c2244d23625f96cd8feaa169c2ecd93e465460556a0587ed5a7aff8c90f47f3",
-      "size": 35412
+      "sha256": "b0306502acca6138ace8d5936e14b00630b2072e19eb5da4551b11b0b45c44db",
+      "size": 36448
     },
     "core/modules/llm-gateway/index.js": {
       "sha256": "428c8e935aaac9d6a075a0fa974df4abefa9cd992e7c44757d117bf95acf06f9",
@@ -529,24 +529,24 @@
       "size": 2875
     },
     "core/modules/tasks/index.js": {
-      "sha256": "6dcf69c4f56cfde51342a46d09ba0f4f7e7e6d5c462026d2f910820858e2300e",
-      "size": 41606
+      "sha256": "eaf1d640ca5240003792233326d401394d74ef5319a7338bedac7a67d5f5f8e4",
+      "size": 43539
     },
     "core/modules/tasks/router.js": {
       "sha256": "88d7ae33bcb6118cefb1fcecf2373e12a033f087560ed68979eb0d16079fb665",
       "size": 3594
     },
     "core/modules/tasks/texts.js": {
-      "sha256": "98543624b2d89b946f94fd6a86f6154aeaa9abc7282b51d779efce216b06c58f",
-      "size": 11746
+      "sha256": "ec95b86005b5cba327e8dd0c07e83182ba2df6f2377bd79801d9c820d24b3536",
+      "size": 16053
     },
     "core/modules/traces/backfill.js": {
       "sha256": "d23e32e2588cd0c0aa3985e73ce232c1bef04a992a4d24228899075ad763740e",
       "size": 7837
     },
     "core/modules/traces/index.js": {
-      "sha256": "a9ab49e74c3e590e6611ba15e7fc9263a5775613c1c4f40a17141a1027993582",
-      "size": 22753
+      "sha256": "52c2891ddf640dddf036e2ad7c17f16f24e1858e419428635a0e5bf327b0c76a",
+      "size": 22788
     },
     "core/modules/updates/apply.js": {
       "sha256": "7f4b4bd6763f1584be21563871e2255c847fef541311a04aee2a59ef61ab034c",
@@ -951,8 +951,8 @@
   },
   "bundle": {
     "name": "files.zip",
-    "sha256": "94a018b75dfd008609bc993300f003aa7785399a38cf5ab7519863a6d60a2ada",
-    "size": 2365883
+    "sha256": "aee437edec74705dcaf9e679d035149bf2798a77a5a2e34fead5a50532bbd8ef",
+    "size": 2369784
   },
-  "signature": "q1mHZvFoFAjnyGZTrhqesiPMBfJkbohKG6xzvEYE19CKoX67DMle2-onZ_cHRi4ggY4eGmbCMA1FTuhyknhYCg"
+  "signature": "Dyd7EL4v1o08p3sS_CwX74xHJ5yYiIsbihzgaAkTuToj98nLvTiadYXPPt2oVXrIxjd7R6VJe7ucZURl9I7dCQ"
 }
