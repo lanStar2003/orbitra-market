@@ -1,8 +1,8 @@
 {
   "format": "orbitra-market/1",
   "repo": "lanStar2003/orbitra-market",
-  "updatedAt": null,
-  "key": null,
+  "updatedAt": "2026-11-02T04:01:32Z",
+  "key": "2838-d425-6b4d-9b6c",
   "categories": [
     {
       "id": "app",
@@ -36,7 +36,15 @@
         "lite",
         "full"
       ],
-      "version": "1.4.1"
+      "version": "1.4.1",
+      "tag": "v1.4.1",
+      "url": "https://github.com/lanStar2003/orbitra-market/releases/tag/v1.4.1",
+      "at": "2026-11-02T04:01:32Z",
+      "update": {
+        "manifest": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.4.1/manifest.json",
+        "bundle": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.4.1/files.zip",
+        "size": 2284498
+      }
     },
     {
       "id": "dsh",

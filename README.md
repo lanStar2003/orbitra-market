@@ -9,7 +9,7 @@ Orbitra 是以 harness 为核心的个人 AI 助理：桌面级软件，Windows�
 
 ## 下载
 
-还没有发布安装包。
+Orbitra 1.4.1 的安装包还在打包，稍后再来。
 
 - **简易版**：越小越好，只有 Orbitra 本体；第一次启动从 npm 下载 dsh 运行时（约两分钟，国内慢可以在 core.yml 里把 registry 换成 npmmirror），下完才能派活。
 - **完整版**：自带 dsh 运行时，装好就能离线用。
@@ -25,7 +25,7 @@ Orbitra 是以 harness 为核心的个人 AI 助理：桌面级软件，Windows�
 
 | 名称 | 版本 | 核心 | 简易版 | 完整版 | 说明 |
 |---|---|---|---|---|---|
-| Orbitra | 1.4.1 | **核心** | 自带 | 自带 | Orbitra 本体：内核、界面、桌面外壳和 Orbitra 自己的 dsh 插件。 |
+| Orbitra | [1.4.1](https://github.com/lanStar2003/orbitra-market/releases/tag/v1.4.1) | **核心** | 自带 | 自带 | Orbitra 本体：内核、界面、桌面外壳和 Orbitra 自己的 dsh 插件。 |
 
 ### 运行方式
 
@@ -62,4 +62,4 @@ Orbitra 是以 harness 为核心的个人 AI 助理：桌面级软件，Windows�
 
 ---
 
-目录：[market.json](market.json)（格式 `orbitra-market/1`） · 还没有发布机公钥
+目录：[market.json](market.json)（格式 `orbitra-market/1`） · 发布机公钥指纹 `2838-d425-6b4d-9b6c` · 更新于 2026-11-02
