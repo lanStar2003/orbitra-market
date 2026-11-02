@@ -1,0 +1,25 @@
+# Orbitra 内置 Agent 包。身份和规则写在同目录的 AGENTS.md 里（会话的工作区说明）。
+id: video
+name: 视频 Agent
+domain: 视频
+description: 讲解视频：脚本、分镜、Remotion 工程和渲染
+icon: 影
+color: rose
+version: 1.0.0
+# 不交给执行节点（家里的小主机）：要用这台电脑上的文件和工具
+offload: false
+skills:
+  - Remotion 分镜
+  - 旁白节奏
+# 路由检索用的词（总指挥派活时按名片匹配，见 core/modules/tasks/router.js）
+keywords:
+  - 视频
+  - 剪辑
+  - 分镜
+  - 旁白
+  - 配音
+  - 字幕
+  - 渲染
+  - remotion
+  - 动画
+  - 讲解视频

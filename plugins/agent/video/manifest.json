@@ -1,0 +1,20 @@
+{
+  "format": "orbitra-agent/3",
+  "id": "video",
+  "version": "1.0.0",
+  "from": null,
+  "title": "",
+  "at": "2026-11-02T05:31:21.440Z",
+  "key": "2838-d425-6b4d-9b6c",
+  "files": {
+    "agent.yml": {
+      "sha256": "30bd26d955aefe4c684f8778e77e532e9876bc4da9462b0fbaadaa91492ff6ac",
+      "size": 638
+    },
+    "AGENTS.md": {
+      "sha256": "94fdafee531cc315d46436652275e8175cd8b4fa4634179c047fd4ec6286074c",
+      "size": 530
+    }
+  },
+  "signature": "v31jyVvjoxGgcllJrAkROVfVKRSc7cKfyjc6arydzEro3zMYPoQIR8iw-KwPirux5dFI9Wx2ce-C9gmzLwMKBg"
+}
