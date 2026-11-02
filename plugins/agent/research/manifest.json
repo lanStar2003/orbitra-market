@@ -1,0 +1,20 @@
+{
+  "format": "orbitra-agent/3",
+  "id": "research",
+  "version": "1.0.0",
+  "from": null,
+  "title": "",
+  "at": "2026-11-02T05:31:09.012Z",
+  "key": "2838-d425-6b4d-9b6c",
+  "files": {
+    "agent.yml": {
+      "sha256": "a2fd2726ce217c434882f63cee560c256cd5750d3b9a18cd8973135552286def",
+      "size": 553
+    },
+    "AGENTS.md": {
+      "sha256": "23d5a72da67696951fd7a51b34b7fdd1d576e2f663645d9c2c070c6788f51b59",
+      "size": 586
+    }
+  },
+  "signature": "lAltjd61vbsL_IAior-Ebb1xH3mNPKH3KV1DDcDqIfoG6ALrR_4q_ThBjfu_r51LIIsj18LlgULW7fun6CI4DA"
+}
