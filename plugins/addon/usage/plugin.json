@@ -1,0 +1,11 @@
+{
+  "id": "usage",
+  "type": "addon",
+  "name": "使用情况",
+  "description": "每一步模型调用花了多少钱：按模型、线路、Agent、来源、对话、任务、时段拆开看，含缓存、子 Agent、审查，附省钱建议。",
+  "version": null,
+  "core": false,
+  "bundled": [
+    "full"
+  ]
+}

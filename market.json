@@ -20,6 +20,11 @@
       "description": "每个领域一个 Agent：它的说明、技能和工具清单"
     },
     {
+      "id": "addon",
+      "name": "功能插件",
+      "description": "独立的功能：装上就能用，单独更新和卸载，不用更新 Orbitra"
+    },
+    {
       "id": "capability",
       "name": "能力",
       "description": "本地能力：核心的随本体，其余的用到再下载"
@@ -89,6 +94,19 @@
         "dsh-mnemon": "0.5.36"
       },
       "sizeHint": "解开后约 850 MB"
+    },
+    {
+      "id": "usage",
+      "type": "addon",
+      "path": "plugins/addon/usage",
+      "url": "https://github.com/lanStar2003/orbitra-market/tree/main/plugins/addon/usage",
+      "name": "使用情况",
+      "description": "每一步模型调用花了多少钱：按模型、线路、Agent、来源、对话、任务、时段拆开看，含缓存、子 Agent、审查，附省钱建议。",
+      "core": false,
+      "bundled": [
+        "full"
+      ],
+      "version": null
     },
     {
       "id": "claude-code",

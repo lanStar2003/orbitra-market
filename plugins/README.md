@@ -20,6 +20,12 @@
 
 [通用 Agent](agent/general) · [自进化 Agent](agent/evolve) · [编码 Agent](agent/code) · [研究 Agent](agent/research) · [写作 Agent](agent/writing) · [运维 Agent](agent/ops) · [测试 Agent](agent/test) · [视频 Agent](agent/video) · [日程 Agent](agent/calendar)
 
+## [功能插件](addon)
+
+独立的功能：装上就能用，单独更新和卸载，不用更新 Orbitra
+
+[使用情况](addon/usage)
+
 ## [能力](capability)
 
 本地能力：核心的随本体，其余的用到再下载

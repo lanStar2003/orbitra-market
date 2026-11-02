@@ -58,6 +58,14 @@ Orbitra **1.8.4**，2026-11-02 发布（[Release 页面](https://github.com/lanS
 | [视频 Agent](plugins/agent/video) | 1.0.0 | 可选 | 自带 | 讲解视频：脚本、分镜、Remotion 工程和渲染 | 这个文件夹 |
 | [日程 Agent](plugins/agent/calendar) | 1.0.0 | 可选 | 自带 | 日历、提醒、邮件摘要；替主人排时间，不替主人回复别人 | 这个文件夹 |
 
+### [功能插件](plugins/addon)
+
+独立的功能：装上就能用，单独更新和卸载，不用更新 Orbitra
+
+| 名称 | 版本 | 核心 | 安装包 | 说明 | 获取 |
+|---|---|---|---|---|---|
+| [使用情况](plugins/addon/usage) | — | 可选 | 自带 | 每一步模型调用花了多少钱：按模型、线路、Agent、来源、对话、任务、时段拆开看，含缓存、子 Agent、审查，附省钱建议。 | 随安装包 |
+
 ### [能力](plugins/capability)
 
 本地能力：核心的随本体，其余的用到再下载
