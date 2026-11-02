@@ -9,7 +9,7 @@ Orbitra 是以 harness 为核心的个人 AI 助理：桌面级软件，Windows�
 
 ## 下载
 
-Orbitra **1.4.2**，2026-11-02 发布（[Release 页面](https://github.com/lanStar2003/orbitra-market/releases/tag/v1.4.2)）。
+Orbitra **1.4.2**。新版本 1.5.0 的安装包还在打包，下面是 1.4.2 的。
 
 | 平台 | 简易版 | 完整版 |
 |---|---|---|
@@ -33,7 +33,7 @@ Orbitra **1.4.2**，2026-11-02 发布（[Release 页面](https://github.com/lanS
 
 | 名称 | 版本 | 核心 | 简易版 | 完整版 | 说明 | 获取 |
 |---|---|---|---|---|---|---|
-| [Orbitra](plugins/app/orbitra) | 1.4.2 | **核心** | 自带 | 自带 | Orbitra 本体：内核、界面、桌面外壳和 Orbitra 自己的 dsh 插件。 | [安装包](#下载) |
+| [Orbitra](plugins/app/orbitra) | 1.5.0 | **核心** | 自带 | 自带 | Orbitra 本体：内核、界面、桌面外壳和 Orbitra 自己的 dsh 插件。 | [安装包](#下载) |
 
 ### [运行方式](plugins/harness)
 
@@ -50,15 +50,15 @@ Orbitra **1.4.2**，2026-11-02 发布（[Release 页面](https://github.com/lanS
 
 | 名称 | 版本 | 核心 | 简易版 | 完整版 | 说明 | 获取 |
 |---|---|---|---|---|---|---|
-| [通用 Agent](plugins/agent/general) | 1.0.0 | **核心** | 自带 | 自带 | 没有对口的 Agent 时先把事办完，并记下能力缺口 | 随安装包 |
-| [自进化 Agent](plugins/agent/evolve) | 1.1.0 | **核心** | 自带 | 自带 | 分析运行数据提出优化建议；按主人的需求改 Agent 的做事方式，或直接改 Orbitra 自己的代码（测过、复核过再等主人批准发布） | 随安装包 |
-| [编码 Agent](plugins/agent/code) | 1.0.0 | 可选 | 自带 | 自带 | 读写代码、复现问题、修复和重构；代码只在工作区里跑 | 随安装包 |
+| [通用 Agent](plugins/agent/general) | 1.0.0 | **核心** | 自带 | 自带 | 没有对口的 Agent 时先把事办完，并记下能力缺口 | 这个文件夹 |
+| [自进化 Agent](plugins/agent/evolve) | 1.1.0 | **核心** | 自带 | 自带 | 分析运行数据提出优化建议；按主人的需求改 Agent 的做事方式，或直接改 Orbitra 自己的代码（测过、复核过再等主人批准发布） | 这个文件夹 |
+| [编码 Agent](plugins/agent/code) | 1.0.0 | 可选 | 自带 | 自带 | 读写代码、复现问题、修复和重构；代码只在工作区里跑 | 这个文件夹 |
 | [研究 Agent](plugins/agent/research) | 1.0.0 | 可选 | 自带 | 自带 | 检索、读论文和文档，给出可核验的出处 | 随安装包 |
 | [写作 Agent](plugins/agent/writing) | 1.0.0 | 可选 | 自带 | 自带 | 学习笔记、文章、周报；按主人的模板和语气写 | 随安装包 |
 | [运维 Agent](plugins/agent/ops) | 1.0.0 | 可选 | 自带 | 自带 | 发布、部署、巡检服务器；生产环境的每次变更都要主人批准 | 随安装包 |
 | [测试 Agent](plugins/agent/test) | 1.0.0 | 可选 | 自带 | 自带 | 写测试、跑回归和端到端测试，给出能复现的失败报告 | 随安装包 |
 | [视频 Agent](plugins/agent/video) | 1.0.0 | 可选 | 自带 | 自带 | 讲解视频：脚本、分镜、Remotion 工程和渲染 | 随安装包 |
-| [日程 Agent](plugins/agent/calendar) | 1.0.0 | 可选 | 自带 | 自带 | 日历、提醒、邮件摘要；替主人排时间，不替主人回复别人 | 随安装包 |
+| [日程 Agent](plugins/agent/calendar) | 1.0.0 | 可选 | 自带 | 自带 | 日历、提醒、邮件摘要；替主人排时间，不替主人回复别人 | 这个文件夹 |
 
 ### [能力](plugins/capability)
 
