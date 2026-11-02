@@ -1,7 +1,7 @@
 {
   "format": "orbitra-market/1",
   "repo": "lanStar2003/orbitra-market",
-  "updatedAt": "2026-11-02T04:32:30Z",
+  "updatedAt": "2026-11-02T04:32:55Z",
   "key": "2838-d425-6b4d-9b6c",
   "categories": [
     {
@@ -101,7 +101,15 @@
         "lite",
         "full"
       ],
-      "version": "1.0.0"
+      "version": "1.0.0",
+      "tag": "agent-general-v1.0.0",
+      "url": "https://github.com/lanStar2003/orbitra-market/releases/tag/agent-general-v1.0.0",
+      "at": "2026-11-02T04:32:46Z",
+      "update": {
+        "manifest": "https://github.com/lanStar2003/orbitra-market/releases/download/agent-general-v1.0.0/manifest.json",
+        "bundle": "https://github.com/lanStar2003/orbitra-market/releases/download/agent-general-v1.0.0/files.zip",
+        "size": 1294
+      }
     },
     {
       "id": "agent-evolve",
@@ -114,7 +122,15 @@
         "lite",
         "full"
       ],
-      "version": "1.1.0"
+      "version": "1.1.0",
+      "tag": "agent-evolve-v1.1.0",
+      "url": "https://github.com/lanStar2003/orbitra-market/releases/tag/agent-evolve-v1.1.0",
+      "at": "2026-11-02T04:32:38Z",
+      "update": {
+        "manifest": "https://github.com/lanStar2003/orbitra-market/releases/download/agent-evolve-v1.1.0/manifest.json",
+        "bundle": "https://github.com/lanStar2003/orbitra-market/releases/download/agent-evolve-v1.1.0/files.zip",
+        "size": 2333
+      }
     },
     {
       "id": "agent-code",
@@ -174,7 +190,15 @@
         "lite",
         "full"
       ],
-      "version": "1.0.0"
+      "version": "1.0.0",
+      "tag": "agent-ops-v1.0.0",
+      "url": "https://github.com/lanStar2003/orbitra-market/releases/tag/agent-ops-v1.0.0",
+      "at": "2026-11-02T04:32:55Z",
+      "update": {
+        "manifest": "https://github.com/lanStar2003/orbitra-market/releases/download/agent-ops-v1.0.0/manifest.json",
+        "bundle": "https://github.com/lanStar2003/orbitra-market/releases/download/agent-ops-v1.0.0/files.zip",
+        "size": 1431
+      }
     },
     {
       "id": "agent-test",
