@@ -1,0 +1,25 @@
+# Orbitra 内置 Agent 包。身份和规则写在同目录的 AGENTS.md 里（会话的工作区说明）。
+id: writing
+name: 写作 Agent
+domain: 写作
+description: 学习笔记、文章、周报；按主人的模板和语气写
+icon: 写
+color: violet
+version: 1.0.0
+skills:
+  - 学习笔记模板
+  - 周报
+# 路由检索用的词（总指挥派活时按名片匹配，见 core/modules/tasks/router.js）
+keywords:
+  - 写作
+  - 文章
+  - 笔记
+  - 周报
+  - 博客
+  - 文案
+  - 稿子
+  - 改写
+  - 润色
+  - 大纲
+  - 邮件草稿
+  - 报告

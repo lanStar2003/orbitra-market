@@ -1,0 +1,20 @@
+{
+  "format": "orbitra-agent/3",
+  "id": "writing",
+  "version": "1.0.0",
+  "from": null,
+  "title": "",
+  "at": "2026-11-02T05:31:27.695Z",
+  "key": "2838-d425-6b4d-9b6c",
+  "files": {
+    "agent.yml": {
+      "sha256": "666de566080758ae8166395d61c602f24c79b947e4e0b7650409aa63f1820627",
+      "size": 560
+    },
+    "AGENTS.md": {
+      "sha256": "9fe7ad3d4ae7a9809f661a6c3c5dd80546b55941733dc3abe0a2174785bd638d",
+      "size": 582
+    }
+  },
+  "signature": "PUgipi8Ln7E7dsGGeCI1l4L6k2GJm67N3ZvsU2linzODaX8K1l4wB5ssXsgcwGSTWELfo6U8IEPtqT6I5CIaCQ"
+}
