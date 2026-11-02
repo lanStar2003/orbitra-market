@@ -1,7 +1,7 @@
 {
   "format": "orbitra-market/1",
   "repo": "lanStar2003/orbitra-market",
-  "updatedAt": "2026-11-02T05:30:53.429Z",
+  "updatedAt": "2026-11-02T05:31:27.695Z",
   "key": "2838-d425-6b4d-9b6c",
   "categories": [
     {
@@ -212,7 +212,13 @@
         "lite",
         "full"
       ],
-      "version": "1.0.0"
+      "version": "1.0.0",
+      "tag": "agent-research-v1.0.0",
+      "published": true,
+      "at": "2026-11-02T05:31:09.012Z",
+      "update": {
+        "manifest": "https://raw.githubusercontent.com/lanStar2003/orbitra-market/main/plugins/agent/research/manifest.json"
+      }
     },
     {
       "id": "agent-writing",
@@ -227,7 +233,13 @@
         "lite",
         "full"
       ],
-      "version": "1.0.0"
+      "version": "1.0.0",
+      "tag": "agent-writing-v1.0.0",
+      "published": true,
+      "at": "2026-11-02T05:31:27.695Z",
+      "update": {
+        "manifest": "https://raw.githubusercontent.com/lanStar2003/orbitra-market/main/plugins/agent/writing/manifest.json"
+      }
     },
     {
       "id": "agent-ops",
@@ -242,7 +254,13 @@
         "lite",
         "full"
       ],
-      "version": "1.0.0"
+      "version": "1.0.0",
+      "tag": "agent-ops-v1.0.0",
+      "published": true,
+      "at": "2026-11-02T05:31:00.118Z",
+      "update": {
+        "manifest": "https://raw.githubusercontent.com/lanStar2003/orbitra-market/main/plugins/agent/ops/manifest.json"
+      }
     },
     {
       "id": "agent-test",
@@ -257,7 +275,13 @@
         "lite",
         "full"
       ],
-      "version": "1.0.0"
+      "version": "1.0.0",
+      "tag": "agent-test-v1.0.0",
+      "published": true,
+      "at": "2026-11-02T05:31:15.321Z",
+      "update": {
+        "manifest": "https://raw.githubusercontent.com/lanStar2003/orbitra-market/main/plugins/agent/test/manifest.json"
+      }
     },
     {
       "id": "agent-video",
@@ -272,7 +296,13 @@
         "lite",
         "full"
       ],
-      "version": "1.0.0"
+      "version": "1.0.0",
+      "tag": "agent-video-v1.0.0",
+      "published": true,
+      "at": "2026-11-02T05:31:21.440Z",
+      "update": {
+        "manifest": "https://raw.githubusercontent.com/lanStar2003/orbitra-market/main/plugins/agent/video/manifest.json"
+      }
     },
     {
       "id": "agent-calendar",
