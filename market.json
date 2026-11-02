@@ -1,0 +1,210 @@
+{
+  "format": "orbitra-market/1",
+  "repo": "lanStar2003/orbitra-market",
+  "updatedAt": null,
+  "key": null,
+  "categories": [
+    {
+      "id": "app",
+      "name": "Orbitra 本体",
+      "description": "内核、界面和桌面外壳；简易版和完整版的安装包，以及就地更新"
+    },
+    {
+      "id": "harness",
+      "name": "运行方式",
+      "description": "替 Orbitra 跑总指挥和各 Agent 的 harness；默认是 dsh"
+    },
+    {
+      "id": "agent",
+      "name": "Agent 包",
+      "description": "每个领域一个 Agent：它的说明、技能和工具清单"
+    },
+    {
+      "id": "capability",
+      "name": "能力",
+      "description": "可选的本地能力，用到再下载"
+    }
+  ],
+  "items": [
+    {
+      "id": "orbitra",
+      "type": "app",
+      "name": "Orbitra",
+      "description": "Orbitra 本体：内核、界面、桌面外壳和 Orbitra 自己的 dsh 插件。",
+      "core": true,
+      "bundled": [
+        "lite",
+        "full"
+      ],
+      "version": "1.4.1"
+    },
+    {
+      "id": "dsh",
+      "type": "harness",
+      "name": "dsh 运行时",
+      "description": "私有的 dsh（DeepSeek Harness）、dsh-mnemon 和 Mnemon，钉死版本，装在数据文件夹里；Orbitra 的 7 个 dsh 插件随本体。默认的运行方式。",
+      "core": true,
+      "bundled": [
+        "full"
+      ],
+      "version": "0.2.1-rc.2",
+      "packages": {
+        "@deepseek-ai/dsh": "0.2.1-rc.2",
+        "@mnemon-dev/mnemon": "0.2.9",
+        "dsh-mnemon": "0.5.36"
+      },
+      "sizeHint": "解开后约 850 MB"
+    },
+    {
+      "id": "claude-code",
+      "type": "harness",
+      "name": "Claude Code",
+      "description": "用 Claude Code 跑指定的 Agent。",
+      "core": false,
+      "bundled": [],
+      "upcoming": true,
+      "version": null
+    },
+    {
+      "id": "agent-general",
+      "type": "agent",
+      "agent": "general",
+      "name": "通用 Agent",
+      "description": "没有对口的 Agent 时先把事办完，并记下能力缺口",
+      "core": true,
+      "bundled": [
+        "lite",
+        "full"
+      ],
+      "version": "1.0.0"
+    },
+    {
+      "id": "agent-evolve",
+      "type": "agent",
+      "agent": "evolve",
+      "name": "自进化 Agent",
+      "description": "分析运行数据提出优化建议；按主人的需求改 Agent 的做事方式，或直接改 Orbitra 自己的代码（测过、复核过再等主人批准发布）",
+      "core": true,
+      "bundled": [
+        "lite",
+        "full"
+      ],
+      "version": "1.1.0"
+    },
+    {
+      "id": "agent-code",
+      "type": "agent",
+      "agent": "code",
+      "name": "编码 Agent",
+      "description": "读写代码、复现问题、修复和重构；代码只在工作区里跑",
+      "core": false,
+      "bundled": [
+        "lite",
+        "full"
+      ],
+      "version": "1.0.0"
+    },
+    {
+      "id": "agent-research",
+      "type": "agent",
+      "agent": "research",
+      "name": "研究 Agent",
+      "description": "检索、读论文和文档，给出可核验的出处",
+      "core": false,
+      "bundled": [
+        "lite",
+        "full"
+      ],
+      "version": "1.0.0"
+    },
+    {
+      "id": "agent-writing",
+      "type": "agent",
+      "agent": "writing",
+      "name": "写作 Agent",
+      "description": "学习笔记、文章、周报；按主人的模板和语气写",
+      "core": false,
+      "bundled": [
+        "lite",
+        "full"
+      ],
+      "version": "1.0.0"
+    },
+    {
+      "id": "agent-ops",
+      "type": "agent",
+      "agent": "ops",
+      "name": "运维 Agent",
+      "description": "发布、部署、巡检服务器；生产环境的每次变更都要主人批准",
+      "core": false,
+      "bundled": [
+        "lite",
+        "full"
+      ],
+      "version": "1.0.0"
+    },
+    {
+      "id": "agent-test",
+      "type": "agent",
+      "agent": "test",
+      "name": "测试 Agent",
+      "description": "写测试、跑回归和端到端测试，给出能复现的失败报告",
+      "core": false,
+      "bundled": [
+        "lite",
+        "full"
+      ],
+      "version": "1.0.0"
+    },
+    {
+      "id": "agent-video",
+      "type": "agent",
+      "agent": "video",
+      "name": "视频 Agent",
+      "description": "讲解视频：脚本、分镜、Remotion 工程和渲染",
+      "core": false,
+      "bundled": [
+        "lite",
+        "full"
+      ],
+      "version": "1.0.0"
+    },
+    {
+      "id": "agent-calendar",
+      "type": "agent",
+      "agent": "calendar",
+      "name": "日程 Agent",
+      "description": "日历、提醒、邮件摘要；替主人排时间，不替主人回复别人",
+      "core": false,
+      "bundled": [
+        "lite",
+        "full"
+      ],
+      "version": "1.0.0"
+    },
+    {
+      "id": "embed",
+      "type": "capability",
+      "name": "本地向量模型",
+      "description": "记忆的向量召回：在本机 CPU 上算向量（transformers.js + onnxruntime，bge-small-zh-v1.5）。没装时召回用关键词和图。",
+      "core": false,
+      "bundled": [],
+      "version": "4.3.2",
+      "packages": {
+        "@huggingface/transformers": "4.3.2"
+      },
+      "models": [
+        {
+          "repo": "Xenova/bge-small-zh-v1.5",
+          "files": [
+            "config.json",
+            "tokenizer.json",
+            "tokenizer_config.json",
+            "onnx/model_quantized.onnx"
+          ]
+        }
+      ],
+      "sizeHint": "解开后约 490 MB"
+    }
+  ]
+}
