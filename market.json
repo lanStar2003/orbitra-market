@@ -44,6 +44,22 @@
         "manifest": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.4.1/manifest.json",
         "bundle": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.4.1/files.zip",
         "size": 2284498
+      },
+      "installers": {
+        "lite": {
+          "win-x64": {
+            "name": "Orbitra-Lite-Setup-1.4.1.exe",
+            "url": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.4.1/Orbitra-Lite-Setup-1.4.1.exe",
+            "size": 135763180
+          }
+        },
+        "full": {
+          "win-x64": {
+            "name": "Orbitra-Setup-1.4.1.exe",
+            "url": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.4.1/Orbitra-Setup-1.4.1.exe",
+            "size": 230083859
+          }
+        }
       }
     },
     {
