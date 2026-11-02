@@ -1,16 +1,16 @@
 {
   "format": "orbitra-release/2",
-  "version": "1.8.4",
-  "commit": "313f7300f4b60808298b9361e38aa450c1545f89",
-  "previous": "1.8.3",
-  "title": "任务说明不再失真，没做成就如实说",
-  "notes": "2026-11-03 · 任务说明不再失真，没做成就如实说\n\n- **Agent 直接读你的原话**：之前 Agent 只看得到总指挥转述的要求。现在你的原话会原样带给它，两边对不上时以原话为准；总指挥的要求也写得更短，只说这个任务负责哪部分。\n- **没做成就如实说**：Agent 交付时会写明任务是完成、受阻、失败还是不用做。受阻和失败的不再算完成，后面依赖它的任务不会开工，汇报也如实写没做完。你点名的文件不存在时，Agent 不再搜整个磁盘，很快告诉你缺什么。\n- **重启后不重复做事**：Orbitra 或 dsh 重启后接着跑的任务，会被告知这是接着跑：先看已经做了什么，发布、推送、发消息、删除这类操作做过就不再做；总指挥也会先看活是不是已经派出去了。\n- **新增插件也打得出安装包**：1.8.3 新增了一个插件，但依赖锁文件没跟上，CI 和安装包都失败了。现在锁文件已经修好，以后自进化新增插件时，内核收走改动时会自己同步它。\n- **这一版也带上了 1.8.2、1.8.3 的自进化内容**：派发详情（每个任务发出去的全文和子 Agent 的过程都能看）、SSH 终端插件（保存服务器、在界面里连、Agent 经审批执行命令）。1.8.3 没有安装包。",
-  "at": "2026-11-02T16:23:17.273Z",
+  "version": "1.9.0",
+  "commit": "5a2068c7eaba41ac4359187770c068e07328809a",
+  "previous": "1.8.4",
+  "title": "账算对了，有了用量页，新增插件不用升版本，动手前先告诉你",
+  "notes": "2026-11-03 · 账算对了，有了用量页，新增插件不用升版本，动手前先告诉你\n\n- **账算对了**：之前的账少算了一大半。原因是用错了价格、没有分时价，子 Agent 和审查的用量也没算进去。现在每一步都按当时的线路和时段算，缓存单独算，子 Agent 算在任务里。升级后会从历史日志补上之前的账。价格是公开价，公司账号有折扣的话，在「用量 › 价格」改价，改完可以一键重算\n- **新增「用量」页**：左边栏多了「用量」。可以看今天、本月、月底预测、缓存省了多少；按模型、线路、Agent、来源、对话、任务、时段拆开看；一路点到每个会话的每一步；看工具、失败和重试花了多少钱；对比两段时间或两个模型；还有省钱建议。可以导出 CSV 和 JSON\n- **新增插件不用升版本**：只是加一个独立功能时，自进化把它做成功能插件。你批准后本机直接装上，不用重启，不用重新下载安装包，也会自动发到市场的「功能插件」分类。别的电脑在市场里点安装。改到 Orbitra 本体时还是原来的版本发布\n- **动手前先告诉你**：总指挥派活前，先说准备怎么做、做成什么样，然后直接开工。自进化改软件时也一样，先把方案发到对话里，然后接着做。觉得不对就直接说。发布前的批准还在\n- **经验随版本走**：自进化学到的教训，和你拒绝、回滚时说的理由，发布时写进仓库的 `docs/自进化经验.md`，每次改软件前都会读。多台发布机共用",
+  "at": "2026-11-02T23:56:41.691Z",
   "key": "2838-d425-6b4d-9b6c",
   "needsInstaller": true,
   "reason": "依赖变了（package-lock.json）",
-  "depsSince": "1.8.4",
-  "installerSince": "1.8.3",
+  "depsSince": "1.9.0",
+  "installerSince": "1.9.0",
   "installerReason": "安装版的 core.yml 打包时改过（指向自带的运行时），core.yml 变了要重新装安装包",
   "libraries": {
     "@orbitra/contracts": "packages/contracts",
@@ -41,11 +41,11 @@
       "size": 812
     },
     "agents/evolve/AGENTS.md": {
-      "sha256": "a8047b627ef4ab941cd6f5f99b6ee54378f66f81498ec468405c7a792c1d19fc",
-      "size": 1982
+      "sha256": "5b24942acb7e954d6416f59a680879dd9757d361454f330c0ff6524bc2ce438a",
+      "size": 2093
     },
     "agents/evolve/agent.yml": {
-      "sha256": "d5524fca6b071d89ccc47f00e93bfc3c9bdde298204ad6a0928d959ebd5b6ada",
+      "sha256": "24afb59ffeb8aa166583e0e111a388470bfd39a305ded523325293dff8a0d4fd",
       "size": 880
     },
     "agents/general/AGENTS.md": {
@@ -129,7 +129,7 @@
       "size": 1543
     },
     "apps/desktop/package.json": {
-      "sha256": "e2c5a243400dc9bd45d413ae32b9e90241727db4391bb3e24dbdd31fa4b89629",
+      "sha256": "7eef36a36abbc625a0a8adb01c95ff5fdc7e05c7584f1ec5296e1b6ca3cb32c4",
       "size": 496
     },
     "apps/desktop/src/main.js": {
@@ -164,13 +164,13 @@
       "sha256": "6819998a877faaa37d55aaa1db0b1a2995cfd85383f61333c1a768539d631401",
       "size": 18432
     },
-    "apps/web/dist/assets/app-45CAENHY.css": {
-      "sha256": "219329947ba42104df6f3e6aac3a2429c96b8013dba2adc3c7e114c936b1213c",
-      "size": 329919
+    "apps/web/dist/assets/app-AJG7OXCD.css": {
+      "sha256": "0bb57aa4034a1418ae54146bd6ad03ec63247151bcd6ce4922bb9e4569514688",
+      "size": 330164
     },
-    "apps/web/dist/assets/app-4FV6IKES.js": {
-      "sha256": "c97de567fd7ea1fa641e4dee69013136aaa68f7a3ab11e7b70f97eced3911a0f",
-      "size": 929519
+    "apps/web/dist/assets/app-ZXA4JKPD.js": {
+      "sha256": "54abf3fca913750db3a0c88c376bd0efd44b5d9f4de5991cd7382bb158d5cb80",
+      "size": 936997
     },
     "apps/web/dist/favicon.svg": {
       "sha256": "bcb80e1e35769e211a50561885264eb368340a554314da769489964cd5062e76",
@@ -201,7 +201,7 @@
       "size": 1332
     },
     "apps/web/dist/index.html": {
-      "sha256": "bf9cea7aedb6c48d3c62dafeac8da9bc537cba30c00cca0100b647001e96e64b",
+      "sha256": "c98533678fde2704bb3d0cdc5e7abfd0e327e642834962552604d316ab8aacfb",
       "size": 1247
     },
     "apps/web/dist/manifest.webmanifest": {
@@ -209,7 +209,7 @@
       "size": 1198
     },
     "apps/web/dist/sw.js": {
-      "sha256": "e73b8a963bf50ce92833cf1769d42de26be547332af328332998a428047be055",
+      "sha256": "adf56fb299e00b394b39be6726a61f932f986a169b4bfe4ca599f0f29a1522d4",
       "size": 8659
     },
     "apps/web/package.json": {
@@ -217,12 +217,20 @@
       "size": 477
     },
     "core/core.yml": {
-      "sha256": "0a5b26c392430d09444016c67840dfe76d893dcf309b0f91342be6ee9ba48992",
-      "size": 14587
+      "sha256": "122cdcfbfce6d591497a3cc3a48fffd0447deb0a8abd438c9b4b76f70896448b",
+      "size": 14993
     },
     "core/market/catalog.json": {
-      "sha256": "d0f59b8bef3243e77e42935b391dd047f283d72a76599b8a3ad2a2763e269519",
-      "size": 4527
+      "sha256": "ee0e4affd682b80e871741fa5c0239dccd6cd2ca396dbd2cb73678cc5d7c563f",
+      "size": 5034
+    },
+    "core/modules/addons/index.js": {
+      "sha256": "b13cf0e25daef7d294cba308bdf28e03f4261913993bd0b96a0b0216d4345486",
+      "size": 15917
+    },
+    "core/modules/addons/manifest.js": {
+      "sha256": "c39afd9bc99927c22121ae4d487a5e8f3330160647cb41d97545e1f47fde177f",
+      "size": 3140
     },
     "core/modules/admission/index.js": {
       "sha256": "9cf3cac73dae77a3fa68006f3a1665b59070fe87ba52f3443fca4451827b56ca",
@@ -245,8 +253,8 @@
       "size": 16860
     },
     "core/modules/approvals/reviewer.js": {
-      "sha256": "a5763946b2303e7a11e00f0d53982f4ad9239b50b77dc154c89d826e0ff3de3c",
-      "size": 9276
+      "sha256": "3620feeedbe74633ab2a976e74af7346c7e0b69fd112bd6f05046850a25ba4d0",
+      "size": 9297
     },
     "core/modules/approvals/safety-net.js": {
       "sha256": "e21d48c74d573ea7eaddab32eb3235c557a74f13174e750cbbe5d758d931aed2",
@@ -277,12 +285,12 @@
       "size": 4563
     },
     "core/modules/budgets/index.js": {
-      "sha256": "7b34e5a0edca7bfbac4805fec1d309c91c0eb8c23b5d1ef4de833025276d6e64",
-      "size": 18210
+      "sha256": "9523517e490749f5bad7d957c324cdd0dfab9ada1956365e2bf865337f883af1",
+      "size": 20488
     },
     "core/modules/conductor/AGENTS.md": {
-      "sha256": "655d28de615057e3e759da020a1cad739e9269b67710a345de7412037db78d23",
-      "size": 9065
+      "sha256": "b50953f7dfe174ee10950cbe176ad78702f2306c9f0746645dbb2f0dba0200d0",
+      "size": 9552
     },
     "core/modules/conductor/attachments.js": {
       "sha256": "dfb18d3b8db4db57b7d034d246a6b464cfd7178cf3ed9ab6828878666f2dae10",
@@ -345,16 +353,16 @@
       "size": 18550
     },
     "core/modules/evolution/code.js": {
-      "sha256": "dbfaf28875f411aa6c7b7ccab9e0d53cf53fcf54847e90a9608c11d8eabb6a73",
-      "size": 33069
+      "sha256": "9f9110cf5d1437b60c8e06a75d6b54a27971435be398d029dfc0e9560a85b275",
+      "size": 40852
     },
     "core/modules/evolution/draft.js": {
-      "sha256": "0e0b5245b86a81115d39e00a37c8e686f292222c151d5ab49546e74e71b8e403",
-      "size": 15518
+      "sha256": "8b32997d9d8523e33212521fdb146341259e12215105965e17844ba840599b0b",
+      "size": 15626
     },
     "core/modules/evolution/index.js": {
-      "sha256": "9b296085de20a13ad551034ae57884badbda9a8f023325bbb7ea478e02fb5e0f",
-      "size": 100606
+      "sha256": "1d13a78e8ec41e4723177988e5097040dcf129d8fad5908e0ac31a6980233d3f",
+      "size": 111928
     },
     "core/modules/evolution/map.js": {
       "sha256": "6bc243cd3454e2a6262da6532bece4fa5833db155862f87431b2d615d420dfc8",
@@ -365,8 +373,8 @@
       "size": 6890
     },
     "core/modules/evolution/shadow.js": {
-      "sha256": "6da18832710ba86cee14e2167f23be87e1277b0bca68ed116fc6f300303df611",
-      "size": 6110
+      "sha256": "7673336d74aabe9dba50267cecc0846f1861d0a7fce0bfab7e0807c55b871a00",
+      "size": 6129
     },
     "core/modules/gateway/cert.js": {
       "sha256": "2024291a5b745596c8e03b4bc9b57b57bc7dffea2aa067c76ac2ab552f782613",
@@ -389,20 +397,36 @@
       "size": 3004
     },
     "core/modules/jobs/index.js": {
-      "sha256": "b0306502acca6138ace8d5936e14b00630b2072e19eb5da4551b11b0b45c44db",
-      "size": 36448
+      "sha256": "5a3e9a87dfed92c4e783f7b85a6310e5155dc74f83ec6737a76ae2182649cc17",
+      "size": 36508
+    },
+    "core/modules/ledger/index.js": {
+      "sha256": "55f90b61b6e37698c350c8359a42cf82cb6f1bf24f41af502f0c17fd0206575d",
+      "size": 23840
+    },
+    "core/modules/ledger/price-rules.json": {
+      "sha256": "3de5011a8401147d4e0d21e7f3b2d0e82ccf5fde7cd88852a5b212734972d499",
+      "size": 1855
+    },
+    "core/modules/ledger/prices.js": {
+      "sha256": "71506844ae575dcd1b9a9847656130b1539a5fd201656d6e70becc6c1358ef03",
+      "size": 4187
+    },
+    "core/modules/ledger/sessions.js": {
+      "sha256": "4df3721724129ce7aabd7c96b599e13754311deb6a4f29137ff520ebcb50b37f",
+      "size": 6767
     },
     "core/modules/llm-gateway/index.js": {
       "sha256": "428c8e935aaac9d6a075a0fa974df4abefa9cd992e7c44757d117bf95acf06f9",
       "size": 4840
     },
     "core/modules/market/catalog.js": {
-      "sha256": "dd3a617fe4e3679ff909e14e61e612a52aec2f45a7c15ec88e930fab8b5ca600",
-      "size": 8452
+      "sha256": "f28a1f3eb692f49c5449eaeb8e55ea354cd36cdfb6a6c01735e573cd645e40ac",
+      "size": 8461
     },
     "core/modules/market/index.js": {
-      "sha256": "75810703ebd64eee0352142139e89f6bbceeced713dde91070b7bb09233cfa08",
-      "size": 29856
+      "sha256": "50bc80cb8a805fe1fb732876c4b0cc53c380582ce01143834788356cb382d9ef",
+      "size": 33298
     },
     "core/modules/mcp/client.js": {
       "sha256": "1292875bc984307a031f8828b921875c1485fc955336fcd9a56f6c8cda05b450",
@@ -425,8 +449,8 @@
       "size": 20754
     },
     "core/modules/memory-hub/judge.js": {
-      "sha256": "96b61f77f7cac8e9d0f7483602fb8962ecf57fd729dc874582e38abc3680e615",
-      "size": 11028
+      "sha256": "bed7ac48e2bf69747c19375fe54dd0b8b0940c20eb9122954b9cddb71974413a",
+      "size": 11929
     },
     "core/modules/memory-hub/memory.js": {
       "sha256": "7dd30b3bf1e99f0dde649b5ddf6c1627ca55e5aa3b00906affdeb7dbd3614af9",
@@ -449,8 +473,8 @@
       "size": 2601
     },
     "core/modules/models/index.js": {
-      "sha256": "e40869984b8b387222f93c5f558f67f824072765b1ab5d3cfe141cabe05f44db",
-      "size": 62363
+      "sha256": "38bd3dfb4e235e5647ae42fbf6ba7e1f11152c996c5d248ea4335f2130d7e558",
+      "size": 63956
     },
     "core/modules/models/models-dev.deepseek.json": {
       "sha256": "a698cbf22dd398d4f4d364d63edc43072558a5d0616100abd9bf2eef2e1b2464",
@@ -461,8 +485,8 @@
       "size": 6108
     },
     "core/modules/models/registry.js": {
-      "sha256": "169ae1646745255b734db6ac165e708fa10c2ce58606b9f78e8edb856da1fd65",
-      "size": 10962
+      "sha256": "64c24910ff7f63043d23acf17be5732290b0912ec20737c3ef85756c2b021a69",
+      "size": 11573
     },
     "core/modules/node-link/index.js": {
       "sha256": "0121e6542d3ec1f3a4fa0b6470eebf4c1ee2157072b4b535886d01a819907fd0",
@@ -509,8 +533,8 @@
       "size": 6655
     },
     "core/modules/stream/index.js": {
-      "sha256": "2f0640a62a5f30d75c8ec8a98add353f7bcb33bee1c992e2cfc65eb4a0f93c90",
-      "size": 21776
+      "sha256": "e40d9b716ecd2bcaf1cbfda57b25050ad04c27a42038096196b4df67a09446f8",
+      "size": 22022
     },
     "core/modules/supervisor/index.js": {
       "sha256": "69ee3cf9a561dfaa71891b5c8ed665c80e54134e5b166eeb72f4e5d8ffa8fc39",
@@ -553,16 +577,16 @@
       "size": 7056
     },
     "core/modules/updates/channel.js": {
-      "sha256": "ca1707f11feff935ca3e15018a7a1a927fab534321f5cc21805ba480d5a17538",
-      "size": 10073
+      "sha256": "bbb0ff2eca1d04913c69d413aff340f441bd14b7b916510e76ae178954cb6938",
+      "size": 10317
     },
     "core/modules/updates/github.js": {
       "sha256": "ef00f9ba8b6343e72cf2cec03f588357ad6c32cdfdcfc1579f851e9245e58952",
       "size": 12088
     },
     "core/modules/updates/index.js": {
-      "sha256": "0e6c492e036543a4796a439382406bdaf3bfcddba17d5ec7b24e7095321ef153",
-      "size": 90400
+      "sha256": "f07023b5bb1b037749d95cce6e6455bb11d05062cd743cba0bb1f97eea5dcf03",
+      "size": 97642
     },
     "core/modules/updates/layout.js": {
       "sha256": "1d7693ad437c617893278feca68b2d55e812dd8296a2b2c08da07de7c7c3426b",
@@ -573,8 +597,8 @@
       "size": 7967
     },
     "core/modules/updates/source.js": {
-      "sha256": "020b6641b2778d8f1cf27e4a8f5e36ece2d8817e32165ed27e0f267d15144826",
-      "size": 11398
+      "sha256": "e567db4eeaf7ad0c2f0812efaa0429bb617d03f8329a322d13e917f5598abcca",
+      "size": 12091
     },
     "core/modules/web/bing.js": {
       "sha256": "303476a39c8dae470cfe0dd090c1c4b7910f6a1044369b0539f582c1eec6d72d",
@@ -951,8 +975,8 @@
   },
   "bundle": {
     "name": "files.zip",
-    "sha256": "aee437edec74705dcaf9e679d035149bf2798a77a5a2e34fead5a50532bbd8ef",
-    "size": 2369784
+    "sha256": "f9f1aaf28113c5fa66140e999baf8baec57bd253e5d32d958e6187844a647609",
+    "size": 2403074
   },
-  "signature": "Dyd7EL4v1o08p3sS_CwX74xHJ5yYiIsbihzgaAkTuToj98nLvTiadYXPPt2oVXrIxjd7R6VJe7ucZURl9I7dCQ"
+  "signature": "39-krUviIX6bHrYVsiPgHYZc7a9Czw5RnjyKkhWB1JrUoq0ojWCPIwqjYUfAa1oeW7LVfcd4hawbKRst96PzCQ"
 }
