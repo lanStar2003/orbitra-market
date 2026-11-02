@@ -3,7 +3,8 @@
 # source). Kept in the source repository under market/; the owner pushes it into the market.
 #
 #   workflow_dispatch        with a tag: the publisher (or the owner) asks for one version;
-#                            without one: only the catalog
+#                            without one: only the catalog; dry: build at that tag or branch, upload
+#                            nothing (a tag can't take a packaging fix, so test those before tagging)
 #   schedule (hourly)        every v* tag ≥ v1.4.0 of the source repository whose market Release has
 #                            no installers yet (a tag the owner pushed by hand); one whose scheduled
 #                            builds left no installers three times is left for a dispatch
@@ -30,6 +31,11 @@ on:
         description: Orbitra version tag in the source repository (v1.4.0 or newer); empty refreshes only the catalog
         required: false
         type: string
+      dry:
+        description: Build at this tag or branch and upload nothing (a test of the packaging)
+        required: false
+        type: boolean
+        default: false
   schedule:
     - cron: '23 * * * *'
   release:
@@ -68,7 +74,10 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           INPUT_TAG: ${{ inputs.tag }}
-        run: node scripts/build/release.mjs resolve --repo "$GITHUB_REPOSITORY" --event "$GITHUB_EVENT_NAME" --tag "$INPUT_TAG"
+          DRY: ${{ inputs.dry }}
+        run: |
+          if [ "$DRY" = "true" ]; then printf 'tags=["%s"]\n' "$INPUT_TAG" >> "$GITHUB_OUTPUT"; exit 0; fi
+          node scripts/build/release.mjs resolve --repo "$GITHUB_REPOSITORY" --event "$GITHUB_EVENT_NAME" --tag "$INPUT_TAG"
 
   build:
     needs: resolve
@@ -101,19 +110,25 @@ jobs:
         env:
           TAG: ${{ matrix.tag }}
           EDITION: ${{ matrix.edition }}
+          DRY: ${{ inputs.dry }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CSC_LINK: ${{ secrets.CSC_LINK }}
           CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD }}
           APPLE_ID: ${{ secrets.APPLE_ID }}
           APPLE_APP_SPECIFIC_PASSWORD: ${{ secrets.APPLE_APP_SPECIFIC_PASSWORD }}
           APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
-        run: node scripts/build/package.mjs --ref "$TAG" --edition "$EDITION" --publish --repo "$GITHUB_REPOSITORY"
+        run: |
+          if [ "$DRY" = "true" ]; then
+            node scripts/build/package.mjs --ref "$TAG" --edition "$EDITION" --repo "$GITHUB_REPOSITORY"
+          else
+            node scripts/build/package.mjs --ref "$TAG" --edition "$EDITION" --publish --repo "$GITHUB_REPOSITORY"
+          fi
 
   publish:
     needs: [resolve, build]
     # After the builds (also when some failed: finish leaves an incomplete Release alone, the
     # catalog is refreshed anyway), for every Release event, and for a dispatch without a tag.
-    if: ${{ !cancelled() && (github.event_name == 'release' || (github.event_name == 'workflow_dispatch' && inputs.tag == '') || (needs.resolve.result == 'success' && needs.resolve.outputs.tags != '[]')) }}
+    if: ${{ !cancelled() && inputs.dry != true && (github.event_name == 'release' || (github.event_name == 'workflow_dispatch' && inputs.tag == '') || (needs.resolve.result == 'success' && needs.resolve.outputs.tags != '[]')) }}
     runs-on: ubuntu-latest
     steps:
       - name: Check out the market (default branch, also for a Release event, whose tag may be gone)
