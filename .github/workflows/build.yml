@@ -1,0 +1,164 @@
+# Orbitra 市场 (lanStar2003/orbitra-market): builds the installers of each Orbitra version from the
+# private source repository and keeps the catalog at the root (docs/设计-1.4.md §1, §5, §6 in the
+# source). Kept in the source repository under market/; the owner pushes it into the market.
+#
+#   workflow_dispatch (tag)  the publisher (or the owner) asks for one version
+#   schedule (hourly)        every v* tag ≥ v1.4.0 of the source repository whose market Release has
+#                            no installers yet (a tag the owner pushed by hand); one whose scheduled
+#                            builds left no installers three times is left for a dispatch
+#   release                  a Release was published, edited or deleted: only the catalog
+#
+# A version: its market Release is made first when the publisher has not (a draft), so the builds
+# never race to create it; 4 platforms × 2 editions upload their installers and feed files into it
+# (package.mjs --publish); `finish` merges the two macOS feed parts, publishes the Release and marks
+# it latest (only once everything is there); then market.json + README.md are regenerated and
+# committed. Commits and Release changes made with GITHUB_TOKEN start no workflow, so nothing loops
+# (and `push` is no trigger here).
+#
+# The source is checked out over SSH with the read-only deploy key in the secret SOURCE_DEPLOY_KEY.
+# The logs of a public repository are public: no tests run here and nothing prints source files.
+# macOS signing and notarizing use these secrets when present (otherwise the dmgs are unsigned):
+# CSC_LINK, CSC_KEY_PASSWORD (the Developer ID certificate), APPLE_ID, APPLE_APP_SPECIFIC_PASSWORD,
+# APPLE_TEAM_ID.
+name: Build
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Orbitra version tag in the source repository (v1.4.0 or newer)
+        required: true
+        type: string
+  schedule:
+    - cron: '23 * * * *'
+  release:
+    types: [published, edited, deleted]
+
+permissions:
+  contents: write
+
+# One build at a time (a scheduled run waits for a running build, then finds its installers there);
+# catalog-only runs on their own.
+concurrency:
+  group: ${{ github.event_name == 'release' && 'catalog' || 'build' }}
+  cancel-in-progress: false
+
+env:
+  SOURCE_REPO: lanStar2003/Orbitra
+
+jobs:
+  resolve:
+    if: github.event_name != 'release'
+    runs-on: ubuntu-latest
+    outputs:
+      tags: ${{ steps.resolve.outputs.tags }}
+    steps:
+      - name: Check out the source (default branch)
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.SOURCE_REPO }}
+          ssh-key: ${{ secrets.SOURCE_DEPLOY_KEY }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Tags to build
+        id: resolve
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          INPUT_TAG: ${{ inputs.tag }}
+        run: node scripts/build/release.mjs resolve --repo "$GITHUB_REPOSITORY" --event "$GITHUB_EVENT_NAME" --tag "$INPUT_TAG"
+
+  build:
+    needs: resolve
+    if: needs.resolve.outputs.tags != '[]'
+    name: ${{ matrix.tag }} · ${{ matrix.os }} · ${{ matrix.edition }}
+    strategy:
+      fail-fast: false
+      matrix:
+        tag: ${{ fromJSON(needs.resolve.outputs.tags) }}
+        # windows: Orbitra[-Lite]-Setup-<v>.exe; macos-latest: arm64 dmg; macos-15-intel: x64 dmg
+        # (macos-13, the old Intel image, is retired); ubuntu: AppImage and deb.
+        os: [windows-latest, macos-latest, macos-15-intel, ubuntu-22.04]
+        edition: [lite, full]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Check out the source at the tag
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.SOURCE_REPO }}
+          ref: ${{ matrix.tag }}
+          ssh-key: ${{ secrets.SOURCE_DEPLOY_KEY }}
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: Build and upload the installer
+        shell: bash
+        env:
+          TAG: ${{ matrix.tag }}
+          EDITION: ${{ matrix.edition }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CSC_LINK: ${{ secrets.CSC_LINK }}
+          CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD }}
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          APPLE_APP_SPECIFIC_PASSWORD: ${{ secrets.APPLE_APP_SPECIFIC_PASSWORD }}
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+        run: node scripts/build/package.mjs --ref "$TAG" --edition "$EDITION" --publish --repo "$GITHUB_REPOSITORY"
+
+  publish:
+    needs: [resolve, build]
+    # After the builds (also when some failed: finish leaves an incomplete Release alone, the
+    # catalog is refreshed anyway), and for every Release event.
+    if: ${{ !cancelled() && (github.event_name == 'release' || (needs.resolve.result == 'success' && needs.resolve.outputs.tags != '[]')) }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the market (default branch, also for a Release event, whose tag may be gone)
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.repository.default_branch || github.ref_name }}
+          path: market
+      - name: Check out the source (default branch)
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.SOURCE_REPO }}
+          ssh-key: ${{ secrets.SOURCE_DEPLOY_KEY }}
+          persist-credentials: false
+          path: source
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: source/package-lock.json
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+        working-directory: source
+      - name: Publish the Releases, mark the newest latest
+        if: github.event_name != 'release'
+        working-directory: source
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAGS: ${{ needs.resolve.outputs.tags }}
+        run: node scripts/build/release.mjs finish --repo "$GITHUB_REPOSITORY" --tags "$TAGS"
+      - name: Regenerate market.json and README.md
+        if: ${{ !cancelled() }}
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          branch="$(gh api "repos/$GITHUB_REPOSITORY" --jq .default_branch)"
+          git -C market config user.name 'github-actions[bot]'
+          git -C market config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          for attempt in 1 2 3; do
+            git -C market fetch --quiet origin "$branch"
+            git -C market checkout --quiet -B "$branch" "origin/$branch"
+            node source/scripts/market/catalog.mjs --repo "$GITHUB_REPOSITORY" --out market
+            git -C market add market.json README.md
+            if git -C market diff --cached --quiet; then echo 'catalog unchanged'; exit 0; fi
+            git -C market commit --quiet -m 'Update the catalog'
+            if git -C market push --quiet origin "HEAD:$branch"; then exit 0; fi
+            sleep $((attempt * 10))
+          done
+          exit 1
