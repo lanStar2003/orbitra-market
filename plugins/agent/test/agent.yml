@@ -1,0 +1,23 @@
+# Orbitra 内置 Agent 包。身份和规则写在同目录的 AGENTS.md 里（会话的工作区说明）。
+id: test
+name: 测试 Agent
+domain: 测试
+description: 写测试、跑回归和端到端测试，给出能复现的失败报告
+icon: 测
+color: orange
+version: 1.0.0
+# 不交给执行节点（家里的小主机）：要用这台电脑上的文件和工具
+offload: false
+skills:
+  - 回归分片
+  - 失败复现报告
+# 路由检索用的词（总指挥派活时按名片匹配，见 core/modules/tasks/router.js）
+keywords:
+  - 测试
+  - 回归
+  - 用例
+  - 端到端
+  - e2e
+  - 复现
+  - 覆盖率
+  - 单元测试
