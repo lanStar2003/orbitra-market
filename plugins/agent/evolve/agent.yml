@@ -1,0 +1,23 @@
+# Orbitra 内置 Agent 包。身份和规则写在同目录的 AGENTS.md 里（会话的工作区说明）。
+id: evolve
+name: 自进化 Agent
+domain: 自我进化
+description: 分析运行数据提出优化建议；按主人的需求改 Agent 的做事方式，或直接改 Orbitra 自己的代码（测过、复核过再等主人批准发布）
+icon: 进
+color: brand
+version: 1.1.0
+# 建议的模型档位（快 / 强）：主人在设置 › 模型里设了强档，这个 Agent 就用强档；单独给它选过的优先
+tier: strong
+skills:
+  - 失败聚类
+  - 假设生成
+  - 修改方案
+  - 改软件
+# 路由检索用的词（总指挥派活时按名片匹配，见 core/modules/tasks/router.js）
+keywords:
+  - 自进化
+  - 优化建议
+  - 改进
+  - 修改方案
+# 只接自进化页和总指挥 request_evolution 来的需求，不走派活路由
+routable: false
