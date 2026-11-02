@@ -1,0 +1,27 @@
+# Orbitra 内置 Agent 包。身份和规则写在同目录的 AGENTS.md 里（会话的工作区说明）。
+id: ops
+name: 运维 Agent
+domain: 运维与发布
+description: 发布、部署、巡检服务器；生产环境的每次变更都要主人批准
+icon: 运
+color: cyan
+version: 1.0.0
+# 不交给执行节点（家里的小主机）：要用这台电脑上的文件和工具
+offload: false
+skills:
+  - 灰度发布
+  - 磁盘巡检
+# 路由检索用的词（总指挥派活时按名片匹配，见 core/modules/tasks/router.js）
+keywords:
+  - 部署
+  - 发布
+  - 上线
+  - 服务器
+  - 运维
+  - 巡检
+  - 磁盘
+  - 监控
+  - 日志
+  - 回滚
+  - docker
+  - nginx
