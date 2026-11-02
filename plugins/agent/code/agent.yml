@@ -1,0 +1,31 @@
+# Orbitra 内置 Agent 包。身份和规则写在同目录的 AGENTS.md 里（会话的工作区说明）。
+id: code
+name: 编码 Agent
+domain: 开发
+description: 读写代码、复现问题、修复和重构；代码只在工作区里跑
+icon: 码
+color: blue
+version: 1.0.0
+# 不交给执行节点（家里的小主机）：要用这台电脑上的文件和工具
+offload: false
+# 建议的模型档位（快 / 强）：主人在设置 › 模型里设了强档，这个 Agent 就用强档；单独给它选过的优先
+tier: strong
+skills:
+  - 改动后跑测试
+  - 提交信息
+# 路由检索用的词（总指挥派活时按名片匹配，见 core/modules/tasks/router.js）
+keywords:
+  - 代码
+  - 编程
+  - bug
+  - 修复
+  - 重构
+  - 脚本
+  - 函数
+  - 接口
+  - 实现
+  - 报错
+  - 程序
+  - 开发
+  - 仓库
+  - git
