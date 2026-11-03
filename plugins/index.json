@@ -1,10 +1,10 @@
 {
   "format": "orbitra-plugins/1",
   "software": {
-    "version": "1.10.1",
-    "at": "2026-11-03T04:33:52.512Z",
-    "title": "修 Agent 详情页截断、滚不到底、底部不留白",
-    "size": 2422640
+    "version": "1.11.0",
+    "at": "2026-11-03T05:40:46.405Z",
+    "title": "记得住做过什么，还能查你给的资料",
+    "size": 2504188
   },
   "agents": {
     "calendar": {
