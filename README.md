@@ -9,7 +9,7 @@ Orbitra 是以 harness 为核心的个人 AI 助理：桌面级软件，Windows�
 
 ## 下载
 
-Orbitra **1.10.1**，2026-11-03 发布（[Release 页面](https://github.com/lanStar2003/orbitra-market/releases/tag/v1.10.1)）。
+Orbitra **1.10.1**。新版本 1.11.0 的安装包还在打包，下面是 1.10.1 的。
 
 | 平台 | 安装包 |
 |---|---|
@@ -31,7 +31,7 @@ Orbitra **1.10.1**，2026-11-03 发布（[Release 页面](https://github.com/lan
 
 | 名称 | 版本 | 核心 | 安装包 | 说明 | 获取 |
 |---|---|---|---|---|---|
-| [Orbitra](plugins/app/orbitra) | 1.10.1 | **核心** | 自带 | Orbitra 本体：内核、界面、桌面外壳和 Orbitra 自己的 dsh 插件。 | [安装包](#下载) |
+| [Orbitra](plugins/app/orbitra) | 1.11.0 | **核心** | 自带 | Orbitra 本体：内核、界面、桌面外壳和 Orbitra 自己的 dsh 插件。 | [安装包](#下载) |
 
 ### [运行方式](plugins/harness)
 
@@ -64,7 +64,7 @@ Orbitra **1.10.1**，2026-11-03 发布（[Release 页面](https://github.com/lan
 
 | 名称 | 版本 | 核心 | 安装包 | 说明 | 获取 |
 |---|---|---|---|---|---|
-| [使用情况](plugins/addon/usage) | — | 可选 | 自带 | 每一步模型调用花了多少钱：按模型、线路、Agent、来源、对话、任务、时段拆开看，含缓存、子 Agent、审查，附省钱建议。 | 随安装包 |
+| [使用情况](plugins/addon/usage) | 1.0.0 | 可选 | 自带 | 每一步模型调用花了多少钱：按模型、线路、Agent、来源、对话、任务、时段拆开看，含缓存、子 Agent、审查，附省钱建议。 | 这个文件夹 |
 
 ### [能力](plugins/capability)
 
@@ -73,7 +73,7 @@ Orbitra **1.10.1**，2026-11-03 发布（[Release 页面](https://github.com/lan
 | 名称 | 版本 | 核心 | 安装包 | 说明 | 获取 |
 |---|---|---|---|---|---|
 | [命令安全检查](plugins/capability/safety-net) | 跟随上游 | **核心** | 自带 | cc-safety-net（MIT）：判断 Agent 要跑的命令有没有破坏性，决定程序直接放行还是送自动审查。不联网、不写文件。随本体，跟随上游自动更新。 | 随安装包 |
-| [本地向量模型](plugins/capability/embed) | 4.3.2 | 可选 | 用到再装 | 记忆的向量召回：在本机 CPU 上算向量（transformers.js + onnxruntime，bge-small-zh-v1.5）。没装时召回用关键词和图。（解开后约 490 MB） | [@huggingface/transformers](https://www.npmjs.com/package/@huggingface/transformers) |
+| [本地向量模型](plugins/capability/embed) | 4.3.2 | 可选 | 用到再装 | 记忆和资料库的向量检索、重排：在本机 CPU 上跑（transformers.js + onnxruntime，bge-small-zh-v1.5，重排模型另下约 280 MB）。第一次启动后自动下载一次；没装好时按关键词查。（解开后约 490 MB） | [@huggingface/transformers](https://www.npmjs.com/package/@huggingface/transformers) |
 
 ---
 

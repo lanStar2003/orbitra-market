@@ -1,7 +1,7 @@
 {
   "format": "orbitra-market/1",
   "repo": "lanStar2003/orbitra-market",
-  "updatedAt": "2026-11-03T04:42:31Z",
+  "updatedAt": "2026-11-03T05:40:58.578Z",
   "key": "2838-d425-6b4d-9b6c",
   "categories": [
     {
@@ -42,13 +42,13 @@
       "bundled": [
         "full"
       ],
-      "version": "1.10.1",
-      "tag": "v1.10.1",
-      "at": "2026-11-03T04:33:52.512Z",
+      "version": "1.11.0",
+      "tag": "v1.11.0",
+      "at": "2026-11-03T05:40:46.405Z",
       "update": {
         "manifest": "https://raw.githubusercontent.com/lanStar2003/orbitra-market/main/plugins/app/orbitra/manifest.json",
         "bundle": "https://raw.githubusercontent.com/lanStar2003/orbitra-market/main/plugins/app/orbitra/files.zip",
-        "size": 2422640
+        "size": 2504188
       },
       "installers": {
         "full": {
@@ -74,7 +74,8 @@
           }
         }
       },
-      "installersUrl": "https://github.com/lanStar2003/orbitra-market/releases/tag/v1.10.1"
+      "installersUrl": "https://github.com/lanStar2003/orbitra-market/releases/tag/v1.10.1",
+      "installersVersion": "1.10.1"
     },
     {
       "id": "dsh",
@@ -106,7 +107,13 @@
       "bundled": [
         "full"
       ],
-      "version": null
+      "version": "1.0.0",
+      "tag": "addon-usage-v1.0.0",
+      "published": true,
+      "at": "2026-11-03T05:40:58.578Z",
+      "update": {
+        "manifest": "https://raw.githubusercontent.com/lanStar2003/orbitra-market/main/plugins/addon/usage/manifest.json"
+      }
     },
     {
       "id": "claude-code",
@@ -319,7 +326,7 @@
       "path": "plugins/capability/embed",
       "url": "https://github.com/lanStar2003/orbitra-market/tree/main/plugins/capability/embed",
       "name": "本地向量模型",
-      "description": "记忆的向量召回：在本机 CPU 上算向量（transformers.js + onnxruntime，bge-small-zh-v1.5）。没装时召回用关键词和图。",
+      "description": "记忆和资料库的向量检索、重排：在本机 CPU 上跑（transformers.js + onnxruntime，bge-small-zh-v1.5，重排模型另下约 280 MB）。第一次启动后自动下载一次；没装好时按关键词查。",
       "core": false,
       "bundled": [],
       "version": "4.3.2",
