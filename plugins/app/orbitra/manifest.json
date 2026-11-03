@@ -1,16 +1,16 @@
 {
   "format": "orbitra-release/2",
-  "version": "1.11.0",
-  "commit": "ea55831392a55b1215b1ec7e90329b694648d561",
-  "previous": "1.10.0",
-  "title": "记得住做过什么，还能查你给的资料",
-  "notes": "2026-11-03 · 记得住做过什么，还能查你给的资料\n\n- **装过的东西，下一个任务就知道**：任务跑过命令或写过文件，做完会把装了什么、在哪、什么版本、什么没做成记进记忆。之前 Agent 刚装好 gh，下一个任务还得到处找。\n- **开工自动带上相关内容**：每轮对话和每个任务开始前，记忆、以前的对话和任务记录、资料库一起查一次，相关的带给总指挥或 Agent，不相关的不带。对话里的\"召回的记忆\"能看到这一轮带了什么。\n- **资料库**：记忆页多了一项。把手册、规范、数据表拖进去，或者加一个文件夹，也可以对总指挥说\"把这个目录加进资料库\"。支持 md、txt、csv、json、html、docx、xlsx、pptx、pdf。每轮对话和每个任务的命令、结果也自动存在这里，密钥和密码存之前会抹掉。\n- **检索更准了**：向量和关键词各找一批候选，再由重排模型挑一次。检索测试能看到每条来自哪里、多相关。\n- **本地向量模型自动下载**：向量和重排都靠它，以前要自己去市场点安装，没装就只能按字面匹配。现在第一次启动后在后台下载（约 490 MB，重排模型再加约 280 MB，只下一次），下好之前按关键词查，不用等。不想要可以在 插件 › 语义检索 里停用。\n- **刚装的命令不用重启就能用**：之前引擎拿着启动时的 PATH，新装的工具要重启才找得到。\n- **忘掉更彻底**：删一条记忆时，说同样内容的旧对话和任务记录也一起删，不会被检索带回来。\n- **Agent 提问变成选择卡片**：和 Claude 的提问一样，每个选项一行，推荐的排第一，点一下就答完，也能在“其他”里自己写。问题和答案不再经总指挥转述，少等两轮模型。总指挥自己提问时也用这种卡片。\n- **改系统的操作提交给你批准，不再直接拒绝**：改注册表、PATH 等环境变量、服务和计划任务、提权、防火墙规则、重启电脑，直接出审批卡片给你，自动审查不插手。之前这些一律拒绝，也不问你，装 gh 这类软件时会卡住。只读注册表不再被拦。\n- **修了两个安装的小问题**：更新后遗留的 `Orbitra.old-*` 文件夹现在能清掉了；在低完整性文件夹里打的安装包会提示先拷出来再运行。",
-  "at": "2026-11-03T05:40:46.405Z",
+  "version": "1.11.1",
+  "commit": "5d20ea3d48eab1d91ddb2374f86d34bf48c39659",
+  "previous": "1.11.0",
+  "title": "自进化改到通过为止，停了接着做",
+  "notes": "2026-11-03 · 自进化改到通过为止，停了接着做\n\n- **改到通过为止**：自进化的检查或复核没过，问题直接交回给 Agent 修，再测、再复核，不再第二轮没过就算失败。复核也收紧了：只有错误、削弱安全、夹带无关改动、改了行为完全没测试才打回，风格和命名只算意见。只有连续 3 轮没有新改动、改了 12 轮还没过、Key 不对或额度用完、你按了停止，才会停下来。\n- **停了能接着做**：卡片显示「停住了，可以接着做」，点「接着做」还是同一条方案、同一份副本、同一段对话，做过的不重做；在原来的对话里说一句也行。副本留 14 天。这个版本之前失败的卡片，副本已经删了，只能重新生成。\n- **回答被截断不再算做完**：模型的回答超过输出长度上限时，里面的工具调用没有执行，任务却算做完，自进化就报\"没有改任何文件\"。现在所有 Agent 都会接着做，最多 8 次，之后普通任务还是算做完；自进化还会看有没有写交付、有没有改动，没做完接着催。\n- **开工前先跟上远端**：开工、接着做、发布之前，先把源码快进到远端最新，需求里不用再写\"先更新代码\"。跟不上时（本地领先、分叉、有没提交的改动、连不上）分支不动，页面上说明原因。源码比正在用的软件还旧就不开工，免得发布把软件退回旧版本。\n- **Agent 留下的东西不进改动**：它在工作副本里 clone 的临时仓库不再被收成子模块条目，也不会因此被复核打回。\n- **按停止马上停**：正在跑的命令和子 Agent 一起停，实测 0.2 到 0.6 秒。之前要等 60 秒一次的心跳，`npm create` 这种命令来不及拦，子 Agent 还会接着跑。",
+  "at": "2026-11-03T11:22:49.452Z",
   "key": "2838-d425-6b4d-9b6c",
   "needsInstaller": true,
-  "reason": "依赖变了（core/package.json）",
-  "depsSince": "1.11.0",
-  "installerSince": "1.11.0",
+  "reason": "依赖变了（package-lock.json）",
+  "depsSince": "1.11.1",
+  "installerSince": "1.11.1",
   "installerReason": "安装版的 core.yml 打包时改过（指向自带的运行时），core.yml 变了要重新装安装包",
   "libraries": {
     "@orbitra/contracts": "packages/contracts",
@@ -129,7 +129,7 @@
       "size": 1543
     },
     "apps/desktop/package.json": {
-      "sha256": "a97767190dde01d10eac8427b4726054e11a8a22f145e8ad4d8fd65d9bb3c07f",
+      "sha256": "bc0b9934f69983cbe412ca497e956c54f417022c55c7c887046019a7d2b08160",
       "size": 497
     },
     "apps/desktop/src/main.js": {
@@ -164,9 +164,9 @@
       "sha256": "6819998a877faaa37d55aaa1db0b1a2995cfd85383f61333c1a768539d631401",
       "size": 18432
     },
-    "apps/web/dist/assets/app-DUJISEOF.js": {
-      "sha256": "90b424939a17296855ecc52d2faa22341900e79f773a8fe9b698ce8f7ed961ba",
-      "size": 960642
+    "apps/web/dist/assets/app-EY6X6SGI.js": {
+      "sha256": "ceb4de1037382bb0c09d96b56cd84dce81de4030d58a3864bd07babb647887d7",
+      "size": 961441
     },
     "apps/web/dist/assets/app-Q5SNXR6H.css": {
       "sha256": "d299569737d89f714fed2ba4c7f0a888d0517001d4fc7708739f5137f20af77c",
@@ -201,7 +201,7 @@
       "size": 1332
     },
     "apps/web/dist/index.html": {
-      "sha256": "11e1fed8102fe8d2d7931128b596698d06bd3df063ae864a12b52a9055dcd759",
+      "sha256": "5fefc073c0ace16a5bca0f4763b5e56a36f3e098983a8e7808eb6b69cff15c20",
       "size": 1247
     },
     "apps/web/dist/manifest.webmanifest": {
@@ -209,7 +209,7 @@
       "size": 1198
     },
     "apps/web/dist/sw.js": {
-      "sha256": "d36681447bede7fe67a60a13f1ee4632d1c07149768ad51c4418ae0699fdb5a6",
+      "sha256": "c8146691c92e601f706a3930b539b4beb4eb492f948fe7bbdf5de5c8e07fab98",
       "size": 8659
     },
     "apps/web/package.json": {
@@ -217,8 +217,8 @@
       "size": 477
     },
     "core/core.yml": {
-      "sha256": "48defb830d516f6b832b396254a54b80dc0cad83ec55aca8337f935730968f43",
-      "size": 15473
+      "sha256": "8360fa50b925a65f735edc0fa5cdcee721738dd259c00286fb0aa15664486363",
+      "size": 15603
     },
     "core/market/catalog.json": {
       "sha256": "4c42122022a66462f8be1855024ed180dbe2f2ae1383ad097f948fd39871fa24",
@@ -353,16 +353,16 @@
       "size": 18550
     },
     "core/modules/evolution/code.js": {
-      "sha256": "f3ed15c4d7bf61c55640ea3f9584defb88f078f7a31ebe8c74adca0e8eb14bfe",
-      "size": 41977
+      "sha256": "bb6709882b2a80e97e3c3fde07572d7a3f2f9cf8581e6b72bb1184b35cfae927",
+      "size": 54129
     },
     "core/modules/evolution/draft.js": {
       "sha256": "8b32997d9d8523e33212521fdb146341259e12215105965e17844ba840599b0b",
       "size": 15626
     },
     "core/modules/evolution/index.js": {
-      "sha256": "caa81e527e4ae4f6dac37d4bd0736692b9e8d7f3f77bed8e94250f9eccd395a7",
-      "size": 114610
+      "sha256": "9f6fb5c99571952d5693f63cf82b28bd5da03349361eba85b459c50377f78929",
+      "size": 123710
     },
     "core/modules/evolution/map.js": {
       "sha256": "6bc243cd3454e2a6262da6532bece4fa5833db155862f87431b2d615d420dfc8",
@@ -397,8 +397,8 @@
       "size": 3004
     },
     "core/modules/jobs/index.js": {
-      "sha256": "8a8360b4c4f540f687b246c6a45b450ad1f1b0214c941ce5111818bed7e55608",
-      "size": 40331
+      "sha256": "c127b53e1835f694832c888bae2d9f724259440de1148009c3c52a1228c0c067",
+      "size": 41309
     },
     "core/modules/knowledge/chunk.js": {
       "sha256": "f3fd3e7fc7126309ac21cd82f219a1fc4ba4725b3d35a9ce81f3900895a2feee",
@@ -809,20 +809,20 @@
       "size": 597
     },
     "node_modules/orbitra-engine/src/core/driver.js": {
-      "sha256": "be6f3f2ffcdf8ce99450acd608b28dc7dfb71045b81673b4213ed7bf69de4c45",
-      "size": 8201
+      "sha256": "419ccc90180a83f3cab39d7dfc22d9a5005cdccc674eaf587bfc791b24f4dab9",
+      "size": 9431
     },
     "node_modules/orbitra-engine/src/core/path.js": {
       "sha256": "c4ab02e619a3f4fa88289f1cb821e624273c5eeb44e0ab0df9fa234f251914e1",
       "size": 3072
     },
     "node_modules/orbitra-engine/src/core/round.js": {
-      "sha256": "43a241dac65b811b9c902d1627b19eaa872b5759eec1484dbd3c94d79018c573",
-      "size": 7083
+      "sha256": "fe25dfaa9c1428a9d5bfe8cad12e00c1fbbe64e58adfd211a67dfa6a5b2dc85e",
+      "size": 7114
     },
     "node_modules/orbitra-engine/src/core/run.js": {
-      "sha256": "97d2448364b4f5f6f8ad5af63cd0d0c1ecf9e0759b8d90d3108614d2d358c0c7",
-      "size": 11781
+      "sha256": "89516eacd02e6214e7ad48fe73a9f66812857b527b88b115d42e0d58003a4691",
+      "size": 14707
     },
     "node_modules/orbitra-engine/src/host/index.js": {
       "sha256": "5f08344761d8fea302b93a3175ab826f8e7ec0ee0fdfcbfcaf539505e865d536",
@@ -953,20 +953,20 @@
       "size": 597
     },
     "plugins/orbitra-engine/src/core/driver.js": {
-      "sha256": "be6f3f2ffcdf8ce99450acd608b28dc7dfb71045b81673b4213ed7bf69de4c45",
-      "size": 8201
+      "sha256": "419ccc90180a83f3cab39d7dfc22d9a5005cdccc674eaf587bfc791b24f4dab9",
+      "size": 9431
     },
     "plugins/orbitra-engine/src/core/path.js": {
       "sha256": "c4ab02e619a3f4fa88289f1cb821e624273c5eeb44e0ab0df9fa234f251914e1",
       "size": 3072
     },
     "plugins/orbitra-engine/src/core/round.js": {
-      "sha256": "43a241dac65b811b9c902d1627b19eaa872b5759eec1484dbd3c94d79018c573",
-      "size": 7083
+      "sha256": "fe25dfaa9c1428a9d5bfe8cad12e00c1fbbe64e58adfd211a67dfa6a5b2dc85e",
+      "size": 7114
     },
     "plugins/orbitra-engine/src/core/run.js": {
-      "sha256": "97d2448364b4f5f6f8ad5af63cd0d0c1ecf9e0759b8d90d3108614d2d358c0c7",
-      "size": 11781
+      "sha256": "89516eacd02e6214e7ad48fe73a9f66812857b527b88b115d42e0d58003a4691",
+      "size": 14707
     },
     "plugins/orbitra-engine/src/host/index.js": {
       "sha256": "5f08344761d8fea302b93a3175ab826f8e7ec0ee0fdfcbfcaf539505e865d536",
@@ -1063,8 +1063,8 @@
   },
   "bundle": {
     "name": "files.zip",
-    "sha256": "c0302d526d08dbd52789b89722ebd59a6488e776ab17131b6ebcd438919d7584",
-    "size": 2504188
+    "sha256": "30ca13ba90163b96925e3303a194742f1e70ab473d0c8b7c15ab0bbe41f33ae7",
+    "size": 2512924
   },
-  "signature": "4qk1siWMwrXjW4TYYA1EkzLLc3J3PYtbpbigB5OgIDitq5Wzn0f-GZywhzaNUzoYme6elxdYoWhd2jtK98_JAQ"
+  "signature": "x303kED6brWFgeUruaGoeaaIpJTVyaCTfYZ-7-NsMNv0JfjKB67gPE-WHcupeZpJPNIfpoYDDRlCrkA7kSPzDA"
 }
