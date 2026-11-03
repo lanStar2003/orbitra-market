@@ -1,7 +1,7 @@
 {
   "format": "orbitra-market/1",
   "repo": "lanStar2003/orbitra-market",
-  "updatedAt": "2026-11-03T00:04:02Z",
+  "updatedAt": "2026-11-03T02:03:19.437Z",
   "key": "2838-d425-6b4d-9b6c",
   "categories": [
     {
@@ -42,13 +42,13 @@
       "bundled": [
         "full"
       ],
-      "version": "1.9.0",
-      "tag": "v1.9.0",
-      "at": "2026-11-02T23:56:41.691Z",
+      "version": "1.10.0",
+      "tag": "v1.10.0",
+      "at": "2026-11-03T02:03:19.437Z",
       "update": {
         "manifest": "https://raw.githubusercontent.com/lanStar2003/orbitra-market/main/plugins/app/orbitra/manifest.json",
         "bundle": "https://raw.githubusercontent.com/lanStar2003/orbitra-market/main/plugins/app/orbitra/files.zip",
-        "size": 2403074
+        "size": 2419493
       },
       "installers": {
         "full": {
@@ -74,7 +74,8 @@
           }
         }
       },
-      "installersUrl": "https://github.com/lanStar2003/orbitra-market/releases/tag/v1.9.0"
+      "installersUrl": "https://github.com/lanStar2003/orbitra-market/releases/tag/v1.9.0",
+      "installersVersion": "1.9.0"
     },
     {
       "id": "dsh",
