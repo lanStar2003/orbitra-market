@@ -1,10 +1,10 @@
 {
   "format": "orbitra-plugins/1",
   "software": {
-    "version": "1.11.1",
-    "at": "2026-11-03T11:22:49.452Z",
-    "title": "自进化改到通过为止，停了接着做",
-    "size": 2512924
+    "version": "1.11.2",
+    "at": "2026-11-03T12:27:14.463Z",
+    "title": "对话界面接入状态行与新文字动效",
+    "size": 2516280
   },
   "agents": {
     "calendar": {

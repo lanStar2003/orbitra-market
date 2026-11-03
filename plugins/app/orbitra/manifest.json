@@ -1,14 +1,14 @@
 {
   "format": "orbitra-release/2",
-  "version": "1.11.1",
-  "commit": "5d20ea3d48eab1d91ddb2374f86d34bf48c39659",
-  "previous": "1.11.0",
-  "title": "自进化改到通过为止，停了接着做",
-  "notes": "2026-11-03 · 自进化改到通过为止，停了接着做\n\n- **改到通过为止**：自进化的检查或复核没过，问题直接交回给 Agent 修，再测、再复核，不再第二轮没过就算失败。复核也收紧了：只有错误、削弱安全、夹带无关改动、改了行为完全没测试才打回，风格和命名只算意见。只有连续 3 轮没有新改动、改了 12 轮还没过、Key 不对或额度用完、你按了停止，才会停下来。\n- **停了能接着做**：卡片显示「停住了，可以接着做」，点「接着做」还是同一条方案、同一份副本、同一段对话，做过的不重做；在原来的对话里说一句也行。副本留 14 天。这个版本之前失败的卡片，副本已经删了，只能重新生成。\n- **回答被截断不再算做完**：模型的回答超过输出长度上限时，里面的工具调用没有执行，任务却算做完，自进化就报\"没有改任何文件\"。现在所有 Agent 都会接着做，最多 8 次，之后普通任务还是算做完；自进化还会看有没有写交付、有没有改动，没做完接着催。\n- **开工前先跟上远端**：开工、接着做、发布之前，先把源码快进到远端最新，需求里不用再写\"先更新代码\"。跟不上时（本地领先、分叉、有没提交的改动、连不上）分支不动，页面上说明原因。源码比正在用的软件还旧就不开工，免得发布把软件退回旧版本。\n- **Agent 留下的东西不进改动**：它在工作副本里 clone 的临时仓库不再被收成子模块条目，也不会因此被复核打回。\n- **按停止马上停**：正在跑的命令和子 Agent 一起停，实测 0.2 到 0.6 秒。之前要等 60 秒一次的心跳，`npm create` 这种命令来不及拦，子 Agent 还会接着跑。",
-  "at": "2026-11-03T11:22:49.452Z",
+  "version": "1.11.2",
+  "commit": "912a5dc27e9908c47fee3f92d5fa327c21d0392a",
+  "previous": "1.11.1",
+  "title": "对话界面接入状态行与新文字动效",
+  "notes": "照 dsh-claude-style 的实现接入两处动效：状态行换词（0.15 秒、错开 0.05 秒）、1.5 秒扫光、三点思考弹跳/执行走线；回复新文字从 20% 分 24 档提亮（0.12 秒，CSS Highlight API，不插节点不重排），整段回复落下时按段错开淡入。新增 chatMotion.js、reveal.js、WaitLine.jsx，改 Chat.jsx、Markdown.jsx、product.css，补 core/test/chat-motion.test.js。淡入是一次性的限时窗口，演完就摘掉，重渲染不会重演。",
+  "at": "2026-11-03T12:27:14.463Z",
   "key": "2838-d425-6b4d-9b6c",
-  "needsInstaller": true,
-  "reason": "依赖变了（package-lock.json）",
+  "needsInstaller": false,
+  "reason": null,
   "depsSince": "1.11.1",
   "installerSince": "1.11.1",
   "installerReason": "安装版的 core.yml 打包时改过（指向自带的运行时），core.yml 变了要重新装安装包",
@@ -129,7 +129,7 @@
       "size": 1543
     },
     "apps/desktop/package.json": {
-      "sha256": "bc0b9934f69983cbe412ca497e956c54f417022c55c7c887046019a7d2b08160",
+      "sha256": "cfde38280f6432c2864d586f65ae81f916a61ddbd755791f12c5dec66e513744",
       "size": 497
     },
     "apps/desktop/src/main.js": {
@@ -164,13 +164,13 @@
       "sha256": "6819998a877faaa37d55aaa1db0b1a2995cfd85383f61333c1a768539d631401",
       "size": 18432
     },
-    "apps/web/dist/assets/app-EY6X6SGI.js": {
-      "sha256": "ceb4de1037382bb0c09d96b56cd84dce81de4030d58a3864bd07babb647887d7",
-      "size": 961441
+    "apps/web/dist/assets/app-UMUYYZNJ.css": {
+      "sha256": "b6485bee436f8498dc498e8352f7a07f7ce53bb5984e8d262193d6e968cb5689",
+      "size": 345741
     },
-    "apps/web/dist/assets/app-Q5SNXR6H.css": {
-      "sha256": "d299569737d89f714fed2ba4c7f0a888d0517001d4fc7708739f5137f20af77c",
-      "size": 339859
+    "apps/web/dist/assets/app-YQ7BKXCQ.js": {
+      "sha256": "5aa0a42a3288cc0639f254d6db34509880a9611c3c093aa317a12f6811da22f6",
+      "size": 967254
     },
     "apps/web/dist/favicon.svg": {
       "sha256": "bcb80e1e35769e211a50561885264eb368340a554314da769489964cd5062e76",
@@ -201,7 +201,7 @@
       "size": 1332
     },
     "apps/web/dist/index.html": {
-      "sha256": "5fefc073c0ace16a5bca0f4763b5e56a36f3e098983a8e7808eb6b69cff15c20",
+      "sha256": "16ed03aeb7de78981dec6bd5b43c5123de4ca5c1ba71953e00fe4243e5c2fbfc",
       "size": 1247
     },
     "apps/web/dist/manifest.webmanifest": {
@@ -209,7 +209,7 @@
       "size": 1198
     },
     "apps/web/dist/sw.js": {
-      "sha256": "c8146691c92e601f706a3930b539b4beb4eb492f948fe7bbdf5de5c8e07fab98",
+      "sha256": "c870dd879701ebb6569ee5e71813931f0ee447232d03726311c177ec04868c10",
       "size": 8659
     },
     "apps/web/package.json": {
@@ -1063,8 +1063,8 @@
   },
   "bundle": {
     "name": "files.zip",
-    "sha256": "30ca13ba90163b96925e3303a194742f1e70ab473d0c8b7c15ab0bbe41f33ae7",
-    "size": 2512924
+    "sha256": "95990a0192f5d47727a7113de20c6ed29ec57a9c34d61d3495d6a4ed315dd79d",
+    "size": 2516280
   },
-  "signature": "x303kED6brWFgeUruaGoeaaIpJTVyaCTfYZ-7-NsMNv0JfjKB67gPE-WHcupeZpJPNIfpoYDDRlCrkA7kSPzDA"
+  "signature": "XQG9iIiaN2D5u8ukGx864UG7DQaLeDjXV71nCDLB61qW1-TPBOn50_2PymMW_GQAUOi4Kl0oHvzFKB12y5uYBg"
 }
