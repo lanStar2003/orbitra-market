@@ -1,11 +1,11 @@
 {
   "format": "orbitra-release/2",
-  "version": "1.11.2",
-  "commit": "912a5dc27e9908c47fee3f92d5fa327c21d0392a",
-  "previous": "1.11.1",
-  "title": "对话界面接入状态行与新文字动效",
-  "notes": "照 dsh-claude-style 的实现接入两处动效：状态行换词（0.15 秒、错开 0.05 秒）、1.5 秒扫光、三点思考弹跳/执行走线；回复新文字从 20% 分 24 档提亮（0.12 秒，CSS Highlight API，不插节点不重排），整段回复落下时按段错开淡入。新增 chatMotion.js、reveal.js、WaitLine.jsx，改 Chat.jsx、Markdown.jsx、product.css，补 core/test/chat-motion.test.js。淡入是一次性的限时窗口，演完就摘掉，重渲染不会重演。",
-  "at": "2026-11-03T12:27:14.463Z",
+  "version": "1.11.3",
+  "commit": "70d6755aa38e9fd84c2323c00223e0740bc2024f",
+  "previous": "1.11.2",
+  "title": "对话动效可见，设置里可开关",
+  "notes": "1.11.2 的动效代码其实已在，但只在回复进行中或落下瞬间触发，且没有设置入口。给外观偏好加 motion（全部/只状态行/只文字/关闭），设置 › 外观新增「动效」卡（总开关+两个分开关+实时预览，默认全开、即时生效、跟账号同步、仍尊重 prefers-reduced-motion）；等待行、任务图里运行中的 Agent 行和回复淡入都按开关走，文档与假内核同步更新。",
+  "at": "2026-11-03T13:08:35.392Z",
   "key": "2838-d425-6b4d-9b6c",
   "needsInstaller": false,
   "reason": null,
@@ -129,7 +129,7 @@
       "size": 1543
     },
     "apps/desktop/package.json": {
-      "sha256": "cfde38280f6432c2864d586f65ae81f916a61ddbd755791f12c5dec66e513744",
+      "sha256": "1986de1fddeeb0dc48e74e0d865b98148aba215d8031b69ecd262030c4e9bf95",
       "size": 497
     },
     "apps/desktop/src/main.js": {
@@ -164,13 +164,13 @@
       "sha256": "6819998a877faaa37d55aaa1db0b1a2995cfd85383f61333c1a768539d631401",
       "size": 18432
     },
-    "apps/web/dist/assets/app-UMUYYZNJ.css": {
-      "sha256": "b6485bee436f8498dc498e8352f7a07f7ce53bb5984e8d262193d6e968cb5689",
-      "size": 345741
+    "apps/web/dist/assets/app-WVYGGKPS.css": {
+      "sha256": "4b77258b18040ddc0ade883cc3ab6c54e560f8c804e1acf4fb630d4efd7b4927",
+      "size": 346922
     },
-    "apps/web/dist/assets/app-YQ7BKXCQ.js": {
-      "sha256": "5aa0a42a3288cc0639f254d6db34509880a9611c3c093aa317a12f6811da22f6",
-      "size": 967254
+    "apps/web/dist/assets/app-ZIIBTKOY.js": {
+      "sha256": "1fc215a5f47161daaf85183605c8e4d47e444b35928cb96270c87c3527b5fd35",
+      "size": 970343
     },
     "apps/web/dist/favicon.svg": {
       "sha256": "bcb80e1e35769e211a50561885264eb368340a554314da769489964cd5062e76",
@@ -201,7 +201,7 @@
       "size": 1332
     },
     "apps/web/dist/index.html": {
-      "sha256": "16ed03aeb7de78981dec6bd5b43c5123de4ca5c1ba71953e00fe4243e5c2fbfc",
+      "sha256": "bc91af94f7950e1d057f1d5f747cfbff49d2ffe4cf90e3f78306013f1c4eef9d",
       "size": 1247
     },
     "apps/web/dist/manifest.webmanifest": {
@@ -209,7 +209,7 @@
       "size": 1198
     },
     "apps/web/dist/sw.js": {
-      "sha256": "c870dd879701ebb6569ee5e71813931f0ee447232d03726311c177ec04868c10",
+      "sha256": "820d5b70fcc5abbc781509b0b06fa709e82682377a1bd428d241e40787873d21",
       "size": 8659
     },
     "apps/web/package.json": {
@@ -277,8 +277,8 @@
       "size": 3285
     },
     "core/modules/auth-local/preferences.js": {
-      "sha256": "8e8934f44ea0287ad78dc3babf35b16ca9736d84ecf117a0dd32d057918c4b6c",
-      "size": 5002
+      "sha256": "afd7c554aaca495549285fba48158df508cf674aaf7e571d291d09e0e7ae1a7a",
+      "size": 5130
     },
     "core/modules/auth-local/web-guard.js": {
       "sha256": "4fc5e89f4a2e4468cca73315ad92603adb1081c9354b58ddfd3a41b9fe48fb75",
@@ -1063,8 +1063,8 @@
   },
   "bundle": {
     "name": "files.zip",
-    "sha256": "95990a0192f5d47727a7113de20c6ed29ec57a9c34d61d3495d6a4ed315dd79d",
-    "size": 2516280
+    "sha256": "7f91566b6a3ef87860f5d2c23a5f4dfafe50027157b4fcc0c2c4f828603426be",
+    "size": 2517563
   },
-  "signature": "XQG9iIiaN2D5u8ukGx864UG7DQaLeDjXV71nCDLB61qW1-TPBOn50_2PymMW_GQAUOi4Kl0oHvzFKB12y5uYBg"
+  "signature": "1U_lP9EuXDZwJaQj8pyMJJkZc_beLu-seORYJKfI1I9KoGaxRyT9jeGd2_TS5YDr53dAHLVQD4af8OuWgyFhAQ"
 }
