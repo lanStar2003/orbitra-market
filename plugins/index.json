@@ -1,10 +1,10 @@
 {
   "format": "orbitra-plugins/1",
   "software": {
-    "version": "1.9.0",
-    "at": "2026-11-02T23:56:41.691Z",
-    "title": "账算对了，有了用量页，新增插件不用升版本，动手前先告诉你",
-    "size": 2403074
+    "version": "1.10.0",
+    "at": "2026-11-03T02:03:19.437Z",
+    "title": "中途能插话，Agent 能问你，断网不算失败",
+    "size": 2419493
   },
   "agents": {
     "calendar": {
