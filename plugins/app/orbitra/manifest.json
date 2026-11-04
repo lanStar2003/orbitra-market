@@ -1,17 +1,17 @@
 {
   "format": "orbitra-release/2",
-  "version": "1.12.1",
-  "commit": "1c138dba215af91c380b36d946b2228457a04268",
-  "previous": "1.12.0",
-  "title": "对话动效整套搬自 dsh-claude-style",
-  "notes": "按 dsh-claude-style 0.16.3 移植整套对话动效：有界 Myers 差分 + 24 档高光的逐字淡入，新增打字节拍器把内核每 150ms 一段的流按字放出来，补上卷帘门、思考回放窗口、状态行第三种点阵与渐变流动、发送气泡两档、自绘输入光标、侧栏呼吸灯；设置页『动效』拆成 8 项开关各带真实组件预览。新开关的默认值只有一处出处：新装用这一版的默认，升级时按那一行原来的动效偏好补齐（关着的不变），网页端拿不到键时回落旧观感。",
-  "at": "2026-11-04T00:10:42.508Z",
+  "version": "1.13.0",
+  "commit": "e49402c02398671479742c6b2bef4fc37fe7b748",
+  "previous": "1.12.1",
+  "title": "总指挥只有一个主会话，要批准的事每一页都看得到",
+  "notes": "2026-11-04 · 总指挥只有一个主会话，要批准的事每一页都看得到\n\n- **只有一个主会话**：首页没有\"新对话\"了，打开就接着说，不用新建对话，也不用手动压缩。以前的对话和定时任务说的话都按时间排在这条线上，来自别处的话带一个小标签，定时任务的那一轮折成一张结果卡片。以前对话里没答的问题卡片，翻到了照样能答。\n- **往回看**：往上滚动自动读更早的。左边是系统分好的话题和搜索框，点一下跳到那一句并亮一下；往下滚动读更新的，或点「回到最新」。\n- **压缩不丢内容**：原文一条不删。摘要里有程序抄下的原话和编号，不全靠模型概括。总指挥能查原文，说\"没提过\"之前必须先查。147 轮的测试对话、73 道回忆题，开着记忆时答对 73 题，原来的压缩答对 61 题；压缩 16 次，没有失败。压缩到一半进程被杀，下次接着来，摘要接得上。\n- **压缩和换窗口全自动**：总指挥到 6 万 token 时，在一轮说完 30 秒后压缩；空闲 20 分钟且超过 4.5 万时在后台压缩；一轮中途到 9 万时在两步之间压缩。摘要多了会合并：白天到 2.4 万，夜里 3:30 到 1.2 万。日志满 64 MB 或窗口满 30 天就换一个窗口，带上摘要和最近 10 轮，老窗口还能查。Agent 用同一套，线更高（15 万）。设置 › 数据与隐私 能看主会话的状况，只看不用管。\n- **总指挥不再用热记忆**：测试里模型一用它，花费从 ¥2.86 涨到 ¥5.25。总指挥记你的事只用 `remember`，Agent 不变。\n- **要你批准的操作每一页都看得到**：审批条挂在标题栏下面，能直接批准或拒绝，「详情」看完整内容，「全部 N 项」看其余的。新的一项出现后按钮先停 0.8 秒，连点不会批准没看过的下一项。来了响一声，窗口不在前面时弹系统通知、任务栏闪，窗口标题带数量，还剩 5 分钟再提醒一次。\n- **提示音默认开**：批准和任务做完的提示音现在默认开，设置 › 通用 可以关。\n- **对话只收中间的步骤**：说的话一直在，话和话之间的步骤收成一行（读了 3 个文件、改了 2 个文件 +24 −3 · 20 秒）。写文件和改文件的步骤点开是彩色 diff，回复下面一张卡片列出改过的文件。用命令改的文件，普通任务统计不到，面板上有说明。\n- **后台任务改成侧边面板**：不再占活动栏，和任务动态合进一个面板，有后台任务、改动、动态三个标签。任何页面都能开（对话头上的「后台」、状态栏、Ctrl+J），能拖宽，能全屏。旧链接会打开面板。\n- **Agent 工具更顺手**：后台命令能用了，超时的命令转到后台接着跑，能看输出、能停，任务结束时一起停。没读过的文件也能 edit（`old_string` 必须唯一匹配）；读过之后被改了，或 write 覆盖没读过的文件，仍然拒绝。单次 read 最多 16 KB，其他工具结果超过 2700 token 只留头尾和完整结果的路径。\n- **这一版要重启一次**：桌面外壳改了，更新后重启一次应用，不用装安装包。还在 1.11.x 的安装版，要先装一次安装包。",
+  "at": "2026-11-04T04:38:11.057Z",
   "key": "2838-d425-6b4d-9b6c",
   "needsInstaller": false,
   "reason": null,
   "depsSince": "1.12.0",
-  "installerSince": "1.12.0",
-  "installerReason": "安装版的插件在打包的运行时里，改了插件要重新打安装包",
+  "installerSince": "1.13.0",
+  "installerReason": "安装版的 core.yml 打包时改过（指向自带的运行时），core.yml 变了要重新装安装包",
   "libraries": {
     "@orbitra/contracts": "packages/contracts",
     "orbitra-dispatch": "plugins/orbitra-dispatch",
@@ -20,6 +20,7 @@
     "orbitra-mcp": "plugins/orbitra-mcp",
     "orbitra-memory": "plugins/orbitra-memory",
     "orbitra-profile": "plugins/orbitra-profile",
+    "orbitra-session": "plugins/orbitra-session",
     "orbitra-ssh": "plugins/orbitra-ssh",
     "orbitra-web": "plugins/orbitra-web"
   },
@@ -129,16 +130,16 @@
       "size": 1543
     },
     "apps/desktop/package.json": {
-      "sha256": "057f6ace8cfa4b4b2581d997b0a88b7f6a5743bd0154930f5385a200dc26d044",
+      "sha256": "24f6a6c18175fcb3cb35fa9189732970286dce7b9993d930c1f07f770eddf4e6",
       "size": 497
     },
     "apps/desktop/src/main.js": {
-      "sha256": "6e843ceb6b1c84b27d189bfa24d5706df8f08849fbe0ac2f7e8bcc2f9ba74b32",
-      "size": 22315
+      "sha256": "75d49eb5fa47d257f809e83cf198497e0fb3db21e1513ac37bc5832978f343ed",
+      "size": 22854
     },
     "apps/desktop/src/preload.cjs": {
-      "sha256": "7acbc2ba118dac693fdb181d692e58bba0bc08be1758ca64068f324d81fe8401",
-      "size": 1885
+      "sha256": "1e99c5f17a0ee67d2addfd475422f89064c965a27d23daa16608a76bffd06777",
+      "size": 2153
     },
     "apps/desktop/src/restore.js": {
       "sha256": "ab8c92967d1d23e49c300ad53ff3f9801aca437ee74b45fe42abeed0ec5ef0d3",
@@ -168,13 +169,13 @@
       "sha256": "86bfee665748f826301059556509263660b3c03477c2df4f28f2d1bca9a45323",
       "size": 18670
     },
-    "apps/web/dist/assets/app-EQBU4NCG.js": {
-      "sha256": "98b4645f77884c57def3406fdbf186b74d7bad912ea1d226342d32eaeb18c4db",
-      "size": 1001193
+    "apps/web/dist/assets/app-AJKA7IMS.js": {
+      "sha256": "85f40301898d07252a57c872c177f5101055f815884e7069e4f05f7c2441e884",
+      "size": 1028274
     },
-    "apps/web/dist/assets/app-FLW65J3J.css": {
-      "sha256": "5a7b0dcd8145f27ceb7c2be05464265ccececdc624f2f559973aef9f2306ba26",
-      "size": 366030
+    "apps/web/dist/assets/app-CT437D2D.css": {
+      "sha256": "95d256c8d7815b8f8a7233dafe633a42e978f400a15756612cb3093df3047841",
+      "size": 380799
     },
     "apps/web/dist/favicon.svg": {
       "sha256": "bcb80e1e35769e211a50561885264eb368340a554314da769489964cd5062e76",
@@ -205,15 +206,15 @@
       "size": 1332
     },
     "apps/web/dist/index.html": {
-      "sha256": "ddea52f995030885f283922c837893e276ba54fe35173a020cd4dbdc44012dd3",
+      "sha256": "78b1f18dfac15c4c21af076e5535d484e25eba406d34cb4bbe7a94722a59e09e",
       "size": 1247
     },
     "apps/web/dist/manifest.webmanifest": {
-      "sha256": "fb225283e8834437b6692867f3035e2f9a0f1db417349306d2b3cbe715cd7617",
-      "size": 1198
+      "sha256": "94f6aa27903b32a73b6a689793a19216509a693ae252ca660aac71110acef20e",
+      "size": 1202
     },
     "apps/web/dist/sw.js": {
-      "sha256": "581be30cd74a3c4f2e2f1b8c3d24a7532225a45bca4a7deae808823c6404d057",
+      "sha256": "a5792926e954d5ae7f9520fd6bf9c49457278ce354b7309fe3c02b0e9225dda4",
       "size": 8659
     },
     "apps/web/package.json": {
@@ -221,8 +222,8 @@
       "size": 477
     },
     "core/core.yml": {
-      "sha256": "8360fa50b925a65f735edc0fa5cdcee721738dd259c00286fb0aa15664486363",
-      "size": 15603
+      "sha256": "e6aa7b0e422a7b3d274b56a34087907d6255bbfbdc1f09accb62b28e2e7339d6",
+      "size": 15637
     },
     "core/market/catalog.json": {
       "sha256": "4c42122022a66462f8be1855024ed180dbe2f2ae1383ad097f948fd39871fa24",
@@ -301,16 +302,20 @@
       "size": 20488
     },
     "core/modules/conductor/AGENTS.md": {
-      "sha256": "2721732ea1f1e0140578c31ca6236c93e9d8e615962af1d5dd1a75314fc11a7d",
-      "size": 12091
+      "sha256": "c784eb18dd0e049c19e8b389c1d0e8d8ab3daf4c2490d5d0e468e08c5cc1fd8e",
+      "size": 12738
     },
     "core/modules/conductor/attachments.js": {
       "sha256": "ca3aa3aca6223f27f1baf899c3815e1e5aba610f4b136f678b88a52ca0601a70",
       "size": 9716
     },
     "core/modules/conductor/index.js": {
-      "sha256": "9998632ad2a6fd6683255dc2bacd3edfcc8d75d27d89cc93c3969736b1bead04",
-      "size": 38317
+      "sha256": "d5198a2b4a8d435ac54d8c52c16ee4a467bdba52b0efdb63550165f7e0a386f1",
+      "size": 48992
+    },
+    "core/modules/conductor/window.js": {
+      "sha256": "cbdf961f877e34cd78ae14719458b5aed30fd12cf020fa6ce581da7c616268d1",
+      "size": 10729
     },
     "core/modules/devices/cbor.js": {
       "sha256": "4923ff46a9f3ecc1c2368b7219002e06759f7592ceee12d941c30df6dce0c94a",
@@ -373,12 +378,12 @@
       "size": 15626
     },
     "core/modules/evolution/index.js": {
-      "sha256": "843decb29bbf8466f6418f545cb54cc0c7b6270491d95c0643bdd4ab074cc87c",
-      "size": 127458
+      "sha256": "aa43dbdba13d4b80d9d33dfe02b849a68e1d96342747246f8f52ea069e22361b",
+      "size": 127843
     },
     "core/modules/evolution/map.js": {
-      "sha256": "6bc243cd3454e2a6262da6532bece4fa5833db155862f87431b2d615d420dfc8",
-      "size": 12226
+      "sha256": "7912153f6365dda3e118a7b8e44bee2088e6ec0d9b5f3f0aa0e5a6c8a658d1d3",
+      "size": 12242
     },
     "core/modules/evolution/packs.js": {
       "sha256": "4349bfb791e34cd7130a9ac4b7cdc795ad0509e9684a3c88e56fad27885c7c6c",
@@ -409,12 +414,12 @@
       "size": 3004
     },
     "core/modules/jobs/flow.js": {
-      "sha256": "2f927cc9687e39707cac9f5f2db9c0183ab2acfccdbfb098faf6d36fe018f373",
-      "size": 13413
+      "sha256": "d813a36940924010255f8d07c15d101a69141148feaa8bc4fc362ab32e35a6e8",
+      "size": 17395
     },
     "core/modules/jobs/index.js": {
-      "sha256": "aee01b3ccf3b2b9c5cd1bdecf62ef4dafeed1bf1ceaf6d7b3569f7377ebd53f0",
-      "size": 43820
+      "sha256": "3b30f4816e8de58138fd50d2f2185bc2f8a063fd6dcbadd6bce14aa3a8b49634",
+      "size": 44802
     },
     "core/modules/knowledge/chunk.js": {
       "sha256": "f3fd3e7fc7126309ac21cd82f219a1fc4ba4725b3d35a9ce81f3900895a2feee",
@@ -425,8 +430,8 @@
       "size": 5511
     },
     "core/modules/knowledge/index.js": {
-      "sha256": "93241dd7ad5937bba3a7227ddab5653656cf625eda397ac23a6df0dab4da156f",
-      "size": 14446
+      "sha256": "e4cfcbdc0c9fd4b948e2de95d6707f088bf0585589dc7162f2690f395c9daf7b",
+      "size": 14555
     },
     "core/modules/knowledge/knowledge.js": {
       "sha256": "039249522b719f6c8db85fdddd95e34bbe93c4d16bf4f3f05b6717671541980c",
@@ -493,8 +498,8 @@
       "size": 4187
     },
     "core/modules/ledger/sessions.js": {
-      "sha256": "4df3721724129ce7aabd7c96b599e13754311deb6a4f29137ff520ebcb50b37f",
-      "size": 6767
+      "sha256": "4da5cdb69252a8ac3a9dcb7ad07d40d3e84132c41329e06336e3d98ca2380e7e",
+      "size": 7274
     },
     "core/modules/llm-gateway/index.js": {
       "sha256": "428c8e935aaac9d6a075a0fa974df4abefa9cd992e7c44757d117bf95acf06f9",
@@ -537,8 +542,8 @@
       "size": 11929
     },
     "core/modules/memory-hub/memory.js": {
-      "sha256": "d48e58f19eae0ed1a39ba4de91af96c3edc4267343e6c8e9b2b72e67e3225dee",
-      "size": 49649
+      "sha256": "2226de0ed7914f76113af93f50059d31e1e3c14c65473e4d42d54ea0d9066483",
+      "size": 49884
     },
     "core/modules/memory-hub/registry.js": {
       "sha256": "74f206f122f1ac1f6c980276135712a0974e39914ace4fd916b6009796bd7f4f",
@@ -625,12 +630,12 @@
       "size": 22849
     },
     "core/modules/supervisor/index.js": {
-      "sha256": "39978730b1c86990e89684b0907a114d120c7224e1d55149778c8c981bc68da4",
-      "size": 44017
+      "sha256": "8874ffe4f2bb935fd2813b26f737200187550d7b49d98a2bb83ed14666d591e0",
+      "size": 44525
     },
     "core/modules/supervisor/launch.js": {
-      "sha256": "60743cbb4e02f3144269e98356e6d6159fb5ba763961d3867374d7280bd1e403",
-      "size": 11135
+      "sha256": "f54f134bb046713a94620086ed3db2af9146ef1ffbd3420e4d65e0c4f1c4d377",
+      "size": 12866
     },
     "core/modules/supervisor/model-settings.js": {
       "sha256": "7f76a34e52588e75a419e11ffea5d8d5ebc83c34e46ef73ed94c1eecc9001d5d",
@@ -641,8 +646,8 @@
       "size": 2875
     },
     "core/modules/tasks/index.js": {
-      "sha256": "b10b29bf96c57fc78b7bfad7107e60427c3a03c24e0d95bbe8b54de4d3f75d56",
-      "size": 57894
+      "sha256": "9cfdebc5d1467371ae539eac7d1fce3eee396cd6028b03c11b7682d23a4d7a3e",
+      "size": 58374
     },
     "core/modules/tasks/order.js": {
       "sha256": "3cc000ba73c90718c5236c0597c648a04fa7372a9b339ff5f225c66eb9626946",
@@ -657,8 +662,8 @@
       "size": 2046
     },
     "core/modules/tasks/texts.js": {
-      "sha256": "dd1c9d57ef8f3f7fb9191fce22c46fef93cde126e5794b2fac5d400a5b46273f",
-      "size": 22722
+      "sha256": "ddd85c512dcc8672a8210769292d2b844a6b9ca104b1c60d3fd223f1afc78803",
+      "size": 23540
     },
     "core/modules/traces/backfill.js": {
       "sha256": "d23e32e2588cd0c0aa3985e73ce232c1bef04a992a4d24228899075ad763740e",
@@ -793,8 +798,12 @@
       "size": 7797
     },
     "node_modules/@orbitra/contracts/package.json": {
-      "sha256": "d3d6ae94aa3a90f1997bbaef70fda6a10f165ca7dc7249df06baef2db92c46e4",
-      "size": 483
+      "sha256": "53cc4a36a53237963bc9261992f4333c422870fb8fe3d5104cfcfca4ec30e439",
+      "size": 514
+    },
+    "node_modules/@orbitra/contracts/src/diff.js": {
+      "sha256": "2ee36b425a250eef39092781c3dc1fa3e38149be3421cb48f5f1a3c6b987d608",
+      "size": 2209
     },
     "node_modules/@orbitra/contracts/src/jobs.js": {
       "sha256": "ff2e77fc4b2ed8568bf6513542e64d8c8f05544c792f1e902daa9bc661a3824e",
@@ -817,8 +826,8 @@
       "size": 822
     },
     "node_modules/orbitra-dispatch/src/core/tools.js": {
-      "sha256": "7d7c723ddd947b1a49ac58ab5a8d8ce89fdf9aa3cff4a16252394001e84156a5",
-      "size": 11747
+      "sha256": "565e0f830955177d8cf0a47b7308ea28e0dec87a421a5f0a7b41a1c54d9e4fe8",
+      "size": 11956
     },
     "node_modules/orbitra-dispatch/src/host/index.js": {
       "sha256": "3402ebc5be172d17ceae8adb12b03bc4eed3037bf6892963dbfc3c0a71d4b5d0",
@@ -832,21 +841,25 @@
       "sha256": "75303e629d752342ed2e6ddea0e8b8d89a26bf16a042eb6c9a719d95b5c784df",
       "size": 9793
     },
+    "node_modules/orbitra-engine/src/core/edit.js": {
+      "sha256": "56598210e31ef2a66139a1d02078ed7921eb747002f278f6b715008ced4deb9a",
+      "size": 671
+    },
     "node_modules/orbitra-engine/src/core/path.js": {
       "sha256": "c4ab02e619a3f4fa88289f1cb821e624273c5eeb44e0ab0df9fa234f251914e1",
       "size": 3072
     },
     "node_modules/orbitra-engine/src/core/round.js": {
-      "sha256": "9e658b04fc731c204a94f16d508d5695a71c39306a20c88858ea7ff18b2b6729",
-      "size": 11623
+      "sha256": "9243bdfd11e847ba804833b65021d463d05a1dfc7c3150eb81fe38b1d2bf288e",
+      "size": 11884
     },
     "node_modules/orbitra-engine/src/core/run.js": {
-      "sha256": "a1e2fab235aaa1084f5326a634ad6c5c951abf0bf6b7726ef4238528c5be6149",
-      "size": 14895
+      "sha256": "5ab52aebec8adffb97cb6710e16411dfe9e03c2412056600173bac1b4285c85a",
+      "size": 15477
     },
     "node_modules/orbitra-engine/src/host/index.js": {
-      "sha256": "5f08344761d8fea302b93a3175ab826f8e7ec0ee0fdfcbfcaf539505e865d536",
-      "size": 3528
+      "sha256": "3e7573d171e5209fcecc16a6dbb16eff5c81ac777379e4cca064802ac35fd6c6",
+      "size": 3633
     },
     "node_modules/orbitra-guard/package.json": {
       "sha256": "8d78b31dda67b40c614e56ec92869d24cadc1c1f8e8d0a0ea319f4a5620c4980",
@@ -861,16 +874,16 @@
       "size": 2996
     },
     "node_modules/orbitra-guard/src/core/rules.js": {
-      "sha256": "cd832baee2790c47a66161c07b78795819f17840e54dfab2f99e0f022bdd1eaf",
-      "size": 22123
+      "sha256": "cc21ed563fa33418a57aebe4a0e37241342357700c996ad280eb73c3a82a6da1",
+      "size": 23279
     },
     "node_modules/orbitra-guard/src/core/scripts.js": {
       "sha256": "1b95fefb36f3b629a71667da14ebf115d870e5b0dc9ca088cfbb6e4d3e10b79a",
       "size": 17501
     },
     "node_modules/orbitra-guard/src/host/index.js": {
-      "sha256": "dc856fa77c29d6027ff8d700e7eb11fce298076e6adfdec0680897e0e0d64a47",
-      "size": 12473
+      "sha256": "fa9b732a1d89757f0f6e132a2e334e24ed98a19bc7acc087eefe966703694c3c",
+      "size": 12680
     },
     "node_modules/orbitra-mcp/package.json": {
       "sha256": "736e9377d5d9a1f32d074981d62f81f53164ab68dbf75c069baf6bec7845cae1",
@@ -892,21 +905,53 @@
       "sha256": "385cc3ed1b17e619319d59a3338d714725d4954d037e6e41334bc7b1e5f97c8e",
       "size": 705
     },
+    "node_modules/orbitra-memory/src/core/hot-memory.js": {
+      "sha256": "1955df9a98c9e5710f9c11c32374664d4884a7822de8e3f8400527908172d42a",
+      "size": 1360
+    },
     "node_modules/orbitra-memory/src/core/tools.js": {
       "sha256": "a5779d8b95bf00de8a00ca117e89cde171f8f7ba0dac28ef96e8f3c5ec1702c5",
       "size": 6251
     },
     "node_modules/orbitra-memory/src/host/index.js": {
-      "sha256": "308c53cb3db66d74a0b15b694d06acb25f0467b2ff6021213d3d243ee1bb6d05",
-      "size": 1055
+      "sha256": "869a301a7e539750c03079b2b77955931d5c092f9fba4cbe787ef40cc8db129c",
+      "size": 1159
     },
     "node_modules/orbitra-profile/cordis.patch.yml": {
-      "sha256": "34d1be99a14347a3d19e62baa30fc27302e659c8fd10012f2fcba25d49762f3d",
-      "size": 10950
+      "sha256": "ebd7d0ddc27f82c3700e450abbce878aa75745115c1655ac86eb9bbc61e117fc",
+      "size": 12399
     },
     "node_modules/orbitra-profile/package.json": {
       "sha256": "c040710cc681c9b20cc92fe7490687d595278d1dc64aab08172c850423bf1383",
       "size": 510
+    },
+    "node_modules/orbitra-session/package.json": {
+      "sha256": "c631c6166203aa610f7873cb3cdc9637c91cfb05e381370d71eced01635e6cf6",
+      "size": 710
+    },
+    "node_modules/orbitra-session/src/core/compact.js": {
+      "sha256": "c44279c7acc3e7d0142bc1bc9fe30c644ed51b66923a6f6e4c55fbb5f03856de",
+      "size": 9334
+    },
+    "node_modules/orbitra-session/src/core/history.js": {
+      "sha256": "61f6d5d30442431d6986cb42b6d983b5458cb66bc3d703ff8821a78122728346",
+      "size": 6191
+    },
+    "node_modules/orbitra-session/src/core/journal.js": {
+      "sha256": "6d2e45acd623bf208a45959168ac76964d3803d0994b3ae2029d072894f5710e",
+      "size": 9362
+    },
+    "node_modules/orbitra-session/src/core/policy.js": {
+      "sha256": "cf33a76bc127aaf79c4d42d452847033bf0a17bff15d30e577b5d328833a02dc",
+      "size": 3166
+    },
+    "node_modules/orbitra-session/src/core/window.js": {
+      "sha256": "5401859388ec6eaf5bca0c0ff33697329413842650fc1d74270c6785909977c4",
+      "size": 6783
+    },
+    "node_modules/orbitra-session/src/host/index.js": {
+      "sha256": "bebaa720e4a973ec90d38454622e848755cef4005cd381fc702a8b6f7b536fb2",
+      "size": 15874
     },
     "node_modules/orbitra-ssh/package.json": {
       "sha256": "4141462b32969a667ea5ab821c45632917ec5720da8ec5dfad7c88efe5b6c7c2",
@@ -937,8 +982,12 @@
       "size": 2763
     },
     "packages/contracts/package.json": {
-      "sha256": "d3d6ae94aa3a90f1997bbaef70fda6a10f165ca7dc7249df06baef2db92c46e4",
-      "size": 483
+      "sha256": "53cc4a36a53237963bc9261992f4333c422870fb8fe3d5104cfcfca4ec30e439",
+      "size": 514
+    },
+    "packages/contracts/src/diff.js": {
+      "sha256": "2ee36b425a250eef39092781c3dc1fa3e38149be3421cb48f5f1a3c6b987d608",
+      "size": 2209
     },
     "packages/contracts/src/jobs.js": {
       "sha256": "ff2e77fc4b2ed8568bf6513542e64d8c8f05544c792f1e902daa9bc661a3824e",
@@ -961,8 +1010,8 @@
       "size": 822
     },
     "plugins/orbitra-dispatch/src/core/tools.js": {
-      "sha256": "7d7c723ddd947b1a49ac58ab5a8d8ce89fdf9aa3cff4a16252394001e84156a5",
-      "size": 11747
+      "sha256": "565e0f830955177d8cf0a47b7308ea28e0dec87a421a5f0a7b41a1c54d9e4fe8",
+      "size": 11956
     },
     "plugins/orbitra-dispatch/src/host/index.js": {
       "sha256": "3402ebc5be172d17ceae8adb12b03bc4eed3037bf6892963dbfc3c0a71d4b5d0",
@@ -976,21 +1025,25 @@
       "sha256": "75303e629d752342ed2e6ddea0e8b8d89a26bf16a042eb6c9a719d95b5c784df",
       "size": 9793
     },
+    "plugins/orbitra-engine/src/core/edit.js": {
+      "sha256": "56598210e31ef2a66139a1d02078ed7921eb747002f278f6b715008ced4deb9a",
+      "size": 671
+    },
     "plugins/orbitra-engine/src/core/path.js": {
       "sha256": "c4ab02e619a3f4fa88289f1cb821e624273c5eeb44e0ab0df9fa234f251914e1",
       "size": 3072
     },
     "plugins/orbitra-engine/src/core/round.js": {
-      "sha256": "9e658b04fc731c204a94f16d508d5695a71c39306a20c88858ea7ff18b2b6729",
-      "size": 11623
+      "sha256": "9243bdfd11e847ba804833b65021d463d05a1dfc7c3150eb81fe38b1d2bf288e",
+      "size": 11884
     },
     "plugins/orbitra-engine/src/core/run.js": {
-      "sha256": "a1e2fab235aaa1084f5326a634ad6c5c951abf0bf6b7726ef4238528c5be6149",
-      "size": 14895
+      "sha256": "5ab52aebec8adffb97cb6710e16411dfe9e03c2412056600173bac1b4285c85a",
+      "size": 15477
     },
     "plugins/orbitra-engine/src/host/index.js": {
-      "sha256": "5f08344761d8fea302b93a3175ab826f8e7ec0ee0fdfcbfcaf539505e865d536",
-      "size": 3528
+      "sha256": "3e7573d171e5209fcecc16a6dbb16eff5c81ac777379e4cca064802ac35fd6c6",
+      "size": 3633
     },
     "plugins/orbitra-guard/package.json": {
       "sha256": "8d78b31dda67b40c614e56ec92869d24cadc1c1f8e8d0a0ea319f4a5620c4980",
@@ -1005,16 +1058,16 @@
       "size": 2996
     },
     "plugins/orbitra-guard/src/core/rules.js": {
-      "sha256": "cd832baee2790c47a66161c07b78795819f17840e54dfab2f99e0f022bdd1eaf",
-      "size": 22123
+      "sha256": "cc21ed563fa33418a57aebe4a0e37241342357700c996ad280eb73c3a82a6da1",
+      "size": 23279
     },
     "plugins/orbitra-guard/src/core/scripts.js": {
       "sha256": "1b95fefb36f3b629a71667da14ebf115d870e5b0dc9ca088cfbb6e4d3e10b79a",
       "size": 17501
     },
     "plugins/orbitra-guard/src/host/index.js": {
-      "sha256": "dc856fa77c29d6027ff8d700e7eb11fce298076e6adfdec0680897e0e0d64a47",
-      "size": 12473
+      "sha256": "fa9b732a1d89757f0f6e132a2e334e24ed98a19bc7acc087eefe966703694c3c",
+      "size": 12680
     },
     "plugins/orbitra-mcp/package.json": {
       "sha256": "736e9377d5d9a1f32d074981d62f81f53164ab68dbf75c069baf6bec7845cae1",
@@ -1036,21 +1089,53 @@
       "sha256": "385cc3ed1b17e619319d59a3338d714725d4954d037e6e41334bc7b1e5f97c8e",
       "size": 705
     },
+    "plugins/orbitra-memory/src/core/hot-memory.js": {
+      "sha256": "1955df9a98c9e5710f9c11c32374664d4884a7822de8e3f8400527908172d42a",
+      "size": 1360
+    },
     "plugins/orbitra-memory/src/core/tools.js": {
       "sha256": "a5779d8b95bf00de8a00ca117e89cde171f8f7ba0dac28ef96e8f3c5ec1702c5",
       "size": 6251
     },
     "plugins/orbitra-memory/src/host/index.js": {
-      "sha256": "308c53cb3db66d74a0b15b694d06acb25f0467b2ff6021213d3d243ee1bb6d05",
-      "size": 1055
+      "sha256": "869a301a7e539750c03079b2b77955931d5c092f9fba4cbe787ef40cc8db129c",
+      "size": 1159
     },
     "plugins/orbitra-profile/cordis.patch.yml": {
-      "sha256": "34d1be99a14347a3d19e62baa30fc27302e659c8fd10012f2fcba25d49762f3d",
-      "size": 10950
+      "sha256": "ebd7d0ddc27f82c3700e450abbce878aa75745115c1655ac86eb9bbc61e117fc",
+      "size": 12399
     },
     "plugins/orbitra-profile/package.json": {
       "sha256": "c040710cc681c9b20cc92fe7490687d595278d1dc64aab08172c850423bf1383",
       "size": 510
+    },
+    "plugins/orbitra-session/package.json": {
+      "sha256": "c631c6166203aa610f7873cb3cdc9637c91cfb05e381370d71eced01635e6cf6",
+      "size": 710
+    },
+    "plugins/orbitra-session/src/core/compact.js": {
+      "sha256": "c44279c7acc3e7d0142bc1bc9fe30c644ed51b66923a6f6e4c55fbb5f03856de",
+      "size": 9334
+    },
+    "plugins/orbitra-session/src/core/history.js": {
+      "sha256": "61f6d5d30442431d6986cb42b6d983b5458cb66bc3d703ff8821a78122728346",
+      "size": 6191
+    },
+    "plugins/orbitra-session/src/core/journal.js": {
+      "sha256": "6d2e45acd623bf208a45959168ac76964d3803d0994b3ae2029d072894f5710e",
+      "size": 9362
+    },
+    "plugins/orbitra-session/src/core/policy.js": {
+      "sha256": "cf33a76bc127aaf79c4d42d452847033bf0a17bff15d30e577b5d328833a02dc",
+      "size": 3166
+    },
+    "plugins/orbitra-session/src/core/window.js": {
+      "sha256": "5401859388ec6eaf5bca0c0ff33697329413842650fc1d74270c6785909977c4",
+      "size": 6783
+    },
+    "plugins/orbitra-session/src/host/index.js": {
+      "sha256": "bebaa720e4a973ec90d38454622e848755cef4005cd381fc702a8b6f7b536fb2",
+      "size": 15874
     },
     "plugins/orbitra-ssh/package.json": {
       "sha256": "4141462b32969a667ea5ab821c45632917ec5720da8ec5dfad7c88efe5b6c7c2",
@@ -1083,8 +1168,8 @@
   },
   "bundle": {
     "name": "files.zip",
-    "sha256": "b08ea10dd4976c62b9aa964a0c3acc2d421d1a73fd8c53b617d3b58444db6dc2",
-    "size": 2559437
+    "sha256": "4345871f24fa3dc021c0aa89fb693ec420154e479061949e100872ea4bb2dde2",
+    "size": 2608882
   },
-  "signature": "NzA8iUZos9hj6w2HwwurgBS_CRWzE6ufwiBPmk7CxhdSz6bEllRSLam3F1XJSGfRAmnb0eHLdoJDAfxDiH36Aw"
+  "signature": "MbMjedPRz6_k2Ioprq_-LUZhKESy7CWH9MgW-u6GuYVhRCL56HrfN-JgcsGMa_gfU8qVdmxKajPeIzYMO_YrCg"
 }

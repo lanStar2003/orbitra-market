@@ -1,10 +1,10 @@
 {
   "format": "orbitra-plugins/1",
   "software": {
-    "version": "1.12.1",
-    "at": "2026-11-04T00:10:42.508Z",
-    "title": "对话动效整套搬自 dsh-claude-style",
-    "size": 2559437
+    "version": "1.13.0",
+    "at": "2026-11-04T04:38:11.057Z",
+    "title": "总指挥只有一个主会话，要批准的事每一页都看得到",
+    "size": 2608882
   },
   "agents": {
     "calendar": {
