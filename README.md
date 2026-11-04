@@ -9,14 +9,14 @@ Orbitra 是以 harness 为核心的个人 AI 助理：桌面级软件，Windows�
 
 ## 下载
 
-Orbitra **1.15.0**，2026-11-04 发布（[Release 页面](https://github.com/lanStar2003/orbitra-market/releases/tag/v1.15.0)）。
+Orbitra **1.15.1**，2026-11-04 发布（[Release 页面](https://github.com/lanStar2003/orbitra-market/releases/tag/v1.15.1)）。
 
 | 平台 | 安装包 |
 |---|---|
-| Windows（x64） | [Orbitra-Setup-1.15.0.exe](https://github.com/lanStar2003/orbitra-market/releases/download/v1.15.0/Orbitra-Setup-1.15.0.exe)（205 MB） |
-| macOS（Apple 芯片） | [Orbitra-1.15.0-arm64.dmg](https://github.com/lanStar2003/orbitra-market/releases/download/v1.15.0/Orbitra-1.15.0-arm64.dmg)（285 MB） |
-| Linux（AppImage） | [Orbitra-1.15.0.AppImage](https://github.com/lanStar2003/orbitra-market/releases/download/v1.15.0/Orbitra-1.15.0.AppImage)（281 MB） |
-| Linux（deb：Debian / Ubuntu） | [orbitra_1.15.0_amd64.deb](https://github.com/lanStar2003/orbitra-market/releases/download/v1.15.0/orbitra_1.15.0_amd64.deb)（216 MB） |
+| Windows（x64） | [Orbitra-Setup-1.15.1.exe](https://github.com/lanStar2003/orbitra-market/releases/download/v1.15.1/Orbitra-Setup-1.15.1.exe)（205 MB） |
+| macOS（Apple 芯片） | [Orbitra-1.15.1-arm64.dmg](https://github.com/lanStar2003/orbitra-market/releases/download/v1.15.1/Orbitra-1.15.1-arm64.dmg)（285 MB） |
+| Linux（AppImage） | [Orbitra-1.15.1.AppImage](https://github.com/lanStar2003/orbitra-market/releases/download/v1.15.1/Orbitra-1.15.1.AppImage)（281 MB） |
+| Linux（deb：Debian / Ubuntu） | [orbitra_1.15.1_amd64.deb](https://github.com/lanStar2003/orbitra-market/releases/download/v1.15.1/orbitra_1.15.1_amd64.deb)（216 MB） |
 
 - 安装包自带 dsh 运行时，装好就能离线用。
 - 不带本地向量模型：在 插件 › 市场 里点「安装」才下载。装好的 Orbitra 从这里自动更新（读 `latest*.yml`；以前装简易版的读 `lite*.yml`，内容相同，更新后就换成这个安装包），就地更新读 Release 里的 `manifest.json` + `files.zip`，都先验签名或 sha512。
@@ -31,7 +31,7 @@ Orbitra **1.15.0**，2026-11-04 发布（[Release 页面](https://github.com/lan
 
 | 名称 | 版本 | 核心 | 安装包 | 说明 | 获取 |
 |---|---|---|---|---|---|
-| [Orbitra](plugins/app/orbitra) | 1.15.0 | **核心** | 自带 | Orbitra 本体：内核、界面、桌面外壳和 Orbitra 自己的 dsh 插件。 | [安装包](#下载) |
+| [Orbitra](plugins/app/orbitra) | 1.15.1 | **核心** | 自带 | Orbitra 本体：内核、界面、桌面外壳和 Orbitra 自己的 dsh 插件。 | [安装包](#下载) |
 
 ### [运行方式](plugins/harness)
 
