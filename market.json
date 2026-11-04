@@ -1,7 +1,7 @@
 {
   "format": "orbitra-market/1",
   "repo": "lanStar2003/orbitra-market",
-  "updatedAt": "2026-11-04T06:20:23.372Z",
+  "updatedAt": "2026-11-04T06:28:47Z",
   "key": "2838-d425-6b4d-9b6c",
   "categories": [
     {
@@ -53,29 +53,28 @@
       "installers": {
         "full": {
           "win-x64": {
-            "name": "Orbitra-Setup-1.13.0.exe",
-            "url": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.13.0/Orbitra-Setup-1.13.0.exe",
-            "size": 215272000
+            "name": "Orbitra-Setup-1.14.0.exe",
+            "url": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.14.0/Orbitra-Setup-1.14.0.exe",
+            "size": 215278222
           },
           "mac-arm64": {
-            "name": "Orbitra-1.13.0-arm64.dmg",
-            "url": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.13.0/Orbitra-1.13.0-arm64.dmg",
-            "size": 298731592
+            "name": "Orbitra-1.14.0-arm64.dmg",
+            "url": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.14.0/Orbitra-1.14.0-arm64.dmg",
+            "size": 298756775
           },
           "linux-x64-appimage": {
-            "name": "Orbitra-1.13.0.AppImage",
-            "url": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.13.0/Orbitra-1.13.0.AppImage",
-            "size": 294160142
+            "name": "Orbitra-1.14.0.AppImage",
+            "url": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.14.0/Orbitra-1.14.0.AppImage",
+            "size": 294172702
           },
           "linux-x64-deb": {
-            "name": "orbitra_1.13.0_amd64.deb",
-            "url": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.13.0/orbitra_1.13.0_amd64.deb",
-            "size": 225961000
+            "name": "orbitra_1.14.0_amd64.deb",
+            "url": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.14.0/orbitra_1.14.0_amd64.deb",
+            "size": 225963776
           }
         }
       },
-      "installersUrl": "https://github.com/lanStar2003/orbitra-market/releases/tag/v1.13.0",
-      "installersVersion": "1.13.0"
+      "installersUrl": "https://github.com/lanStar2003/orbitra-market/releases/tag/v1.14.0"
     },
     {
       "id": "dsh",
