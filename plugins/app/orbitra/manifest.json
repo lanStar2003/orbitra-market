@@ -1,11 +1,11 @@
 {
   "format": "orbitra-release/2",
-  "version": "1.15.0",
-  "commit": "7490cc898ffc98856cf74710880cc4874429dc28",
-  "previous": "1.14.0",
-  "title": "设置里有了插件配置，自进化按标准流程新增插件",
-  "notes": "2026-11-04 · 设置里有了插件配置，自进化按标准流程新增插件\n\n- **设置 › 插件配置**：装上的插件都按分类列在这里，不知道一个插件叫什么、在哪，来这里找。点开就是它的配置，和插件页打开的是同一个页面，改哪边都一样，两边能互相跳转。\n- **功能插件进了插件目录**：插件页多了「功能插件」一类，每个都有开关、版本和配置。插件只要声明能配什么，表单就自动有了；密钥加密保存，页面只看得到后四位。移除插件时，它的配置和密钥一起删掉。\n- **自进化有了标准流程**：新增或修改插件、Agent 要做什么写在 `docs/标准流程.md`，放进了自进化 Agent 的规则：版本号、分类、配置入口、测试、文档。内核收走改动时会查，缺了退回给 Agent，到你这里的都是齐的，结果在检查里单独一行。这些规则还没有在真实的自进化任务里跑过。\n- **批准前就知道要不要重启**：自进化改软件时知道 Orbitra 是热更新的，会选影响小的做法。批准卡片和自进化页写明批准后要做什么，比如“打开的页面自己换成新的”或“要你重启一次 Orbitra”，要你动手的用警告色。\n- **使用情况插件 1.0.1**：1.14.0 给它加了「检索模型」的文字，但没升它的版本，装好的应用收不到。这一版补上。\n- **这一版内核会在空闲时自动重启一次**：从 1.13.0 更新不用装安装包，也不用重启应用。还在 1.12.x 的要重启一次应用，还在 1.11.x 的安装版要先装一次安装包。",
-  "at": "2026-11-04T08:10:43.954Z",
+  "version": "1.15.1",
+  "commit": "a3a32c3bebd453df89bc6f7203cafc44d030f129",
+  "previous": "1.15.0",
+  "title": "设置 › 插件配置只放要配置的插件",
+  "notes": "2026-11-04 · 设置 › 插件配置只放要配置的插件\n\n- **插件配置只放要配置的**：1.15.0 把没有配置项和只有开关的插件也列出来了。现在只列要填、要选的，比如换模型、填地址和 Key；只有开关的（记忆引擎、Mnemon 记忆库、记录库和资料库、重排模型）回到插件页。设置里也不再放启用开关，开关都在插件页，那些插件的开关和配置都没有变。\n- **构建遇到临时失败会再试**：安装依赖时碰上网络问题，或者上游正在发新版，等一会儿再试两次。1.15.0 的构建就因为这个失败过，要手动重跑。这一项只影响构建安装包，不影响已经装好的应用。\n- **这一版内核会在空闲时自动重启一次**：从 1.13.0 更新不用装安装包，也不用重启应用。还在 1.12.x 的要重启一次应用，还在 1.11.x 的安装版要先装一次安装包。",
+  "at": "2026-11-04T10:00:07.362Z",
   "key": "2838-d425-6b4d-9b6c",
   "needsInstaller": false,
   "reason": null,
@@ -130,7 +130,7 @@
       "size": 1543
     },
     "apps/desktop/package.json": {
-      "sha256": "c0452927804e43797781ac78fbb2218cbe7f9cd0c2e4899976c9cc61cdbbf787",
+      "sha256": "a781ef021fd06cfe415fc7e1eac9b7e0db506791d5bd6053599e59f1505d4c6e",
       "size": 497
     },
     "apps/desktop/src/main.js": {
@@ -169,13 +169,13 @@
       "sha256": "86bfee665748f826301059556509263660b3c03477c2df4f28f2d1bca9a45323",
       "size": 18670
     },
-    "apps/web/dist/assets/app-ILANJOB5.css": {
-      "sha256": "6358e72a76d8b187a0b977a32f091c45d97bb0c0a458b5cc0bef56626b466ce8",
-      "size": 385921
+    "apps/web/dist/assets/app-6ULU7NG6.css": {
+      "sha256": "938c676fb73d44c6c0c35578f17dab13e7159af72ad2c666085efae25a95124a",
+      "size": 385829
     },
-    "apps/web/dist/assets/app-YEF335UP.js": {
-      "sha256": "8f5de850b81c8b5f243edac4e31c7bd11c53972771b9dd4025bb15d41fe35e45",
-      "size": 1048281
+    "apps/web/dist/assets/app-UBSBOFVP.js": {
+      "sha256": "5664dec1d4ab3020f1640b289ac06ade63f5d7affa02a778b5cef4635a3c973b",
+      "size": 1048656
     },
     "apps/web/dist/favicon.svg": {
       "sha256": "bcb80e1e35769e211a50561885264eb368340a554314da769489964cd5062e76",
@@ -206,7 +206,7 @@
       "size": 1332
     },
     "apps/web/dist/index.html": {
-      "sha256": "4a4b58beb66eddaa9c2773058116edef7ba77c31a742b3ef13777870ee1e0029",
+      "sha256": "6ab048ade172ba42ce26edd02ba061ed98b362508680727f311a903266174073",
       "size": 1247
     },
     "apps/web/dist/manifest.webmanifest": {
@@ -214,7 +214,7 @@
       "size": 1202
     },
     "apps/web/dist/sw.js": {
-      "sha256": "96147707040a63d4e5d176f638b308686c1c8327330efb154c38740b4dc738be",
+      "sha256": "baec636645b61fac28a0137bffdab2165e32dd4d0d133cb4bf9b266fcdf4f99c",
       "size": 8659
     },
     "apps/web/package.json": {
@@ -610,12 +610,12 @@
       "size": 5916
     },
     "core/modules/runtime/index.js": {
-      "sha256": "3338374fe6c3f19dda98532d35fab604b10c2a91612a30402345a0391b279706",
-      "size": 10314
+      "sha256": "cd8739444521c55b9f2bf6192379995aeaae3a67dabf2394b2aac23da7bfeb39",
+      "size": 10953
     },
     "core/modules/runtime/npm.js": {
-      "sha256": "fa8a79f200036adf6f92bd84741ae0019bd76e770fe12c8b42ad9cab04209df6",
-      "size": 4841
+      "sha256": "d3362146475a444b97cacebd980245cbf664cd028a8ba895bba1399373e40074",
+      "size": 5403
     },
     "core/modules/scheduler/cron.js": {
       "sha256": "c32672b2fa946970d3f7c8d32c16e1f3935dc9ddb6a8dc8f2f01202c7f60abf2",
@@ -1184,8 +1184,8 @@
   },
   "bundle": {
     "name": "files.zip",
-    "sha256": "b9d67817c8f38b07c708ea0159fcaa918eb4df5d548b02ffac04aa10dd561f4c",
-    "size": 2635043
+    "sha256": "a4dfa3ae78e53b3218d1767e9e7f624ae7f6f19f99b0edfd58354ab70292877a",
+    "size": 2635712
   },
-  "signature": "FNMYuFenXYzqhUQxJnkh5xMF1MztH_kJi-1oNzRCn76fXfP2YtyDUOtHdklC6XatBB2wUGPO83ncYaVUlFziAw"
+  "signature": "jEW7PYKhqgFXmjJco-6sH4fhdb3V-IRWQdEqd2XIC9coS4lSH-Eca0t376ZZIjc8zrtSQXN_wlM9wHhm6wxxAg"
 }
