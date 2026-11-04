@@ -3,7 +3,7 @@
   "type": "app",
   "name": "Orbitra",
   "description": "Orbitra 本体：内核、界面、桌面外壳和 Orbitra 自己的 dsh 插件。",
-  "version": "1.12.0",
+  "version": "1.12.1",
   "core": true,
   "bundled": [
     "full"
