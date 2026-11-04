@@ -1,16 +1,16 @@
 {
   "format": "orbitra-release/2",
-  "version": "1.13.0",
-  "commit": "e49402c02398671479742c6b2bef4fc37fe7b748",
-  "previous": "1.12.1",
-  "title": "总指挥只有一个主会话，要批准的事每一页都看得到",
-  "notes": "2026-11-04 · 总指挥只有一个主会话，要批准的事每一页都看得到\n\n- **只有一个主会话**：首页没有\"新对话\"了，打开就接着说，不用新建对话，也不用手动压缩。以前的对话和定时任务说的话都按时间排在这条线上，来自别处的话带一个小标签，定时任务的那一轮折成一张结果卡片。以前对话里没答的问题卡片，翻到了照样能答。\n- **往回看**：往上滚动自动读更早的。左边是系统分好的话题和搜索框，点一下跳到那一句并亮一下；往下滚动读更新的，或点「回到最新」。\n- **压缩不丢内容**：原文一条不删。摘要里有程序抄下的原话和编号，不全靠模型概括。总指挥能查原文，说\"没提过\"之前必须先查。147 轮的测试对话、73 道回忆题，开着记忆时答对 73 题，原来的压缩答对 61 题；压缩 16 次，没有失败。压缩到一半进程被杀，下次接着来，摘要接得上。\n- **压缩和换窗口全自动**：总指挥到 6 万 token 时，在一轮说完 30 秒后压缩；空闲 20 分钟且超过 4.5 万时在后台压缩；一轮中途到 9 万时在两步之间压缩。摘要多了会合并：白天到 2.4 万，夜里 3:30 到 1.2 万。日志满 64 MB 或窗口满 30 天就换一个窗口，带上摘要和最近 10 轮，老窗口还能查。Agent 用同一套，线更高（15 万）。设置 › 数据与隐私 能看主会话的状况，只看不用管。\n- **总指挥不再用热记忆**：测试里模型一用它，花费从 ¥2.86 涨到 ¥5.25。总指挥记你的事只用 `remember`，Agent 不变。\n- **要你批准的操作每一页都看得到**：审批条挂在标题栏下面，能直接批准或拒绝，「详情」看完整内容，「全部 N 项」看其余的。新的一项出现后按钮先停 0.8 秒，连点不会批准没看过的下一项。来了响一声，窗口不在前面时弹系统通知、任务栏闪，窗口标题带数量，还剩 5 分钟再提醒一次。\n- **提示音默认开**：批准和任务做完的提示音现在默认开，设置 › 通用 可以关。\n- **对话只收中间的步骤**：说的话一直在，话和话之间的步骤收成一行（读了 3 个文件、改了 2 个文件 +24 −3 · 20 秒）。写文件和改文件的步骤点开是彩色 diff，回复下面一张卡片列出改过的文件。用命令改的文件，普通任务统计不到，面板上有说明。\n- **后台任务改成侧边面板**：不再占活动栏，和任务动态合进一个面板，有后台任务、改动、动态三个标签。任何页面都能开（对话头上的「后台」、状态栏、Ctrl+J），能拖宽，能全屏。旧链接会打开面板。\n- **Agent 工具更顺手**：后台命令能用了，超时的命令转到后台接着跑，能看输出、能停，任务结束时一起停。没读过的文件也能 edit（`old_string` 必须唯一匹配）；读过之后被改了，或 write 覆盖没读过的文件，仍然拒绝。单次 read 最多 16 KB，其他工具结果超过 2700 token 只留头尾和完整结果的路径。\n- **这一版要重启一次**：桌面外壳改了，更新后重启一次应用，不用装安装包。还在 1.11.x 的安装版，要先装一次安装包。",
-  "at": "2026-11-04T04:38:11.057Z",
+  "version": "1.14.0",
+  "commit": "9b5d985b264ffb77eb90cb4aa6afa3c26c0aead1",
+  "previous": "1.13.0",
+  "title": "检索模型可以换成阿里云 Qwen，前后说法对不上不再当成更正",
+  "notes": "2026-11-04 · 检索模型可以换成阿里云 Qwen，前后说法对不上不再当成更正\n\n- **可以换检索模型**：记忆、对话和资料默认还是用本机模型查找，内容不离开这台电脑。在 插件 › 语义检索 › 配置 里可以换成阿里云 Qwen 的向量和重排模型，不占本机内存，也不用下载，要有一个带 API Key 的百炼供应商。回答问题的模型不变。换之前能测试连接、看重建要花多少钱，只有你点了才换，随时能换回来。\n- **换了之后**：现有内容在后台重建一次向量，页面上有进度。记忆、对话、任务记录和资料的文字会发到阿里云，发之前抹掉密钥。Qwen 连不上时按关键词查，任务不停。花费记在用量页的「检索模型」，每次查找约 ¥0.0005。\n- **比过的结果**：用 memory-system-benchmark 的公开样例（108 题），加上 1556 轮干扰聊天后，它的 Qwen RAG 答对 105 题，Orbitra 本机模型 105 题，Orbitra 加 Qwen 两个模型 108 题。不加干扰时都是 108 题。样例偏容易，干扰聊天是我们自己生成的，只能当参考。数字和局限在 `docs/设计-检索模型.md`。\n- **前后说法对不上不再当成更正**：你前后说得不一样、又没说是变了还是说错了（\"之前说那只猫是白的，我现在看是灰的\"），两种说法都留着，记成\"先说 X，后来又说 Y，没说明原因\"，回答时也两种都说。明确说错了，或者事情确实变了，照旧用新的。\n- **这一版内核会在空闲时自动重启一次**：从 1.13.0 更新不用装安装包，也不用重启应用。还在 1.12.x 的要重启一次应用，还在 1.11.x 的安装版要先装一次安装包。",
+  "at": "2026-11-04T06:20:23.372Z",
   "key": "2838-d425-6b4d-9b6c",
   "needsInstaller": false,
   "reason": null,
   "depsSince": "1.12.0",
-  "installerSince": "1.13.0",
+  "installerSince": "1.14.0",
   "installerReason": "安装版的 core.yml 打包时改过（指向自带的运行时），core.yml 变了要重新装安装包",
   "libraries": {
     "@orbitra/contracts": "packages/contracts",
@@ -130,7 +130,7 @@
       "size": 1543
     },
     "apps/desktop/package.json": {
-      "sha256": "24f6a6c18175fcb3cb35fa9189732970286dce7b9993d930c1f07f770eddf4e6",
+      "sha256": "007c59995f26e2c0bad4a739a35de21a4250c1e192bf9f8cf68eaacfdef33a32",
       "size": 497
     },
     "apps/desktop/src/main.js": {
@@ -169,13 +169,13 @@
       "sha256": "86bfee665748f826301059556509263660b3c03477c2df4f28f2d1bca9a45323",
       "size": 18670
     },
-    "apps/web/dist/assets/app-AJKA7IMS.js": {
-      "sha256": "85f40301898d07252a57c872c177f5101055f815884e7069e4f05f7c2441e884",
-      "size": 1028274
+    "apps/web/dist/assets/app-IDNMFFBQ.css": {
+      "sha256": "033965d5292dfb129ef2d16a9e98e6a767531ec89123c06a51ea55d0443be35e",
+      "size": 383739
     },
-    "apps/web/dist/assets/app-CT437D2D.css": {
-      "sha256": "95d256c8d7815b8f8a7233dafe633a42e978f400a15756612cb3093df3047841",
-      "size": 380799
+    "apps/web/dist/assets/app-MPT4UHSX.js": {
+      "sha256": "ef03fb3ebfa7b0c40b20922bae1528286d2bb95a9c75fff1560063e23935beb6",
+      "size": 1036470
     },
     "apps/web/dist/favicon.svg": {
       "sha256": "bcb80e1e35769e211a50561885264eb368340a554314da769489964cd5062e76",
@@ -206,7 +206,7 @@
       "size": 1332
     },
     "apps/web/dist/index.html": {
-      "sha256": "78b1f18dfac15c4c21af076e5535d484e25eba406d34cb4bbe7a94722a59e09e",
+      "sha256": "0a81f01c430edcb056f10ad479023b15f90927efc4322f9f2b3eb32ef96522f3",
       "size": 1247
     },
     "apps/web/dist/manifest.webmanifest": {
@@ -214,7 +214,7 @@
       "size": 1202
     },
     "apps/web/dist/sw.js": {
-      "sha256": "a5792926e954d5ae7f9520fd6bf9c49457278ce354b7309fe3c02b0e9225dda4",
+      "sha256": "c9e42d5ed89bbd3570952e5e6c110f4fd8a98afb4019c11a3ae71b995646d9aa",
       "size": 8659
     },
     "apps/web/package.json": {
@@ -222,8 +222,8 @@
       "size": 477
     },
     "core/core.yml": {
-      "sha256": "e6aa7b0e422a7b3d274b56a34087907d6255bbfbdc1f09accb62b28e2e7339d6",
-      "size": 15637
+      "sha256": "c917a094d97128d7b8d9daade432c5af7d21b5eb6c30e989087dfc11bd5d2687",
+      "size": 15887
     },
     "core/market/catalog.json": {
       "sha256": "4c42122022a66462f8be1855024ed180dbe2f2ae1383ad097f948fd39871fa24",
@@ -302,8 +302,8 @@
       "size": 20488
     },
     "core/modules/conductor/AGENTS.md": {
-      "sha256": "c784eb18dd0e049c19e8b389c1d0e8d8ab3daf4c2490d5d0e468e08c5cc1fd8e",
-      "size": 12738
+      "sha256": "687624f24cf98beeff15102fbc9f41b52544985bd86b9fe1051d0d36ce8d5366",
+      "size": 13007
     },
     "core/modules/conductor/attachments.js": {
       "sha256": "ca3aa3aca6223f27f1baf899c3815e1e5aba610f4b136f678b88a52ca0601a70",
@@ -430,12 +430,12 @@
       "size": 5511
     },
     "core/modules/knowledge/index.js": {
-      "sha256": "e4cfcbdc0c9fd4b948e2de95d6707f088bf0585589dc7162f2690f395c9daf7b",
-      "size": 14555
+      "sha256": "ed4389c30e1f8332559d4761796daf2b9b5bbe75dac84b4d0733dbaa49daf942",
+      "size": 15255
     },
     "core/modules/knowledge/knowledge.js": {
-      "sha256": "039249522b719f6c8db85fdddd95e34bbe93c4d16bf4f3f05b6717671541980c",
-      "size": 32351
+      "sha256": "55606af0d859a0d32a3ebfb9c19a4d93ea3d3e92b36ae28bd8291b9d1c8edff1",
+      "size": 33218
     },
     "core/modules/knowledge/parse/clean.js": {
       "sha256": "7731a83bf6d1d651c39a7653ad2557cfedee3ec1cfce62ded6d5e445e88b0323",
@@ -490,12 +490,12 @@
       "size": 23840
     },
     "core/modules/ledger/price-rules.json": {
-      "sha256": "3de5011a8401147d4e0d21e7f3b2d0e82ccf5fde7cd88852a5b212734972d499",
-      "size": 1855
+      "sha256": "1d09bcc4f8e5eaab825e6cd5afd47795df788ba9a28d558bbbb72dfae7bad886",
+      "size": 1986
     },
     "core/modules/ledger/prices.js": {
-      "sha256": "71506844ae575dcd1b9a9847656130b1539a5fd201656d6e70becc6c1358ef03",
-      "size": 4187
+      "sha256": "cc06147fc754df2559b480cc408fb882224f59181832d892ee17ea2f617cf319",
+      "size": 4314
     },
     "core/modules/ledger/sessions.js": {
       "sha256": "4da5cdb69252a8ac3a9dcb7ad07d40d3e84132c41329e06336e3d98ca2380e7e",
@@ -534,16 +534,16 @@
       "size": 7860
     },
     "core/modules/memory-hub/index.js": {
-      "sha256": "b3ac0ab5e8840a721a3218bc293161fd11e736187aea38e4e34633269b891fb6",
-      "size": 25354
+      "sha256": "987539be8c89b7b84f27be6c9eb8d2178cfe69624e45cc0dfef4c4e4ce4c1e66",
+      "size": 29016
     },
     "core/modules/memory-hub/judge.js": {
-      "sha256": "bed7ac48e2bf69747c19375fe54dd0b8b0940c20eb9122954b9cddb71974413a",
-      "size": 11929
+      "sha256": "50a4dd181eb2fb4ff7cac227f2d71e6c2dc121e1a9a4fc358545c5717461240c",
+      "size": 12763
     },
     "core/modules/memory-hub/memory.js": {
-      "sha256": "2226de0ed7914f76113af93f50059d31e1e3c14c65473e4d42d54ea0d9066483",
-      "size": 49884
+      "sha256": "21d14c433e07d7cf0c21229c9e80c8d3bd2fa61cf9d9e1c5bd95b25fa50ac554",
+      "size": 50920
     },
     "core/modules/memory-hub/registry.js": {
       "sha256": "74f206f122f1ac1f6c980276135712a0974e39914ace4fd916b6009796bd7f4f",
@@ -554,8 +554,8 @@
       "size": 6052
     },
     "core/modules/memory-hub/retrieve.js": {
-      "sha256": "a7275955a4cff0074ae55f1a6b805489f8e61926418f120df70b5d9f74f18e30",
-      "size": 4438
+      "sha256": "a3de950c29b14b7ace0b42bcf7e301888bb40f222bbb6a81232ce1d2e7b092fe",
+      "size": 4603
     },
     "core/modules/models/catalog.js": {
       "sha256": "e33260ba9d6b4a0bbc8b15417d8d094072d8dfbfdd68ddd0e95077d849203de6",
@@ -592,6 +592,14 @@
     "core/modules/plugins/index.js": {
       "sha256": "b8959dd1707baa70e2fc83ee3215519aace4b6def056021db8506180b02d6d39",
       "size": 15413
+    },
+    "core/modules/retrieval-models/index.js": {
+      "sha256": "778b07af464ae07eecfc40caf9df1efd1c71ce10225561c06e86106f2f040953",
+      "size": 5587
+    },
+    "core/modules/retrieval-models/qwen.js": {
+      "sha256": "d3c58bf742d54b772c375dbd735bc5c89600ea914c9abac27b6fa90c98408b39",
+      "size": 5916
     },
     "core/modules/runtime/index.js": {
       "sha256": "3338374fe6c3f19dda98532d35fab604b10c2a91612a30402345a0391b279706",
@@ -1168,8 +1176,8 @@
   },
   "bundle": {
     "name": "files.zip",
-    "sha256": "4345871f24fa3dc021c0aa89fb693ec420154e479061949e100872ea4bb2dde2",
-    "size": 2608882
+    "sha256": "398c231a426c373c3b5aebe74719d641935b5dc4167a3f06fd36a3cfe857c5e7",
+    "size": 2620394
   },
-  "signature": "MbMjedPRz6_k2Ioprq_-LUZhKESy7CWH9MgW-u6GuYVhRCL56HrfN-JgcsGMa_gfU8qVdmxKajPeIzYMO_YrCg"
+  "signature": "VZ1FNxmYN1Oe0fQnQiUdUSAUle_HskaWqI04994hMm6YINcDzCa3-218GyEibDfHnMt7RPerRm0Twr8iv1kCAA"
 }
