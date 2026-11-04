@@ -1,7 +1,7 @@
 {
   "format": "orbitra-market/1",
   "repo": "lanStar2003/orbitra-market",
-  "updatedAt": "2026-11-04T06:28:47Z",
+  "updatedAt": "2026-11-04T08:11:04.970Z",
   "key": "2838-d425-6b4d-9b6c",
   "categories": [
     {
@@ -42,13 +42,13 @@
       "bundled": [
         "full"
       ],
-      "version": "1.14.0",
-      "tag": "v1.14.0",
-      "at": "2026-11-04T06:20:23.372Z",
+      "version": "1.15.0",
+      "tag": "v1.15.0",
+      "at": "2026-11-04T08:10:43.954Z",
       "update": {
         "manifest": "https://raw.githubusercontent.com/lanStar2003/orbitra-market/main/plugins/app/orbitra/manifest.json",
         "bundle": "https://raw.githubusercontent.com/lanStar2003/orbitra-market/main/plugins/app/orbitra/files.zip",
-        "size": 2620394
+        "size": 2635043
       },
       "installers": {
         "full": {
@@ -74,7 +74,8 @@
           }
         }
       },
-      "installersUrl": "https://github.com/lanStar2003/orbitra-market/releases/tag/v1.14.0"
+      "installersUrl": "https://github.com/lanStar2003/orbitra-market/releases/tag/v1.14.0",
+      "installersVersion": "1.14.0"
     },
     {
       "id": "dsh",
@@ -106,10 +107,10 @@
       "bundled": [
         "full"
       ],
-      "version": "1.0.0",
-      "tag": "addon-usage-v1.0.0",
+      "version": "1.0.1",
+      "tag": "addon-usage-v1.0.1",
       "published": true,
-      "at": "2026-11-03T05:40:58.578Z",
+      "at": "2026-11-04T08:11:04.970Z",
       "update": {
         "manifest": "https://raw.githubusercontent.com/lanStar2003/orbitra-market/main/plugins/addon/usage/manifest.json"
       }
@@ -158,10 +159,10 @@
       "bundled": [
         "full"
       ],
-      "version": "1.1.1",
-      "tag": "agent-evolve-v1.1.1",
+      "version": "1.1.2",
+      "tag": "agent-evolve-v1.1.2",
       "published": true,
-      "at": "2026-11-02T23:56:55.489Z",
+      "at": "2026-11-04T08:10:58.815Z",
       "update": {
         "manifest": "https://raw.githubusercontent.com/lanStar2003/orbitra-market/main/plugins/agent/evolve/manifest.json"
       }
