@@ -9,7 +9,7 @@ Orbitra 是以 harness 为核心的个人 AI 助理：桌面级软件，Windows�
 
 ## 下载
 
-Orbitra **1.13.0**，2026-11-04 发布（[Release 页面](https://github.com/lanStar2003/orbitra-market/releases/tag/v1.13.0)）。
+Orbitra **1.13.0**。新版本 1.14.0 的安装包还在打包，下面是 1.13.0 的。
 
 | 平台 | 安装包 |
 |---|---|
@@ -31,7 +31,7 @@ Orbitra **1.13.0**，2026-11-04 发布（[Release 页面](https://github.com/lan
 
 | 名称 | 版本 | 核心 | 安装包 | 说明 | 获取 |
 |---|---|---|---|---|---|
-| [Orbitra](plugins/app/orbitra) | 1.13.0 | **核心** | 自带 | Orbitra 本体：内核、界面、桌面外壳和 Orbitra 自己的 dsh 插件。 | [安装包](#下载) |
+| [Orbitra](plugins/app/orbitra) | 1.14.0 | **核心** | 自带 | Orbitra 本体：内核、界面、桌面外壳和 Orbitra 自己的 dsh 插件。 | [安装包](#下载) |
 
 ### [运行方式](plugins/harness)
 
