@@ -1,11 +1,11 @@
 {
   "format": "orbitra-release/2",
-  "version": "1.14.0",
-  "commit": "9b5d985b264ffb77eb90cb4aa6afa3c26c0aead1",
-  "previous": "1.13.0",
-  "title": "检索模型可以换成阿里云 Qwen，前后说法对不上不再当成更正",
-  "notes": "2026-11-04 · 检索模型可以换成阿里云 Qwen，前后说法对不上不再当成更正\n\n- **可以换检索模型**：记忆、对话和资料默认还是用本机模型查找，内容不离开这台电脑。在 插件 › 语义检索 › 配置 里可以换成阿里云 Qwen 的向量和重排模型，不占本机内存，也不用下载，要有一个带 API Key 的百炼供应商。回答问题的模型不变。换之前能测试连接、看重建要花多少钱，只有你点了才换，随时能换回来。\n- **换了之后**：现有内容在后台重建一次向量，页面上有进度。记忆、对话、任务记录和资料的文字会发到阿里云，发之前抹掉密钥。Qwen 连不上时按关键词查，任务不停。花费记在用量页的「检索模型」，每次查找约 ¥0.0005。\n- **比过的结果**：用 memory-system-benchmark 的公开样例（108 题），加上 1556 轮干扰聊天后，它的 Qwen RAG 答对 105 题，Orbitra 本机模型 105 题，Orbitra 加 Qwen 两个模型 108 题。不加干扰时都是 108 题。样例偏容易，干扰聊天是我们自己生成的，只能当参考。数字和局限在 `docs/设计-检索模型.md`。\n- **前后说法对不上不再当成更正**：你前后说得不一样、又没说是变了还是说错了（\"之前说那只猫是白的，我现在看是灰的\"），两种说法都留着，记成\"先说 X，后来又说 Y，没说明原因\"，回答时也两种都说。明确说错了，或者事情确实变了，照旧用新的。\n- **这一版内核会在空闲时自动重启一次**：从 1.13.0 更新不用装安装包，也不用重启应用。还在 1.12.x 的要重启一次应用，还在 1.11.x 的安装版要先装一次安装包。",
-  "at": "2026-11-04T06:20:23.372Z",
+  "version": "1.15.0",
+  "commit": "7490cc898ffc98856cf74710880cc4874429dc28",
+  "previous": "1.14.0",
+  "title": "设置里有了插件配置，自进化按标准流程新增插件",
+  "notes": "2026-11-04 · 设置里有了插件配置，自进化按标准流程新增插件\n\n- **设置 › 插件配置**：装上的插件都按分类列在这里，不知道一个插件叫什么、在哪，来这里找。点开就是它的配置，和插件页打开的是同一个页面，改哪边都一样，两边能互相跳转。\n- **功能插件进了插件目录**：插件页多了「功能插件」一类，每个都有开关、版本和配置。插件只要声明能配什么，表单就自动有了；密钥加密保存，页面只看得到后四位。移除插件时，它的配置和密钥一起删掉。\n- **自进化有了标准流程**：新增或修改插件、Agent 要做什么写在 `docs/标准流程.md`，放进了自进化 Agent 的规则：版本号、分类、配置入口、测试、文档。内核收走改动时会查，缺了退回给 Agent，到你这里的都是齐的，结果在检查里单独一行。这些规则还没有在真实的自进化任务里跑过。\n- **批准前就知道要不要重启**：自进化改软件时知道 Orbitra 是热更新的，会选影响小的做法。批准卡片和自进化页写明批准后要做什么，比如“打开的页面自己换成新的”或“要你重启一次 Orbitra”，要你动手的用警告色。\n- **使用情况插件 1.0.1**：1.14.0 给它加了「检索模型」的文字，但没升它的版本，装好的应用收不到。这一版补上。\n- **这一版内核会在空闲时自动重启一次**：从 1.13.0 更新不用装安装包，也不用重启应用。还在 1.12.x 的要重启一次应用，还在 1.11.x 的安装版要先装一次安装包。",
+  "at": "2026-11-04T08:10:43.954Z",
   "key": "2838-d425-6b4d-9b6c",
   "needsInstaller": false,
   "reason": null,
@@ -42,11 +42,11 @@
       "size": 812
     },
     "agents/evolve/AGENTS.md": {
-      "sha256": "5b24942acb7e954d6416f59a680879dd9757d361454f330c0ff6524bc2ce438a",
-      "size": 2093
+      "sha256": "ebad3264fe2500ba5fe865714b38d0008542a056546d211465315370dc0a5b98",
+      "size": 2376
     },
     "agents/evolve/agent.yml": {
-      "sha256": "24afb59ffeb8aa166583e0e111a388470bfd39a305ded523325293dff8a0d4fd",
+      "sha256": "e67d0de6c32526ca62971af7476e08a5e8f77c913498ead3a7e8b2852fda1ec7",
       "size": 880
     },
     "agents/general/AGENTS.md": {
@@ -130,7 +130,7 @@
       "size": 1543
     },
     "apps/desktop/package.json": {
-      "sha256": "007c59995f26e2c0bad4a739a35de21a4250c1e192bf9f8cf68eaacfdef33a32",
+      "sha256": "c0452927804e43797781ac78fbb2218cbe7f9cd0c2e4899976c9cc61cdbbf787",
       "size": 497
     },
     "apps/desktop/src/main.js": {
@@ -169,13 +169,13 @@
       "sha256": "86bfee665748f826301059556509263660b3c03477c2df4f28f2d1bca9a45323",
       "size": 18670
     },
-    "apps/web/dist/assets/app-IDNMFFBQ.css": {
-      "sha256": "033965d5292dfb129ef2d16a9e98e6a767531ec89123c06a51ea55d0443be35e",
-      "size": 383739
+    "apps/web/dist/assets/app-ILANJOB5.css": {
+      "sha256": "6358e72a76d8b187a0b977a32f091c45d97bb0c0a458b5cc0bef56626b466ce8",
+      "size": 385921
     },
-    "apps/web/dist/assets/app-MPT4UHSX.js": {
-      "sha256": "ef03fb3ebfa7b0c40b20922bae1528286d2bb95a9c75fff1560063e23935beb6",
-      "size": 1036470
+    "apps/web/dist/assets/app-YEF335UP.js": {
+      "sha256": "8f5de850b81c8b5f243edac4e31c7bd11c53972771b9dd4025bb15d41fe35e45",
+      "size": 1048281
     },
     "apps/web/dist/favicon.svg": {
       "sha256": "bcb80e1e35769e211a50561885264eb368340a554314da769489964cd5062e76",
@@ -206,7 +206,7 @@
       "size": 1332
     },
     "apps/web/dist/index.html": {
-      "sha256": "0a81f01c430edcb056f10ad479023b15f90927efc4322f9f2b3eb32ef96522f3",
+      "sha256": "4a4b58beb66eddaa9c2773058116edef7ba77c31a742b3ef13777870ee1e0029",
       "size": 1247
     },
     "apps/web/dist/manifest.webmanifest": {
@@ -214,7 +214,7 @@
       "size": 1202
     },
     "apps/web/dist/sw.js": {
-      "sha256": "c9e42d5ed89bbd3570952e5e6c110f4fd8a98afb4019c11a3ae71b995646d9aa",
+      "sha256": "96147707040a63d4e5d176f638b308686c1c8327330efb154c38740b4dc738be",
       "size": 8659
     },
     "apps/web/package.json": {
@@ -230,12 +230,12 @@
       "size": 5113
     },
     "core/modules/addons/index.js": {
-      "sha256": "b13cf0e25daef7d294cba308bdf28e03f4261913993bd0b96a0b0216d4345486",
-      "size": 15917
+      "sha256": "26e30479c5b1218ce361612d3642d60c8010f111027613bb7c581e617a815a05",
+      "size": 18333
     },
     "core/modules/addons/manifest.js": {
-      "sha256": "c39afd9bc99927c22121ae4d487a5e8f3330160647cb41d97545e1f47fde177f",
-      "size": 3140
+      "sha256": "e25d94bf0015fd0a091163d1864730f825f83d3c322273cd9f8216c4feb80d31",
+      "size": 3380
     },
     "core/modules/admission/index.js": {
       "sha256": "9cf3cac73dae77a3fa68006f3a1665b59070fe87ba52f3443fca4451827b56ca",
@@ -302,8 +302,8 @@
       "size": 20488
     },
     "core/modules/conductor/AGENTS.md": {
-      "sha256": "687624f24cf98beeff15102fbc9f41b52544985bd86b9fe1051d0d36ce8d5366",
-      "size": 13007
+      "sha256": "44a768b22846897d1d189e963523618a187c716e1324da9d6dd55552dd1f8d00",
+      "size": 13100
     },
     "core/modules/conductor/attachments.js": {
       "sha256": "ca3aa3aca6223f27f1baf899c3815e1e5aba610f4b136f678b88a52ca0601a70",
@@ -370,20 +370,20 @@
       "size": 18550
     },
     "core/modules/evolution/code.js": {
-      "sha256": "154548277fe099a0bafc27cc80f56e6ec69866e3d131f86034dda526d8e51d30",
-      "size": 54996
+      "sha256": "781fe5abf8923285b6cc1197d9aec3e33d194c78918646c91c682ff76c8163e8",
+      "size": 59195
     },
     "core/modules/evolution/draft.js": {
       "sha256": "8b32997d9d8523e33212521fdb146341259e12215105965e17844ba840599b0b",
       "size": 15626
     },
     "core/modules/evolution/index.js": {
-      "sha256": "aa43dbdba13d4b80d9d33dfe02b849a68e1d96342747246f8f52ea069e22361b",
-      "size": 127843
+      "sha256": "8df01fe63552e7fe13a2464090e2a3315be555ceec394f765a295c6cadbafe2e",
+      "size": 128598
     },
     "core/modules/evolution/map.js": {
-      "sha256": "7912153f6365dda3e118a7b8e44bee2088e6ec0d9b5f3f0aa0e5a6c8a658d1d3",
-      "size": 12242
+      "sha256": "3667a7c2c9b70fec7c18bc0a138b30f54361c3c58f54f5bf6eae2db562eff55c",
+      "size": 12486
     },
     "core/modules/evolution/packs.js": {
       "sha256": "4349bfb791e34cd7130a9ac4b7cdc795ad0509e9684a3c88e56fad27885c7c6c",
@@ -392,6 +392,10 @@
     "core/modules/evolution/shadow.js": {
       "sha256": "7673336d74aabe9dba50267cecc0846f1861d0a7fce0bfab7e0807c55b871a00",
       "size": 6129
+    },
+    "core/modules/evolution/standard.js": {
+      "sha256": "5941722f1336bbfe394e00ba8b4061ba4b48bcf1c8b48d53d2880e4626cd5739",
+      "size": 12419
     },
     "core/modules/gateway/cert.js": {
       "sha256": "2024291a5b745596c8e03b4bc9b57b57bc7dffea2aa067c76ac2ab552f782613",
@@ -590,8 +594,12 @@
       "size": 10057
     },
     "core/modules/plugins/index.js": {
-      "sha256": "b8959dd1707baa70e2fc83ee3215519aace4b6def056021db8506180b02d6d39",
-      "size": 15413
+      "sha256": "ea95f85c7919b280ebcca74c4bb92e9ce5665c95625d7f34232253746fc13ace",
+      "size": 17197
+    },
+    "core/modules/plugins/settings.js": {
+      "sha256": "7988bec28640fbe77cc4a50c692bb9b92515cce538751ccb5762543dc5fb74d8",
+      "size": 5195
     },
     "core/modules/retrieval-models/index.js": {
       "sha256": "778b07af464ae07eecfc40caf9df1efd1c71ce10225561c06e86106f2f040953",
@@ -1176,8 +1184,8 @@
   },
   "bundle": {
     "name": "files.zip",
-    "sha256": "398c231a426c373c3b5aebe74719d641935b5dc4167a3f06fd36a3cfe857c5e7",
-    "size": 2620394
+    "sha256": "b9d67817c8f38b07c708ea0159fcaa918eb4df5d548b02ffac04aa10dd561f4c",
+    "size": 2635043
   },
-  "signature": "VZ1FNxmYN1Oe0fQnQiUdUSAUle_HskaWqI04994hMm6YINcDzCa3-218GyEibDfHnMt7RPerRm0Twr8iv1kCAA"
+  "signature": "FNMYuFenXYzqhUQxJnkh5xMF1MztH_kJi-1oNzRCn76fXfP2YtyDUOtHdklC6XatBB2wUGPO83ncYaVUlFziAw"
 }
