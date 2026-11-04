@@ -1,12 +1,12 @@
 {
   "format": "orbitra-addon-pack/1",
   "id": "usage",
-  "version": "1.0.0",
-  "from": null,
+  "version": "1.0.1",
+  "from": "1.0.0",
   "title": "",
   "name": "使用情况",
   "description": "每一步模型调用花了多少钱：按模型、线路、Agent、来源、对话、任务、时段拆开看，含缓存、子 Agent、审查，附省钱建议。",
-  "at": "2026-11-03T05:40:58.578Z",
+  "at": "2026-11-04T08:11:04.970Z",
   "key": "2838-d425-6b4d-9b6c",
   "files": {
     "README.md": {
@@ -14,8 +14,8 @@
       "size": 547
     },
     "dist/core.js": {
-      "sha256": "6b03f6627499550447067f955013a2aa5cc6082fd3318eb0b0f2995d90d29602",
-      "size": 41960
+      "sha256": "05b3d5617d4add7d9aaae2f7d6bdb9f5b3fa7b5b5874c3d63cf2ac1efe9c74c4",
+      "size": 41999
     },
     "dist/index.css": {
       "sha256": "8b181b361959f582eb3ab742e8e6a55be520e2451b5838a2853dea52f3449cca",
@@ -26,9 +26,9 @@
       "size": 61367
     },
     "plugin.json": {
-      "sha256": "8f5add7dd90292d7bbd2459c35f96405bcaa453f6de67be478e5759794d23aad",
-      "size": 479
+      "sha256": "24f40c0626856af0a3712b124b717532d4adeab65ebd514f6eeda6c2aa2520dd",
+      "size": 497
     }
   },
-  "signature": "_-AStH453JwaJQ9okQw6LOxFvKRiNV85v9s_GBZtWMCL8TlYuCpxIKhhuKAGzYSZrh-wvHq3RQc_2VHf5L_OAQ"
+  "signature": "fj7-D5UqxCwzBY1WwP1Pp3ts7BZg9GnIpMw369aRtPgVkDGmXhZwT6amIVWIpKhp-OToRxAb6ndnMMxHVjgsBQ"
 }

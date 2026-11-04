@@ -22,7 +22,7 @@ var parse = (v, fallback) => {
     return fallback;
   }
 };
-var SOURCES = Object.freeze({ conductor: "\u603B\u6307\u6325", agent: "Agent", subagent: "\u5B50 Agent", evolve: "\u81EA\u8FDB\u5316", reviewer: "\u81EA\u52A8\u5BA1\u67E5", "code-review": "\u4EE3\u7801\u5BA1\u67E5", judge: "\u8BB0\u5FC6\u5224\u65AD", shadow: "\u5F71\u5B50\u91CD\u653E", direct: "\u76F4\u63A5\u4F7F\u7528" });
+var SOURCES = Object.freeze({ conductor: "\u603B\u6307\u6325", agent: "Agent", subagent: "\u5B50 Agent", evolve: "\u81EA\u8FDB\u5316", reviewer: "\u81EA\u52A8\u5BA1\u67E5", "code-review": "\u4EE3\u7801\u5BA1\u67E5", judge: "\u8BB0\u5FC6\u5224\u65AD", retrieval: "\u68C0\u7D22\u6A21\u578B", shadow: "\u5F71\u5B50\u91CD\u653E", direct: "\u76F4\u63A5\u4F7F\u7528" });
 var SHELLS = /* @__PURE__ */ new Set(["pwsh", "bash", "shell", "powershell", "sh", "exec"]);
 var EDITS = /* @__PURE__ */ new Set(["edit", "write", "multi_edit"]);
 var EXPLORE = /* @__PURE__ */ new Set(["read", "grep", "web_fetch", "web_search", "read_image", "glob", "mnemon_document_search"]);
