@@ -1,14 +1,14 @@
 {
   "format": "orbitra-release/2",
-  "version": "1.12.0",
-  "commit": "d0e03ad56928f99fa19732f9de5526d1485779b8",
-  "previous": "1.11.3",
-  "title": "改完自己生效，对话看得见过程",
-  "notes": "2026-11-03 · 改完自己生效，对话看得见过程\n\n- **自进化改完自己生效**：批准之后不用再点任何东西。改页面，打开的页面自己换成新的，路由、没发出去的话、光标和滚动位置都在，只淡一下。改 dsh 插件，文件直接换进运行时，第一个空闲时刻 dsh 自己重启，正在跑的任务不会被打断。改内核，没有任务在跑时自己重启，窗口不关，页面自动重连。只有桌面外壳和依赖变了才提示重启或重装。新内核起不来时自动退回上一版。回滚和市场更新走同一套；市场更新下载的还是整个版本，只换内容变了的文件。\n- **对话看得见过程**：总指挥和 Agent 中途说的话直接显示，思考和工具调用一步步滑进来，当前那步有扫光，工具步骤说人话（「读了 AGENTS.md」）。做完约 1 秒后收成一行「过程 · 12 步 · 1 分 20 秒」，只留最终结果；点开还能看，刷新和重启后也能。设置里的动效开关和系统的减少动效都管用。\n- **记忆只留一行小字**：「用了 3 条记忆」，点开才看是哪几条。\n- **后台任务**：派活在对话里只留一行「后台 · 3 个任务 · 1 个进行中」。活动栏多了「后台任务」入口，列表实时更新，进去和首页一样是对话，要求是第一条消息，底下的输入框直接对它说；结束的任务在原来的会话接着做。单独的派发详情页去掉了，旧链接会转到新页。\n- **自进化能读自己的数据**：日志、会话记录、运行时、插件、记忆都能读，`core.db`、`knowledge.db` 要用只读方式打开。写、删和密钥还是不行，改 Orbitra 只能走你批准的方案。\n- **这一版要装一次安装包**：1.11.x 的安装版把插件放在打包的运行时里，这一版又改了插件和桌面外壳，所以从 1.11.x 升上来要装一次新安装包。之后就按上面自动生效。",
-  "at": "2026-11-03T15:01:32.008Z",
+  "version": "1.12.1",
+  "commit": "1c138dba215af91c380b36d946b2228457a04268",
+  "previous": "1.12.0",
+  "title": "对话动效整套搬自 dsh-claude-style",
+  "notes": "按 dsh-claude-style 0.16.3 移植整套对话动效：有界 Myers 差分 + 24 档高光的逐字淡入，新增打字节拍器把内核每 150ms 一段的流按字放出来，补上卷帘门、思考回放窗口、状态行第三种点阵与渐变流动、发送气泡两档、自绘输入光标、侧栏呼吸灯；设置页『动效』拆成 8 项开关各带真实组件预览。新开关的默认值只有一处出处：新装用这一版的默认，升级时按那一行原来的动效偏好补齐（关着的不变），网页端拿不到键时回落旧观感。",
+  "at": "2026-11-04T00:10:42.508Z",
   "key": "2838-d425-6b4d-9b6c",
-  "needsInstaller": true,
-  "reason": "依赖变了（package-lock.json）",
+  "needsInstaller": false,
+  "reason": null,
   "depsSince": "1.12.0",
   "installerSince": "1.12.0",
   "installerReason": "安装版的插件在打包的运行时里，改了插件要重新打安装包",
@@ -129,7 +129,7 @@
       "size": 1543
     },
     "apps/desktop/package.json": {
-      "sha256": "64a5a9bd83d5c97210fff7e1b1a33ce075b3c8712f48765cab27123ad55072c0",
+      "sha256": "057f6ace8cfa4b4b2581d997b0a88b7f6a5743bd0154930f5385a200dc26d044",
       "size": 497
     },
     "apps/desktop/src/main.js": {
@@ -168,13 +168,13 @@
       "sha256": "86bfee665748f826301059556509263660b3c03477c2df4f28f2d1bca9a45323",
       "size": 18670
     },
-    "apps/web/dist/assets/app-BNWDL6YO.css": {
-      "sha256": "79dc1e894d9e62566bd0b13e97f41500c4673dd985142fec127a8b081536a365",
-      "size": 361579
+    "apps/web/dist/assets/app-EQBU4NCG.js": {
+      "sha256": "98b4645f77884c57def3406fdbf186b74d7bad912ea1d226342d32eaeb18c4db",
+      "size": 1001193
     },
-    "apps/web/dist/assets/app-HFW7KJOM.js": {
-      "sha256": "2ccda7969735d860ef2b58ec2de44927a2ecc3e7508fea35a7546d4cfdb83abf",
-      "size": 986913
+    "apps/web/dist/assets/app-FLW65J3J.css": {
+      "sha256": "5a7b0dcd8145f27ceb7c2be05464265ccececdc624f2f559973aef9f2306ba26",
+      "size": 366030
     },
     "apps/web/dist/favicon.svg": {
       "sha256": "bcb80e1e35769e211a50561885264eb368340a554314da769489964cd5062e76",
@@ -205,7 +205,7 @@
       "size": 1332
     },
     "apps/web/dist/index.html": {
-      "sha256": "2623de513182adde5d17c87cbc7b3fc830f8fdd828501acb17a9824241e25e09",
+      "sha256": "ddea52f995030885f283922c837893e276ba54fe35173a020cd4dbdc44012dd3",
       "size": 1247
     },
     "apps/web/dist/manifest.webmanifest": {
@@ -213,7 +213,7 @@
       "size": 1198
     },
     "apps/web/dist/sw.js": {
-      "sha256": "dbf701a9c6fbaeb5282b3ddac187998a75c534e712a5cc22b2e7d94bb9e742ae",
+      "sha256": "581be30cd74a3c4f2e2f1b8c3d24a7532225a45bca4a7deae808823c6404d057",
       "size": 8659
     },
     "apps/web/package.json": {
@@ -289,8 +289,8 @@
       "size": 3285
     },
     "core/modules/auth-local/preferences.js": {
-      "sha256": "afd7c554aaca495549285fba48158df508cf674aaf7e571d291d09e0e7ae1a7a",
-      "size": 5130
+      "sha256": "918fc569c7f3699b0135d1553f8582b8e945c2962714561341b5ce7c3f8acdfa",
+      "size": 7825
     },
     "core/modules/auth-local/web-guard.js": {
       "sha256": "4fc5e89f4a2e4468cca73315ad92603adb1081c9354b58ddfd3a41b9fe48fb75",
@@ -1083,8 +1083,8 @@
   },
   "bundle": {
     "name": "files.zip",
-    "sha256": "2370d0f664320da2085172dfbefb0bc2f0d0b7c03bb4da6a7c278ffa7132d139",
-    "size": 2551123
+    "sha256": "b08ea10dd4976c62b9aa964a0c3acc2d421d1a73fd8c53b617d3b58444db6dc2",
+    "size": 2559437
   },
-  "signature": "8LDfU4Z-Ns_oAEIgCNzIQ3FB8BD5eHl8plhDtZGTiPVre_37cUo_9zRcSW3FyGEqg-3fJYSf9omae9V-KWH0Bw"
+  "signature": "NzA8iUZos9hj6w2HwwurgBS_CRWzE6ufwiBPmk7CxhdSz6bEllRSLam3F1XJSGfRAmnb0eHLdoJDAfxDiH36Aw"
 }
