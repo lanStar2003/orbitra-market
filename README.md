@@ -9,14 +9,14 @@ Orbitra 是以 harness 为核心的个人 AI 助理：桌面级软件，Windows�
 
 ## 下载
 
-Orbitra **1.16.0**。新版本 1.17.0 的安装包还在打包，下面是 1.16.0 的。
+Orbitra **1.17.0**，2026-11-05 发布（[Release 页面](https://github.com/lanStar2003/orbitra-market/releases/tag/v1.17.0)）。
 
 | 平台 | 安装包 |
 |---|---|
-| Windows（x64） | [Orbitra-Setup-1.16.0.exe](https://github.com/lanStar2003/orbitra-market/releases/download/v1.16.0/Orbitra-Setup-1.16.0.exe)（206 MB） |
-| macOS（Apple 芯片） | [Orbitra-1.16.0-arm64.dmg](https://github.com/lanStar2003/orbitra-market/releases/download/v1.16.0/Orbitra-1.16.0-arm64.dmg)（286 MB） |
-| Linux（AppImage） | [Orbitra-1.16.0.AppImage](https://github.com/lanStar2003/orbitra-market/releases/download/v1.16.0/Orbitra-1.16.0.AppImage)（281 MB） |
-| Linux（deb：Debian / Ubuntu） | [orbitra_1.16.0_amd64.deb](https://github.com/lanStar2003/orbitra-market/releases/download/v1.16.0/orbitra_1.16.0_amd64.deb)（216 MB） |
+| Windows（x64） | [Orbitra-Setup-1.17.0.exe](https://github.com/lanStar2003/orbitra-market/releases/download/v1.17.0/Orbitra-Setup-1.17.0.exe)（206 MB） |
+| macOS（Apple 芯片） | [Orbitra-1.17.0-arm64.dmg](https://github.com/lanStar2003/orbitra-market/releases/download/v1.17.0/Orbitra-1.17.0-arm64.dmg)（286 MB） |
+| Linux（AppImage） | [Orbitra-1.17.0.AppImage](https://github.com/lanStar2003/orbitra-market/releases/download/v1.17.0/Orbitra-1.17.0.AppImage)（281 MB） |
+| Linux（deb：Debian / Ubuntu） | [orbitra_1.17.0_amd64.deb](https://github.com/lanStar2003/orbitra-market/releases/download/v1.17.0/orbitra_1.17.0_amd64.deb)（216 MB） |
 
 - 安装包自带 dsh 运行时，装好就能离线用。
 - 不带本地向量模型：在 插件 › 市场 里点「安装」才下载。装好的 Orbitra 从这里自动更新（读 `latest*.yml`；以前装简易版的读 `lite*.yml`，内容相同，更新后就换成这个安装包），就地更新读 Release 里的 `manifest.json` + `files.zip`，都先验签名或 sha512。
