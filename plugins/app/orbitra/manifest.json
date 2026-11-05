@@ -1,16 +1,16 @@
 {
   "format": "orbitra-release/2",
-  "version": "1.16.0",
-  "commit": "e24b83dbf00056a2c9202b86f1baa4792464fd65",
-  "previous": "1.15.1",
-  "title": "打字恢复正常，SSH 终端重新做了",
-  "notes": "2026-11-05 · 打字恢复正常，SSH 终端重新做了\n\n- **打不了字修好了**：开着\"滑动光标\"时，输入框里每打一个字都会被吃掉，中文英文都一样。光标照 dsh-claude-style 新版重做，不再碰输入框。回复正在输出时也能正常打字，中文输入法不会被打断。\n- **动效**：窗口看不见时动画暂停，回到前台接着走；换模型时名字有过渡。\n- **SSH 终端重新做了**：旧版连不上，点一次多一个终端，这次整个重写，不再依赖系统的 ssh 命令。它现在是单独的功能插件，在左侧导航的「终端」。你存的服务器会自动迁过来，不用重填。\n- **连接**：支持密码、私钥、ssh-agent、键盘交互和两步验证、跳板机、SOCKS 和 HTTP 代理。第一次连要确认指纹，指纹变了会拦住。连不上时写明卡在哪一步和原因，断线后自动重连。\n- **终端**：点主机切到它的标签，没有才新开，再开一个点 +。分屏、广播输入、搜索、选中即复制、右键粘贴、多套主题、UTF-8 和 GBK 都有。切走或刷新页面，会话和屏幕内容都还在。\n- **文件管理**：和终端同屏，能跟随终端目录，也能全屏成本机和远程两栏。上传下载、拖拽、新建、改名、删除、改权限、在线编辑、图片预览、打包传输，传输有进度和队列。\n- **快捷命令**：底部命令条和侧边面板，分文件夹，可以全局用或只给某台主机，支持 `{{变量}}`。`Ctrl+Shift+P` 同时搜快捷命令和历史命令。自带一批常用 Linux 命令，能改能删。\n- **其他**：服务器不用装东西的监控（CPU、内存、磁盘、网速、进程）、端口转发、密钥生成和一键装到服务器、已知主机管理、会话日志和录像回放。\n- **Agent**：`ssh_servers`、`ssh_run` 照旧能用，每条命令照旧要审批，执行记录能在「终端」的记录面板里看到。\n- **这一版内核会在空闲时自动重启一次**：从 1.13.0 更新不用装安装包，也不用重启应用。还在 1.12.x 的要重启一次应用，还在 1.11.x 的安装版要先装一次安装包。",
-  "at": "2026-11-05T02:55:37.942Z",
+  "version": "1.17.0",
+  "commit": "a90e21116d94ef7049506b323a37cdda881aad26",
+  "previous": "1.16.0",
+  "title": "首页重做，任务清单，全软件的配色和动效",
+  "notes": "2026-11-05 · 首页重做，任务清单，全软件的配色和动效\n\n- **左边的话题栏换成了条纹轨**：对话右边缘一条细纹，一轮对话一条，每段话题的第一条更长。当前看到的那一轮是品牌色，正在跑的会呼吸，等你批准或回答的是琥珀色，出错的是红色。鼠标移上去看那一轮的预览，点一下跳过去。原来的话题列表和搜索在会话栏的「历史」里（`Ctrl H`），话题还是可以隐藏和恢复。\n- **会话栏和右侧面板**：对话顶上多了一排图标：后台、更改、文件、终端、浏览器，旁边的数字是当前范围里的条数，有事等你时「后台」是琥珀色。点一个图标右侧滑出面板（`Alt 1`…`Alt 5`，`Ctrl J` 开关），能拖宽、能铺满，范围在「这段话题、今天、全部」之间选。原来的侧边面板由它接替：后台任务和动态并成「后台」，改动就是「更改」。\n- **三个新面板**：「文件」是你发的附件和 Agent 写出、改过的文件，能预览；「终端」是 Agent 实际执行过的命令和输出，写着是谁在哪台机器上执行的，这里只能看，不能输入命令；「浏览器」是 Agent 搜过什么、读过哪些网页，能读它读到的正文，这里是记录，不是内嵌的浏览器。\n- **任务清单**：多步的活，总指挥和 Agent 会先列一张 3 到 12 步的清单，边做边勾。清单在输入框上方实时变化，当前这一步在转圈，做完的打勾划线；任务结束后收进那条回复里。任务失败或被停止时写明停在哪一步。一两步就做完的小事不列清单，总指挥只是派活的那一轮也不列，Agent 自己会列。\n- **详略三档**：会话栏上的「简洁、标准、详细」，设置 › 外观里也有。简洁只留回复，过程和清单各收成一行；详细把步骤、思考和命令输出都展开。切换时正在读的那一行不动。面板全关加简洁，就是一个只有对话的页面。\n- **配色**：浅色和深色两套颜色重新调过，说明文字和按钮上的白字都更清楚了。青色和玫红强调色下的主按钮比原来深一些。记忆分层、图谱节点和 Agent 头像换成一组不会被看成出错或警告的颜色。\n- **动效**：按钮按下有回弹，导航、页签和分段开关的选中块会滑过去，面板开合、页面切换、弹层出现都有过渡，数字变化会滚动，换主题从点击的地方扩开。**设置 › 外观 › 动效**选「关掉」，或者系统开了\"减少动态效果\"，这些都会停。\n- **外壳**：左侧导航改成浅色；顶部原来叠着的几条横幅合成一条细条，多件事时点开看全部；状态栏只留最要紧的几项，其余在「详情」里。\n- **各页**：记忆、插件、市场、自进化、设置换成同一套页头、列表、空状态和加载样式；插件页和自进化页顶上的深色大横幅去掉了；保存成功有统一的对勾。\n- **这次没动的**：SSH 终端页（它是单独的功能插件）还是原来的样子。\n- **这一版内核会在空闲时自动重启一次**：从 1.13.0 及以后的版本更新不用装安装包，也不用重启应用。还在 1.12.x 的要重启一次应用，还在 1.11.x 的安装版要先装一次安装包。",
+  "at": "2026-11-05T07:58:06.147Z",
   "key": "2838-d425-6b4d-9b6c",
   "needsInstaller": false,
   "reason": null,
   "depsSince": "1.12.0",
-  "installerSince": "1.16.0",
+  "installerSince": "1.17.0",
   "installerReason": "安装版的 core.yml 打包时改过（指向自带的运行时），core.yml 变了要重新装安装包",
   "libraries": {
     "@orbitra/contracts": "packages/contracts",
@@ -130,7 +130,7 @@
       "size": 1543
     },
     "apps/desktop/package.json": {
-      "sha256": "4f6eb92acffbd75d718fdc0bdcd916b666a4ea5e36e4414dda9c2adbcd7806ba",
+      "sha256": "1c10bf5ce02fc00fc5fc01fa6d9965b2bf226d923d705f2165682500b180aca8",
       "size": 497
     },
     "apps/desktop/src/main.js": {
@@ -169,13 +169,13 @@
       "sha256": "86bfee665748f826301059556509263660b3c03477c2df4f28f2d1bca9a45323",
       "size": 18670
     },
-    "apps/web/dist/assets/app-FODKDMO2.css": {
-      "sha256": "dc1754e852521feb92b3dc7cfae7d1db694d53af60fc01725aa1d85d4ba8e1a4",
-      "size": 377456
+    "apps/web/dist/assets/app-BEINOP7B.css": {
+      "sha256": "1a15e2ac9846cf29a14a838e8807f259ae93b11803de2899a650bba115ab210c",
+      "size": 483221
     },
-    "apps/web/dist/assets/app-NNMSJ2FS.js": {
-      "sha256": "b83cf3349f85ec9a6708729f00d57037629045c8b9f1894c8b14b77996fed220",
-      "size": 1026013
+    "apps/web/dist/assets/app-N57E5Y5B.js": {
+      "sha256": "cf06496bdf354681f7ba7b9df9a5d3e17fe24d917ec4ad0a75872af9e83e185b",
+      "size": 1112804
     },
     "apps/web/dist/favicon.svg": {
       "sha256": "bcb80e1e35769e211a50561885264eb368340a554314da769489964cd5062e76",
@@ -206,7 +206,7 @@
       "size": 1332
     },
     "apps/web/dist/index.html": {
-      "sha256": "4d7175a2b7fcd0946b3db3eaac5ae21cb45f6a44746c88687833c456db3911d4",
+      "sha256": "9024d6225330c883d183bf6e424504d2b69d83448497d8008fa5cd7d223f66af",
       "size": 1247
     },
     "apps/web/dist/manifest.webmanifest": {
@@ -214,7 +214,7 @@
       "size": 1202
     },
     "apps/web/dist/sw.js": {
-      "sha256": "22f23259cac84244d2b2f357bcc837a06644eb5c8a92c4d0e156ffff06018b06",
+      "sha256": "b50083464f0f23ea4423f07f2a1205809009dbef2ed8e6f96254b4fa928003f9",
       "size": 8659
     },
     "apps/web/package.json": {
@@ -222,8 +222,8 @@
       "size": 477
     },
     "core/core.yml": {
-      "sha256": "40b524722b6862d8c2065871367a19f8290d189c913514941b09641a61aacbea",
-      "size": 15475
+      "sha256": "2d3a165de4bb0b1ed2bd68056d537027890bb1ef81f69c5eb42b7d573d34a267",
+      "size": 15873
     },
     "core/market/catalog.json": {
       "sha256": "4c42122022a66462f8be1855024ed180dbe2f2ae1383ad097f948fd39871fa24",
@@ -290,8 +290,8 @@
       "size": 3285
     },
     "core/modules/auth-local/preferences.js": {
-      "sha256": "918fc569c7f3699b0135d1553f8582b8e945c2962714561341b5ce7c3f8acdfa",
-      "size": 7825
+      "sha256": "c2ed08d2ebc5ed40513e008d859d98e2e1750ef281575de75da8f55052f328c0",
+      "size": 8020
     },
     "core/modules/auth-local/web-guard.js": {
       "sha256": "4fc5e89f4a2e4468cca73315ad92603adb1081c9354b58ddfd3a41b9fe48fb75",
@@ -310,8 +310,12 @@
       "size": 9716
     },
     "core/modules/conductor/index.js": {
-      "sha256": "d5198a2b4a8d435ac54d8c52c16ee4a467bdba52b0efdb63550165f7e0a386f1",
-      "size": 48992
+      "sha256": "699d3d2802e40bc98cdcbdeece93ed6058dca1f182aae56bf8d3e069514d1c64",
+      "size": 49495
+    },
+    "core/modules/conductor/marks.js": {
+      "sha256": "e43f0bfcb456f25fbce1d8f47a18bb259b6fdcdfb7df744a794a29e983bbeaba",
+      "size": 8319
     },
     "core/modules/conductor/window.js": {
       "sha256": "cbdf961f877e34cd78ae14719458b5aed30fd12cf020fa6ce581da7c616268d1",
@@ -410,20 +414,20 @@
       "size": 3623
     },
     "core/modules/harness-dsh/index.js": {
-      "sha256": "d0237ff4d3e627408adbbb89225cbf378112463083816f3081a3690e82b87728",
-      "size": 11530
+      "sha256": "78e8c0534785242da7ccb797423d20ec52d142386a3bd4c543c078b4b53b0633",
+      "size": 11595
     },
     "core/modules/harness-mock/index.js": {
       "sha256": "d7de93cc15dcc415c2c596525f7eb7f6925e0415fabb7708770c14abeb1a4eb8",
       "size": 3004
     },
     "core/modules/jobs/flow.js": {
-      "sha256": "d813a36940924010255f8d07c15d101a69141148feaa8bc4fc362ab32e35a6e8",
-      "size": 17395
+      "sha256": "40367fb47a018d05847e931def8b174996520b851d50f4129c48d76980d8fad4",
+      "size": 17942
     },
     "core/modules/jobs/index.js": {
-      "sha256": "3b30f4816e8de58138fd50d2f2185bc2f8a063fd6dcbadd6bce14aa3a8b49634",
-      "size": 44802
+      "sha256": "3c8eacc93cc4722d9ce8660bad20ec94909999146bd64812573dd9408d1bf088",
+      "size": 44885
     },
     "core/modules/knowledge/chunk.js": {
       "sha256": "f3fd3e7fc7126309ac21cd82f219a1fc4ba4725b3d35a9ce81f3900895a2feee",
@@ -629,13 +633,21 @@
       "sha256": "dd10f118504acab750554829dbee9d41308b7b6b3feaa66493b7bed15fc3e5ad",
       "size": 23339
     },
+    "core/modules/steps/index.js": {
+      "sha256": "c40827149d87a957d900bbd8d8160b626cc058a5adbf0109dbd587c911e8ddec",
+      "size": 9187
+    },
+    "core/modules/steps/rules.js": {
+      "sha256": "f8693cea3767d66a945df6abc684207ce1bd2f63b41c102649b1fa56d0a480b1",
+      "size": 8732
+    },
     "core/modules/stream/history.js": {
-      "sha256": "703dca4d1900e22d28778a2fb72488b75d88bb9fabe2ee24aaecefba033385a0",
-      "size": 6669
+      "sha256": "beefcaee120cd6eadfbced76fa7011f59e0726b46c2fbb574752ee91b6eb7b7d",
+      "size": 6782
     },
     "core/modules/stream/index.js": {
-      "sha256": "98fbeefe61607ad6a9807d7b5ad5d98f2b946bd5df5e10c38691a0252bbea7f5",
-      "size": 22849
+      "sha256": "0c8a11e4b4fa7ebbed2544eba7b6de1039a7176a7211024bb55f3f4c71f0ddce",
+      "size": 23082
     },
     "core/modules/supervisor/index.js": {
       "sha256": "8874ffe4f2bb935fd2813b26f737200187550d7b49d98a2bb83ed14666d591e0",
@@ -729,6 +741,14 @@
       "sha256": "a83a3754aa6af25a71d4191f757ea131b2d3f215dd3cc934eaa24bbf18e6ca61",
       "size": 5380
     },
+    "core/modules/workspace/index.js": {
+      "sha256": "0b9ec2af928a2d8e8ef96357e3b8023ccb480fe55be861b7c7fd752ee367d112",
+      "size": 23009
+    },
+    "core/modules/workspace/parse.js": {
+      "sha256": "4cdda2ac8d0bfc70824bce4050ff3d8d04f59aa2597a44d68bf69a8dcc987ee1",
+      "size": 10716
+    },
     "core/node.yml": {
       "sha256": "033072f3c95f156393fcb0d75631de7bc1e100756bbc926f42ace13fc875b9eb",
       "size": 1297
@@ -774,32 +794,32 @@
       "size": 9734
     },
     "core/web/common.js": {
-      "sha256": "85c48dd3c51ecce8f4a35feaee13caa936490c341a17cbce57f3ec29a3b63317",
-      "size": 2401
+      "sha256": "931057f1a6fa1e09e5fdb6ef23735676895231324269d95ef4a180ef046062ef",
+      "size": 3105
     },
     "core/web/device.js": {
       "sha256": "acf8c979d0b77b6493389e7f8c428f542394f51abd64eed60ab9213ac26e5fb6",
       "size": 3258
     },
     "core/web/login.css": {
-      "sha256": "572862cfdcb9cda59ccb36cc262f5e657ab94e69cc22d1eaddbcb5a779d6cc1d",
-      "size": 12868
+      "sha256": "ed88afaed24163b2df69d6c7cad7605a46fdd3da7ead56e33ad4fb2151b7e53a",
+      "size": 18800
     },
     "core/web/login.html": {
-      "sha256": "07faa5866f9398677391f3106ace60b32ab87b01a6dfb292ab6c706e14195bef",
-      "size": 5266
+      "sha256": "9694d73ff8dbda88b7e257caec30d4985d12c7eda5a42bac6991d0a35339679d",
+      "size": 5391
     },
     "core/web/login.js": {
       "sha256": "31ffa356b4707ade1e5a52baabba445d64de95174099912703d23d34d8b58794",
       "size": 10195
     },
     "core/web/pair.css": {
-      "sha256": "08b0fe0c3c63bf556f0ac7e7f55c15410a0c0bb4e9a2b0f98da29a946202cc08",
-      "size": 5770
+      "sha256": "3a2cf389dbd7157b938595c0298e4590f5eab43eb872002ae086bf3e619ed414",
+      "size": 6029
     },
     "core/web/pair.html": {
-      "sha256": "19af667ac88abc82083525d6a9076352c2d9d89d5a510842273a2f4f86c9ad98",
-      "size": 3858
+      "sha256": "6cb4a92eca712b43eb1f3088b62383d04f4d31021bacb3b190eb1546cdb12aee",
+      "size": 3983
     },
     "core/web/pair.js": {
       "sha256": "880ad2bf63ee83ac20b985743adfe1e47bd4ce7b153fff73b1b1e3412c4eefe3",
@@ -830,16 +850,24 @@
       "size": 1867
     },
     "node_modules/orbitra-dispatch/package.json": {
-      "sha256": "095aca1e0b4ea5dd27848208251b1869115f853043b6da91c3c14e32862f655a",
-      "size": 822
+      "sha256": "762a3dfd1203b973e16e293b0160da90742a9a2c6178eb3a958d7cd62fe9dc6b",
+      "size": 979
+    },
+    "node_modules/orbitra-dispatch/src/core/plan.js": {
+      "sha256": "a16f9dc67948bbc8af7663a329c6fd2812955a2c1645f5da989a15a80103bc4e",
+      "size": 12828
     },
     "node_modules/orbitra-dispatch/src/core/tools.js": {
       "sha256": "565e0f830955177d8cf0a47b7308ea28e0dec87a421a5f0a7b41a1c54d9e4fe8",
       "size": 11956
     },
     "node_modules/orbitra-dispatch/src/host/index.js": {
-      "sha256": "3402ebc5be172d17ceae8adb12b03bc4eed3037bf6892963dbfc3c0a71d4b5d0",
-      "size": 1307
+      "sha256": "b50722112d220e3b3de41c881415a7121885b1081fce016b957bf0884fb081c3",
+      "size": 1575
+    },
+    "node_modules/orbitra-dispatch/src/host/plan.js": {
+      "sha256": "81d05755919f8dbc380f0cabdde11eddf71da279ad969e8bd352f27c3c895bc9",
+      "size": 2518
     },
     "node_modules/orbitra-engine/package.json": {
       "sha256": "8b6da5584abe10f7ce6ce7df963548737682297968e066c43ab3db3171b27629",
@@ -926,8 +954,8 @@
       "size": 1159
     },
     "node_modules/orbitra-profile/cordis.patch.yml": {
-      "sha256": "d1d781f5ad6a850823b5f0889c8b2ae1aca48a24d021421ce54dc0e39f70ef67",
-      "size": 12402
+      "sha256": "3fb13150d3282d0f25d9247daf32bde3b0fe4ad5c1e7ba0a8f94e4c612220d9e",
+      "size": 12597
     },
     "node_modules/orbitra-profile/package.json": {
       "sha256": "c040710cc681c9b20cc92fe7490687d595278d1dc64aab08172c850423bf1383",
@@ -1014,16 +1042,24 @@
       "size": 1867
     },
     "plugins/orbitra-dispatch/package.json": {
-      "sha256": "095aca1e0b4ea5dd27848208251b1869115f853043b6da91c3c14e32862f655a",
-      "size": 822
+      "sha256": "762a3dfd1203b973e16e293b0160da90742a9a2c6178eb3a958d7cd62fe9dc6b",
+      "size": 979
+    },
+    "plugins/orbitra-dispatch/src/core/plan.js": {
+      "sha256": "a16f9dc67948bbc8af7663a329c6fd2812955a2c1645f5da989a15a80103bc4e",
+      "size": 12828
     },
     "plugins/orbitra-dispatch/src/core/tools.js": {
       "sha256": "565e0f830955177d8cf0a47b7308ea28e0dec87a421a5f0a7b41a1c54d9e4fe8",
       "size": 11956
     },
     "plugins/orbitra-dispatch/src/host/index.js": {
-      "sha256": "3402ebc5be172d17ceae8adb12b03bc4eed3037bf6892963dbfc3c0a71d4b5d0",
-      "size": 1307
+      "sha256": "b50722112d220e3b3de41c881415a7121885b1081fce016b957bf0884fb081c3",
+      "size": 1575
+    },
+    "plugins/orbitra-dispatch/src/host/plan.js": {
+      "sha256": "81d05755919f8dbc380f0cabdde11eddf71da279ad969e8bd352f27c3c895bc9",
+      "size": 2518
     },
     "plugins/orbitra-engine/package.json": {
       "sha256": "8b6da5584abe10f7ce6ce7df963548737682297968e066c43ab3db3171b27629",
@@ -1110,8 +1146,8 @@
       "size": 1159
     },
     "plugins/orbitra-profile/cordis.patch.yml": {
-      "sha256": "d1d781f5ad6a850823b5f0889c8b2ae1aca48a24d021421ce54dc0e39f70ef67",
-      "size": 12402
+      "sha256": "3fb13150d3282d0f25d9247daf32bde3b0fe4ad5c1e7ba0a8f94e4c612220d9e",
+      "size": 12597
     },
     "plugins/orbitra-profile/package.json": {
       "sha256": "c040710cc681c9b20cc92fe7490687d595278d1dc64aab08172c850423bf1383",
@@ -1176,8 +1212,8 @@
   },
   "bundle": {
     "name": "files.zip",
-    "sha256": "54047d28ce5783f9b4e63d22fee7a29eb13c781e62d5785ef0222f22c71bd21f",
-    "size": 2610878
+    "sha256": "e7d5346635446450e45c65bd1cc54ff798ea9d56ace29e8573e07d82c315cf5b",
+    "size": 2695413
   },
-  "signature": "1SVR2jyTJBtcHgnXXpWib8RL73LUgLBPZXBC-Es-cab-bmQhK_gdQviT5X1SFReYypYNPhuYeD5LQA_k5oZrCw"
+  "signature": "-CdKAA0-8OetEBagNqrsY-SSlBKhC7KjHGQX2nYlBamWbHZgyf8YHbxjkYnxnocsPDND0xDwEvZp84g_GcqUDg"
 }
