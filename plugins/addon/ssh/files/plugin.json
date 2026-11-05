@@ -1,0 +1,38 @@
+{
+  "format": "orbitra-addon/1",
+  "id": "ssh",
+  "name": "SSH 终端",
+  "version": "1.0.0",
+  "description": "连接服务器的终端、文件管理、快捷命令、无代理监控、端口转发和密钥管理，内核直接用 ssh2 连接，不依赖系统的 ssh。密码和私钥加密存在这台电脑，Agent 用 ssh_run 执行的命令都有记录。",
+  "icon": "terminal",
+  "requires": "1.15.0",
+  "module": "dist/core.js",
+  "web": {
+    "entry": "dist/index.js",
+    "css": "dist/index.css",
+    "nav": { "title": "终端", "icon": "terminal" }
+  },
+  "settings": [
+    { "key": "fontSize", "label": "字号", "help": "Ctrl+滚轮也能调", "type": "number", "default": 14, "min": 8, "max": 32 },
+    { "key": "theme", "label": "终端主题", "type": "select", "default": "auto", "options": [
+      { "value": "auto", "label": "跟随应用" },
+      { "value": "orbitra-dark", "label": "Orbitra 暗" },
+      { "value": "orbitra-light", "label": "Orbitra 亮" },
+      { "value": "dracula", "label": "Dracula" },
+      { "value": "nord", "label": "Nord" },
+      { "value": "one-dark", "label": "One Dark" },
+      { "value": "tokyo-night", "label": "Tokyo Night" },
+      { "value": "monokai", "label": "Monokai" },
+      { "value": "solarized-dark", "label": "Solarized 暗" },
+      { "value": "solarized-light", "label": "Solarized 亮" },
+      { "value": "github-light", "label": "GitHub 亮" }
+    ] },
+    { "key": "scrollback", "label": "回滚行数", "help": "页面里每个终端能往回翻多少行", "type": "number", "default": 10000, "min": 500, "max": 100000 },
+    { "key": "keepaliveSeconds", "label": "心跳间隔（秒）", "help": "连续 3 次没有回应算断线", "type": "number", "default": 15, "min": 5, "max": 300 },
+    { "key": "copyOnSelect", "label": "选中即复制", "type": "switch", "default": true },
+    { "key": "rightClickPaste", "label": "右键粘贴", "type": "switch", "default": true },
+    { "key": "autoReconnect", "label": "断线自动重连", "help": "认证失败或手动关闭时不重连", "type": "switch", "default": true },
+    { "key": "followCwd", "label": "跟随终端目录", "help": "只对 bash 和 zsh：连上时发一行设置，文件面板就知道终端在哪个目录", "type": "switch", "default": true },
+    { "key": "recordHistory", "label": "记录命令历史", "help": "每台最多 1000 条；输入密码时不记", "type": "switch", "default": true }
+  ]
+}

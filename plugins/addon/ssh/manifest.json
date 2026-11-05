@@ -1,0 +1,34 @@
+{
+  "format": "orbitra-addon-pack/1",
+  "id": "ssh",
+  "version": "1.0.0",
+  "from": null,
+  "title": "",
+  "name": "SSH 终端",
+  "description": "连接服务器的终端、文件管理、快捷命令、无代理监控、端口转发和密钥管理，内核直接用 ssh2 连接，不依赖系统的 ssh。密码和私钥加密存在这台电脑，Agent 用 ssh_run 执行的命令都有记录。",
+  "at": "2026-11-05T02:55:52.848Z",
+  "key": "2838-d425-6b4d-9b6c",
+  "files": {
+    "README.md": {
+      "sha256": "1188ec9291ee45acb4019b73efd4fbbd3c4774e6212237a6a1b27304b786851a",
+      "size": 2395
+    },
+    "dist/core.js": {
+      "sha256": "d80153fd945ae536596129e7de4e7277693adf8dfc9e0f7ba83aa671c5e47afe",
+      "size": 1459259
+    },
+    "dist/index.css": {
+      "sha256": "f18246b18ac45aa031f84ca0e2bd10b6b3f36ab8be2fc6c796f74b14b7ebc543",
+      "size": 54256
+    },
+    "dist/index.js": {
+      "sha256": "626a20e96aeccc63d9553df8c3170b03052926fd40336a42cc268bf99cd589bd",
+      "size": 1328477
+    },
+    "plugin.json": {
+      "sha256": "0b65a072a9635b7f0bf956975dee2f8263e8f0ca998600ba74c492fff8844edc",
+      "size": 2464
+    }
+  },
+  "signature": "77JYk0r6RD7p0FNfCbRRi9avfnHZt_9g6IsTGgQ5kOjmqpVFycUjXTvYVrsQAGDimBXyUqrknlo4zH1AQqUWAQ"
+}
