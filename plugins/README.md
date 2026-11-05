@@ -24,7 +24,7 @@
 
 独立的功能：装上就能用，单独更新和卸载，不用更新 Orbitra
 
-[使用情况](addon/usage)
+[使用情况](addon/usage) · [SSH 终端](addon/ssh)
 
 ## [能力](capability)
 

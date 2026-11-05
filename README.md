@@ -9,7 +9,7 @@ Orbitra 是以 harness 为核心的个人 AI 助理：桌面级软件，Windows�
 
 ## 下载
 
-Orbitra **1.15.1**，2026-11-04 发布（[Release 页面](https://github.com/lanStar2003/orbitra-market/releases/tag/v1.15.1)）。
+Orbitra **1.15.1**。新版本 1.16.0 的安装包还在打包，下面是 1.15.1 的。
 
 | 平台 | 安装包 |
 |---|---|
@@ -31,7 +31,7 @@ Orbitra **1.15.1**，2026-11-04 发布（[Release 页面](https://github.com/lan
 
 | 名称 | 版本 | 核心 | 安装包 | 说明 | 获取 |
 |---|---|---|---|---|---|
-| [Orbitra](plugins/app/orbitra) | 1.15.1 | **核心** | 自带 | Orbitra 本体：内核、界面、桌面外壳和 Orbitra 自己的 dsh 插件。 | [安装包](#下载) |
+| [Orbitra](plugins/app/orbitra) | 1.16.0 | **核心** | 自带 | Orbitra 本体：内核、界面、桌面外壳和 Orbitra 自己的 dsh 插件。 | [安装包](#下载) |
 
 ### [运行方式](plugins/harness)
 
@@ -65,6 +65,7 @@ Orbitra **1.15.1**，2026-11-04 发布（[Release 页面](https://github.com/lan
 | 名称 | 版本 | 核心 | 安装包 | 说明 | 获取 |
 |---|---|---|---|---|---|
 | [使用情况](plugins/addon/usage) | 1.0.1 | 可选 | 自带 | 每一步模型调用花了多少钱：按模型、线路、Agent、来源、对话、任务、时段拆开看，含缓存、子 Agent、审查，附省钱建议。 | 这个文件夹 |
+| [SSH 终端](plugins/addon/ssh) | 1.0.0 | 可选 | 用到再装 | 连接服务器的终端、文件管理、快捷命令、无代理监控、端口转发和密钥管理，内核直接用 ssh2 连接，不依赖系统的 ssh。密码和私钥加密存在这台电脑，Agent 用 ssh_run 执行的命令都有记录。 | 这个文件夹 |
 
 ### [能力](plugins/capability)
 
@@ -77,4 +78,4 @@ Orbitra **1.15.1**，2026-11-04 发布（[Release 页面](https://github.com/lan
 
 ---
 
-目录：[market.json](market.json)（格式 `orbitra-market/1`） · 发布机公钥指纹 `2838-d425-6b4d-9b6c` · 更新于 2026-11-04
+目录：[market.json](market.json)（格式 `orbitra-market/1`） · 发布机公钥指纹 `2838-d425-6b4d-9b6c` · 更新于 2026-11-05
