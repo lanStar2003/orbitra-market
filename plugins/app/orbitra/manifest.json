@@ -1,16 +1,16 @@
 {
   "format": "orbitra-release/2",
-  "version": "1.15.1",
-  "commit": "a3a32c3bebd453df89bc6f7203cafc44d030f129",
-  "previous": "1.15.0",
-  "title": "设置 › 插件配置只放要配置的插件",
-  "notes": "2026-11-04 · 设置 › 插件配置只放要配置的插件\n\n- **插件配置只放要配置的**：1.15.0 把没有配置项和只有开关的插件也列出来了。现在只列要填、要选的，比如换模型、填地址和 Key；只有开关的（记忆引擎、Mnemon 记忆库、记录库和资料库、重排模型）回到插件页。设置里也不再放启用开关，开关都在插件页，那些插件的开关和配置都没有变。\n- **构建遇到临时失败会再试**：安装依赖时碰上网络问题，或者上游正在发新版，等一会儿再试两次。1.15.0 的构建就因为这个失败过，要手动重跑。这一项只影响构建安装包，不影响已经装好的应用。\n- **这一版内核会在空闲时自动重启一次**：从 1.13.0 更新不用装安装包，也不用重启应用。还在 1.12.x 的要重启一次应用，还在 1.11.x 的安装版要先装一次安装包。",
-  "at": "2026-11-04T10:00:07.362Z",
+  "version": "1.16.0",
+  "commit": "e24b83dbf00056a2c9202b86f1baa4792464fd65",
+  "previous": "1.15.1",
+  "title": "打字恢复正常，SSH 终端重新做了",
+  "notes": "2026-11-05 · 打字恢复正常，SSH 终端重新做了\n\n- **打不了字修好了**：开着\"滑动光标\"时，输入框里每打一个字都会被吃掉，中文英文都一样。光标照 dsh-claude-style 新版重做，不再碰输入框。回复正在输出时也能正常打字，中文输入法不会被打断。\n- **动效**：窗口看不见时动画暂停，回到前台接着走；换模型时名字有过渡。\n- **SSH 终端重新做了**：旧版连不上，点一次多一个终端，这次整个重写，不再依赖系统的 ssh 命令。它现在是单独的功能插件，在左侧导航的「终端」。你存的服务器会自动迁过来，不用重填。\n- **连接**：支持密码、私钥、ssh-agent、键盘交互和两步验证、跳板机、SOCKS 和 HTTP 代理。第一次连要确认指纹，指纹变了会拦住。连不上时写明卡在哪一步和原因，断线后自动重连。\n- **终端**：点主机切到它的标签，没有才新开，再开一个点 +。分屏、广播输入、搜索、选中即复制、右键粘贴、多套主题、UTF-8 和 GBK 都有。切走或刷新页面，会话和屏幕内容都还在。\n- **文件管理**：和终端同屏，能跟随终端目录，也能全屏成本机和远程两栏。上传下载、拖拽、新建、改名、删除、改权限、在线编辑、图片预览、打包传输，传输有进度和队列。\n- **快捷命令**：底部命令条和侧边面板，分文件夹，可以全局用或只给某台主机，支持 `{{变量}}`。`Ctrl+Shift+P` 同时搜快捷命令和历史命令。自带一批常用 Linux 命令，能改能删。\n- **其他**：服务器不用装东西的监控（CPU、内存、磁盘、网速、进程）、端口转发、密钥生成和一键装到服务器、已知主机管理、会话日志和录像回放。\n- **Agent**：`ssh_servers`、`ssh_run` 照旧能用，每条命令照旧要审批，执行记录能在「终端」的记录面板里看到。\n- **这一版内核会在空闲时自动重启一次**：从 1.13.0 更新不用装安装包，也不用重启应用。还在 1.12.x 的要重启一次应用，还在 1.11.x 的安装版要先装一次安装包。",
+  "at": "2026-11-05T02:55:37.942Z",
   "key": "2838-d425-6b4d-9b6c",
   "needsInstaller": false,
   "reason": null,
   "depsSince": "1.12.0",
-  "installerSince": "1.14.0",
+  "installerSince": "1.16.0",
   "installerReason": "安装版的 core.yml 打包时改过（指向自带的运行时），core.yml 变了要重新装安装包",
   "libraries": {
     "@orbitra/contracts": "packages/contracts",
@@ -130,7 +130,7 @@
       "size": 1543
     },
     "apps/desktop/package.json": {
-      "sha256": "a781ef021fd06cfe415fc7e1eac9b7e0db506791d5bd6053599e59f1505d4c6e",
+      "sha256": "4f6eb92acffbd75d718fdc0bdcd916b666a4ea5e36e4414dda9c2adbcd7806ba",
       "size": 497
     },
     "apps/desktop/src/main.js": {
@@ -169,13 +169,13 @@
       "sha256": "86bfee665748f826301059556509263660b3c03477c2df4f28f2d1bca9a45323",
       "size": 18670
     },
-    "apps/web/dist/assets/app-6ULU7NG6.css": {
-      "sha256": "938c676fb73d44c6c0c35578f17dab13e7159af72ad2c666085efae25a95124a",
-      "size": 385829
+    "apps/web/dist/assets/app-FODKDMO2.css": {
+      "sha256": "dc1754e852521feb92b3dc7cfae7d1db694d53af60fc01725aa1d85d4ba8e1a4",
+      "size": 377456
     },
-    "apps/web/dist/assets/app-UBSBOFVP.js": {
-      "sha256": "5664dec1d4ab3020f1640b289ac06ade63f5d7affa02a778b5cef4635a3c973b",
-      "size": 1048656
+    "apps/web/dist/assets/app-NNMSJ2FS.js": {
+      "sha256": "b83cf3349f85ec9a6708729f00d57037629045c8b9f1894c8b14b77996fed220",
+      "size": 1026013
     },
     "apps/web/dist/favicon.svg": {
       "sha256": "bcb80e1e35769e211a50561885264eb368340a554314da769489964cd5062e76",
@@ -206,7 +206,7 @@
       "size": 1332
     },
     "apps/web/dist/index.html": {
-      "sha256": "6ab048ade172ba42ce26edd02ba061ed98b362508680727f311a903266174073",
+      "sha256": "4d7175a2b7fcd0946b3db3eaac5ae21cb45f6a44746c88687833c456db3911d4",
       "size": 1247
     },
     "apps/web/dist/manifest.webmanifest": {
@@ -214,7 +214,7 @@
       "size": 1202
     },
     "apps/web/dist/sw.js": {
-      "sha256": "baec636645b61fac28a0137bffdab2165e32dd4d0d133cb4bf9b266fcdf4f99c",
+      "sha256": "22f23259cac84244d2b2f357bcc837a06644eb5c8a92c4d0e156ffff06018b06",
       "size": 8659
     },
     "apps/web/package.json": {
@@ -222,8 +222,8 @@
       "size": 477
     },
     "core/core.yml": {
-      "sha256": "c917a094d97128d7b8d9daade432c5af7d21b5eb6c30e989087dfc11bd5d2687",
-      "size": 15887
+      "sha256": "40b524722b6862d8c2065871367a19f8290d189c913514941b09641a61aacbea",
+      "size": 15475
     },
     "core/market/catalog.json": {
       "sha256": "4c42122022a66462f8be1855024ed180dbe2f2ae1383ad097f948fd39871fa24",
@@ -629,14 +629,6 @@
       "sha256": "dd10f118504acab750554829dbee9d41308b7b6b3feaa66493b7bed15fc3e5ad",
       "size": 23339
     },
-    "core/modules/ssh/command.js": {
-      "sha256": "3ba280855d95372018cda564b6edf1bb30c281feb6dc0607cd50a4a543f05d5f",
-      "size": 12230
-    },
-    "core/modules/ssh/index.js": {
-      "sha256": "4248c54b03bf11d53981a5d4a40f33711520885999ebeacc349b5a7c442a70c0",
-      "size": 32405
-    },
     "core/modules/stream/history.js": {
       "sha256": "703dca4d1900e22d28778a2fb72488b75d88bb9fabe2ee24aaecefba033385a0",
       "size": 6669
@@ -934,8 +926,8 @@
       "size": 1159
     },
     "node_modules/orbitra-profile/cordis.patch.yml": {
-      "sha256": "ebd7d0ddc27f82c3700e450abbce878aa75745115c1655ac86eb9bbc61e117fc",
-      "size": 12399
+      "sha256": "d1d781f5ad6a850823b5f0889c8b2ae1aca48a24d021421ce54dc0e39f70ef67",
+      "size": 12402
     },
     "node_modules/orbitra-profile/package.json": {
       "sha256": "c040710cc681c9b20cc92fe7490687d595278d1dc64aab08172c850423bf1383",
@@ -974,8 +966,8 @@
       "size": 741
     },
     "node_modules/orbitra-ssh/src/core/tools.js": {
-      "sha256": "04729e753a62b8fad52705aa62e6444984606e17badee086bb167cd31fe67b21",
-      "size": 5088
+      "sha256": "dbcc1d47c857f57109dfea72eded0c5eea8df5ce3c085c489307a9776462e18e",
+      "size": 5308
     },
     "node_modules/orbitra-ssh/src/host/index.js": {
       "sha256": "fb2a360419794bcf9e736f30175ed91b34bfca42c6021ac189fa16a511cb865d",
@@ -1118,8 +1110,8 @@
       "size": 1159
     },
     "plugins/orbitra-profile/cordis.patch.yml": {
-      "sha256": "ebd7d0ddc27f82c3700e450abbce878aa75745115c1655ac86eb9bbc61e117fc",
-      "size": 12399
+      "sha256": "d1d781f5ad6a850823b5f0889c8b2ae1aca48a24d021421ce54dc0e39f70ef67",
+      "size": 12402
     },
     "plugins/orbitra-profile/package.json": {
       "sha256": "c040710cc681c9b20cc92fe7490687d595278d1dc64aab08172c850423bf1383",
@@ -1158,8 +1150,8 @@
       "size": 741
     },
     "plugins/orbitra-ssh/src/core/tools.js": {
-      "sha256": "04729e753a62b8fad52705aa62e6444984606e17badee086bb167cd31fe67b21",
-      "size": 5088
+      "sha256": "dbcc1d47c857f57109dfea72eded0c5eea8df5ce3c085c489307a9776462e18e",
+      "size": 5308
     },
     "plugins/orbitra-ssh/src/host/index.js": {
       "sha256": "fb2a360419794bcf9e736f30175ed91b34bfca42c6021ac189fa16a511cb865d",
@@ -1184,8 +1176,8 @@
   },
   "bundle": {
     "name": "files.zip",
-    "sha256": "a4dfa3ae78e53b3218d1767e9e7f624ae7f6f19f99b0edfd58354ab70292877a",
-    "size": 2635712
+    "sha256": "54047d28ce5783f9b4e63d22fee7a29eb13c781e62d5785ef0222f22c71bd21f",
+    "size": 2610878
   },
-  "signature": "jEW7PYKhqgFXmjJco-6sH4fhdb3V-IRWQdEqd2XIC9coS4lSH-Eca0t376ZZIjc8zrtSQXN_wlM9wHhm6wxxAg"
+  "signature": "1SVR2jyTJBtcHgnXXpWib8RL73LUgLBPZXBC-Es-cab-bmQhK_gdQviT5X1SFReYypYNPhuYeD5LQA_k5oZrCw"
 }
