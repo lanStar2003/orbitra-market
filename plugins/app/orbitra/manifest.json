@@ -1,16 +1,16 @@
 {
   "format": "orbitra-release/2",
-  "version": "1.17.0",
-  "commit": "a90e21116d94ef7049506b323a37cdda881aad26",
-  "previous": "1.16.0",
-  "title": "首页重做，任务清单，全软件的配色和动效",
-  "notes": "2026-11-05 · 首页重做，任务清单，全软件的配色和动效\n\n- **左边的话题栏换成了条纹轨**：对话右边缘一条细纹，一轮对话一条，每段话题的第一条更长。当前看到的那一轮是品牌色，正在跑的会呼吸，等你批准或回答的是琥珀色，出错的是红色。鼠标移上去看那一轮的预览，点一下跳过去。原来的话题列表和搜索在会话栏的「历史」里（`Ctrl H`），话题还是可以隐藏和恢复。\n- **会话栏和右侧面板**：对话顶上多了一排图标：后台、更改、文件、终端、浏览器，旁边的数字是当前范围里的条数，有事等你时「后台」是琥珀色。点一个图标右侧滑出面板（`Alt 1`…`Alt 5`，`Ctrl J` 开关），能拖宽、能铺满，范围在「这段话题、今天、全部」之间选。原来的侧边面板由它接替：后台任务和动态并成「后台」，改动就是「更改」。\n- **三个新面板**：「文件」是你发的附件和 Agent 写出、改过的文件，能预览；「终端」是 Agent 实际执行过的命令和输出，写着是谁在哪台机器上执行的，这里只能看，不能输入命令；「浏览器」是 Agent 搜过什么、读过哪些网页，能读它读到的正文，这里是记录，不是内嵌的浏览器。\n- **任务清单**：多步的活，总指挥和 Agent 会先列一张 3 到 12 步的清单，边做边勾。清单在输入框上方实时变化，当前这一步在转圈，做完的打勾划线；任务结束后收进那条回复里。任务失败或被停止时写明停在哪一步。一两步就做完的小事不列清单，总指挥只是派活的那一轮也不列，Agent 自己会列。\n- **详略三档**：会话栏上的「简洁、标准、详细」，设置 › 外观里也有。简洁只留回复，过程和清单各收成一行；详细把步骤、思考和命令输出都展开。切换时正在读的那一行不动。面板全关加简洁，就是一个只有对话的页面。\n- **配色**：浅色和深色两套颜色重新调过，说明文字和按钮上的白字都更清楚了。青色和玫红强调色下的主按钮比原来深一些。记忆分层、图谱节点和 Agent 头像换成一组不会被看成出错或警告的颜色。\n- **动效**：按钮按下有回弹，导航、页签和分段开关的选中块会滑过去，面板开合、页面切换、弹层出现都有过渡，数字变化会滚动，换主题从点击的地方扩开。**设置 › 外观 › 动效**选「关掉」，或者系统开了\"减少动态效果\"，这些都会停。\n- **外壳**：左侧导航改成浅色；顶部原来叠着的几条横幅合成一条细条，多件事时点开看全部；状态栏只留最要紧的几项，其余在「详情」里。\n- **各页**：记忆、插件、市场、自进化、设置换成同一套页头、列表、空状态和加载样式；插件页和自进化页顶上的深色大横幅去掉了；保存成功有统一的对勾。\n- **这次没动的**：SSH 终端页（它是单独的功能插件）还是原来的样子。\n- **这一版内核会在空闲时自动重启一次**：从 1.13.0 及以后的版本更新不用装安装包，也不用重启应用。还在 1.12.x 的要重启一次应用，还在 1.11.x 的安装版要先装一次安装包。",
-  "at": "2026-11-05T07:58:06.147Z",
+  "version": "1.17.1",
+  "commit": "222af5409aaacec92d45a3d31b7777072aba387b",
+  "previous": "1.17.0",
+  "title": "SSH 插件支持堡垒机中转连接",
+  "notes": "SSH 终端功能插件新增堡垒机：单独一台网关配置可被多台目标机复用，连接时自动登录网关、按菜单选资产、送目标机账号密码，动态口令弹一次后继续；凭据在 Windows 上再叠一层按当前用户加密的 DPAPI，接口和页面只回是否已保存；不配堡垒机的主机走原直连，老数据库自动补列不丢配置；主机指向的堡垒机不存在时明确报错，不再静默直连。",
+  "at": "2026-11-05T09:50:39.015Z",
   "key": "2838-d425-6b4d-9b6c",
-  "needsInstaller": false,
-  "reason": null,
-  "depsSince": "1.12.0",
-  "installerSince": "1.17.0",
+  "needsInstaller": true,
+  "reason": "依赖变了（core/package.json）",
+  "depsSince": "1.17.1",
+  "installerSince": "1.17.1",
   "installerReason": "安装版的 core.yml 打包时改过（指向自带的运行时），core.yml 变了要重新装安装包",
   "libraries": {
     "@orbitra/contracts": "packages/contracts",
@@ -26,76 +26,76 @@
   },
   "files": {
     "agents/calendar/AGENTS.md": {
-      "sha256": "110f69ebe37b688408a92712ad748bd9ff6caa04a359487ac048626ba12a3181",
-      "size": 610
+      "sha256": "89e89f5c26639436b53b992e5d605188e97c85e34e9d498f20e61ec9e2b66e98",
+      "size": 622
     },
     "agents/calendar/agent.yml": {
-      "sha256": "988040b6bb363bbe4ad8fe3a500edd2028d718bc2efa8171db3c2405a1e37ea1",
-      "size": 555
+      "sha256": "c4f24024c3973115b3f108b10e504e2dbc08251995749cad1c4448dc9f90087f",
+      "size": 579
     },
     "agents/code/AGENTS.md": {
-      "sha256": "2c8c90d7ea8f388158fca6e446a10f45cd6a03cea55bfd6b534335b24eb48851",
-      "size": 691
+      "sha256": "884f7f29494a889adf763ea501ab9a61e7c79bec6f15c127cb2e1c1873167a18",
+      "size": 703
     },
     "agents/code/agent.yml": {
-      "sha256": "7e943f3ece7f064a88e58c58d659369d40362c89c01b7afd3ab1ff3ad4a4e617",
-      "size": 812
+      "sha256": "0ad7f26dcc4335ba96f8f581539486a144fe7c3e96440c837d5043f4586dad7c",
+      "size": 843
     },
     "agents/evolve/AGENTS.md": {
-      "sha256": "ebad3264fe2500ba5fe865714b38d0008542a056546d211465315370dc0a5b98",
-      "size": 2376
+      "sha256": "aca8674aaf5255e459ddf948cdba8e470f6878f327069a0afb3045d37931ebf3",
+      "size": 2395
     },
     "agents/evolve/agent.yml": {
-      "sha256": "e67d0de6c32526ca62971af7476e08a5e8f77c913498ead3a7e8b2852fda1ec7",
-      "size": 880
+      "sha256": "f814b85c002a6053b44054cf60cdb0e49c64ff79c2bfdadd96f6d33b354697e6",
+      "size": 903
     },
     "agents/general/AGENTS.md": {
-      "sha256": "e3f6f0f99aab83ed53467589b80bf99d54c33d8f36c076ac9b6744881d363466",
-      "size": 638
+      "sha256": "7a5aa1c7cd969df551307daf896015aa98cb44b71525ab69f2c4ef71011e60c5",
+      "size": 650
     },
     "agents/general/agent.yml": {
-      "sha256": "1ac0e24fedb35c529f1b670304b3aefb0a14e04bc7391f823915d5cb582108ad",
-      "size": 495
+      "sha256": "e4cec333a0d120b97b8f74e736c8f4b4baa52f0713d8ad5a3ba5a7d76b98317c",
+      "size": 514
     },
     "agents/ops/AGENTS.md": {
-      "sha256": "f73accb5cdd34d7429bf2ff24c949729e84d40f02154be01ff9daf8cb9505acb",
-      "size": 655
+      "sha256": "b42b765df37a1986f603f0c394a73f979b6f22fd71d5edc9510b099032194c34",
+      "size": 667
     },
     "agents/ops/agent.yml": {
-      "sha256": "1854d0d888ee92fda5d23bcb2c7509e541e465a3ddcfef5b615ace306287b4a6",
-      "size": 682
+      "sha256": "2b2482c9a614b35dc32a787c0e7ed1cab3496ad8377a1f9840299c49cbe865e7",
+      "size": 709
     },
     "agents/research/AGENTS.md": {
-      "sha256": "23d5a72da67696951fd7a51b34b7fdd1d576e2f663645d9c2c070c6788f51b59",
-      "size": 586
+      "sha256": "078661e391f7a9364ce6f16ea88cdf4de50bddc4b48a3854ffbe5a30573c748c",
+      "size": 598
     },
     "agents/research/agent.yml": {
-      "sha256": "a2fd2726ce217c434882f63cee560c256cd5750d3b9a18cd8973135552286def",
-      "size": 553
+      "sha256": "d1bdadd390acafad2f81507c372575f5b79eb0773b51ef3c7322b72d5560cbac",
+      "size": 578
     },
     "agents/test/AGENTS.md": {
-      "sha256": "cf85eabad4c70112bf39bb68c933fa69a8554690d05b30a6169ce29bdf13f501",
-      "size": 562
+      "sha256": "d14a6f9a901005f83e92a0c5322e7c9b7e7a5a2efbf84420e7231c303d4bd8f3",
+      "size": 574
     },
     "agents/test/agent.yml": {
-      "sha256": "baf86060298a09851a609b51099fed7bc87e76fef0b9fa3b0b5001f59675596a",
-      "size": 636
+      "sha256": "18b024a48cabab2d0933f092aa269302214a6cb840428ff14483927872cda2ab",
+      "size": 659
     },
     "agents/video/AGENTS.md": {
-      "sha256": "94fdafee531cc315d46436652275e8175cd8b4fa4634179c047fd4ec6286074c",
-      "size": 530
+      "sha256": "727fe6a75a442859c57a2d634ea010b3932784800c3217a601c018693e3b472a",
+      "size": 542
     },
     "agents/video/agent.yml": {
-      "sha256": "30bd26d955aefe4c684f8778e77e532e9876bc4da9462b0fbaadaa91492ff6ac",
-      "size": 638
+      "sha256": "70ec299e7015279876cfce478e2da7de16d19d14a69cba148a55cb752ff14ff4",
+      "size": 663
     },
     "agents/writing/AGENTS.md": {
-      "sha256": "9fe7ad3d4ae7a9809f661a6c3c5dd80546b55941733dc3abe0a2174785bd638d",
-      "size": 582
+      "sha256": "d4a4ab90647a739ce0c4afe404e77e9d195963b9b50bdf38a2260e6dacbdd112",
+      "size": 594
     },
     "agents/writing/agent.yml": {
-      "sha256": "666de566080758ae8166395d61c602f24c79b947e4e0b7650409aa63f1820627",
-      "size": 560
+      "sha256": "5cd8dc03bba71465405373f0ac774571c9fabd31f179e5fbf151518bebeff603",
+      "size": 585
     },
     "apps/desktop/assets/icon-1024.png": {
       "sha256": "e498c66288f7b7f96616f4b906707d669dfbf78bb28a28df3fcd6eac62b0f3a9",
@@ -118,56 +118,56 @@
       "size": 2164
     },
     "apps/desktop/build/entitlements.mac.plist": {
-      "sha256": "f3d40061f250e17f71d9288ab72394862eb86106cd921a7dfd56de4a0d0871e3",
-      "size": 704
+      "sha256": "23bbb15970f1aa3978654326c387a4f4b7b5ff380ff6a31da75907126f2f8739",
+      "size": 722
     },
     "apps/desktop/build/installer.nsh": {
-      "sha256": "60a663c41135672db6cb0a55f3159182f6521b64faf17d0912016f578a482329",
-      "size": 2719
+      "sha256": "3b8f65adb9a83a4424e2d5e57fb8e6fee771fa5370ceeafc53d9411cafdd9d83",
+      "size": 2792
     },
     "apps/desktop/build/orbitra-extract.nsh": {
-      "sha256": "1f86b7e66da3dbf9110e93af81d732c8f931955ab40fd9658c88d245683b38b7",
-      "size": 1543
+      "sha256": "8e3f35e7f45ef6923432860079fafd69e01a2d00c2f76dc7c6325fc2c8900497",
+      "size": 1588
     },
     "apps/desktop/package.json": {
-      "sha256": "1c10bf5ce02fc00fc5fc01fa6d9965b2bf226d923d705f2165682500b180aca8",
-      "size": 497
+      "sha256": "9e485627d6d9e9acad3994de971e26530fc76c73ce4280fa3483c8b257ccebb4",
+      "size": 517
     },
     "apps/desktop/src/main.js": {
-      "sha256": "75d49eb5fa47d257f809e83cf198497e0fb3db21e1513ac37bc5832978f343ed",
-      "size": 22854
+      "sha256": "bbfed9af95154aa293483f9854f010e7bbfce622008f6d4152dbd14cd63920e6",
+      "size": 23350
     },
     "apps/desktop/src/preload.cjs": {
-      "sha256": "1e99c5f17a0ee67d2addfd475422f89064c965a27d23daa16608a76bffd06777",
-      "size": 2153
+      "sha256": "e3cd0cd6fba9f2c8d66e0bbb926e77c1f4f020f48b14b63f222cbf18bb8b4c6b",
+      "size": 2193
     },
     "apps/desktop/src/restore.js": {
-      "sha256": "ab8c92967d1d23e49c300ad53ff3f9801aca437ee74b45fe42abeed0ec5ef0d3",
-      "size": 2367
+      "sha256": "fe2ca9f3526586dfea624089e62cf4a387658727b4aaba88207cd2ce4fc0bf96",
+      "size": 2414
     },
     "apps/desktop/src/settings.js": {
-      "sha256": "83e14424df15cc2afa8ac92679d8cda3f6ae190a42f2f9d18603e99f422973e3",
-      "size": 6082
+      "sha256": "1c226191857eaa2c84eef538a8fc9346089e1d0062afc7366bbd82035e92a5dd",
+      "size": 6181
     },
     "apps/desktop/src/setup-preload.cjs": {
-      "sha256": "215515918f4cc64600fd9f87aad20b874ead9608477086471507917f0115d18b",
-      "size": 569
+      "sha256": "999ca903f2558d27edb1b706d9a96d7c76fe395f4e8c55a279ec0b05c8314c77",
+      "size": 580
     },
     "apps/desktop/src/setup/index.html": {
-      "sha256": "70e5598d35f0241526c299b176de786700b918ce146f19ef000a72c73867ada4",
-      "size": 2955
+      "sha256": "69dd21f3e71f77c89549cd17f9f1e731f7fe85d2ca0fde17526e110088b392df",
+      "size": 3012
     },
     "apps/desktop/src/setup/setup.css": {
-      "sha256": "02336a227f1e8f9722772599f0847250389ee239fded73853a64c703b90ed415",
-      "size": 6857
+      "sha256": "585c4937063c62d53637a68b791b06a44fd46b9903f3fb08f7635348eaf251e8",
+      "size": 6929
     },
     "apps/desktop/src/setup/setup.js": {
-      "sha256": "bf39813f0e841f679c600eabd66fb5d4f7937be1d04aa85ee4634ed0891805ce",
-      "size": 2122
+      "sha256": "16d401abfe91e7607259330c11feceac96133259489d2fc330d7f0c6cc1badee",
+      "size": 2175
     },
     "apps/desktop/src/updater.js": {
-      "sha256": "86bfee665748f826301059556509263660b3c03477c2df4f28f2d1bca9a45323",
-      "size": 18670
+      "sha256": "2e89e8169872f5b1cd4296974ad3f722f30447653f4dcdf23bffc41384c57059",
+      "size": 19013
     },
     "apps/web/dist/assets/app-BEINOP7B.css": {
       "sha256": "1a15e2ac9846cf29a14a838e8807f259ae93b11803de2899a650bba115ab210c",
@@ -178,8 +178,8 @@
       "size": 1112804
     },
     "apps/web/dist/favicon.svg": {
-      "sha256": "bcb80e1e35769e211a50561885264eb368340a554314da769489964cd5062e76",
-      "size": 813
+      "sha256": "b87d2220fcdcfeab6b75fa92ac5790c6b583453862c169467abab61bf7d5c5a8",
+      "size": 830
     },
     "apps/web/dist/icons/apple-touch-icon.png": {
       "sha256": "1464e1661d4ec19e35f6f2bd0e9b852a0ee16f1241e6961e1b50c98c7e00b12c",
@@ -202,452 +202,452 @@
       "size": 116748
     },
     "apps/web/dist/icons/icon.svg": {
-      "sha256": "d1a7d532c8744d1b945c603997c1da6b74f017cbc1b5d2e964ce92d5fe0254aa",
-      "size": 1332
+      "sha256": "0973f4d992bb882d898e18af59545c4b7b43fc6f0f094582f2d8223b00ed88a6",
+      "size": 1359
     },
     "apps/web/dist/index.html": {
       "sha256": "9024d6225330c883d183bf6e424504d2b69d83448497d8008fa5cd7d223f66af",
       "size": 1247
     },
     "apps/web/dist/manifest.webmanifest": {
-      "sha256": "94f6aa27903b32a73b6a689793a19216509a693ae252ca660aac71110acef20e",
-      "size": 1202
+      "sha256": "107927eaef3cf212a2edb0a28a4dd83aef1554476b9efd2b43920354ed7258d0",
+      "size": 1227
     },
     "apps/web/dist/sw.js": {
       "sha256": "b50083464f0f23ea4423f07f2a1205809009dbef2ed8e6f96254b4fa928003f9",
       "size": 8659
     },
     "apps/web/package.json": {
-      "sha256": "6869fdc0d74e423d88d2ccf2794186e12a9def21f27fdc5a596d594248c6419e",
-      "size": 477
+      "sha256": "ef51dba5a7d1f48de723804666abff614294837337dc00da12ba3fd68a86b358",
+      "size": 495
     },
     "core/core.yml": {
-      "sha256": "2d3a165de4bb0b1ed2bd68056d537027890bb1ef81f69c5eb42b7d573d34a267",
-      "size": 15873
+      "sha256": "e6a8a91c4a78cca15453eb7ace4f44a5309694d9965ee7d017ce3e6730bbe78e",
+      "size": 16138
     },
     "core/market/catalog.json": {
-      "sha256": "4c42122022a66462f8be1855024ed180dbe2f2ae1383ad097f948fd39871fa24",
-      "size": 5113
+      "sha256": "b526acd5f2f1a19661c8f3efe5c34d4e77ce2bb9f14eb64f59f8d8bc728e14c6",
+      "size": 5305
     },
     "core/modules/addons/index.js": {
-      "sha256": "26e30479c5b1218ce361612d3642d60c8010f111027613bb7c581e617a815a05",
-      "size": 18333
+      "sha256": "f24b3e981745e38997a5f74d61659e852833ad4e0994536b549f66a78c6a7b21",
+      "size": 18668
     },
     "core/modules/addons/manifest.js": {
-      "sha256": "e25d94bf0015fd0a091163d1864730f825f83d3c322273cd9f8216c4feb80d31",
-      "size": 3380
+      "sha256": "834561ca89adcd3e1f102d22c597fd235a2336aa67588a28ad86def1495cb8b9",
+      "size": 3439
     },
     "core/modules/admission/index.js": {
-      "sha256": "9cf3cac73dae77a3fa68006f3a1665b59070fe87ba52f3443fca4451827b56ca",
-      "size": 6427
+      "sha256": "ad0eabc7621be5bb3ecfbfc0a2da27463116f143f04929c5427fba4ceeac7d5d",
+      "size": 6541
     },
     "core/modules/agents/index.js": {
-      "sha256": "d7edc092acbf04daef81fa60eadb54f5c1c7551d108bcba246e463d07e7709ee",
-      "size": 10153
+      "sha256": "8ea463f6d79dcb298ee9d0e7e85474e75c7744c9a700d667260bec19b832b449",
+      "size": 10315
     },
     "core/modules/app/hot.js": {
-      "sha256": "06703c1be3769e4b58193e3c35c28b08f11fb71814f1ea5ceeea441b89b751d8",
-      "size": 6161
+      "sha256": "178bba3cb59ffbbf2851c5adcaaaa65fa55973581dedb1b366b80b3de17db58c",
+      "size": 6290
     },
     "core/modules/app/index.js": {
-      "sha256": "7dd4f0b47d92bc1898471f1c0cc3d26a11d25f4121a7e0e46d516bbe478e752f",
-      "size": 16974
+      "sha256": "5375102eab68d919b521c50426c7fcde76e04ead251d4b585716e224ce489286",
+      "size": 17262
     },
     "core/modules/app/webdist.js": {
-      "sha256": "f68201588992ac2afcbdbed968a80f0a06871463f780700b8edb2d862d2e48a9",
-      "size": 2465
+      "sha256": "5db3605ed18b5377b522e0fd4cce784cf29238b3339156ef10d2d63cd1727e4a",
+      "size": 2520
     },
     "core/modules/approvals/index.js": {
       "sha256": "e46083b9a9421a00e3d43f3292a96214d7cd46bfe11bcd82895826444008fe75",
       "size": 43296
     },
     "core/modules/approvals/policy.js": {
-      "sha256": "40d4c313aaf47ba55af46ef77039cdbb047470ff22bffdc5327062709779be45",
-      "size": 17043
+      "sha256": "afb82d61850845f1eb4d04c03b99906a9dc2cbc8713f4d2f32b2cb24e5e18715",
+      "size": 17257
     },
     "core/modules/approvals/reviewer.js": {
-      "sha256": "c51363dcf4e82e7b3bd5400e8b3fc2ab8c37b4af1b126dcead100cfa6a7336f3",
-      "size": 9784
+      "sha256": "5eff41a982179ca44554f497499fbc6d4e3512fb1f9e371aa763c8f573189f3e",
+      "size": 9909
     },
     "core/modules/approvals/safety-net.js": {
-      "sha256": "e21d48c74d573ea7eaddab32eb3235c557a74f13174e750cbbe5d758d931aed2",
-      "size": 8755
+      "sha256": "9d4348280e7a8a6927affb464fd115d26c26a7af8cc8f47ab1ac2c5de59dfc4e",
+      "size": 8923
     },
     "core/modules/audit/index.js": {
-      "sha256": "1849892643b3d77235f2e5d64ef88357a1c420280ea23a354c7d8c6f39b9c11a",
-      "size": 8190
+      "sha256": "2def6b7b20fa44a17921531724817fcc2230807338aeef9e9da129fd3487a34b",
+      "size": 8315
     },
     "core/modules/auth-local/index.js": {
       "sha256": "a4ebe814a2aa206a405afb8a532cc20631c5da0fb01a8c4be23fc7a3121c541d",
       "size": 39169
     },
     "core/modules/auth-local/logins.js": {
-      "sha256": "eb82c66763f9ca810333f738ec333f65e36f5adbdd63ec1fd198292e6427d379",
-      "size": 916
+      "sha256": "978a48544f2620ce70e7afbf385a15c6d0d8eb9a2c124db74709f6cec0e2dcf2",
+      "size": 934
     },
     "core/modules/auth-local/password.js": {
-      "sha256": "ab519c8ec72631f70665965aada2fd34aa5886089cb50aecb894e3acd36be3a4",
-      "size": 3285
+      "sha256": "be404cc0be51b8a998a662e58ae2a47a350285794b471f48ef693d925b1729e9",
+      "size": 3354
     },
     "core/modules/auth-local/preferences.js": {
-      "sha256": "c2ed08d2ebc5ed40513e008d859d98e2e1750ef281575de75da8f55052f328c0",
-      "size": 8020
+      "sha256": "4b0e495ee1fafd382a1a888c7b956e8c28015fd88022df366d61413b8427223b",
+      "size": 8161
     },
     "core/modules/auth-local/web-guard.js": {
-      "sha256": "4fc5e89f4a2e4468cca73315ad92603adb1081c9354b58ddfd3a41b9fe48fb75",
-      "size": 4563
+      "sha256": "4e42c16a47658967e12ad708b2d5a9b7b4c8c0a473a09da6a1b1919cc7601692",
+      "size": 4670
     },
     "core/modules/budgets/index.js": {
-      "sha256": "9523517e490749f5bad7d957c324cdd0dfab9ada1956365e2bf865337f883af1",
-      "size": 20488
+      "sha256": "0bdfeec210e82cae1b9279bd8e6a669334b8fc16c27c6777b7936ad1d5111318",
+      "size": 20810
     },
     "core/modules/conductor/AGENTS.md": {
-      "sha256": "44a768b22846897d1d189e963523618a187c716e1324da9d6dd55552dd1f8d00",
-      "size": 13100
+      "sha256": "be9f08852d6490a4598e194c5aac1c853ba33d842cd90fdd9e9fa69d04c2ec99",
+      "size": 13192
     },
     "core/modules/conductor/attachments.js": {
-      "sha256": "ca3aa3aca6223f27f1baf899c3815e1e5aba610f4b136f678b88a52ca0601a70",
-      "size": 9716
+      "sha256": "2fde3afc9fa72dba56c218d88efa5df8f4a8cc6c78008e9aefa8262ae129a3bc",
+      "size": 9915
     },
     "core/modules/conductor/index.js": {
-      "sha256": "699d3d2802e40bc98cdcbdeece93ed6058dca1f182aae56bf8d3e069514d1c64",
-      "size": 49495
+      "sha256": "faa4e9ae38536d54858451a260a575f156151fece1cccdf5131c4b695f45bb47",
+      "size": 50288
     },
     "core/modules/conductor/marks.js": {
-      "sha256": "e43f0bfcb456f25fbce1d8f47a18bb259b6fdcdfb7df744a794a29e983bbeaba",
-      "size": 8319
+      "sha256": "4c62110254980ece530df78572cc0411dc1c9829e8a17d80beae49593de1b00e",
+      "size": 8472
     },
     "core/modules/conductor/window.js": {
-      "sha256": "cbdf961f877e34cd78ae14719458b5aed30fd12cf020fa6ce581da7c616268d1",
-      "size": 10729
+      "sha256": "25161799d586da7d3bf7bbe9fc7992da31115073057384f0573a19d4245b8eea",
+      "size": 10902
     },
     "core/modules/devices/cbor.js": {
-      "sha256": "4923ff46a9f3ecc1c2368b7219002e06759f7592ceee12d941c30df6dce0c94a",
-      "size": 6522
+      "sha256": "869abf7c425f47d42d61bcdcb7b6da49794fee8ae6e4f7798e7027c70df5d53b",
+      "size": 6700
     },
     "core/modules/devices/factors.js": {
-      "sha256": "6c17211105b05e9eafe1bdd2b440f5e5bf6d29ccdd9b6f90a371c62d052c77ca",
-      "size": 12764
+      "sha256": "d3d30bb91260344262f79cdbd44de61cebfceb03a463c8269fbd6f71ca87bca1",
+      "size": 12967
     },
     "core/modules/devices/index.js": {
-      "sha256": "a19432b22eead6e17e2cdb56a8fe610594a117eab5435280d930c57244b33102",
-      "size": 38207
+      "sha256": "01f8a97757cce907c084892f217078d006029a05ec304971c0759961ee04f623",
+      "size": 38797
     },
     "core/modules/devices/push.js": {
-      "sha256": "104aedb338721c7582e0807ae9eb4b8ef5a7b3323d9957e29643c9584967546c",
-      "size": 3735
+      "sha256": "3c804a90a8730699ed4f4d8b4338313a30d8ed2963d2ea2af59041f15be819ff",
+      "size": 3804
     },
     "core/modules/devices/qr.js": {
-      "sha256": "d4c0202db929e799889b1ed51df98634ba7fd9e42309a36cf855fbfd8ac2725a",
-      "size": 2689
+      "sha256": "3236f2ca562e0ce45cc6ff51b1204e491738425d35d82bc76989c23a04055ced",
+      "size": 2748
     },
     "core/modules/devices/totp.js": {
-      "sha256": "9b1b823bfc3fb69e2a9ca99c1e71470e57d118dcace7de967a93321c6aa78b25",
-      "size": 5498
+      "sha256": "204c1ee6a0ae9b8f1fe6c13fda819ac96d0af78fa64b13c3888566161a50f25c",
+      "size": 5645
     },
     "core/modules/devices/webauthn.js": {
-      "sha256": "8f6a096d48af83b6ca5a06b56ae8d940e0198911f581951fe89b68ab44bad4c5",
-      "size": 10694
+      "sha256": "daa4c6688ada651f352dcc14b40c945aba61cf52a571e4f32dd54879cb3cf7cf",
+      "size": 10902
     },
     "core/modules/devices/webpush.js": {
-      "sha256": "8ca76afe55df0e49c0e095d75297c64a78f900c45fa1788ce3293e292972a66e",
-      "size": 10457
+      "sha256": "b74109998280f033d03f6bcfedeec94aa807bc8432c939665ab10feb4bea13fd",
+      "size": 10643
     },
     "core/modules/embed-transformers/index.js": {
-      "sha256": "5c8ebcd8dfcf7390929435078312a6e1e61475f5e60e14854be6dd774300f3af",
-      "size": 29841
+      "sha256": "a894b35dfc06e404c3604168d6b52b42a2a548b1a52a5e79821023b1d902dc7c",
+      "size": 30424
     },
     "core/modules/embed-transformers/models.js": {
-      "sha256": "4f2202db4dd46a5e7a2a7c1a748960e66b56947ec575521be26b1c4cb93e0a0a",
-      "size": 10010
+      "sha256": "0ab31f3a16dd9955a6594304d345a6587e78ff3a5946b93415adf2998c490cbf",
+      "size": 10187
     },
     "core/modules/embed-transformers/pool.js": {
-      "sha256": "c2158e61292d7881f104f2d93b1908cdbc92cef4b9b4130a4e287ba9673d97fc",
-      "size": 11067
+      "sha256": "2d95298155ff38339f3aeffdcace2e79cc34ad9c91c45395052d36eb8c4348cd",
+      "size": 11330
     },
     "core/modules/embed-transformers/worker.js": {
-      "sha256": "e7546e6679f40af6f1e15bc7e0d5529b89636e57dbd214060fa6f7f9b2dd1baf",
-      "size": 7096
+      "sha256": "f134b4d00c61c51c070b4dbf8ac70277907851a0f0c26f23fe41716a8da15779",
+      "size": 7281
     },
     "core/modules/evolution/analyze.js": {
-      "sha256": "796a068b66f13377302c22263bf9f4868877087f4afc9b6a307f048ca4a858fd",
-      "size": 18550
+      "sha256": "22cce1d75383a01791918c484d69dfb72afa964a8abbf965d45851f308978b8d",
+      "size": 18806
     },
     "core/modules/evolution/code.js": {
-      "sha256": "781fe5abf8923285b6cc1197d9aec3e33d194c78918646c91c682ff76c8163e8",
-      "size": 59195
+      "sha256": "c7128f3733f397ec99db3c4a573c74125070c5b95ba823c6b9f50a0ed0f990a1",
+      "size": 59995
     },
     "core/modules/evolution/draft.js": {
-      "sha256": "8b32997d9d8523e33212521fdb146341259e12215105965e17844ba840599b0b",
-      "size": 15626
+      "sha256": "2b0e9a930dffe2689923c04c2e241e8ef0b757a5199ea15997715d1d857208d8",
+      "size": 15822
     },
     "core/modules/evolution/index.js": {
-      "sha256": "8df01fe63552e7fe13a2464090e2a3315be555ceec394f765a295c6cadbafe2e",
-      "size": 128598
+      "sha256": "c6711336cfbac67d454783e8a41c3336e70f4425fa8b4f63e4fbb783015ee62c",
+      "size": 130427
     },
     "core/modules/evolution/map.js": {
-      "sha256": "3667a7c2c9b70fec7c18bc0a138b30f54361c3c58f54f5bf6eae2db562eff55c",
-      "size": 12486
+      "sha256": "25fc9f89c833e6b4aab70ad9fab7005ec029741c3de40d7509ec00ebd7bd54ed",
+      "size": 12717
     },
     "core/modules/evolution/packs.js": {
-      "sha256": "4349bfb791e34cd7130a9ac4b7cdc795ad0509e9684a3c88e56fad27885c7c6c",
-      "size": 6890
+      "sha256": "adae2ca367843f4fa31f98df0391510116794d8a66e88b5d1c70ba976d3b8130",
+      "size": 7035
     },
     "core/modules/evolution/shadow.js": {
-      "sha256": "7673336d74aabe9dba50267cecc0846f1861d0a7fce0bfab7e0807c55b871a00",
-      "size": 6129
+      "sha256": "cc26c885b7f97b7131455b835d638374022c693e49e31edd87a99db450b525b5",
+      "size": 6223
     },
     "core/modules/evolution/standard.js": {
-      "sha256": "5941722f1336bbfe394e00ba8b4061ba4b48bcf1c8b48d53d2880e4626cd5739",
-      "size": 12419
+      "sha256": "c6678819ff0bc45d0a7fabd7c2792bc8dd244d4f89a7673311c7eac6e6ce8daf",
+      "size": 12596
     },
     "core/modules/gateway/cert.js": {
-      "sha256": "2024291a5b745596c8e03b4bc9b57b57bc7dffea2aa067c76ac2ab552f782613",
-      "size": 14806
+      "sha256": "3610ff828a87a3f5d19e9a14f2d143d372a7bdcdd42a08d8758c82e1607b1602",
+      "size": 15158
     },
     "core/modules/gateway/index.js": {
-      "sha256": "62de1f8b663151c291b479588a166c03058ed969b13d35f6881b3c76307d3030",
-      "size": 14885
+      "sha256": "1cce2bdc370aac8e480c02e2bb6a7f3adcbc78e2d232050393df818200d37461",
+      "size": 15157
     },
     "core/modules/gateway/tunnel.js": {
-      "sha256": "7d40b463ee99dec31c7c59f0b8e4c7c3c392d052f774713b3006b6ccda5f8e6f",
-      "size": 3623
+      "sha256": "fdf6c80cabc6ecf9aad60091ad9e2b2785bcafad744219b954f8480ec1d658e5",
+      "size": 3709
     },
     "core/modules/harness-dsh/index.js": {
-      "sha256": "78e8c0534785242da7ccb797423d20ec52d142386a3bd4c543c078b4b53b0633",
-      "size": 11595
+      "sha256": "b6370d9f0e718906aa05690d8de9f2d92623bf02f56201699e26884d2916f716",
+      "size": 11760
     },
     "core/modules/harness-mock/index.js": {
-      "sha256": "d7de93cc15dcc415c2c596525f7eb7f6925e0415fabb7708770c14abeb1a4eb8",
-      "size": 3004
+      "sha256": "d639816fb95a2853d83972ca6e6e963daa482f086e910114a029adc91566d715",
+      "size": 3075
     },
     "core/modules/jobs/flow.js": {
-      "sha256": "40367fb47a018d05847e931def8b174996520b851d50f4129c48d76980d8fad4",
-      "size": 17942
+      "sha256": "2d297b59fd40fb4e6aec740503b263a9600cddf3b3ed81a044fabde9f45a5508",
+      "size": 18203
     },
     "core/modules/jobs/index.js": {
       "sha256": "3c8eacc93cc4722d9ce8660bad20ec94909999146bd64812573dd9408d1bf088",
       "size": 44885
     },
     "core/modules/knowledge/chunk.js": {
-      "sha256": "f3fd3e7fc7126309ac21cd82f219a1fc4ba4725b3d35a9ce81f3900895a2feee",
-      "size": 16279
+      "sha256": "2db90597f9cab8f25098456313b087c001a5263264c2b07c6e0808e8569e8e9d",
+      "size": 16641
     },
     "core/modules/knowledge/dedupe.js": {
-      "sha256": "e779b6a6d1c027eedfd27e6694118c5e12ba70bcd506e584cfde1474d074f7bf",
-      "size": 5511
+      "sha256": "ac121562321b234859033283598413216a2edb337731122f5fb260a476c3dbda",
+      "size": 5642
     },
     "core/modules/knowledge/index.js": {
-      "sha256": "ed4389c30e1f8332559d4761796daf2b9b5bbe75dac84b4d0733dbaa49daf942",
-      "size": 15255
+      "sha256": "a85ff763f478e0fc2a413e3a8a3faa86962d69b6f36b4369a6b0924c55410033",
+      "size": 15498
     },
     "core/modules/knowledge/knowledge.js": {
-      "sha256": "55606af0d859a0d32a3ebfb9c19a4d93ea3d3e92b36ae28bd8291b9d1c8edff1",
-      "size": 33218
+      "sha256": "90cd5fa430c74d7aefddee43d0a5b28323e9f86e6493bb810697c2edb341030a",
+      "size": 33799
     },
     "core/modules/knowledge/parse/clean.js": {
-      "sha256": "7731a83bf6d1d651c39a7653ad2557cfedee3ec1cfce62ded6d5e445e88b0323",
-      "size": 5546
+      "sha256": "f6db7dabb002e56c59ba62b3e0ae3fa100f73c9b3fb7be339714976601d3ca52",
+      "size": 5668
     },
     "core/modules/knowledge/parse/html.js": {
-      "sha256": "6562b2fad837c688310fa251994d14309e8ab94abd9d639cc6ec727cd195274d",
-      "size": 7023
+      "sha256": "789a83cbce263b1b4e325bba8ab98715006ed0dc1199206a4d7fb46ad53fb152",
+      "size": 7171
     },
     "core/modules/knowledge/parse/index.js": {
-      "sha256": "06b8808f4138f88bd7225a761826d02d386404f96ce18a91695248f1faace575",
-      "size": 3909
+      "sha256": "59735d26bfb1f61556349d4cc6f34c0cc6c6a76526975f82a0152b0e06d84609",
+      "size": 3981
     },
     "core/modules/knowledge/parse/ooxml.js": {
-      "sha256": "bb1e86854ba9fe9ba2b9a5db6f3ef5de235ba7e03b2a0344623ef983c4eb963e",
-      "size": 26410
+      "sha256": "b61b78f49f9026302ab44acf68b2faab18a52411fb6d5b7bb2c7f6d40d92acde",
+      "size": 26951
     },
     "core/modules/knowledge/parse/pdf.js": {
-      "sha256": "a59c066dc5b4dc0aab7d31f247d328e00c118e705e26d839dd56abee6321e1e9",
-      "size": 2686
+      "sha256": "ed6c1369e66e989cb4a407b3dfebebcb2bf90bce106c1a218d621a5585942c9d",
+      "size": 2754
     },
     "core/modules/knowledge/parse/text.js": {
-      "sha256": "824fd1c95ad6367dc0f5f41eec54c6d9d6950ad56d0333ee52fdc80b90d98f06",
-      "size": 8454
+      "sha256": "b243ac8fe1115bb9d7e975564bf08d437217ace5e5eda96b169e531752a1843f",
+      "size": 8640
     },
     "core/modules/knowledge/parse/worker.js": {
-      "sha256": "e54c5674cc443ab3ad5105aa32c11996f1dc18c1f3ff64add83cb0cab6c91e12",
-      "size": 341
+      "sha256": "c2090e38d7492b4d4f47d24dcafe5732e44a9c6018df8835e07bf13bfb56fe80",
+      "size": 350
     },
     "core/modules/knowledge/parse/xml.js": {
-      "sha256": "cec3a250243a5566c776bb03e3155045a2b91bc1a329d3778a1f13b90c27ce8a",
-      "size": 4991
+      "sha256": "dc17814c00847c5778088a56b73936a808f9c31ca054ba16654bb946da12eec6",
+      "size": 5127
     },
     "core/modules/knowledge/parse/zip.js": {
-      "sha256": "0a47fd899d02fa0f0e93cface471ebfc29828693a5a2944d91556ddcc4b3bd76",
-      "size": 18275
+      "sha256": "613f19c74c2cd40b1d7c8967bfc518fee53f11a6849b294a3e140ed386bec217",
+      "size": 18630
     },
     "core/modules/knowledge/records.js": {
-      "sha256": "df33eab27de9ff234d24e198f0de481be408569c516b4d84d03293a0d84310f7",
-      "size": 3910
+      "sha256": "5812254209cde713411240e1f94f38a88614ea5018636e8fe6ff3724b989099a",
+      "size": 3992
     },
     "core/modules/knowledge/scrub.js": {
-      "sha256": "d9aed392cabbb8cb8582a7a99b2b99f1f9085de73b90fc78de580f2625d67b75",
-      "size": 1164
+      "sha256": "e726c78a4091193b8729b1c39cb1062c54751c819da9ebd09ae9d54e6ea82f35",
+      "size": 1188
     },
     "core/modules/knowledge/segment.js": {
-      "sha256": "a69e72a9528b0cc1be69d95bdb074092dee31db1a9c0572cb8e8348f3e25d94d",
-      "size": 8546
+      "sha256": "870010c4bad47d6e07a1ab09f83ae99c9d74992cea4ffd728411c3ce79028f85",
+      "size": 8711
     },
     "core/modules/ledger/index.js": {
-      "sha256": "55f90b61b6e37698c350c8359a42cf82cb6f1bf24f41af502f0c17fd0206575d",
-      "size": 23840
+      "sha256": "f17b6708792dbce3ec3ba95797e07778cc7abcd89c16477d9cbecdda74e93d72",
+      "size": 24216
     },
     "core/modules/ledger/price-rules.json": {
-      "sha256": "1d09bcc4f8e5eaab825e6cd5afd47795df788ba9a28d558bbbb72dfae7bad886",
-      "size": 1986
+      "sha256": "6e3df3d50cc6765663ac4c657294158bcfcdffe6bcb10ab6b3df4b0c0ca454b6",
+      "size": 2028
     },
     "core/modules/ledger/prices.js": {
-      "sha256": "cc06147fc754df2559b480cc408fb882224f59181832d892ee17ea2f617cf319",
-      "size": 4314
+      "sha256": "c4779e0fa18227abd6139bf39d4fcd1a73913d08e80b15751ab5db3503d185c1",
+      "size": 4381
     },
     "core/modules/ledger/sessions.js": {
-      "sha256": "4da5cdb69252a8ac3a9dcb7ad07d40d3e84132c41329e06336e3d98ca2380e7e",
-      "size": 7274
+      "sha256": "8939ac0ed8e0a8ff8377b2b4ed42ecb78d8844de1f5d0e186ae3a90248dd6631",
+      "size": 7418
     },
     "core/modules/llm-gateway/index.js": {
-      "sha256": "428c8e935aaac9d6a075a0fa974df4abefa9cd992e7c44757d117bf95acf06f9",
-      "size": 4840
+      "sha256": "45509ef49da152bef7f5f11b807112ad4d91b3e7a8581b1ede33b0f67c65d5dc",
+      "size": 4925
     },
     "core/modules/market/catalog.js": {
-      "sha256": "f28a1f3eb692f49c5449eaeb8e55ea354cd36cdfb6a6c01735e573cd645e40ac",
-      "size": 8461
+      "sha256": "fecdaf153c829d0033412d23406ad11dcdd7ac98c046eb6cf2df7604199fb679",
+      "size": 8616
     },
     "core/modules/market/index.js": {
-      "sha256": "50bc80cb8a805fe1fb732876c4b0cc53c380582ce01143834788356cb382d9ef",
-      "size": 33298
+      "sha256": "8300bc84e3ee95391fc3eef266b24d900a8fff3ee1a541e702b1c78031612ea5",
+      "size": 33827
     },
     "core/modules/mcp/client.js": {
-      "sha256": "1292875bc984307a031f8828b921875c1485fc955336fcd9a56f6c8cda05b450",
-      "size": 13130
+      "sha256": "ab2d0e5f8888dc51caf934df37a7578f07a26e63371032e19a5c6025876847f6",
+      "size": 13386
     },
     "core/modules/mcp/index.js": {
-      "sha256": "38bc27c106f88d0a3a23a069e9ce9f8720bd5ce3138dcfc608d0390de915d7c6",
-      "size": 39980
+      "sha256": "a8e1cbbb24d5342ab201d0326e06a1bb5d641c61189b21e72beb824e61e55ee6",
+      "size": 40621
     },
     "core/modules/mcp/templates.js": {
-      "sha256": "1d656372b28e23928bd4cea6e27e386df95fc9397f60db7194af571a9bb1fc85",
-      "size": 2447
+      "sha256": "01116b3c93e4804fca2690560a8cdbdfc286f6ac1b6c9fbb98cb8a60b61ecae9",
+      "size": 2501
     },
     "core/modules/memory-hub/capture.js": {
-      "sha256": "832639af01245078349ecba3ab7d286a7dc45e1087dfb2749049d77f3af0dc62",
-      "size": 3593
+      "sha256": "5bebc8dcb927ba317a4027668a4cee9122b422dcd1477ee27602becc663f423f",
+      "size": 3652
     },
     "core/modules/memory-hub/cli.js": {
-      "sha256": "6de71d0591f21968d3bd8265fa61305206e22d1ef31e12dac6efef747980be98",
-      "size": 7860
+      "sha256": "633058aec411d68f433ab3687fe2d651d620ae34e44da3aa69f540eabfecfbfc",
+      "size": 8036
     },
     "core/modules/memory-hub/index.js": {
-      "sha256": "987539be8c89b7b84f27be6c9eb8d2178cfe69624e45cc0dfef4c4e4ce4c1e66",
-      "size": 29016
+      "sha256": "b217af90f7c4f195b7acd26d9cb13ad7d3cb367424ac3b82dbf57b4ace0d0347",
+      "size": 29455
     },
     "core/modules/memory-hub/judge.js": {
-      "sha256": "50a4dd181eb2fb4ff7cac227f2d71e6c2dc121e1a9a4fc358545c5717461240c",
-      "size": 12763
+      "sha256": "4532f16420b6913df031c63d93967c682283ab00af47f463dfc7346effdc64f6",
+      "size": 12977
     },
     "core/modules/memory-hub/memory.js": {
-      "sha256": "21d14c433e07d7cf0c21229c9e80c8d3bd2fa61cf9d9e1c5bd95b25fa50ac554",
-      "size": 50920
+      "sha256": "2df1e39f26d18f2166c4f32df5f19f4d217cfb10c9eab71433fb9b2db99f6b14",
+      "size": 51751
     },
     "core/modules/memory-hub/registry.js": {
-      "sha256": "74f206f122f1ac1f6c980276135712a0974e39914ace4fd916b6009796bd7f4f",
-      "size": 15723
+      "sha256": "c474668563ff43e81c55b1acdeca07a8f705c1ceb1fa974967112dd22f568be1",
+      "size": 16029
     },
     "core/modules/memory-hub/regression.js": {
-      "sha256": "3743fc9d691526c40f8a1cea0f26d7ef982d8f931a61c99d99fde2918dfd0cfc",
-      "size": 6052
+      "sha256": "a3c9e77053a724fff5679273d17ea69f7fe6eccc7a18a75592ed7bdb08eff54a",
+      "size": 6145
     },
     "core/modules/memory-hub/retrieve.js": {
-      "sha256": "a3de950c29b14b7ace0b42bcf7e301888bb40f222bbb6a81232ce1d2e7b092fe",
-      "size": 4603
+      "sha256": "a30da2bf152bba3a7d619995a96d91041f205729584e9847d87666dc7a156610",
+      "size": 4670
     },
     "core/modules/models/catalog.js": {
-      "sha256": "e33260ba9d6b4a0bbc8b15417d8d094072d8dfbfdd68ddd0e95077d849203de6",
-      "size": 18940
+      "sha256": "4984316eed474f7c7b1468e29604402f6f4ad90fcbe8f57fb427b714680fcf3c",
+      "size": 19305
     },
     "core/modules/models/effort.js": {
-      "sha256": "fe85eb561fe297f1030b53980e444614d2c4b6cb78421466b69ded73ef92adfb",
-      "size": 2601
+      "sha256": "c6e65752f6c1451e6bbb93ba4db418950753730f172516a1cfde374d939d02ea",
+      "size": 2651
     },
     "core/modules/models/index.js": {
       "sha256": "38bd3dfb4e235e5647ae42fbf6ba7e1f11152c996c5d248ea4335f2130d7e558",
       "size": 63956
     },
     "core/modules/models/models-dev.deepseek.json": {
-      "sha256": "a698cbf22dd398d4f4d364d63edc43072558a5d0616100abd9bf2eef2e1b2464",
-      "size": 21483
+      "sha256": "2d2837bb2594d880553e6b02db15506a354406ed7aeed1b9ad609237014703f6",
+      "size": 21484
     },
     "core/modules/models/probe.js": {
-      "sha256": "6bf12d69515f477e1c93a8dae0e6df7c587933f9de167a8797f7796d451311ba",
-      "size": 6108
+      "sha256": "0d9d4893d3168f9e3018489fa0187440a448290a93b205a22d08ecc090bba23f",
+      "size": 6218
     },
     "core/modules/models/registry.js": {
-      "sha256": "64c24910ff7f63043d23acf17be5732290b0912ec20737c3ef85756c2b021a69",
-      "size": 11573
+      "sha256": "dfac4133c6b5f52bb58ca7f2e7f2567f22dad01b1d70c725107306e910256457",
+      "size": 11783
     },
     "core/modules/node-link/index.js": {
-      "sha256": "0121e6542d3ec1f3a4fa0b6470eebf4c1ee2157072b4b535886d01a819907fd0",
-      "size": 13150
+      "sha256": "88b02c94b9e6d1d59c05ee59bd43c390000c9bd2f7592a00c00e2750213d5adb",
+      "size": 13389
     },
     "core/modules/nodes/index.js": {
-      "sha256": "cda02e52e46b710d509aa6981a87c1bf5eb0554e7c9806b4dc6212aeec61bd2d",
-      "size": 10057
+      "sha256": "09a5fbac829bc11c7cdaf0641796e16877a1b803a5e59298eb44d6f2f8c940a5",
+      "size": 10235
     },
     "core/modules/plugins/index.js": {
-      "sha256": "ea95f85c7919b280ebcca74c4bb92e9ce5665c95625d7f34232253746fc13ace",
-      "size": 17197
+      "sha256": "3ff0fbede38763061609c05527f0e8319eafbccec5269cb19cb7f0ed17762c8f",
+      "size": 17476
     },
     "core/modules/plugins/settings.js": {
-      "sha256": "7988bec28640fbe77cc4a50c692bb9b92515cce538751ccb5762543dc5fb74d8",
-      "size": 5195
+      "sha256": "c5afebfda0173523a5c07f1bcf650acc0c69338112fa69ee1dfd1b40d2e23298",
+      "size": 5292
     },
     "core/modules/retrieval-models/index.js": {
-      "sha256": "778b07af464ae07eecfc40caf9df1efd1c71ce10225561c06e86106f2f040953",
-      "size": 5587
+      "sha256": "32f6b161fd7294653a672603968d37798668e4f90723ad381677c3d91f34596e",
+      "size": 5693
     },
     "core/modules/retrieval-models/qwen.js": {
-      "sha256": "d3c58bf742d54b772c375dbd735bc5c89600ea914c9abac27b6fa90c98408b39",
-      "size": 5916
+      "sha256": "4615faf9b61d65fc5a0d4718d22208f8e8cc3a0b8ae74eaf0fea2d30c6504b3d",
+      "size": 6040
     },
     "core/modules/runtime/index.js": {
-      "sha256": "cd8739444521c55b9f2bf6192379995aeaae3a67dabf2394b2aac23da7bfeb39",
-      "size": 10953
+      "sha256": "58e88a444917a41897be799da50eb7e013dfe196e48d0383c0509a0b05e495d5",
+      "size": 11174
     },
     "core/modules/runtime/npm.js": {
-      "sha256": "d3362146475a444b97cacebd980245cbf664cd028a8ba895bba1399373e40074",
-      "size": 5403
+      "sha256": "be6ac61c53162b0a0874e4e822adfc2f069dac53d1c52614914c064af17afa62",
+      "size": 5518
     },
     "core/modules/scheduler/cron.js": {
-      "sha256": "c32672b2fa946970d3f7c8d32c16e1f3935dc9ddb6a8dc8f2f01202c7f60abf2",
-      "size": 4039
+      "sha256": "0ba1f8dbed1bd0fea2bb88b34e24e3361bbac481eb50c81735d71f5be99fc898",
+      "size": 4137
     },
     "core/modules/scheduler/index.js": {
-      "sha256": "48d15bbfa10b8b72e8abcc584f42aed0c1405d8f66313123caf45d4842f4a53e",
-      "size": 2981
+      "sha256": "b54916e609b9f23b4979ab397649e8e66c096e9c0d11f0e42c5b251e3ffa7cb6",
+      "size": 3055
     },
     "core/modules/schedules/index.js": {
-      "sha256": "dd10f118504acab750554829dbee9d41308b7b6b3feaa66493b7bed15fc3e5ad",
-      "size": 23339
+      "sha256": "412f168cb6f368969d9ecb642ec892f88f525767139ee9a929ae742e950190eb",
+      "size": 23714
     },
     "core/modules/steps/index.js": {
-      "sha256": "c40827149d87a957d900bbd8d8160b626cc058a5adbf0109dbd587c911e8ddec",
-      "size": 9187
+      "sha256": "22f2ef2a50304c259ca9fde109faf5cf9de1469a65ce8d8a943e20a368c21819",
+      "size": 9378
     },
     "core/modules/steps/rules.js": {
-      "sha256": "f8693cea3767d66a945df6abc684207ce1bd2f63b41c102649b1fa56d0a480b1",
-      "size": 8732
+      "sha256": "0c44407fae8369224f74e9e5af766b0ac77ceba5a19e1b578e7a8253b866c1cc",
+      "size": 8880
     },
     "core/modules/stream/history.js": {
-      "sha256": "beefcaee120cd6eadfbced76fa7011f59e0726b46c2fbb574752ee91b6eb7b7d",
-      "size": 6782
+      "sha256": "f31303ed8227157bcaeb035a57b70740dc458799c97d0665118b42d5646f7f17",
+      "size": 6904
     },
     "core/modules/stream/index.js": {
-      "sha256": "0c8a11e4b4fa7ebbed2544eba7b6de1039a7176a7211024bb55f3f4c71f0ddce",
-      "size": 23082
+      "sha256": "a92ceb933070eaec452da2d0eba74d615228c7cb3e2aba2259a50944bb969978",
+      "size": 23436
     },
     "core/modules/supervisor/index.js": {
       "sha256": "8874ffe4f2bb935fd2813b26f737200187550d7b49d98a2bb83ed14666d591e0",
@@ -658,232 +658,232 @@
       "size": 12866
     },
     "core/modules/supervisor/model-settings.js": {
-      "sha256": "7f76a34e52588e75a419e11ffea5d8d5ebc83c34e46ef73ed94c1eecc9001d5d",
-      "size": 7061
+      "sha256": "c3c73cdfd9dd68d864014fbb04baa9cbb14999989dc74e5a79ca827df81446f5",
+      "size": 7202
     },
     "core/modules/supervisor/proc.js": {
-      "sha256": "7140fdd46d6de4e90855fcbfc9eac87882e044e8d8ba81cd8461e12df00be621",
-      "size": 2875
+      "sha256": "37646d6c20d2fe30865d2a14b821c2e4f27979e1b715eb86651086572ebcecbe",
+      "size": 2946
     },
     "core/modules/tasks/index.js": {
-      "sha256": "9cfdebc5d1467371ae539eac7d1fce3eee396cd6028b03c11b7682d23a4d7a3e",
-      "size": 58374
+      "sha256": "8a32686d0be1997c14be136f0693b092a4aee3aa869d8fe943400c0d8b70463e",
+      "size": 59347
     },
     "core/modules/tasks/order.js": {
-      "sha256": "3cc000ba73c90718c5236c0597c648a04fa7372a9b339ff5f225c66eb9626946",
-      "size": 3842
+      "sha256": "e44458473a85755be037c932bf953cb297778b752154f5a93e1c516232bc4efd",
+      "size": 3905
     },
     "core/modules/tasks/router.js": {
-      "sha256": "88d7ae33bcb6118cefb1fcecf2373e12a033f087560ed68979eb0d16079fb665",
-      "size": 3594
+      "sha256": "2ab343456c145b694060b7c62de2875386b107cb3b527eeb2daadc2291a31fb4",
+      "size": 3661
     },
     "core/modules/tasks/spread.js": {
-      "sha256": "f20f63bea7d4614bf08c27692c133b4962c1520221f0c4c7dd79898905d5d2bb",
-      "size": 2046
+      "sha256": "e4dad1ec4ecbcbfea89a9c3b4a366926a802f367b3c30632041cf6489e35d4af",
+      "size": 2079
     },
     "core/modules/tasks/texts.js": {
       "sha256": "ddd85c512dcc8672a8210769292d2b844a6b9ca104b1c60d3fd223f1afc78803",
       "size": 23540
     },
     "core/modules/traces/backfill.js": {
-      "sha256": "d23e32e2588cd0c0aa3985e73ce232c1bef04a992a4d24228899075ad763740e",
-      "size": 7837
+      "sha256": "c6b825f87eeecc5db38c210b2bdeefbed77ccc1c699d3f46b6c260eae99b4d0d",
+      "size": 7931
     },
     "core/modules/traces/index.js": {
-      "sha256": "52c2891ddf640dddf036e2ad7c17f16f24e1858e419428635a0e5bf327b0c76a",
-      "size": 22788
+      "sha256": "629a7826bfc3234041ee2857947eab069668499add9f40b9b31a92927709c5fc",
+      "size": 23165
     },
     "core/modules/updates/apply.js": {
-      "sha256": "3ad40733a3d5ad86056689496148ce254ea6ac74547d1b0fa6125cb7a30d2a46",
-      "size": 9322
+      "sha256": "5a75790865cb6f5e24726fd9354157dc86cbd038c1b5c1b1ee119c6588e87438",
+      "size": 9506
     },
     "core/modules/updates/channel.js": {
-      "sha256": "bbb0ff2eca1d04913c69d413aff340f441bd14b7b916510e76ae178954cb6938",
-      "size": 10317
+      "sha256": "75c263d0a6e787f7954df768e3f6dc376e897f487bd182e14e336b15b3725a8b",
+      "size": 10471
     },
     "core/modules/updates/github.js": {
-      "sha256": "ef00f9ba8b6343e72cf2cec03f588357ad6c32cdfdcfc1579f851e9245e58952",
-      "size": 12088
+      "sha256": "adafe41399f0f1aef7a5dff1445a1c569beb852e3c5067da1765bd9e075ca5c3",
+      "size": 12295
     },
     "core/modules/updates/index.js": {
-      "sha256": "fb96b3e4a4992902873b8103472390dfa82e7c32994a72e7cfcf9517f227774e",
-      "size": 98294
+      "sha256": "8af82007f93dded4418700e20ccf9fa789a32ff866dabd8d24af7d0124096b6c",
+      "size": 99699
     },
     "core/modules/updates/layout.js": {
-      "sha256": "857ab54272b33ac02a84e4140cf4b119b0ad3827eab9db992d5c0c95a70e32c5",
-      "size": 5479
+      "sha256": "88c71127b3557c82484d2bab24bed12cd84977a6987835c46383da4ae4194cf4",
+      "size": 5581
     },
     "core/modules/updates/publish.js": {
-      "sha256": "f9e24fdfc3e5b5c8a0495ec30a97efafb3ae6c91516868d02e8cf5f6aab60343",
-      "size": 7558
+      "sha256": "5ae2e176db06d26e05c1bc4e2affb30746f5a30816bf7deb01ffb7b9db2786b4",
+      "size": 7694
     },
     "core/modules/updates/source.js": {
-      "sha256": "e567db4eeaf7ad0c2f0812efaa0429bb617d03f8329a322d13e917f5598abcca",
-      "size": 12091
+      "sha256": "e00d2ae578566d02f8d49799a560223bebf7b929d6f4cecc5f3413dd7168f025",
+      "size": 12275
     },
     "core/modules/updates/tiers.js": {
-      "sha256": "f6dda00b49af5c22ec8b1226a7cdf2fe8a07d28e9c148adafbb1b9b35573b2e5",
-      "size": 6522
+      "sha256": "082f545f0cd55d60e4781b1349c068c9a85f7acaadcc0a2f96829335995ac407",
+      "size": 6645
     },
     "core/modules/web/bing.js": {
-      "sha256": "303476a39c8dae470cfe0dd090c1c4b7910f6a1044369b0539f582c1eec6d72d",
-      "size": 4704
+      "sha256": "a061ea17a16e1f9a70cce67650a76d81275c4499908f76c8c05b4af59a5c2f30",
+      "size": 4792
     },
     "core/modules/web/index.js": {
-      "sha256": "4677ce2664a16e1dd2c1e130ddbd54f64b5744023e6cac032aa19912106a8a8b",
-      "size": 14616
+      "sha256": "a3ecea2a5aed293adcc4b0ca1c2671e975ad282faa17bd8d082e378af10dc830",
+      "size": 14875
     },
     "core/modules/web/proxy.js": {
-      "sha256": "08cb1d8e90d267ee790e89dec115669f6ad04946282878ccfb7cb098e8793d97",
-      "size": 5170
+      "sha256": "d79e9ced57747261818526dae155af17e6ba45c0b60978fd9b069255def81b4d",
+      "size": 5264
     },
     "core/modules/web/services.js": {
-      "sha256": "a83a3754aa6af25a71d4191f757ea131b2d3f215dd3cc934eaa24bbf18e6ca61",
-      "size": 5380
+      "sha256": "2a1d2e03f93ba096189d9ee3a650f96ed776ede4437a923e2a50c8d4a1f19739",
+      "size": 5450
     },
     "core/modules/workspace/index.js": {
-      "sha256": "0b9ec2af928a2d8e8ef96357e3b8023ccb480fe55be861b7c7fd752ee367d112",
-      "size": 23009
+      "sha256": "4b219e67779ada39086bdf3e32419dc7788f86274921ba09ed2fdb2cf78815ab",
+      "size": 23410
     },
     "core/modules/workspace/parse.js": {
-      "sha256": "4cdda2ac8d0bfc70824bce4050ff3d8d04f59aa2597a44d68bf69a8dcc987ee1",
-      "size": 10716
+      "sha256": "526735015ebb69ccbff704b2734ac8825a6f49f9825e14a7d5eba0710152b833",
+      "size": 10912
     },
     "core/node.yml": {
-      "sha256": "033072f3c95f156393fcb0d75631de7bc1e100756bbc926f42ace13fc875b9eb",
-      "size": 1297
+      "sha256": "98500964e8948de61fbfe8d3fba1aa989e841b1761a2111209b191c4877abaf2",
+      "size": 1327
     },
     "core/package.json": {
-      "sha256": "fcb30951be6060e2df31b7717c5c9371e9aa7b1a4e0aac190d2a155ab8daed80",
-      "size": 706
+      "sha256": "e8c596bae86400871b1c70b32b99bc0ff2a3957f46d447a133cfd8f55b064998",
+      "size": 733
     },
     "core/runtime/dsh-entry.mjs": {
-      "sha256": "b2e363f33c2c9c4f0ed2673fd3e472807bf156c9faa0d0647c78852a4ab7f6de",
-      "size": 4229
+      "sha256": "a7f601609b7c3d7a3270889fcf9e158f97e5244f6cce5a9b4f145ddf3fc9db37",
+      "size": 4322
     },
     "core/src/http.js": {
-      "sha256": "ace82465929ad1e95f516c691d5dfdf868db2119cf4a65c1edb54b260b5d3ecb",
-      "size": 15370
+      "sha256": "5eefc744db6babb35fd1c20c6879e2003c767de22b18c889acf76f5c3c65f66b",
+      "size": 15679
     },
     "core/src/kernel.js": {
-      "sha256": "2d27fe7f3e15db360463f038a5a0817392e2b0281d97221ffff892ae24545dee",
-      "size": 5296
+      "sha256": "0e3ed3b806a7ecfc154a42290e49ef5578c8618acdf81ab82c77108778f92c93",
+      "size": 5416
     },
     "core/src/main.js": {
-      "sha256": "e99a12a5eac4840a914b8df8e82bf1197d34da4474ae5fb0f1e2252377737a03",
-      "size": 5149
+      "sha256": "e7d989a6a4d55feab005493f8423d05b073d05170cec41ee03da3e172367698f",
+      "size": 5259
     },
     "core/src/node.js": {
-      "sha256": "1a188c745214f044c9f4e8c245b72ad448cdc66cb750bcab7e13ac0ff63360df",
-      "size": 3342
+      "sha256": "25ac2bac57d7a05351992b3de8d2bd5ad808e78e5ec64d60272a248ea0ea11d9",
+      "size": 3398
     },
     "core/src/seal.js": {
-      "sha256": "acb144c32b3f0ba1bbf07ed8457b3e188c4e2d70fa7bd7a43410e5cc9349932f",
-      "size": 1479
+      "sha256": "52f087cf4bec18d28575cb4042112bdcd0bea81b5cfc74440731f86197904d09",
+      "size": 1508
     },
     "core/src/store.js": {
-      "sha256": "4e5fa51a0eb07a4e049f1a5a6654a98c9953b07a0d923deeb9ea35b43590f37f",
-      "size": 2146
+      "sha256": "21ac625298c6a6b0b4c4669087ac92c4d7cbf0493f0ba02113b4efdcead86a83",
+      "size": 2196
     },
     "core/src/uploads.js": {
-      "sha256": "5c59a9c34bde98310f16a544657071113a0a4791d7fbe2cbe25182b246ee43c1",
-      "size": 5631
+      "sha256": "e223366bf2ef0514d5fc9a5f1fa9aa8d27072bc82c3936ad2ad2dfbe63d0f6a4",
+      "size": 5740
     },
     "core/src/zip.js": {
-      "sha256": "7eb0caa63c273b30bb4b5a3e609421af348e6e7f2f14497b3354173c5845a597",
-      "size": 9734
+      "sha256": "1507e85bda1e3f90a023d4b1e734ba9e216e97f9c40bcc14cf68bc9dcaac6e2a",
+      "size": 9963
     },
     "core/web/common.js": {
-      "sha256": "931057f1a6fa1e09e5fdb6ef23735676895231324269d95ef4a180ef046062ef",
-      "size": 3105
+      "sha256": "23151444171c914e0ea6c3f7addd0d55236c4bafeecb1b79168f6f701324c0c5",
+      "size": 3174
     },
     "core/web/device.js": {
-      "sha256": "acf8c979d0b77b6493389e7f8c428f542394f51abd64eed60ab9213ac26e5fb6",
-      "size": 3258
+      "sha256": "aeee1e6ab5eefc85575a16846c810004f6da08a713572f09fe3b996026fdc4ee",
+      "size": 3313
     },
     "core/web/login.css": {
-      "sha256": "ed88afaed24163b2df69d6c7cad7605a46fdd3da7ead56e33ad4fb2151b7e53a",
-      "size": 18800
+      "sha256": "5943479790babf864f30b2171ddc9e8319f94b7d6d1ddcf47d61a05079788cce",
+      "size": 19005
     },
     "core/web/login.html": {
-      "sha256": "9694d73ff8dbda88b7e257caec30d4985d12c7eda5a42bac6991d0a35339679d",
-      "size": 5391
+      "sha256": "b498bff9a6b4aae33441df2df68e3cb859f9dfbf59969ced85fa97c89d98f315",
+      "size": 5496
     },
     "core/web/login.js": {
-      "sha256": "31ffa356b4707ade1e5a52baabba445d64de95174099912703d23d34d8b58794",
-      "size": 10195
+      "sha256": "c5c6e6e721a1352370cdc44eceb36b5b54b9d0ea8269aee12e94ec01dc579bbd",
+      "size": 10433
     },
     "core/web/pair.css": {
-      "sha256": "3a2cf389dbd7157b938595c0298e4590f5eab43eb872002ae086bf3e619ed414",
-      "size": 6029
+      "sha256": "5a8f27616d8592a577fa376ac1302b810e172ba414025dd1e13d3978c8171940",
+      "size": 6093
     },
     "core/web/pair.html": {
-      "sha256": "6cb4a92eca712b43eb1f3088b62383d04f4d31021bacb3b190eb1546cdb12aee",
-      "size": 3983
+      "sha256": "5e667fa18f5bbf3d307c556301c24c16b486bb5f7772d19f68b23724c25093ce",
+      "size": 4074
     },
     "core/web/pair.js": {
-      "sha256": "880ad2bf63ee83ac20b985743adfe1e47bd4ce7b153fff73b1b1e3412c4eefe3",
-      "size": 7797
+      "sha256": "676e792bc1a6dfeb1866b25a97b63bf2aeb305665b1645654ee6a3ef4f91e1c6",
+      "size": 7965
     },
     "node_modules/@orbitra/contracts/package.json": {
-      "sha256": "53cc4a36a53237963bc9261992f4333c422870fb8fe3d5104cfcfca4ec30e439",
-      "size": 514
+      "sha256": "c18f8ab2b3931b2f5e906cae7a15a0caea82ea293084d349303591c0c2e8d57c",
+      "size": 533
     },
     "node_modules/@orbitra/contracts/src/diff.js": {
-      "sha256": "2ee36b425a250eef39092781c3dc1fa3e38149be3421cb48f5f1a3c6b987d608",
-      "size": 2209
+      "sha256": "102d11ec5c0a73a0dc4c759ccf39425606c2ef39e8cfbdb81c389e8335f0d4c2",
+      "size": 2261
     },
     "node_modules/@orbitra/contracts/src/jobs.js": {
       "sha256": "ff2e77fc4b2ed8568bf6513542e64d8c8f05544c792f1e902daa9bc661a3824e",
       "size": 4318
     },
     "node_modules/@orbitra/contracts/src/mcp.js": {
-      "sha256": "f9393e132eed71c2fc32c22f2a77bad7c8c309267f22b278f36628ac7c40bf3a",
-      "size": 5372
+      "sha256": "890bca11af1e07f95751c2234a1e924b598eecbae6e10a40dcc033662f1201d1",
+      "size": 5506
     },
     "node_modules/@orbitra/contracts/src/tasks.js": {
       "sha256": "f4043372581dc5f7c9db4cb900284a95837605c85a936d1c6bf34e2f2ad119ae",
       "size": 1408
     },
     "node_modules/@orbitra/contracts/src/token.js": {
-      "sha256": "dfc01f0c5d92ade21649a0574baa3ecbc0e292c81c7c627a44ab7a047b2484d6",
-      "size": 1867
+      "sha256": "fd5b0b94b3defd6aeb1592a2f75b147a87f8a1dd43af520230d5664fa271571c",
+      "size": 1905
     },
     "node_modules/orbitra-dispatch/package.json": {
-      "sha256": "762a3dfd1203b973e16e293b0160da90742a9a2c6178eb3a958d7cd62fe9dc6b",
-      "size": 979
+      "sha256": "697327320ab34cf7bea3b0da716ef2025372678099f60192bbc32fadd7bbae18",
+      "size": 1000
     },
     "node_modules/orbitra-dispatch/src/core/plan.js": {
-      "sha256": "a16f9dc67948bbc8af7663a329c6fd2812955a2c1645f5da989a15a80103bc4e",
-      "size": 12828
+      "sha256": "de1197cb4750d35d7755cb51c8214c2753a2d3fa21a6b2191c77ce7b25bf8329",
+      "size": 13028
     },
     "node_modules/orbitra-dispatch/src/core/tools.js": {
-      "sha256": "565e0f830955177d8cf0a47b7308ea28e0dec87a421a5f0a7b41a1c54d9e4fe8",
-      "size": 11956
+      "sha256": "40a571680e38e7a1416428a928954f9ec9a563912934fc1dd233a90f04de14a8",
+      "size": 12137
     },
     "node_modules/orbitra-dispatch/src/host/index.js": {
-      "sha256": "b50722112d220e3b3de41c881415a7121885b1081fce016b957bf0884fb081c3",
-      "size": 1575
+      "sha256": "0ae3fd22a061c90d1b280903646fdbde98c633c774af9ed0312a457d001db95e",
+      "size": 1599
     },
     "node_modules/orbitra-dispatch/src/host/plan.js": {
-      "sha256": "81d05755919f8dbc380f0cabdde11eddf71da279ad969e8bd352f27c3c895bc9",
-      "size": 2518
+      "sha256": "eaeb6d59fb8b808f608576cfdde68c243b3b8a96315d371cf9bf646155809cbd",
+      "size": 2566
     },
     "node_modules/orbitra-engine/package.json": {
-      "sha256": "8b6da5584abe10f7ce6ce7df963548737682297968e066c43ab3db3171b27629",
-      "size": 597
+      "sha256": "0677a739cd1c35b3ce525334afba8ceb9feec19f5ba539afb68ff2e35717e028",
+      "size": 618
     },
     "node_modules/orbitra-engine/src/core/driver.js": {
       "sha256": "75303e629d752342ed2e6ddea0e8b8d89a26bf16a042eb6c9a719d95b5c784df",
       "size": 9793
     },
     "node_modules/orbitra-engine/src/core/edit.js": {
-      "sha256": "56598210e31ef2a66139a1d02078ed7921eb747002f278f6b715008ced4deb9a",
-      "size": 671
+      "sha256": "70d6712b5d6ef68f9b0222d66ffd2ade56069e615976d6dcf6c7eea2002fc40b",
+      "size": 685
     },
     "node_modules/orbitra-engine/src/core/path.js": {
-      "sha256": "c4ab02e619a3f4fa88289f1cb821e624273c5eeb44e0ab0df9fa234f251914e1",
-      "size": 3072
+      "sha256": "6bec204ba461b805dabfdd104be90b769e77f66832c0829b3aed295e032821fa",
+      "size": 3130
     },
     "node_modules/orbitra-engine/src/core/round.js": {
       "sha256": "9243bdfd11e847ba804833b65021d463d05a1dfc7c3150eb81fe38b1d2bf288e",
@@ -898,184 +898,184 @@
       "size": 3633
     },
     "node_modules/orbitra-guard/package.json": {
-      "sha256": "8d78b31dda67b40c614e56ec92869d24cadc1c1f8e8d0a0ea319f4a5620c4980",
-      "size": 682
+      "sha256": "678b6491af47caa9add9a2f55c3b53e187ac544cdbb68e961838bfd64e24ebb5",
+      "size": 707
     },
     "node_modules/orbitra-guard/src/core/approver.js": {
-      "sha256": "f93aec70d2ee744efdc4d66e908a9b2a2d38a3dda37bbef02df0e2b96f5799d3",
-      "size": 4581
+      "sha256": "53303029db88d82024532193ae96b908d380cd99d59f9f0745eff5ef0f6802cb",
+      "size": 4672
     },
     "node_modules/orbitra-guard/src/core/injection.js": {
-      "sha256": "c4a5391db6edc22a68d425f8b9a837c1d0f2b3301335297a776915bdcd318e2b",
-      "size": 2996
+      "sha256": "d9715d0c605c6087f883d1e67ee067bb3fe8e026f4edfce9e3c33326b2405fc7",
+      "size": 3041
     },
     "node_modules/orbitra-guard/src/core/rules.js": {
-      "sha256": "cc21ed563fa33418a57aebe4a0e37241342357700c996ad280eb73c3a82a6da1",
-      "size": 23279
+      "sha256": "43ca589db51bc4ee4d3ec328b3d353640ca109359dfa4941008d4fcf9f3141ac",
+      "size": 23569
     },
     "node_modules/orbitra-guard/src/core/scripts.js": {
-      "sha256": "1b95fefb36f3b629a71667da14ebf115d870e5b0dc9ca088cfbb6e4d3e10b79a",
-      "size": 17501
+      "sha256": "d1010dced618782c0fa8a2b93dfbac8344913d4b8a81d3e8b6bbf2c63f07ef61",
+      "size": 17832
     },
     "node_modules/orbitra-guard/src/host/index.js": {
       "sha256": "fa9b732a1d89757f0f6e132a2e334e24ed98a19bc7acc087eefe966703694c3c",
       "size": 12680
     },
     "node_modules/orbitra-mcp/package.json": {
-      "sha256": "736e9377d5d9a1f32d074981d62f81f53164ab68dbf75c069baf6bec7845cae1",
-      "size": 689
+      "sha256": "128ebcf70b59b03080f3a5ee09110ce1e5faa35cee148fe8ff527094422c1d54",
+      "size": 711
     },
     "node_modules/orbitra-mcp/src/core/client.js": {
-      "sha256": "59975bca42622aedec2e17cb0e14b47944b8464f03d40e7589fca03915747a1a",
-      "size": 4962
+      "sha256": "009f86fb216a8453bb1aab9f22e559892150a1ecee7a724c9bfb8318d81363e5",
+      "size": 5059
     },
     "node_modules/orbitra-mcp/src/core/sync.js": {
-      "sha256": "e8eb4806546e32aaf371268fbffa75805fb15ee7b424cef50bc7adeb39fecf33",
-      "size": 2524
+      "sha256": "ea6c729f2f87894e30b4d8748f9da8d20115144f48668025817b6c13bd76717b",
+      "size": 2585
     },
     "node_modules/orbitra-mcp/src/host/index.js": {
-      "sha256": "801592c21e3add5616cb547c5ed5edfa0f6aee9370fd8dbf1fff3a678c91a999",
-      "size": 2525
+      "sha256": "cd37895fb97b70623dd587368bc707ac8dd300cdf605c53e5610206ea93b9106",
+      "size": 2573
     },
     "node_modules/orbitra-memory/package.json": {
-      "sha256": "385cc3ed1b17e619319d59a3338d714725d4954d037e6e41334bc7b1e5f97c8e",
-      "size": 705
+      "sha256": "046a97bece9faa361d23fbc555828ec398f50d00ce8a84ad45baa4e888f29095",
+      "size": 726
     },
     "node_modules/orbitra-memory/src/core/hot-memory.js": {
-      "sha256": "1955df9a98c9e5710f9c11c32374664d4884a7822de8e3f8400527908172d42a",
-      "size": 1360
+      "sha256": "083f76f1d604b558e1d1b20f8e475004bf238b96980f4410e8e80e7830df560b",
+      "size": 1385
     },
     "node_modules/orbitra-memory/src/core/tools.js": {
-      "sha256": "a5779d8b95bf00de8a00ca117e89cde171f8f7ba0dac28ef96e8f3c5ec1702c5",
-      "size": 6251
+      "sha256": "b4cc53fd6d2a04fb0c62c7ca4593b1906c0a6bb7aaa60f10431ca284392589ba",
+      "size": 6348
     },
     "node_modules/orbitra-memory/src/host/index.js": {
-      "sha256": "869a301a7e539750c03079b2b77955931d5c092f9fba4cbe787ef40cc8db129c",
-      "size": 1159
+      "sha256": "ae14e364613c3b8e9eca88303ffa5a5fb6cd5855aac0c4d49a3dbfcc610fd0ef",
+      "size": 1179
     },
     "node_modules/orbitra-profile/cordis.patch.yml": {
       "sha256": "3fb13150d3282d0f25d9247daf32bde3b0fe4ad5c1e7ba0a8f94e4c612220d9e",
       "size": 12597
     },
     "node_modules/orbitra-profile/package.json": {
-      "sha256": "c040710cc681c9b20cc92fe7490687d595278d1dc64aab08172c850423bf1383",
-      "size": 510
+      "sha256": "0e59264640bae9fb53c8c585463e4a45c6b8091f08669763fda5569950b0d42e",
+      "size": 531
     },
     "node_modules/orbitra-session/package.json": {
-      "sha256": "c631c6166203aa610f7873cb3cdc9637c91cfb05e381370d71eced01635e6cf6",
-      "size": 710
+      "sha256": "874c307db12b3b5b531b85b50454d76d82528aabb5ba0be2a747ff1b7f6a60af",
+      "size": 733
     },
     "node_modules/orbitra-session/src/core/compact.js": {
-      "sha256": "c44279c7acc3e7d0142bc1bc9fe30c644ed51b66923a6f6e4c55fbb5f03856de",
-      "size": 9334
+      "sha256": "1b215c3639f7203162de2aaeaab8d7fd9a7713e50b29b17f4c9e40524e3a1341",
+      "size": 9510
     },
     "node_modules/orbitra-session/src/core/history.js": {
-      "sha256": "61f6d5d30442431d6986cb42b6d983b5458cb66bc3d703ff8821a78122728346",
-      "size": 6191
+      "sha256": "3755461dfa94b2e275b7beab06c61a76ce6a356a24dc97d384d5bdfe1895ccb4",
+      "size": 6316
     },
     "node_modules/orbitra-session/src/core/journal.js": {
-      "sha256": "6d2e45acd623bf208a45959168ac76964d3803d0994b3ae2029d072894f5710e",
-      "size": 9362
+      "sha256": "1fc0358fc75fc74ee9a3365c1f4d9fd2a4098b956d9ba06941cf9c247006c559",
+      "size": 9521
     },
     "node_modules/orbitra-session/src/core/policy.js": {
-      "sha256": "cf33a76bc127aaf79c4d42d452847033bf0a17bff15d30e577b5d328833a02dc",
-      "size": 3166
+      "sha256": "0c74157cd2dbe9e766269433ba9cd78243494702e9ab55594e01ad8fbdc45194",
+      "size": 3225
     },
     "node_modules/orbitra-session/src/core/window.js": {
-      "sha256": "5401859388ec6eaf5bca0c0ff33697329413842650fc1d74270c6785909977c4",
-      "size": 6783
+      "sha256": "37c14a838bceddeb41fa79e0bbccf30cf9967d971662c56f478489d24fff7d42",
+      "size": 6915
     },
     "node_modules/orbitra-session/src/host/index.js": {
-      "sha256": "bebaa720e4a973ec90d38454622e848755cef4005cd381fc702a8b6f7b536fb2",
-      "size": 15874
+      "sha256": "9eebab89fd2a94dc501f47e7cc98c9726193fc575e96a6b037df16504923b64f",
+      "size": 16159
     },
     "node_modules/orbitra-ssh/package.json": {
-      "sha256": "4141462b32969a667ea5ab821c45632917ec5720da8ec5dfad7c88efe5b6c7c2",
-      "size": 741
+      "sha256": "5d611206a461508535e49a606788f9161baf6d5fcb1a94aa12eeebb909c781e2",
+      "size": 761
     },
     "node_modules/orbitra-ssh/src/core/tools.js": {
-      "sha256": "dbcc1d47c857f57109dfea72eded0c5eea8df5ce3c085c489307a9776462e18e",
-      "size": 5308
+      "sha256": "feee5fb3da2622143abcb6130586b2edc09a25169cde9dd004ba931a9b5fdf47",
+      "size": 5399
     },
     "node_modules/orbitra-ssh/src/host/index.js": {
-      "sha256": "fb2a360419794bcf9e736f30175ed91b34bfca42c6021ac189fa16a511cb865d",
-      "size": 814
+      "sha256": "26067a9787ba1e09d66f52d56f038327fbc36ca3bcd7fa6b0f2706812b2fef58",
+      "size": 829
     },
     "node_modules/orbitra-web/package.json": {
-      "sha256": "5a4f680ee3d04df68cbd9967e8cc89eaffe60c984ac8200026f23f3fd7b1d77b",
-      "size": 687
+      "sha256": "47f6acba196a65e267315b9a80a7071f47f7ab26061cd05a39e1d2477d78fbca",
+      "size": 709
     },
     "node_modules/orbitra-web/src/core/fakeip.js": {
-      "sha256": "bcdcf110fb0e2e2e5790f5fb1d7574c7785bc2f6cb110547c64dbc2114f8f2c3",
-      "size": 2459
+      "sha256": "fb88a853fb2ccb67a2019e6ff42a00c37d95c594980dac16acdda74faa919739",
+      "size": 2512
     },
     "node_modules/orbitra-web/src/core/search.js": {
-      "sha256": "4c39b5538d4c2a3c216a71eb9223adca5c4183fe0e9ba5122ff8bdbd13909e71",
-      "size": 2619
+      "sha256": "362c0828467ecb5207f6dff584eab4c8bfeeaf3772f2004862db2c9e28fe7f7c",
+      "size": 2661
     },
     "node_modules/orbitra-web/src/host/index.js": {
-      "sha256": "2e454c5e74c199b27b1f202f00b41ed238bc5388c3e2b3af30947782a49ed8b5",
-      "size": 2763
+      "sha256": "cfc3f7468087dfeddd31fa32bb09f4a66d8db73da6a8fe1ac5cbd3845b4ba186",
+      "size": 2811
     },
     "packages/contracts/package.json": {
-      "sha256": "53cc4a36a53237963bc9261992f4333c422870fb8fe3d5104cfcfca4ec30e439",
-      "size": 514
+      "sha256": "c18f8ab2b3931b2f5e906cae7a15a0caea82ea293084d349303591c0c2e8d57c",
+      "size": 533
     },
     "packages/contracts/src/diff.js": {
-      "sha256": "2ee36b425a250eef39092781c3dc1fa3e38149be3421cb48f5f1a3c6b987d608",
-      "size": 2209
+      "sha256": "102d11ec5c0a73a0dc4c759ccf39425606c2ef39e8cfbdb81c389e8335f0d4c2",
+      "size": 2261
     },
     "packages/contracts/src/jobs.js": {
       "sha256": "ff2e77fc4b2ed8568bf6513542e64d8c8f05544c792f1e902daa9bc661a3824e",
       "size": 4318
     },
     "packages/contracts/src/mcp.js": {
-      "sha256": "f9393e132eed71c2fc32c22f2a77bad7c8c309267f22b278f36628ac7c40bf3a",
-      "size": 5372
+      "sha256": "890bca11af1e07f95751c2234a1e924b598eecbae6e10a40dcc033662f1201d1",
+      "size": 5506
     },
     "packages/contracts/src/tasks.js": {
       "sha256": "f4043372581dc5f7c9db4cb900284a95837605c85a936d1c6bf34e2f2ad119ae",
       "size": 1408
     },
     "packages/contracts/src/token.js": {
-      "sha256": "dfc01f0c5d92ade21649a0574baa3ecbc0e292c81c7c627a44ab7a047b2484d6",
-      "size": 1867
+      "sha256": "fd5b0b94b3defd6aeb1592a2f75b147a87f8a1dd43af520230d5664fa271571c",
+      "size": 1905
     },
     "plugins/orbitra-dispatch/package.json": {
-      "sha256": "762a3dfd1203b973e16e293b0160da90742a9a2c6178eb3a958d7cd62fe9dc6b",
-      "size": 979
+      "sha256": "697327320ab34cf7bea3b0da716ef2025372678099f60192bbc32fadd7bbae18",
+      "size": 1000
     },
     "plugins/orbitra-dispatch/src/core/plan.js": {
-      "sha256": "a16f9dc67948bbc8af7663a329c6fd2812955a2c1645f5da989a15a80103bc4e",
-      "size": 12828
+      "sha256": "de1197cb4750d35d7755cb51c8214c2753a2d3fa21a6b2191c77ce7b25bf8329",
+      "size": 13028
     },
     "plugins/orbitra-dispatch/src/core/tools.js": {
-      "sha256": "565e0f830955177d8cf0a47b7308ea28e0dec87a421a5f0a7b41a1c54d9e4fe8",
-      "size": 11956
+      "sha256": "40a571680e38e7a1416428a928954f9ec9a563912934fc1dd233a90f04de14a8",
+      "size": 12137
     },
     "plugins/orbitra-dispatch/src/host/index.js": {
-      "sha256": "b50722112d220e3b3de41c881415a7121885b1081fce016b957bf0884fb081c3",
-      "size": 1575
+      "sha256": "0ae3fd22a061c90d1b280903646fdbde98c633c774af9ed0312a457d001db95e",
+      "size": 1599
     },
     "plugins/orbitra-dispatch/src/host/plan.js": {
-      "sha256": "81d05755919f8dbc380f0cabdde11eddf71da279ad969e8bd352f27c3c895bc9",
-      "size": 2518
+      "sha256": "eaeb6d59fb8b808f608576cfdde68c243b3b8a96315d371cf9bf646155809cbd",
+      "size": 2566
     },
     "plugins/orbitra-engine/package.json": {
-      "sha256": "8b6da5584abe10f7ce6ce7df963548737682297968e066c43ab3db3171b27629",
-      "size": 597
+      "sha256": "0677a739cd1c35b3ce525334afba8ceb9feec19f5ba539afb68ff2e35717e028",
+      "size": 618
     },
     "plugins/orbitra-engine/src/core/driver.js": {
       "sha256": "75303e629d752342ed2e6ddea0e8b8d89a26bf16a042eb6c9a719d95b5c784df",
       "size": 9793
     },
     "plugins/orbitra-engine/src/core/edit.js": {
-      "sha256": "56598210e31ef2a66139a1d02078ed7921eb747002f278f6b715008ced4deb9a",
-      "size": 671
+      "sha256": "70d6712b5d6ef68f9b0222d66ffd2ade56069e615976d6dcf6c7eea2002fc40b",
+      "size": 685
     },
     "plugins/orbitra-engine/src/core/path.js": {
-      "sha256": "c4ab02e619a3f4fa88289f1cb821e624273c5eeb44e0ab0df9fa234f251914e1",
-      "size": 3072
+      "sha256": "6bec204ba461b805dabfdd104be90b769e77f66832c0829b3aed295e032821fa",
+      "size": 3130
     },
     "plugins/orbitra-engine/src/core/round.js": {
       "sha256": "9243bdfd11e847ba804833b65021d463d05a1dfc7c3150eb81fe38b1d2bf288e",
@@ -1090,130 +1090,130 @@
       "size": 3633
     },
     "plugins/orbitra-guard/package.json": {
-      "sha256": "8d78b31dda67b40c614e56ec92869d24cadc1c1f8e8d0a0ea319f4a5620c4980",
-      "size": 682
+      "sha256": "678b6491af47caa9add9a2f55c3b53e187ac544cdbb68e961838bfd64e24ebb5",
+      "size": 707
     },
     "plugins/orbitra-guard/src/core/approver.js": {
-      "sha256": "f93aec70d2ee744efdc4d66e908a9b2a2d38a3dda37bbef02df0e2b96f5799d3",
-      "size": 4581
+      "sha256": "53303029db88d82024532193ae96b908d380cd99d59f9f0745eff5ef0f6802cb",
+      "size": 4672
     },
     "plugins/orbitra-guard/src/core/injection.js": {
-      "sha256": "c4a5391db6edc22a68d425f8b9a837c1d0f2b3301335297a776915bdcd318e2b",
-      "size": 2996
+      "sha256": "d9715d0c605c6087f883d1e67ee067bb3fe8e026f4edfce9e3c33326b2405fc7",
+      "size": 3041
     },
     "plugins/orbitra-guard/src/core/rules.js": {
-      "sha256": "cc21ed563fa33418a57aebe4a0e37241342357700c996ad280eb73c3a82a6da1",
-      "size": 23279
+      "sha256": "43ca589db51bc4ee4d3ec328b3d353640ca109359dfa4941008d4fcf9f3141ac",
+      "size": 23569
     },
     "plugins/orbitra-guard/src/core/scripts.js": {
-      "sha256": "1b95fefb36f3b629a71667da14ebf115d870e5b0dc9ca088cfbb6e4d3e10b79a",
-      "size": 17501
+      "sha256": "d1010dced618782c0fa8a2b93dfbac8344913d4b8a81d3e8b6bbf2c63f07ef61",
+      "size": 17832
     },
     "plugins/orbitra-guard/src/host/index.js": {
       "sha256": "fa9b732a1d89757f0f6e132a2e334e24ed98a19bc7acc087eefe966703694c3c",
       "size": 12680
     },
     "plugins/orbitra-mcp/package.json": {
-      "sha256": "736e9377d5d9a1f32d074981d62f81f53164ab68dbf75c069baf6bec7845cae1",
-      "size": 689
+      "sha256": "128ebcf70b59b03080f3a5ee09110ce1e5faa35cee148fe8ff527094422c1d54",
+      "size": 711
     },
     "plugins/orbitra-mcp/src/core/client.js": {
-      "sha256": "59975bca42622aedec2e17cb0e14b47944b8464f03d40e7589fca03915747a1a",
-      "size": 4962
+      "sha256": "009f86fb216a8453bb1aab9f22e559892150a1ecee7a724c9bfb8318d81363e5",
+      "size": 5059
     },
     "plugins/orbitra-mcp/src/core/sync.js": {
-      "sha256": "e8eb4806546e32aaf371268fbffa75805fb15ee7b424cef50bc7adeb39fecf33",
-      "size": 2524
+      "sha256": "ea6c729f2f87894e30b4d8748f9da8d20115144f48668025817b6c13bd76717b",
+      "size": 2585
     },
     "plugins/orbitra-mcp/src/host/index.js": {
-      "sha256": "801592c21e3add5616cb547c5ed5edfa0f6aee9370fd8dbf1fff3a678c91a999",
-      "size": 2525
+      "sha256": "cd37895fb97b70623dd587368bc707ac8dd300cdf605c53e5610206ea93b9106",
+      "size": 2573
     },
     "plugins/orbitra-memory/package.json": {
-      "sha256": "385cc3ed1b17e619319d59a3338d714725d4954d037e6e41334bc7b1e5f97c8e",
-      "size": 705
+      "sha256": "046a97bece9faa361d23fbc555828ec398f50d00ce8a84ad45baa4e888f29095",
+      "size": 726
     },
     "plugins/orbitra-memory/src/core/hot-memory.js": {
-      "sha256": "1955df9a98c9e5710f9c11c32374664d4884a7822de8e3f8400527908172d42a",
-      "size": 1360
+      "sha256": "083f76f1d604b558e1d1b20f8e475004bf238b96980f4410e8e80e7830df560b",
+      "size": 1385
     },
     "plugins/orbitra-memory/src/core/tools.js": {
-      "sha256": "a5779d8b95bf00de8a00ca117e89cde171f8f7ba0dac28ef96e8f3c5ec1702c5",
-      "size": 6251
+      "sha256": "b4cc53fd6d2a04fb0c62c7ca4593b1906c0a6bb7aaa60f10431ca284392589ba",
+      "size": 6348
     },
     "plugins/orbitra-memory/src/host/index.js": {
-      "sha256": "869a301a7e539750c03079b2b77955931d5c092f9fba4cbe787ef40cc8db129c",
-      "size": 1159
+      "sha256": "ae14e364613c3b8e9eca88303ffa5a5fb6cd5855aac0c4d49a3dbfcc610fd0ef",
+      "size": 1179
     },
     "plugins/orbitra-profile/cordis.patch.yml": {
       "sha256": "3fb13150d3282d0f25d9247daf32bde3b0fe4ad5c1e7ba0a8f94e4c612220d9e",
       "size": 12597
     },
     "plugins/orbitra-profile/package.json": {
-      "sha256": "c040710cc681c9b20cc92fe7490687d595278d1dc64aab08172c850423bf1383",
-      "size": 510
+      "sha256": "0e59264640bae9fb53c8c585463e4a45c6b8091f08669763fda5569950b0d42e",
+      "size": 531
     },
     "plugins/orbitra-session/package.json": {
-      "sha256": "c631c6166203aa610f7873cb3cdc9637c91cfb05e381370d71eced01635e6cf6",
-      "size": 710
+      "sha256": "874c307db12b3b5b531b85b50454d76d82528aabb5ba0be2a747ff1b7f6a60af",
+      "size": 733
     },
     "plugins/orbitra-session/src/core/compact.js": {
-      "sha256": "c44279c7acc3e7d0142bc1bc9fe30c644ed51b66923a6f6e4c55fbb5f03856de",
-      "size": 9334
+      "sha256": "1b215c3639f7203162de2aaeaab8d7fd9a7713e50b29b17f4c9e40524e3a1341",
+      "size": 9510
     },
     "plugins/orbitra-session/src/core/history.js": {
-      "sha256": "61f6d5d30442431d6986cb42b6d983b5458cb66bc3d703ff8821a78122728346",
-      "size": 6191
+      "sha256": "3755461dfa94b2e275b7beab06c61a76ce6a356a24dc97d384d5bdfe1895ccb4",
+      "size": 6316
     },
     "plugins/orbitra-session/src/core/journal.js": {
-      "sha256": "6d2e45acd623bf208a45959168ac76964d3803d0994b3ae2029d072894f5710e",
-      "size": 9362
+      "sha256": "1fc0358fc75fc74ee9a3365c1f4d9fd2a4098b956d9ba06941cf9c247006c559",
+      "size": 9521
     },
     "plugins/orbitra-session/src/core/policy.js": {
-      "sha256": "cf33a76bc127aaf79c4d42d452847033bf0a17bff15d30e577b5d328833a02dc",
-      "size": 3166
+      "sha256": "0c74157cd2dbe9e766269433ba9cd78243494702e9ab55594e01ad8fbdc45194",
+      "size": 3225
     },
     "plugins/orbitra-session/src/core/window.js": {
-      "sha256": "5401859388ec6eaf5bca0c0ff33697329413842650fc1d74270c6785909977c4",
-      "size": 6783
+      "sha256": "37c14a838bceddeb41fa79e0bbccf30cf9967d971662c56f478489d24fff7d42",
+      "size": 6915
     },
     "plugins/orbitra-session/src/host/index.js": {
-      "sha256": "bebaa720e4a973ec90d38454622e848755cef4005cd381fc702a8b6f7b536fb2",
-      "size": 15874
+      "sha256": "9eebab89fd2a94dc501f47e7cc98c9726193fc575e96a6b037df16504923b64f",
+      "size": 16159
     },
     "plugins/orbitra-ssh/package.json": {
-      "sha256": "4141462b32969a667ea5ab821c45632917ec5720da8ec5dfad7c88efe5b6c7c2",
-      "size": 741
+      "sha256": "5d611206a461508535e49a606788f9161baf6d5fcb1a94aa12eeebb909c781e2",
+      "size": 761
     },
     "plugins/orbitra-ssh/src/core/tools.js": {
-      "sha256": "dbcc1d47c857f57109dfea72eded0c5eea8df5ce3c085c489307a9776462e18e",
-      "size": 5308
+      "sha256": "feee5fb3da2622143abcb6130586b2edc09a25169cde9dd004ba931a9b5fdf47",
+      "size": 5399
     },
     "plugins/orbitra-ssh/src/host/index.js": {
-      "sha256": "fb2a360419794bcf9e736f30175ed91b34bfca42c6021ac189fa16a511cb865d",
-      "size": 814
+      "sha256": "26067a9787ba1e09d66f52d56f038327fbc36ca3bcd7fa6b0f2706812b2fef58",
+      "size": 829
     },
     "plugins/orbitra-web/package.json": {
-      "sha256": "5a4f680ee3d04df68cbd9967e8cc89eaffe60c984ac8200026f23f3fd7b1d77b",
-      "size": 687
+      "sha256": "47f6acba196a65e267315b9a80a7071f47f7ab26061cd05a39e1d2477d78fbca",
+      "size": 709
     },
     "plugins/orbitra-web/src/core/fakeip.js": {
-      "sha256": "bcdcf110fb0e2e2e5790f5fb1d7574c7785bc2f6cb110547c64dbc2114f8f2c3",
-      "size": 2459
+      "sha256": "fb88a853fb2ccb67a2019e6ff42a00c37d95c594980dac16acdda74faa919739",
+      "size": 2512
     },
     "plugins/orbitra-web/src/core/search.js": {
-      "sha256": "4c39b5538d4c2a3c216a71eb9223adca5c4183fe0e9ba5122ff8bdbd13909e71",
-      "size": 2619
+      "sha256": "362c0828467ecb5207f6dff584eab4c8bfeeaf3772f2004862db2c9e28fe7f7c",
+      "size": 2661
     },
     "plugins/orbitra-web/src/host/index.js": {
-      "sha256": "2e454c5e74c199b27b1f202f00b41ed238bc5388c3e2b3af30947782a49ed8b5",
-      "size": 2763
+      "sha256": "cfc3f7468087dfeddd31fa32bb09f4a66d8db73da6a8fe1ac5cbd3845b4ba186",
+      "size": 2811
     }
   },
   "bundle": {
     "name": "files.zip",
-    "sha256": "e7d5346635446450e45c65bd1cc54ff798ea9d56ace29e8573e07d82c315cf5b",
-    "size": 2695413
+    "sha256": "8ea8c2f61e945563144ba9ff700dde961c765b74782435e6d137e4760150d8b9",
+    "size": 2699308
   },
-  "signature": "-CdKAA0-8OetEBagNqrsY-SSlBKhC7KjHGQX2nYlBamWbHZgyf8YHbxjkYnxnocsPDND0xDwEvZp84g_GcqUDg"
+  "signature": "vslVz32SFA2Rb11SacjlcNKITqabFRgFj0aqbCVBzkfE1Jxe4vZu5BYqv3xLseQ3OgtVBWs2-dLGn0WC5_-jBQ"
 }

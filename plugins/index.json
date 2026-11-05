@@ -1,10 +1,10 @@
 {
   "format": "orbitra-plugins/1",
   "software": {
-    "version": "1.17.0",
-    "at": "2026-11-05T07:58:06.147Z",
-    "title": "首页重做，任务清单，全软件的配色和动效",
-    "size": 2695413
+    "version": "1.17.1",
+    "at": "2026-11-05T09:50:39.015Z",
+    "title": "SSH 插件支持堡垒机中转连接",
+    "size": 2699308
   },
   "agents": {
     "calendar": {
