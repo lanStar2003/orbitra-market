@@ -1,11 +1,11 @@
 {
   "format": "orbitra-release/2",
-  "version": "1.17.2",
-  "commit": "b998f7f9695f21ed1e08df3c5fffd058818e1c31",
-  "previous": "1.17.0",
-  "title": "Mac 上能打开了",
-  "notes": "2026-11-06 · Mac 上能打开了\n\n- **Mac 版不再提示\"已损坏\"**：以前的 Mac 安装包没有正确签名，下载后打开，系统只说\"Orbitra 已损坏，无法打开\"，只能移到废纸篓。1.17.1 及以前的 Mac 包都是这样。下载 1.17.2 的 dmg，拖进\"应用程序\"覆盖原来的就行。\n- **第一次打开还要放行一次**：安装包没有苹果开发者证书的签名，系统会说\"Apple 无法验证\"。点\"完成\"，再到 系统设置 › 隐私与安全性 点\"仍要打开\"；或者在终端运行 `xattr -dr com.apple.quarantine /Applications/Orbitra.app`。只要做一次。\n- **Mac 上 ⌘C、⌘V、⌘X、⌘A、⌘Z、⌘Q 能用了**：以前没有菜单栏，这些键都没反应。现在有 Orbitra、编辑、窗口三个菜单。\n- **Mac 的窗口**：红绿灯按钮对齐在标题栏左上角，右上角不再多一组 Windows 样式的按钮。快捷键提示写成 ⌘、⌥、⇧。⌘H 是系统的\"隐藏应用\"，所以历史在 Mac 上是 ⌃H。\n- **Mac 上 Agent 能找到 Homebrew 装的程序**：从访达打开的应用拿不到终端的 PATH，现在会把 Homebrew 的目录加上。\n- **Mac 安装包上传前先试跑**：打完包自动在 Mac 上启动一次，走一轮对话，不过就不上传。这次的问题以后不会再发出去。\n- **其他系统**：Windows 和 Linux 的功能没有变化。这一版改了桌面外壳，更新后要重启一次应用才完全生效。",
-  "at": "2026-11-06T00:10:54.013Z",
+  "version": "1.17.3",
+  "commit": "64bc2282aee5b7415306ff8aec253bcf23835212",
+  "previous": "1.17.2",
+  "title": "Mac 用一行命令安装",
+  "notes": "2026-11-06 · Mac 用一行命令安装\n\n- **Mac 推荐在终端用一行命令装**：`curl -fsSL https://github.com/lanStar2003/orbitra-market/releases/latest/download/install-mac.sh | bash`。它下载最新的安装包、校验、装进\"应用程序\"并打开；已经装了的会先退出再换成新的，数据不动。这样装的系统不会拦，以前从浏览器装的、打不开的那份也会被换掉。\n- **为什么要这样装**：从浏览器下载的 dmg 带着\"隔离标记\"，第一次打开时系统要看苹果的公证。1.17.2 改了签名，在 macOS 26 上可以到 隐私与安全性 里点\"仍要打开\"；更新的 macOS（比如 27）仍然直接说\"已损坏，无法打开\"。用 curl 下载的文件没有这个标记。要让浏览器下载的 dmg 也能直接打开，需要苹果开发者账号做公证。\n- **已经从浏览器装好的**：在终端运行一次 `xattr -dr com.apple.quarantine /Applications/Orbitra.app` 也能打开。\n- **应用本身和 1.17.2 一样**：这一版只加了安装命令和说明，已经在用的电脑不用做什么。",
+  "at": "2026-11-06T01:25:58.479Z",
   "key": "2838-d425-6b4d-9b6c",
   "needsInstaller": false,
   "reason": null,
@@ -130,7 +130,7 @@
       "size": 1543
     },
     "apps/desktop/package.json": {
-      "sha256": "64f6af5025f4a6b33f9d59ee41a378555212de6af714d79d2eb398808ff049ce",
+      "sha256": "de7b9ed215dbeac1e89bd826ef516a0a7516727535163f57c44661d050e78c77",
       "size": 497
     },
     "apps/desktop/src/mac.js": {
@@ -1216,8 +1216,8 @@
   },
   "bundle": {
     "name": "files.zip",
-    "sha256": "238e7918bff42f63199a6e2ff62cebad68a5addd10d6a7fb66cd86caa65549b1",
-    "size": 2696769
+    "sha256": "e49951320684b74fc4d8fcfe7e55b01c9b8e04a9249c1bba6ec0f2d872357b86",
+    "size": 2696772
   },
-  "signature": "Ybb_StgdIx68_MOUuYStTDbFHjfjBGmPu08VmLjCrh3d-PGjey4U1FtzUn-Uyw1uz3q9JYDAJ2RUdd0BaNmUAQ"
+  "signature": "APPh3DcEL3zCjIhY6DAYSe6AaG63U2rq0t2KoPrtSk7EI9aH0vT1XVY9wZpcOEUy4AYyHcTb7g-q685AwunmBQ"
 }
