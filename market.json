@@ -1,7 +1,7 @@
 {
   "format": "orbitra-market/1",
   "repo": "lanStar2003/orbitra-market",
-  "updatedAt": "2026-11-05T18:41:18Z",
+  "updatedAt": "2026-11-06T00:11:08.737Z",
   "key": "2838-d425-6b4d-9b6c",
   "categories": [
     {
@@ -42,13 +42,13 @@
       "bundled": [
         "full"
       ],
-      "version": "1.17.1",
-      "tag": "v1.17.1",
-      "at": "2026-11-05T09:50:39.015Z",
+      "version": "1.17.2",
+      "tag": "v1.17.2",
+      "at": "2026-11-06T00:10:54.013Z",
       "update": {
         "manifest": "https://raw.githubusercontent.com/lanStar2003/orbitra-market/main/plugins/app/orbitra/manifest.json",
         "bundle": "https://raw.githubusercontent.com/lanStar2003/orbitra-market/main/plugins/app/orbitra/files.zip",
-        "size": 2699308
+        "size": 2696769
       },
       "installers": {
         "full": {
@@ -74,8 +74,7 @@
           }
         }
       },
-      "installersUrl": "https://github.com/lanStar2003/orbitra-market/releases/tag/v1.17.2",
-      "installersVersion": "1.17.2"
+      "installersUrl": "https://github.com/lanStar2003/orbitra-market/releases/tag/v1.17.2"
     },
     {
       "id": "dsh",
@@ -355,10 +354,10 @@
       "description": "连接服务器的终端、文件管理、快捷命令、无代理监控、端口转发和密钥管理，内核直接用 ssh2 连接，不依赖系统的 ssh。密码和私钥加密存在这台电脑，Agent 用 ssh_run 执行的命令都有记录。",
       "core": false,
       "bundled": [],
-      "version": "1.0.0",
-      "tag": "addon-ssh-v1.0.0",
+      "version": "1.1.0",
+      "tag": "addon-ssh-v1.1.0",
       "published": true,
-      "at": "2026-11-05T02:55:52.848Z",
+      "at": "2026-11-06T00:11:08.737Z",
       "update": {
         "manifest": "https://raw.githubusercontent.com/lanStar2003/orbitra-market/main/plugins/addon/ssh/manifest.json"
       }
