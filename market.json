@@ -55,22 +55,22 @@
           "win-x64": {
             "name": "Orbitra-Setup-1.17.3.exe",
             "url": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.17.3/Orbitra-Setup-1.17.3.exe",
-            "size": 215876651
+            "size": 215933006
           },
           "mac-arm64": {
             "name": "Orbitra-1.17.3-arm64.dmg",
             "url": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.17.3/Orbitra-1.17.3-arm64.dmg",
-            "size": 298539627
+            "size": 298542222
           },
           "linux-x64-appimage": {
             "name": "Orbitra-1.17.3.AppImage",
             "url": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.17.3/Orbitra-1.17.3.AppImage",
-            "size": 295082377
+            "size": 295082349
           },
           "linux-x64-deb": {
             "name": "orbitra_1.17.3_amd64.deb",
             "url": "https://github.com/lanStar2003/orbitra-market/releases/download/v1.17.3/orbitra_1.17.3_amd64.deb",
-            "size": 226711500
+            "size": 226712052
           }
         }
       },
