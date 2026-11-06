@@ -1,34 +1,34 @@
 {
   "format": "orbitra-addon-pack/1",
   "id": "ssh",
-  "version": "1.0.0",
-  "from": null,
+  "version": "1.1.0",
+  "from": "1.0.0",
   "title": "",
   "name": "SSH 终端",
   "description": "连接服务器的终端、文件管理、快捷命令、无代理监控、端口转发和密钥管理，内核直接用 ssh2 连接，不依赖系统的 ssh。密码和私钥加密存在这台电脑，Agent 用 ssh_run 执行的命令都有记录。",
-  "at": "2026-11-05T02:55:52.848Z",
+  "at": "2026-11-06T00:11:08.737Z",
   "key": "2838-d425-6b4d-9b6c",
   "files": {
     "README.md": {
-      "sha256": "1188ec9291ee45acb4019b73efd4fbbd3c4774e6212237a6a1b27304b786851a",
-      "size": 2395
+      "sha256": "70ee27b3d165e8232e1c501b23511688cc3e647028af0fd01d2c4e1daab410db",
+      "size": 3193
     },
     "dist/core.js": {
-      "sha256": "d80153fd945ae536596129e7de4e7277693adf8dfc9e0f7ba83aa671c5e47afe",
-      "size": 1459259
+      "sha256": "240dd56fd669157e7c05669be4d8a033710d9ac68b47b967a90a634a7244d583",
+      "size": 1486271
     },
     "dist/index.css": {
-      "sha256": "f18246b18ac45aa031f84ca0e2bd10b6b3f36ab8be2fc6c796f74b14b7ebc543",
-      "size": 54256
+      "sha256": "1e02f66cac387c3c67d58d6afceea867ca4203bf5252d7d7fa079cb111d27a76",
+      "size": 55365
     },
     "dist/index.js": {
-      "sha256": "626a20e96aeccc63d9553df8c3170b03052926fd40336a42cc268bf99cd589bd",
-      "size": 1328477
+      "sha256": "3381d4dc50750bf762ae0c8c49dc9b010c0049b7839e9f4881812cb70f963c65",
+      "size": 1339904
     },
     "plugin.json": {
-      "sha256": "0b65a072a9635b7f0bf956975dee2f8263e8f0ca998600ba74c492fff8844edc",
+      "sha256": "bcbbc41a9eb116f0c0ac4918168eb223ed4d0531a9b3ce89cf20aa28771bf339",
       "size": 2464
     }
   },
-  "signature": "77JYk0r6RD7p0FNfCbRRi9avfnHZt_9g6IsTGgQ5kOjmqpVFycUjXTvYVrsQAGDimBXyUqrknlo4zH1AQqUWAQ"
+  "signature": "HhDzQsMe8NxQMgnWi0XLtTBH_UE_Dlv11F4f_XBt0WCojjBw9ehfutKqvStJZG7IvK4jeF4f8JQD3-rVR53XAA"
 }

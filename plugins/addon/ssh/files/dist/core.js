@@ -13067,7 +13067,7 @@ ${suffix}`;
 var require_SFTP = __commonJS({
   "node_modules/ssh2/lib/protocol/SFTP.js"(exports, module) {
     "use strict";
-    var EventEmitter = __require("events");
+    var EventEmitter2 = __require("events");
     var fs = __require("fs");
     var { constants } = fs;
     var {
@@ -13199,7 +13199,7 @@ var require_SFTP = __commonJS({
     };
     function noop2() {
     }
-    var SFTP = class extends EventEmitter {
+    var SFTP = class extends EventEmitter2 {
       constructor(client, chanInfo, cfg) {
         super();
         if (typeof cfg !== "object" || !cfg)
@@ -16644,7 +16644,7 @@ var require_client = __commonJS({
     } = __require("crypto");
     var { Socket } = __require("net");
     var { lookup: dnsLookup } = __require("dns");
-    var EventEmitter = __require("events");
+    var EventEmitter2 = __require("events");
     var HASHES = getHashes();
     var {
       COMPAT,
@@ -16695,7 +16695,7 @@ var require_client = __commonJS({
     var RE_OPENSSH = /^OpenSSH_(?:(?![0-4])\d)|(?:\d{2,})/;
     var noop2 = (err) => {
     };
-    var Client2 = class extends EventEmitter {
+    var Client2 = class extends EventEmitter2 {
       constructor() {
         super();
         this.config = {
@@ -18519,8 +18519,8 @@ var require_server = __commonJS({
   "node_modules/ssh2/lib/server.js"(exports, module) {
     "use strict";
     var { Server: netServer } = __require("net");
-    var EventEmitter = __require("events");
-    var { listenerCount } = EventEmitter;
+    var EventEmitter2 = __require("events");
+    var { listenerCount } = EventEmitter2;
     var {
       CHANNEL_OPEN_FAILURE,
       DEFAULT_CIPHER,
@@ -18557,7 +18557,7 @@ var require_server = __commonJS({
       onCHANNEL_CLOSE
     } = require_utils2();
     var MAX_PENDING_AUTHS = 10;
-    var AuthContext = class extends EventEmitter {
+    var AuthContext = class extends EventEmitter2 {
       constructor(protocol, username, service, method, cb) {
         super();
         this.username = this.user = username;
@@ -18672,7 +18672,7 @@ var require_server = __commonJS({
         this._protocol.authPasswdChg(prompt);
       }
     };
-    var Session = class extends EventEmitter {
+    var Session = class extends EventEmitter2 {
       constructor(client, info, localChan) {
         super();
         this.type = "session";
@@ -18697,7 +18697,7 @@ var require_server = __commonJS({
         };
       }
     };
-    var Server = class extends EventEmitter {
+    var Server = class extends EventEmitter2 {
       constructor(cfg, listener) {
         super();
         if (typeof cfg !== "object" || cfg === null)
@@ -18845,7 +18845,7 @@ var require_server = __commonJS({
     };
     Server.KEEPALIVE_CLIENT_INTERVAL = 15e3;
     Server.KEEPALIVE_CLIENT_COUNT_MAX = 3;
-    var Client2 = class extends EventEmitter {
+    var Client2 = class extends EventEmitter2 {
       constructor(socket, hostKeys, ident, offer, debug, server, srvCfg) {
         super();
         let exchanges = 0;
@@ -23905,16 +23905,8 @@ function createSealer(keys, purpose) {
   };
 }
 
-// addons/ssh/core/connect.js
-import { createHash } from "node:crypto";
-import { lookup } from "node:dns/promises";
-import { readFileSync } from "node:fs";
-import { connect as netConnect, isIP as isIP2 } from "node:net";
-import { homedir } from "node:os";
-
-// addons/ssh/core/db.js
-import { randomBytes as randomBytes2 } from "node:crypto";
-import { isIP } from "node:net";
+// addons/ssh/core/bastion.js
+import { EventEmitter } from "node:events";
 
 // addons/ssh/core/errors.js
 var STEP_LABELS = Object.freeze({ dns: "DNS \u89E3\u6790", tcp: "TCP \u8FDE\u63A5", proxy: "\u4EE3\u7406", jump: "\u8DF3\u677F", handshake: "\u63E1\u624B", hostkey: "\u6307\u7EB9", auth: "\u8BA4\u8BC1", ready: "\u5C31\u7EEA" });
@@ -23944,7 +23936,9 @@ var hostkeyUnknown = (address) => new SshFailure("hostkey", "hostkey-unknown", `
 var hostkeyChanged = (address) => new SshFailure("hostkey", "hostkey-changed", `${address} \u7684\u6307\u7EB9\u53D8\u4E86\uFF1A\u53EF\u80FD\u662F\u91CD\u88C5\u4E86\u7CFB\u7EDF\uFF0C\u4E5F\u53EF\u80FD\u6709\u4EBA\u5728\u4E2D\u95F4\u5192\u5145\u3002\u786E\u8BA4\u6CA1\u95EE\u9898\u540E\u5728\u7EC8\u7AEF\u9875\u9009"\u4FE1\u4EFB\u65B0\u6307\u7EB9"`, { permanent: true });
 var hostkeyRejected = (address, changed = false) => new SshFailure("hostkey", "hostkey-rejected", changed ? `${address} \u7684\u6307\u7EB9\u53D8\u4E86\uFF0C\u4E3B\u4EBA\u6CA1\u6709\u653E\u884C` : `\u4E3B\u4EBA\u6CA1\u6709\u786E\u8BA4 ${address} \u7684\u6307\u7EB9`, { permanent: true });
 var cancelled = (step, why = "\u4E3B\u4EBA\u53D6\u6D88\u4E86") => new SshFailure(step, "cancelled", why, { permanent: true });
-var needsHuman = () => new SshFailure("auth", "needs-human", "\u8FD9\u53F0\u4E3B\u673A\u8981\u4EBA\u56DE\u7B54\uFF08\u5BC6\u7801\u3001\u53E3\u4EE4\u6216\u4E24\u6B65\u9A8C\u8BC1\uFF09\uFF0CAgent \u4E0D\u80FD\u4EE3\u7B54\uFF1A\u5148\u5728\u7EC8\u7AEF\u9875\u8FDE\u4E0A\u5B83\uFF0C\u8FDE\u63A5\u4F1A\u5171\u7528", { permanent: true });
+function needsHuman(why = "\u8FD9\u53F0\u4E3B\u673A\u8981\u4EBA\u56DE\u7B54\uFF08\u5BC6\u7801\u3001\u53E3\u4EE4\u6216\u4E24\u6B65\u9A8C\u8BC1\uFF09") {
+  return new SshFailure("auth", "needs-human", `${why}\uFF0CAgent \u4E0D\u80FD\u4EE3\u7B54\uFF1A\u5148\u5728\u7EC8\u7AEF\u9875\u8FDE\u4E0A\u5B83\uFF0C\u8FDE\u63A5\u4F1A\u5171\u7528`, { permanent: true });
+}
 var ALGO_KIND = [
   [/key exchange/, "\u5BC6\u94A5\u4EA4\u6362"],
   [/host key/, "\u4E3B\u673A\u5BC6\u94A5"],
@@ -23995,13 +23989,303 @@ function sftpFailure(err, path, httpError) {
   }
 }
 
+// addons/ssh/core/bastion.js
+var MENU_TIMEOUT_MS = 2e4;
+var QUIET_MS = 500;
+var MAX_ROUNDS = 6;
+var DEFAULT_PATTERNS = {
+  asset: "(?:\u8BF7\u9009\u62E9|\u8BF7\u8F93[\u5165\u9009]|\u9009\u62E9)[^\\n]{0,12}(?:\u8D44\u4EA7|\u4E3B\u673A|\u670D\u52A1\u5668|\u8D44\u6E90|\u8BBE\u5907|\u5E8F\u53F7|\u7F16\u53F7)|(?:\u8D44\u4EA7|\u4E3B\u673A|\u670D\u52A1\u5668|\u8D44\u6E90)\\s*(?:\u7F16\u53F7|\u5217\u8868|\u540D\u79F0)?\\s*[:\uFF1A]|select\\s+(?:an?\\s+)?(?:asset|host|server)|choose\\s+(?:an?\\s+)?(?:asset|host|server)",
+  username: "(?:\u7528\u6237\u540D|\u7528\u6237\u8D26\u53F7|\u5E10\u53F7|\u8D26\u53F7)\\s*[:\uFF1A]?|(?:login|username|user\\s*name)\\s*[:\uFF1A]",
+  password: "(?:\u5BC6\\s*\u7801|passwd|password)\\s*[:\uFF1A]",
+  // 动态密码 holds 密码: this one is looked at first, so a code is never taken for the machine's password.
+  otp: "\u52A8\u6001(?:\u53E3\u4EE4|\u5BC6\u7801|\u7801)|\u9A8C\u8BC1\u7801|\u4E8C\u6B21\u9A8C\u8BC1|\u77ED\u4FE1\u7801|\u4EE4\u724C|otp|verification\\s*code|passcode|one-?time",
+  shell: "[^\\n]{0,80}[$#]\\s*$|[^\\n]{0,80}\\$$"
+};
+var TAIL = 4e3;
+var stripAnsi = (text2) => String(text2).replace(/\u001b\][^\u0007\u001b]*(?:\u0007|\u001b\\)/g, "").replace(/\u001b\[[0-9;?]*[ -/]*[@-~]/g, "").replace(/\u001b[@-Z\\-_]/g, "");
+function patternsOf(bastion, httpError) {
+  const own = (() => {
+    try {
+      return JSON.parse(bastion?.menu || "null");
+    } catch {
+      return null;
+    }
+  })();
+  const out = {};
+  for (const [key, fallback] of Object.entries(DEFAULT_PATTERNS)) {
+    const source = own?.[key] ?? fallback;
+    try {
+      out[key] = new RegExp(source, "i");
+    } catch (err) {
+      if (httpError) throw httpError(400, `\u5821\u5792\u673A\u7684\u300C${key}\u300D\u63D0\u793A\u8BCD\u4E0D\u662F\u6709\u6548\u7684\u6B63\u5219\uFF1A${err.message}`);
+      out[key] = new RegExp(fallback, "i");
+    }
+  }
+  return out;
+}
+function readerOf(channel, decode = (b) => b.toString("utf8")) {
+  let text2 = "";
+  let closed = false;
+  const onData = (buf) => {
+    text2 = (text2 + decode(buf)).slice(-64 * 1024);
+  };
+  const onClose = () => {
+    closed = true;
+  };
+  channel.on("data", onData);
+  channel.stderr?.on("data", onData);
+  channel.on("close", onClose);
+  return {
+    /** `check(tail)` → the answer, or null to go on waiting. Rejects when the channel closes or the deadline passes. */
+    waitFor(check, { timeoutMs, what }) {
+      return new Promise((resolve3, reject) => {
+        const started = Date.now();
+        const look = () => {
+          const tail = stripAnsi(text2).slice(-TAIL);
+          const found = check(tail);
+          if (found) {
+            clearInterval(timer);
+            resolve3(found);
+            return;
+          }
+          if (closed) {
+            clearInterval(timer);
+            reject(new SshFailure("bastion", "closed", `\u5821\u5792\u673A\u5173\u6389\u4E86\u8FDE\u63A5\uFF08${what}\uFF09`));
+            return;
+          }
+          if (Date.now() - started > timeoutMs) {
+            clearInterval(timer);
+            const said = tail.trim().split(/\r?\n/).filter(Boolean).slice(-3).join(" / ").slice(-200);
+            reject(new SshFailure("bastion", "menu", `\u5821\u5792\u673A\u6CA1\u6709\u95EE\u300C${what}\u300D\uFF0C\u5B83\u8BF4\uFF1A${said || "\uFF08\u4EC0\u4E48\u4E5F\u6CA1\u8BF4\uFF09"}`, { permanent: false }));
+          }
+        };
+        const timer = setInterval(look, 60);
+        timer.unref?.();
+        look();
+      });
+    },
+    reset() {
+      text2 = "";
+    },
+    detach() {
+      channel.off("data", onData);
+      channel.stderr?.off("data", onData);
+      channel.off("close", onClose);
+    }
+  };
+}
+function createBastion({ db, prompts, connector, log, now = Date.now, timing = {} }) {
+  const menuTimeoutMs = timing.menuTimeoutMs ?? MENU_TIMEOUT_MS;
+  const quietMs = timing.quietMs ?? QUIET_MS;
+  const gatewayRow = (bastion) => ({
+    id: bastion.id,
+    name: bastion.name,
+    host: bastion.host,
+    port: bastion.port,
+    username: bastion.username,
+    auth: bastion.auth,
+    key_id: bastion.key_id ?? null,
+    key_path: bastion.key_path ?? null,
+    secret: bastion.secret ?? null,
+    passphrase: bastion.passphrase ?? null,
+    legacy: 0,
+    encoding: "utf-8",
+    proxy: null,
+    jump: "[]"
+  });
+  const openShell = (client) => new Promise((done, fail) => {
+    try {
+      client.shell({ term: "xterm-256color", cols: 120, rows: 32 }, (err, channel) => err ? fail(err) : done(channel));
+    } catch (err) {
+      fail(err);
+    }
+  });
+  async function targetPassword(row, { interactive }) {
+    const stored = db.openSecret(row.secret, "\u4FDD\u5B58\u7684\u5BC6\u7801");
+    if (stored) return stored;
+    if (!interactive) throw needsHuman(`\u76EE\u6807\u673A ${row.username}@${row.host}:${row.port} \u7684\u5BC6\u7801\u6CA1\u6709\u4FDD\u5B58`);
+    const a = await prompts.ask({ hostId: row.id, address: `${row.host}:${row.port}`, username: row.username, kind: "password", canRemember: true });
+    if (a?.cancel || typeof a.answer !== "string") throw cancelled("bastion", a?.expired ? "\u7B49\u4E86\u592A\u4E45\u6CA1\u4EBA\u56DE\u7B54\u76EE\u6807\u673A\u7684\u5BC6\u7801" : "\u4E3B\u4EBA\u53D6\u6D88\u4E86");
+    if (a.remember) db.hosts.rememberPassword(row.id, a.answer);
+    return a.answer;
+  }
+  async function oneTimeCode(row, bastion, { interactive, hint }) {
+    if (!interactive) throw needsHuman(`\u5821\u5792\u673A ${bastion.username}@${bastion.host}:${bastion.port} \u8981\u52A8\u6001\u53E3\u4EE4`);
+    const a = await prompts.ask({ hostId: row.id, address: `${bastion.host}:${bastion.port}`, username: bastion.username, kind: "otp", name: bastion.name, hint });
+    if (a?.cancel || typeof a.answer !== "string") throw cancelled("bastion", a?.expired ? "\u7B49\u4E86\u592A\u4E45\u6CA1\u4EBA\u8F93\u5165\u52A8\u6001\u53E3\u4EE4" : "\u4E3B\u4EBA\u53D6\u6D88\u4E86");
+    return a.answer;
+  }
+  return {
+    /** The gateway's own login, and nothing else: what the page's 测试 does, so that a wrong account shows up here. */
+    async login(bastion, { interactive = true, signal } = {}) {
+      const gateway = await connector.connect(gatewayRow(bastion), { interactive, signal });
+      try {
+        gateway.close?.();
+      } catch {
+      }
+      return { ok: true };
+    },
+    /**
+     * 登录堡垒机 → 选资产 → 输入目标机账号 → 拿到目标机的命令行。
+     * @returns {Promise<{ client: any, steps: any[], close: () => void }>} rejects with an SshFailure that names the step.
+     */
+    async open(row, bastion, { interactive = true, signal, onStep } = {}) {
+      const steps = [];
+      let current = null;
+      let startedAt = now();
+      const begin = (name) => {
+        if (current) steps.push({ name: current, ms: now() - startedAt, ok: true });
+        current = name;
+        startedAt = now();
+        onStep?.(name, steps);
+      };
+      const end = (ok = true) => {
+        if (!current) return;
+        steps.push({ name: current, ms: now() - startedAt, ok });
+        const name = current;
+        current = null;
+        onStep?.(name, steps);
+      };
+      const fail = (err) => err instanceof SshFailure ? err : connectFailure(err, { step: current ?? "bastion", address: `${bastion.host}:${bastion.port}` });
+      let gateway = null;
+      let channel = null;
+      let reader = null;
+      const closeAll = () => {
+        reader?.detach();
+        try {
+          channel?.close();
+        } catch {
+        }
+        try {
+          gateway?.close?.();
+        } catch {
+        }
+        try {
+          gateway?.client?.destroy?.();
+        } catch {
+        }
+      };
+      try {
+        begin("bastion");
+        gateway = await connector.connect(gatewayRow(bastion), { interactive, signal });
+        end();
+        if (signal?.aborted) throw cancelled("bastion");
+        begin("bastion-asset");
+        channel = await openShell(gateway.client);
+        reader = readerOf(channel, (b) => b.toString("utf8"));
+        const patterns = patternsOf(bastion);
+        const send = (text2) => channel.write(`${text2}\r`);
+        const ask = async (kinds, what) => {
+          const found = await reader.waitFor((tail) => {
+            for (const kind of kinds) if (patterns[kind].test(tail)) return kind;
+            return null;
+          }, { timeoutMs: menuTimeoutMs, what });
+          reader.reset();
+          return found;
+        };
+        const first = await ask(["asset", "shell", "otp"], "\u9009\u62E9\u54EA\u53F0\u8D44\u4EA7");
+        if (first !== "shell" && first !== "asset" && first !== "otp") throw new SshFailure("bastion", "menu", "\u5821\u5792\u673A\u7684\u8D44\u4EA7\u5217\u8868\u4E0D\u8BA4\u8BC6\u4E86", { permanent: false });
+        if (first === "shell") {
+          if (row.asset) log?.info?.(`ssh: \u5821\u5792\u673A ${bastion.host}:${bastion.port} \u76F4\u63A5\u7ED9\u4E86\u7EC8\u7AEF\uFF0C\u6CA1\u7528\u4E0A\u8D44\u4EA7\u540D ${row.asset}`);
+          end();
+        } else {
+          if (first === "asset") send(String(row.asset));
+          else {
+            send(await oneTimeCode(row, bastion, { interactive, hint: "\u5821\u5792\u673A\u767B\u5F55" }));
+          }
+          let sentUser = false;
+          let triedPassword = false;
+          let ready = false;
+          for (let round = 0; round < MAX_ROUNDS && !ready; round++) {
+            const kinds = [];
+            if (!sentUser) kinds.push("username");
+            if (!triedPassword) kinds.push("password");
+            kinds.push("otp", "shell");
+            const found = await ask(kinds, sentUser ? "\u76EE\u6807\u673A\u7684\u5BC6\u7801" : "\u76EE\u6807\u673A\u7684\u8D26\u53F7");
+            if (found === "shell") {
+              ready = true;
+              break;
+            }
+            if (found === "username") {
+              send(String(row.username));
+              sentUser = true;
+              continue;
+            }
+            if (found === "password") {
+              send(await targetPassword(row, { interactive }));
+              triedPassword = true;
+              continue;
+            }
+            if (found === "otp") {
+              send(await oneTimeCode(row, bastion, { interactive, hint: "\u8FDB\u5165\u76EE\u6807\u673A" }));
+              continue;
+            }
+          }
+          if (!ready) throw new SshFailure("bastion", "menu", "\u5821\u5792\u673A\u4E00\u76F4\u6CA1\u6709\u8FDB\u5230\u76EE\u6807\u673A\u7684\u547D\u4EE4\u884C\uFF1A\u68C0\u67E5\u8D44\u4EA7\u540D\u548C\u8FD9\u53F0\u673A\u5668\u7684\u8D26\u53F7", { permanent: false });
+          await new Promise((done) => {
+            const t = setTimeout(done, quietMs);
+            t.unref?.();
+          });
+          end();
+        }
+        begin("ready");
+        reader.detach();
+        reader = null;
+        const client = bastionedClient(gateway.client, channel, closeAll, log);
+        end();
+        return { client, steps, close: closeAll };
+      } catch (err) {
+        end(false);
+        closeAll();
+        const failure = fail(err);
+        failure.steps = steps;
+        throw failure;
+      }
+    }
+  };
+}
+function bastionedClient(gatewayClient, channel, closeAll, log) {
+  const wrapper = new EventEmitter();
+  const unsupported = (what) => {
+    throw new SshFailure("bastion", "unsupported", `\u5821\u5792\u673A\u53EA\u5F00\u4E86\u7EC8\u7AEF\uFF1A${what}\u6682\u4E0D\u652F\u6301`, { permanent: true });
+  };
+  gatewayClient.once("close", () => wrapper.emit("close"));
+  gatewayClient.on("error", (err) => {
+    if (wrapper.listenerCount("error")) wrapper.emit("error", err);
+    else log?.warn?.(`ssh: bastion connection: ${err?.message}`);
+  });
+  wrapper.shell = (opts, cb) => {
+    try {
+      if (opts?.cols) channel.setWindow(opts.rows ?? 24, opts.cols, 0, 0);
+    } catch {
+    }
+    cb(null, channel);
+  };
+  wrapper.exec = () => unsupported("\u6267\u884C\u547D\u4EE4");
+  wrapper.sftp = () => unsupported("\u6587\u4EF6\u7BA1\u7406");
+  wrapper.forwardOut = () => unsupported("\u7AEF\u53E3\u8F6C\u53D1");
+  wrapper.destroy = () => closeAll();
+  wrapper.end = () => closeAll();
+  return wrapper;
+}
+
+// addons/ssh/core/connect.js
+import { createHash } from "node:crypto";
+import { lookup } from "node:dns/promises";
+import { readFileSync } from "node:fs";
+import { connect as netConnect, isIP as isIP2 } from "node:net";
+import { homedir } from "node:os";
+
 // addons/ssh/core/db.js
+import { randomBytes as randomBytes2 } from "node:crypto";
+import { isIP } from "node:net";
 var SCHEMA = `
 CREATE TABLE sshx_hosts (
   id TEXT PRIMARY KEY, name TEXT NOT NULL, host TEXT NOT NULL, port INTEGER NOT NULL, username TEXT NOT NULL,
   auth TEXT NOT NULL, key_id TEXT, key_path TEXT, secret TEXT, passphrase TEXT, group_name TEXT, tags TEXT, color TEXT,
   favorite INTEGER NOT NULL DEFAULT 0, jump TEXT, proxy TEXT, legacy INTEGER NOT NULL DEFAULT 0,
   encoding TEXT NOT NULL DEFAULT 'utf-8', startup TEXT, notes TEXT, sort INTEGER NOT NULL DEFAULT 0,
+  bastion_id TEXT, asset TEXT,
   created_at TEXT NOT NULL, updated_at TEXT NOT NULL, last_connected_at TEXT, last_error TEXT);
 CREATE TABLE sshx_keys (
   id TEXT PRIMARY KEY, name TEXT NOT NULL, type TEXT NOT NULL, public_key TEXT NOT NULL, private_key TEXT NOT NULL,
@@ -24020,7 +24304,20 @@ CREATE TABLE sshx_forwards (
 CREATE TABLE sshx_audit (
   id INTEGER PRIMARY KEY AUTOINCREMENT, host_id TEXT NOT NULL, source TEXT NOT NULL, command TEXT NOT NULL, exit_code INTEGER,
   ms INTEGER, at TEXT NOT NULL, output_tail TEXT);
-CREATE INDEX sshx_audit_host ON sshx_audit (host_id, id);`;
+CREATE INDEX sshx_audit_host ON sshx_audit (host_id, id);
+CREATE TABLE sshx_bastions (
+  id TEXT PRIMARY KEY, name TEXT NOT NULL, host TEXT NOT NULL, port INTEGER NOT NULL DEFAULT 22, username TEXT NOT NULL,
+  auth TEXT NOT NULL DEFAULT 'password', key_id TEXT, key_path TEXT, secret TEXT, passphrase TEXT,
+  web_url TEXT, menu TEXT, notes TEXT, created_at TEXT NOT NULL, updated_at TEXT NOT NULL, last_error TEXT);`;
+function addBastion(db) {
+  db.exec(`CREATE TABLE IF NOT EXISTS sshx_bastions (
+    id TEXT PRIMARY KEY, name TEXT NOT NULL, host TEXT NOT NULL, port INTEGER NOT NULL DEFAULT 22, username TEXT NOT NULL,
+    auth TEXT NOT NULL DEFAULT 'password', key_id TEXT, key_path TEXT, secret TEXT, passphrase TEXT,
+    web_url TEXT, menu TEXT, notes TEXT, created_at TEXT NOT NULL, updated_at TEXT NOT NULL, last_error TEXT)`);
+  const columns = new Set(db.prepare("PRAGMA table_info(sshx_hosts)").all().map((c) => c.name));
+  if (!columns.has("bastion_id")) db.exec("ALTER TABLE sshx_hosts ADD COLUMN bastion_id TEXT");
+  if (!columns.has("asset")) db.exec("ALTER TABLE sshx_hosts ADD COLUMN asset TEXT");
+}
 var MAX_HISTORY = 1e3;
 var MAX_AUDIT = 5e3;
 var AUTHS = /* @__PURE__ */ new Set(["password", "key", "agent", "interactive"]);
@@ -24063,9 +24360,9 @@ function createDb({ store, sealer, httpError, now = Date.now }) {
   const h = {
     list: db.prepare("SELECT * FROM sshx_hosts ORDER BY sort, name COLLATE NOCASE, rowid"),
     get: db.prepare("SELECT * FROM sshx_hosts WHERE id = ?"),
-    insert: db.prepare(`INSERT INTO sshx_hosts (id, name, host, port, username, auth, key_id, key_path, secret, passphrase, group_name, tags, color, favorite, jump, proxy, legacy, encoding, startup, notes, sort, created_at, updated_at, last_connected_at, last_error)
-      VALUES (:id, :name, :host, :port, :username, :auth, :key_id, :key_path, :secret, :passphrase, :group_name, :tags, :color, :favorite, :jump, :proxy, :legacy, :encoding, :startup, :notes, :sort, :created_at, :updated_at, :last_connected_at, :last_error)`),
-    update: db.prepare(`UPDATE sshx_hosts SET name = :name, host = :host, port = :port, username = :username, auth = :auth, key_id = :key_id, key_path = :key_path, secret = :secret, passphrase = :passphrase, group_name = :group_name, tags = :tags, color = :color, favorite = :favorite, jump = :jump, proxy = :proxy, legacy = :legacy, encoding = :encoding, startup = :startup, notes = :notes, sort = :sort, updated_at = :updated_at, last_error = :last_error WHERE id = :id`),
+    insert: db.prepare(`INSERT INTO sshx_hosts (id, name, host, port, username, auth, key_id, key_path, secret, passphrase, group_name, tags, color, favorite, jump, proxy, legacy, encoding, startup, notes, sort, bastion_id, asset, created_at, updated_at, last_connected_at, last_error)
+      VALUES (:id, :name, :host, :port, :username, :auth, :key_id, :key_path, :secret, :passphrase, :group_name, :tags, :color, :favorite, :jump, :proxy, :legacy, :encoding, :startup, :notes, :sort, :bastion_id, :asset, :created_at, :updated_at, :last_connected_at, :last_error)`),
+    update: db.prepare(`UPDATE sshx_hosts SET name = :name, host = :host, port = :port, username = :username, auth = :auth, key_id = :key_id, key_path = :key_path, secret = :secret, passphrase = :passphrase, group_name = :group_name, tags = :tags, color = :color, favorite = :favorite, jump = :jump, proxy = :proxy, legacy = :legacy, encoding = :encoding, startup = :startup, notes = :notes, sort = :sort, bastion_id = :bastion_id, asset = :asset, updated_at = :updated_at, last_error = :last_error WHERE id = :id`),
     remove: db.prepare("DELETE FROM sshx_hosts WHERE id = ?"),
     connected: db.prepare("UPDATE sshx_hosts SET last_connected_at = ?, last_error = NULL WHERE id = ?"),
     failed: db.prepare("UPDATE sshx_hosts SET last_error = ? WHERE id = ?"),
@@ -24075,6 +24372,19 @@ function createDb({ store, sealer, httpError, now = Date.now }) {
     groups: db.prepare(`SELECT DISTINCT group_name AS name FROM sshx_hosts WHERE group_name IS NOT NULL AND group_name <> '' ORDER BY group_name`)
   };
   const quick = /* @__PURE__ */ new Map();
+  const bs = {
+    list: db.prepare("SELECT * FROM sshx_bastions ORDER BY name COLLATE NOCASE, rowid"),
+    get: db.prepare("SELECT * FROM sshx_bastions WHERE id = ?"),
+    insert: db.prepare(`INSERT INTO sshx_bastions (id, name, host, port, username, auth, key_id, key_path, secret, passphrase, web_url, menu, notes, created_at, updated_at, last_error)
+      VALUES (:id, :name, :host, :port, :username, :auth, :key_id, :key_path, :secret, :passphrase, :web_url, :menu, :notes, :created_at, :updated_at, :last_error)`),
+    update: db.prepare(`UPDATE sshx_bastions SET name = :name, host = :host, port = :port, username = :username, auth = :auth, key_id = :key_id, key_path = :key_path, secret = :secret, passphrase = :passphrase, web_url = :web_url, menu = :menu, notes = :notes, updated_at = :updated_at, last_error = :last_error WHERE id = :id`),
+    remove: db.prepare("DELETE FROM sshx_bastions WHERE id = ?"),
+    setSecret: db.prepare("UPDATE sshx_bastions SET secret = ? WHERE id = ?"),
+    setPassphrase: db.prepare("UPDATE sshx_bastions SET passphrase = ? WHERE id = ?"),
+    failed: db.prepare("UPDATE sshx_bastions SET last_error = ? WHERE id = ?"),
+    using: db.prepare("SELECT COUNT(*) AS n FROM sshx_hosts WHERE bastion_id = ?"),
+    clearFromHosts: db.prepare("UPDATE sshx_hosts SET bastion_id = NULL WHERE bastion_id = ?")
+  };
   function checkHost(value, port) {
     let host = String(value ?? "").trim();
     if (!host) throw bad("\u670D\u52A1\u5668\u5730\u5740\u4E0D\u80FD\u4E3A\u7A7A");
@@ -24137,6 +24447,8 @@ function createDb({ store, sealer, httpError, now = Date.now }) {
       startup: null,
       notes: null,
       sort: 0,
+      bastion_id: null,
+      asset: null,
       created_at: iso(),
       updated_at: iso(),
       last_connected_at: null,
@@ -24181,6 +24493,13 @@ function createDb({ store, sealer, httpError, now = Date.now }) {
       }
       row.jump = JSON.stringify(jump);
     }
+    const bastionId = pick(b, "bastionId", "bastion_id");
+    if (bastionId !== void 0) {
+      if (bastionId && !bs.get.get(String(bastionId))) throw bad(`\u6CA1\u6709\u8FD9\u53F0\u5821\u5792\u673A\uFF1A${bastionId}`);
+      row.bastion_id = bastionId ? String(bastionId) : null;
+    }
+    if (b.asset !== void 0) row.asset = text(b.asset, 160) || null;
+    if (row.bastion_id && !row.asset) throw bad("\u9009\u4E86\u5821\u5792\u673A\u5C31\u8981\u5199\u8D44\u4EA7\u540D\uFF1A\u5821\u5792\u673A\u91CC\u8FD9\u53F0\u670D\u52A1\u5668\u53EB\u4EC0\u4E48");
     if (b.proxy !== void 0) row.proxy = b.proxy ? JSON.stringify(readProxy(b.proxy, jsonOf(was?.proxy, null))) : null;
     if (b.legacy !== void 0) row.legacy = b.legacy ? 1 : 0;
     if (b.encoding !== void 0) {
@@ -24219,6 +24538,8 @@ function createDb({ store, sealer, httpError, now = Date.now }) {
       color: row.color ?? null,
       favorite: Boolean(row.favorite),
       jump: jsonOf(row.jump, []),
+      bastionId: row.bastion_id ?? null,
+      asset: row.asset ?? "",
       proxy: proxy ? { type: proxy.type, host: proxy.host, port: proxy.port, username: proxy.username ?? null, hasSecret: Boolean(proxy.secret) } : null,
       legacy: Boolean(row.legacy),
       encoding: row.encoding,
@@ -24304,6 +24625,146 @@ function createDb({ store, sealer, httpError, now = Date.now }) {
     }
   };
   const without = ({ created_at, last_connected_at, ...rest }) => rest;
+  function webUrlOf(value) {
+    const url = String(value ?? "").trim();
+    if (!url) return null;
+    if (url.length > 1e3 || !/^https?:\/\//i.test(url)) throw bad("\u5821\u5792\u673A\u7684\u7F51\u9875\u5730\u5740\u8981\u4EE5 http:// \u6216 https:// \u5F00\u5934");
+    return url;
+  }
+  function menuOf(value, was) {
+    if (value === void 0) return was ?? null;
+    if (value === null || value === "") return null;
+    if (typeof value !== "object" || Array.isArray(value)) throw bad("\u83DC\u5355\u63D0\u793A\u8BCD\u8981\u5199\u6210 { asset, username, password, otp, shell }");
+    const out = {};
+    for (const [key, source] of Object.entries(value)) {
+      if (!["asset", "username", "password", "otp", "shell"].includes(key)) throw bad(`\u4E0D\u8BA4\u8BC6\u7684\u63D0\u793A\u8BCD\uFF1A${key}`);
+      const pattern = String(source ?? "").trim();
+      if (!pattern) continue;
+      if (pattern.length > 500) throw bad("\u63D0\u793A\u8BCD\u592A\u957F\u4E86");
+      try {
+        new RegExp(pattern, "i");
+      } catch (err) {
+        throw bad(`\u63D0\u793A\u8BCD\u300C${key}\u300D\u4E0D\u662F\u6709\u6548\u7684\u6B63\u5219\uFF1A${err.message}`);
+      }
+      out[key] = pattern;
+    }
+    return Object.keys(out).length ? JSON.stringify(out) : null;
+  }
+  const bastionView = (row) => ({
+    id: row.id,
+    name: row.name,
+    host: row.host,
+    port: row.port,
+    username: row.username,
+    auth: row.auth,
+    keyId: row.key_id ?? null,
+    keyPath: row.key_path ?? null,
+    hasPassword: Boolean(row.secret),
+    hasPassphrase: Boolean(row.passphrase),
+    webUrl: row.web_url ?? "",
+    menu: jsonOf(row.menu, null),
+    notes: row.notes ?? "",
+    hosts: bs.using.get(row.id)?.n ?? 0,
+    createdAt: row.created_at,
+    updatedAt: row.updated_at,
+    lastError: row.last_error ?? null
+  });
+  function bastionFields(b, was) {
+    if (!b || typeof b !== "object") throw bad("\u8BF7\u6C42\u4E0D\u5BF9");
+    const row = was ? { ...was } : {
+      id: null,
+      name: null,
+      host: null,
+      port: 22,
+      username: null,
+      auth: "password",
+      key_id: null,
+      key_path: null,
+      secret: null,
+      passphrase: null,
+      web_url: null,
+      menu: null,
+      notes: null,
+      created_at: iso(),
+      updated_at: iso(),
+      last_error: null
+    };
+    if (b.host !== void 0 || b.port !== void 0) {
+      const given = checkHost(b.host ?? row.host, b.port);
+      row.host = given.host;
+      row.port = checkPort(given.port, row.port);
+    }
+    if (b.username !== void 0) row.username = checkUsername(b.username);
+    if (b.auth !== void 0) {
+      if (!AUTHS.has(b.auth)) throw bad("\u8BA4\u8BC1\u65B9\u5F0F\u53EA\u80FD\u662F password / key / agent / interactive");
+      row.auth = b.auth;
+    }
+    const keyId = pick(b, "keyId", "key_id");
+    if (keyId !== void 0) {
+      if (keyId && !k.get.get(String(keyId))) throw bad("\u6CA1\u6709\u8FD9\u628A\u5BC6\u94A5");
+      row.key_id = keyId || null;
+    }
+    const keyPath = pick(b, "keyPath", "key_path");
+    if (keyPath !== void 0) {
+      if (keyPath && (typeof keyPath !== "string" || keyPath.length > 1024 || CONTROL.test(keyPath))) throw bad("\u79C1\u94A5\u8DEF\u5F84\u4E0D\u5BF9");
+      row.key_path = keyPath ? keyPath.trim() : null;
+    }
+    if (b.password !== void 0) row.secret = sealInput(b.password, "\u5821\u5792\u673A\u7684\u5BC6\u7801");
+    if (b.passphrase !== void 0) row.passphrase = sealInput(b.passphrase, "\u53E3\u4EE4");
+    const webUrl = pick(b, "webUrl", "web_url");
+    if (webUrl !== void 0) row.web_url = webUrlOf(webUrl);
+    if (b.menu !== void 0) row.menu = menuOf(b.menu, row.menu);
+    if (b.notes !== void 0) row.notes = text(b.notes, 4e3) || null;
+    if (b.name !== void 0) row.name = text(b.name, 60).replace(/\s+/g, " ") || null;
+    if (!row.host) throw bad("\u5821\u5792\u673A\u7684\u5730\u5740\u4E0D\u80FD\u4E3A\u7A7A");
+    if (!row.username) throw bad("\u5821\u5792\u673A\u7684\u7528\u6237\u540D\u4E0D\u80FD\u4E3A\u7A7A");
+    if (!row.name) row.name = `${row.username}@${row.host}`;
+    if (row.auth === "key" && !row.key_id && !row.key_path) throw bad("\u5821\u5792\u673A\u7528\u79C1\u94A5\u767B\u5F55\u8981\u9009\u4E00\u628A\u5BC6\u94A5\u6216\u5199\u6587\u4EF6\u8DEF\u5F84");
+    if (row.auth === "password" && !row.secret) throw bad("\u5821\u5792\u673A\u7684\u767B\u5F55\u5BC6\u7801\u8981\u586B\uFF1A\u8FDE\u5B83\u7684\u65F6\u5019\u8981\u7528\u5B83\u81EA\u52A8\u767B\u5F55");
+    row.updated_at = iso();
+    return row;
+  }
+  const bastions = {
+    list: () => bs.list.all(),
+    get: (id) => bs.get.get(String(id)) ?? null,
+    mustGet(id) {
+      const row = bastions.get(id);
+      if (!row) throw httpError(404, "\u6CA1\u6709\u8FD9\u53F0\u5821\u5792\u673A");
+      return row;
+    },
+    view: bastionView,
+    create(body, { id = newId("bst") } = {}) {
+      const row = bastionFields(body, null);
+      row.id = id;
+      bs.insert.run(namedParams(row));
+      return bs.get.get(id);
+    },
+    update(id, body) {
+      const was = bs.get.get(String(id));
+      if (!was) throw httpError(404, "\u6CA1\u6709\u8FD9\u53F0\u5821\u5792\u673A");
+      const row = bastionFields(body, was);
+      bs.update.run(namedParams({ ...without({ ...row }), last_error: was.last_error ?? null }));
+      return bs.get.get(was.id);
+    },
+    remove(id) {
+      const row = bs.get.get(String(id));
+      if (!row) throw httpError(404, "\u6CA1\u6709\u8FD9\u53F0\u5821\u5792\u673A");
+      bs.clearFromHosts.run(row.id);
+      bs.remove.run(row.id);
+      return row;
+    },
+    /** What the last connection said, for the list. */
+    failed(id, message) {
+      bs.failed.run(String(message ?? "").slice(0, 500), id);
+    },
+    rememberPassword(id, plain) {
+      bs.setSecret.run(sealer.seal(plain), id);
+    },
+    rememberPassphrase(id, plain) {
+      bs.setPassphrase.run(sealer.seal(plain), id);
+    },
+    count: () => bs.list.all().length
+  };
   const k = {
     list: db.prepare("SELECT * FROM sshx_keys ORDER BY created_at DESC, rowid DESC"),
     get: db.prepare("SELECT * FROM sshx_keys WHERE id = ?"),
@@ -24494,7 +24955,7 @@ function createDb({ store, sealer, httpError, now = Date.now }) {
     },
     list: (hostId, limit = 200) => (hostId ? a.list.all(String(hostId), limit) : a.listAll.all(limit)).map((r) => ({ id: r.id, hostId: r.host_id, source: r.source, command: r.command, exitCode: r.exit_code, ms: r.ms, at: r.at, outputTail: r.output_tail ?? "" }))
   };
-  return { hosts, keys, known, snippets, history, forwards, audit, openSecret, iso };
+  return { hosts, bastions, keys, known, snippets, history, forwards, audit, openSecret, iso };
 }
 
 // addons/ssh/core/ssh2.js
@@ -25180,6 +25641,67 @@ function execText(client, command, { timeoutMs = 15e3, maxBytes = 1 << 20 } = {}
       reject(error);
     }
   });
+}
+
+// addons/ssh/core/dpapi.js
+import { spawnSync } from "node:child_process";
+var PREFIX = "dp1.";
+var TIMEOUT_MS = 2e4;
+var PROTECT = "$b = [Convert]::FromBase64String([Console]::In.ReadToEnd().Trim()); Add-Type -AssemblyName System.Security; $p = [System.Security.Cryptography.ProtectedData]::Protect($b, $null, [System.Security.Cryptography.DataProtectionScope]::CurrentUser); [Console]::Out.Write([Convert]::ToBase64String($p))";
+var UNPROTECT = "$b = [Convert]::FromBase64String([Console]::In.ReadToEnd().Trim()); Add-Type -AssemblyName System.Security; $p = [System.Security.Cryptography.ProtectedData]::Unprotect($b, $null, [System.Security.Cryptography.DataProtectionScope]::CurrentUser); [Console]::Out.Write([Convert]::ToBase64String($p))";
+function runPowerShell(script, input, { timeoutMs = TIMEOUT_MS } = {}) {
+  const shell = process.platform === "win32" ? "powershell.exe" : "pwsh";
+  const out = spawnSync(shell, ["-NoProfile", "-NonInteractive", "-ExecutionPolicy", "Bypass", "-Command", script], {
+    input: Buffer.from(String(input), "utf8"),
+    timeout: timeoutMs,
+    windowsHide: true,
+    encoding: "utf8"
+  });
+  if (out.error) throw out.error;
+  if (out.status !== 0) throw new Error(String(out.stderr ?? "").trim().split("\n")[0] || `\u7CFB\u7EDF\u52A0\u5BC6\u5931\u8D25\uFF08${out.status}\uFF09`);
+  const text2 = String(out.stdout ?? "").trim();
+  if (!text2) throw new Error("\u7CFB\u7EDF\u52A0\u5BC6\u6CA1\u6709\u56DE\u7B54");
+  return text2;
+}
+function createDpapiSealer({ sealer, platform = process.platform, run = runPowerShell, log }) {
+  let usable = null;
+  const protect = (text2) => run(PROTECT, Buffer.from(text2, "utf8").toString("base64"));
+  const unprotect = (text2) => Buffer.from(run(UNPROTECT, text2), "base64").toString("utf8");
+  return {
+    /** A secret for the database. DPAPI-wrapped when this account can, the sealer's own form otherwise. */
+    seal(plain) {
+      const inner = sealer.seal(plain);
+      if (platform !== "win32" || usable === false) return inner;
+      try {
+        const wrapped = protect(inner);
+        usable = true;
+        return `${PREFIX}${wrapped}`;
+      } catch (err) {
+        usable = false;
+        log?.warn?.(`ssh: \u8FD9\u53F0\u7535\u8111\u7684\u7CFB\u7EDF\u52A0\u5BC6\u7528\u4E0D\u4E0A\uFF0C\u5BC6\u7801\u53EA\u6309 Orbitra \u81EA\u5DF1\u7684\u5BC6\u94A5\u4FDD\u5B58\uFF1A${err?.message}`);
+        return inner;
+      }
+    },
+    /** The plain text behind a sealed value, in either form. */
+    open(sealed) {
+      if (!sealed) return null;
+      const text2 = String(sealed);
+      if (!text2.startsWith(PREFIX)) return sealer.open(text2);
+      return sealer.open(unprotect(text2.slice(PREFIX.length)));
+    },
+    /** Whether what is written from now on is protected for this user as well. Never throws. */
+    available() {
+      if (platform !== "win32") return false;
+      if (usable !== null) return usable;
+      try {
+        protect("orbitra");
+        usable = true;
+      } catch {
+        usable = false;
+      }
+      return usable;
+    }
+  };
 }
 
 // addons/ssh/core/sftp.js
@@ -26441,7 +26963,7 @@ function migrateOldServers(db, { oldSealer, sealer, now = Date.now }) {
 }
 
 // addons/ssh/core/monitor.js
-var TIMEOUT_MS = 8e3;
+var TIMEOUT_MS2 = 8e3;
 var SIGNALS = /* @__PURE__ */ new Set(["TERM", "KILL", "HUP", "INT", "QUIT", "STOP", "CONT", "USR1", "USR2"]);
 var FS_SKIPPED = /^(tmpfs|devtmpfs|overlay|squashfs|none|udev|shm|cgroup\w*|proc|sysfs)$/;
 var MONITOR_SCRIPT = [
@@ -26530,7 +27052,7 @@ function createMonitor({ pool, httpError, now = Date.now }) {
       throw connectionHttpError(err, httpError);
     }
     try {
-      const result = await execText(lease.client, MONITOR_SCRIPT, { timeoutMs: TIMEOUT_MS, maxBytes: 256 * 1024 });
+      const result = await execText(lease.client, MONITOR_SCRIPT, { timeoutMs: TIMEOUT_MS2, maxBytes: 256 * 1024 });
       if (result.timedOut) throw httpError(504, "\u76D1\u63A7\u811A\u672C 8 \u79D2\u6CA1\u6709\u56DE\u7B54");
       const sample = parseSample(result.stdout.toString("utf8"));
       if (sample.unsupported) return { unsupported: true, at: now() };
@@ -26583,7 +27105,7 @@ function createMonitor({ pool, httpError, now = Date.now }) {
         throw connectionHttpError(err, httpError);
       }
       try {
-        const result = await execText(lease.client, `kill -${shellQuote(name)} ${shellQuote(id)}`, { timeoutMs: TIMEOUT_MS, maxBytes: 4096 });
+        const result = await execText(lease.client, `kill -${shellQuote(name)} ${shellQuote(id)}`, { timeoutMs: TIMEOUT_MS2, maxBytes: 4096 });
         if (result.code !== 0) throw httpError(409, `\u7ED3\u675F\u8FDB\u7A0B\u5931\u8D25\uFF1A${result.stderr.toString("utf8").trim().slice(0, 200) || `\u9000\u51FA\u7801 ${result.code}`}`);
         return { ok: true };
       } finally {
@@ -26600,9 +27122,10 @@ function createMonitor({ pool, httpError, now = Date.now }) {
 }
 
 // addons/ssh/core/pool.js
-function createPool({ connector, hosts, idleMs = 6e4, onReady = () => {
+function createPool({ connector, connect = null, hosts, idleMs = 6e4, onReady = () => {
 }, onFailed = () => {
 }, log }) {
+  const openRow = connect ?? ((row, opts) => connector.connect(row, opts));
   const entries = /* @__PURE__ */ new Map();
   const everything = /* @__PURE__ */ new Set();
   let stopped = false;
@@ -26638,7 +27161,7 @@ function createPool({ connector, hosts, idleMs = 6e4, onReady = () => {
     const e = { hostId, state: "connecting", client: null, close: null, steps: [], step: null, interactive, leases: /* @__PURE__ */ new Set(), listeners: /* @__PURE__ */ new Set(), waiting: 0, idleTimer: null, ac, lastError: null, promise: null };
     entries.set(hostId, e);
     everything.add(e);
-    e.promise = connector.connect(row, {
+    e.promise = openRow(row, {
       interactive,
       purpose,
       signal: ac.signal,
@@ -26799,7 +27322,7 @@ var FOLLOW_BASH = ` __ob7(){ printf '\\033]7;file://%s%s\\007' "$HOSTNAME" "$PWD
 `;
 var FOLLOW_ZSH = ` __ob7(){ printf '\\033]7;file://%s%s\\007' "$HOST" "$PWD"; };precmd_functions+=(__ob7)
 `;
-var stripAnsi = (text2) => String(text2 ?? "").replace(/\u001b\][^\u0007\u001b]*(?:\u0007|\u001b\\)/g, "").replace(/\u001b\[[0-9;?]*[ -/]*[@-~]/g, "").replace(/\u001b[@-Z\\-_]/g, "");
+var stripAnsi2 = (text2) => String(text2 ?? "").replace(/\u001b\][^\u0007\u001b]*(?:\u0007|\u001b\\)/g, "").replace(/\u001b\[[0-9;?]*[ -/]*[@-~]/g, "").replace(/\u001b[@-Z\\-_]/g, "");
 function lineTracker() {
   let line = "";
   let dirty = false;
@@ -27203,7 +27726,7 @@ function createSessions({ db, pool, stream, settings, paths, httpError, log, tim
     if (!text2) return;
     if (rec.mode === "cast") rec.out.write(`${JSON.stringify([(Date.now() - rec.startedAt) / 1e3, "o", text2])}
 `);
-    else rec.out.write(stripAnsi(text2).replace(/\r\n?/g, "\n"));
+    else rec.out.write(stripAnsi2(text2).replace(/\r\n?/g, "\n"));
   }
   function closeRecording(s) {
     const rec = s.recording;
@@ -27254,7 +27777,7 @@ function createSessions({ db, pool, stream, settings, paths, httpError, log, tim
   function rememberLines(s, text2) {
     const lines = s.track(text2);
     if (!lines.length || db.hosts.isQuick(s.hostId) || settings().recordHistory === false || s.altScreen) return;
-    const screen = stripAnsi(import_iconv_lite2.default.decode(s.tail, s.encoding)).split(/\r?\n/).filter((l) => l.trim()).pop() ?? "";
+    const screen = stripAnsi2(import_iconv_lite2.default.decode(s.tail, s.encoding)).split(/\r?\n/).filter((l) => l.trim()).pop() ?? "";
     if (SENSITIVE.test(screen)) return;
     for (const line of lines) db.history.add(s.hostId, line);
   }
@@ -27459,7 +27982,7 @@ var MAX_OUTPUT = 2e5;
 var AUTH_LABELS = { password: "\u5BC6\u7801", key: "\u79C1\u94A5\u6587\u4EF6", agent: "\u672C\u673A\u5BC6\u94A5", interactive: "\u952E\u76D8\u4EA4\u4E92" };
 var addressLabel = (row) => `${row.username}@${row.host}${Number(row.port) === 22 ? "" : `:${row.port}`}`;
 function cleanOutput(text2, max = MAX_OUTPUT) {
-  const clean = stripAnsi(text2).replace(/\r\n?/g, "\n").replace(/\u0000/g, "");
+  const clean = stripAnsi2(text2).replace(/\r\n?/g, "\n").replace(/\u0000/g, "");
   return clean.length > max ? `${clean.slice(0, max)}
 \u2026\uFF08\u8F93\u51FA\u592A\u957F\uFF0C\u53EA\u7559\u4E86\u524D ${Math.round(max / 1024)} KB\uFF09` : clean;
 }
@@ -27811,7 +28334,7 @@ data: ${JSON.stringify(data)}
 
 // addons/ssh/core/index.js
 var DEFAULT_SETTINGS = { keepaliveSeconds: 15, autoReconnect: true, followCwd: true, recordHistory: true };
-var CONNECTION_FIELDS = ["host", "port", "username", "auth", "key_id", "key_path", "secret", "passphrase", "jump", "proxy", "legacy"];
+var CONNECTION_FIELDS = ["host", "port", "username", "auth", "key_id", "key_path", "secret", "passphrase", "jump", "proxy", "legacy", "bastion_id", "asset"];
 var localUser = () => {
   try {
     return userInfo().username;
@@ -27824,7 +28347,7 @@ function start(ctx, config = {}) {
   const timing = config.timing ?? {};
   const keys = ctx.get("keys");
   if (!keys?.derive) throw new Error("addon ssh: the kernel has no keys service");
-  const sealer = createSealer(keys, "addon-ssh");
+  const sealer = createDpapiSealer({ sealer: createSealer(keys, "addon-ssh"), log, ...config.seal ?? {} });
   const settings = () => ({ ...DEFAULT_SETTINGS, ...ctx.settings?.() ?? {} });
   store.migrate("addon-ssh", [
     SCHEMA,
@@ -27833,6 +28356,10 @@ function start(ctx, config = {}) {
     },
     (db2) => {
       seedSnippets(db2, { newId: () => `snp_${randomBytes6(6).toString("hex")}` });
+    },
+    // Older databases: the bastion table, and the two columns on a host that name one.
+    (db2) => {
+      addBastion(db2);
     }
   ]);
   const db = createDb({ store, sealer, httpError });
@@ -27840,8 +28367,21 @@ function start(ctx, config = {}) {
   const hostsChanged = () => emit("hosts", {});
   const prompts = createPrompts({ emit, ttlMs: timing.promptTtlMs });
   const connector = createConnector({ db, prompts, settings, log, timing, agent: config.agent ?? null, ...config.lookupHost ? { lookupHost: config.lookupHost } : {} });
+  const bastion = createBastion({ db, prompts, connector, log, timing });
+  const connectRow = (row, opts) => {
+    if (!row?.bastion_id) return connector.connect(row, opts);
+    const behind = db.bastions.get(row.bastion_id);
+    if (!behind) {
+      return Promise.reject(new SshFailure("bastion", "no-bastion", `${row.name ?? row.host} \u914D\u7684\u5821\u5792\u673A\u4E0D\u5728\u4E86\uFF08\u53EF\u80FD\u5DF2\u88AB\u5220\u6389\uFF09\uFF1A\u5728\u5B83\u7684\u300C\u9AD8\u7EA7\u300D\u91CC\u91CD\u65B0\u9009\u4E00\u53F0\uFF0C\u6216\u8005\u6E05\u6389\u5821\u5792\u673A\u6539\u56DE\u76F4\u8FDE`, { permanent: true }));
+    }
+    return bastion.open(row, behind, opts).catch((err) => {
+      db.bastions.failed(behind.id, err?.message);
+      throw err;
+    });
+  };
   const pool = createPool({
     connector,
+    connect: connectRow,
     hosts: db.hosts,
     idleMs: timing.poolIdleMs,
     log,
@@ -27958,7 +28498,7 @@ function start(ctx, config = {}) {
     const attempt = new AbortController();
     testing.add(attempt);
     try {
-      const { steps, close } = await connector.connect(row, { interactive: true, signal: attempt.signal });
+      const { steps, close } = await connectRow(row, { interactive: true, signal: attempt.signal });
       close();
       db.hosts.connected(row.id);
       hostsChanged();
@@ -27967,6 +28507,44 @@ function start(ctx, config = {}) {
       if (err?.code !== "cancelled") db.hosts.failed(row.id, err?.message);
       hostsChanged();
       return { ok: false, ms: Date.now() - started, steps: err?.steps ?? [], step: err?.step ?? null, error: String(err?.message ?? err) };
+    } finally {
+      testing.delete(attempt);
+    }
+  });
+  const bastionView = (row) => db.bastions.view(row);
+  route("GET", "/bastions", () => ({ bastions: db.bastions.list().map(bastionView), dpapi: sealer.available?.() ?? false }));
+  route("POST", "/bastions", async ({ json }) => {
+    const row = db.bastions.create(await json());
+    hostsChanged();
+    return { bastion: bastionView(row) };
+  }, { bodyLimit: 32 * 1024 });
+  route("PATCH", "/bastions/:id", async ({ params, json }) => {
+    const row = db.bastions.update(params.id, await json());
+    for (const host of db.hosts.list()) if (host.bastion_id === row.id) pool.retire(host.id);
+    hostsChanged();
+    return { bastion: bastionView(row) };
+  }, { bodyLimit: 32 * 1024 });
+  route("DELETE", "/bastions/:id", ({ params }) => {
+    const row = db.bastions.mustGet(params.id);
+    for (const host of db.hosts.list()) {
+      if (host.bastion_id !== row.id) continue;
+      pool.retire(host.id);
+    }
+    db.bastions.remove(row.id);
+    hostsChanged();
+    return { ok: true };
+  });
+  route("POST", "/bastions/:id/test", async ({ params }) => {
+    const row = db.bastions.mustGet(params.id);
+    const started = Date.now();
+    const attempt = new AbortController();
+    testing.add(attempt);
+    try {
+      await bastion.login(row, { interactive: true, signal: attempt.signal });
+      return { ok: true, ms: Date.now() - started };
+    } catch (err) {
+      if (err?.code !== "cancelled") db.bastions.failed(row.id, err?.message);
+      return { ok: false, ms: Date.now() - started, step: err?.step ?? null, error: String(err?.message ?? err) };
     } finally {
       testing.delete(attempt);
     }

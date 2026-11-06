@@ -2,7 +2,7 @@
   "format": "orbitra-addon/1",
   "id": "ssh",
   "name": "SSH 终端",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "连接服务器的终端、文件管理、快捷命令、无代理监控、端口转发和密钥管理，内核直接用 ssh2 连接，不依赖系统的 ssh。密码和私钥加密存在这台电脑，Agent 用 ssh_run 执行的命令都有记录。",
   "icon": "terminal",
   "requires": "1.15.0",
