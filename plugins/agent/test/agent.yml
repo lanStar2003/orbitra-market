@@ -5,13 +5,13 @@ domain: 测试
 description: 写测试、跑回归和端到端测试，给出能复现的失败报告
 icon: 测
 color: orange
-version: 1.0.1
+version: 1.0.2
 # 不交给执行节点（家里的小主机）：要用这台电脑上的文件和工具
 offload: false
 skills:
   - 回归分片
   - 失败复现报告
-# 路由检索用的词（总指挥派活时按名片匹配，见 core/modules/tasks/router.js）
+# 路由检索用的词（她派活时按名片匹配，见 core/modules/tasks/router.js）
 keywords:
   - 测试
   - 回归
