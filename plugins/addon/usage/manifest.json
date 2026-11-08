@@ -1,12 +1,12 @@
 {
   "format": "orbitra-addon-pack/1",
   "id": "usage",
-  "version": "1.0.1",
-  "from": "1.0.0",
+  "version": "1.0.2",
+  "from": "1.0.1",
   "title": "",
   "name": "使用情况",
   "description": "每一步模型调用花了多少钱：按模型、线路、Agent、来源、对话、任务、时段拆开看，含缓存、子 Agent、审查，附省钱建议。",
-  "at": "2026-11-04T08:11:04.970Z",
+  "at": "2026-11-08T12:42:23.926Z",
   "key": "2838-d425-6b4d-9b6c",
   "files": {
     "README.md": {
@@ -14,21 +14,21 @@
       "size": 547
     },
     "dist/core.js": {
-      "sha256": "05b3d5617d4add7d9aaae2f7d6bdb9f5b3fa7b5b5874c3d63cf2ac1efe9c74c4",
-      "size": 41999
+      "sha256": "11aba3bc0ab3062a580f3419564e2cec937606b031b3748aa2054d12ac963e1b",
+      "size": 42339
     },
     "dist/index.css": {
       "sha256": "8b181b361959f582eb3ab742e8e6a55be520e2451b5838a2853dea52f3449cca",
       "size": 12889
     },
     "dist/index.js": {
-      "sha256": "f2a8872bdf47661b9f115670d98763f8b54e49431e583492e00b8eacb72c5800",
-      "size": 61367
+      "sha256": "9d370c2b0f5cbff7ac3a14f632d450ccf92706d8a1d289db64a0598d497b24c1",
+      "size": 61361
     },
     "plugin.json": {
-      "sha256": "24f40c0626856af0a3712b124b717532d4adeab65ebd514f6eeda6c2aa2520dd",
+      "sha256": "f0477a62fc18715305c8c0d78746d1683baf9efb329e6e20c2530ff6610f8eb4",
       "size": 497
     }
   },
-  "signature": "fj7-D5UqxCwzBY1WwP1Pp3ts7BZg9GnIpMw369aRtPgVkDGmXhZwT6amIVWIpKhp-OToRxAb6ndnMMxHVjgsBQ"
+  "signature": "_UtuQNwAVVVKSGEulprOnAgDH8ReHBHVYzdii35_8s04shQj6ncIwigOmaf_55mfE3PocYSGNWpVzRJFQu5xBw"
 }

@@ -1,3 +1,5 @@
+import { createRequire as __createRequire } from 'node:module'; const require = __createRequire(import.meta.url);
+
 // addons/usage/core/analysis.js
 var num = (v) => Number(v) || 0;
 var pad = (n) => String(n).padStart(2, "0");
@@ -22,11 +24,11 @@ var parse = (v, fallback) => {
     return fallback;
   }
 };
-var SOURCES = Object.freeze({ conductor: "\u603B\u6307\u6325", agent: "Agent", subagent: "\u5B50 Agent", evolve: "\u81EA\u8FDB\u5316", reviewer: "\u81EA\u52A8\u5BA1\u67E5", "code-review": "\u4EE3\u7801\u5BA1\u67E5", judge: "\u8BB0\u5FC6\u5224\u65AD", retrieval: "\u68C0\u7D22\u6A21\u578B", shadow: "\u5F71\u5B50\u91CD\u653E", direct: "\u76F4\u63A5\u4F7F\u7528" });
+var SOURCES = Object.freeze({ conductor: "\u661F\u7EC7", agent: "Agent", subagent: "\u5B50 Agent", evolve: "\u81EA\u8FDB\u5316", reviewer: "\u81EA\u52A8\u5BA1\u67E5", "code-review": "\u4EE3\u7801\u5BA1\u67E5", judge: "\u8BB0\u5FC6\u5224\u65AD", retrieval: "\u68C0\u7D22\u6A21\u578B", shadow: "\u5F71\u5B50\u91CD\u653E", direct: "\u76F4\u63A5\u4F7F\u7528" });
 var SHELLS = /* @__PURE__ */ new Set(["pwsh", "bash", "shell", "powershell", "sh", "exec"]);
 var EDITS = /* @__PURE__ */ new Set(["edit", "write", "multi_edit"]);
 var EXPLORE = /* @__PURE__ */ new Set(["read", "grep", "web_fetch", "web_search", "read_image", "glob", "mnemon_document_search"]);
-var DELEGATE = /* @__PURE__ */ new Set(["subagent", "send_message", "dispatch_tasks", "tell_task", "request_evolution"]);
+var DELEGATE = /* @__PURE__ */ new Set(["subagent", "send_message", "assign", "relay", "dispatch_tasks", "tell_task", "request_evolution"]);
 var KINDS = { coding: "\u5199\u4EE3\u7801", debugging: "\u4FEE\u95EE\u9898", feature: "\u65B0\u529F\u80FD", refactor: "\u91CD\u6784", testing: "\u8DD1\u6D4B\u8BD5", exploration: "\u67E5\u8D44\u6599", planning: "\u89C4\u5212", delegation: "\u6D3E\u6D3B", git: "Git", build: "\u6784\u5EFA\u53D1\u5E03", brainstorm: "\u51FA\u4E3B\u610F", conversation: "\u804A\u5929", general: "\u5176\u4ED6" };
 function kindOf({ title = "", tools = [], commands = [] }) {
   const has = (set) => tools.some((t) => set.has(t));
@@ -100,6 +102,14 @@ function createAnalysis({ db, now = Date.now, get = () => null }) {
       return id;
     }
   };
+  const herName = () => {
+    try {
+      return get("persona")?.view?.()?.name ?? SOURCES.conductor;
+    } catch {
+      return SOURCES.conductor;
+    }
+  };
+  const sourceLabel = (id) => id === "conductor" ? herName() : SOURCES[id];
   const providerNames = () => {
     if (!has("model_providers")) return {};
     return Object.fromEntries(db.prepare("SELECT id, name FROM model_providers").all().map((r) => [r.id, r.name]));
@@ -243,8 +253,8 @@ function createAnalysis({ db, now = Date.now, get = () => null }) {
   const DIMENSIONS = {
     model: { column: "model", label: (id) => id ?? "\u672A\u77E5" },
     provider: { column: "provider_id", label: (id, names) => names[id] ?? id ?? "\u672A\u77E5" },
-    agent: { column: "CASE WHEN agent_id IS NOT NULL THEN agent_id WHEN source = 'conductor' THEN '*' ELSE source END", label: (id) => id === "*" ? "\u603B\u6307\u6325" : SOURCES[id] ?? agentName(id) },
-    source: { column: "source", label: (id) => SOURCES[id] ?? id },
+    agent: { column: "CASE WHEN agent_id IS NOT NULL THEN agent_id WHEN source = 'conductor' THEN '*' ELSE source END", label: (id) => id === "*" ? herName() : sourceLabel(id) ?? agentName(id) },
+    source: { column: "source", label: (id) => sourceLabel(id) ?? id },
     conversation: { column: "conversation_id", label: (id, _, extra) => extra.get(id) ?? (id ? "\u5DF2\u5220\u9664\u7684\u5BF9\u8BDD" : "\u4E0D\u5C5E\u4E8E\u5BF9\u8BDD") },
     plan: { column: "plan_id", label: (id, _, extra) => extra.get(id) ?? (id ? "\u5DF2\u5220\u9664\u7684\u4EFB\u52A1\u56FE" : "\u4E0D\u5C5E\u4E8E\u4EFB\u52A1\u56FE") },
     task: { column: "task_id", label: (id, _, extra) => extra.get(id) ?? (id ? "\u5DF2\u5220\u9664\u7684\u4EFB\u52A1" : "\u4E0D\u5C5E\u4E8E\u4EFB\u52A1") },
@@ -261,7 +271,7 @@ function createAnalysis({ db, now = Date.now, get = () => null }) {
     const agent = /\/workspaces\/agents\/([^/]+)/.exec(p);
     if (/\/workspaces\/agents\/evolve\/code\//.test(p)) return "\u81EA\u8FDB\u5316\u7684\u6E90\u7801\u526F\u672C";
     if (agent) return `${agentName(agent[1])} \u7684\u5DE5\u4F5C\u533A`;
-    if (/\/workspaces\/conductor/.test(p)) return "\u603B\u6307\u6325\u7684\u5DE5\u4F5C\u533A";
+    if (/\/workspaces\/conductor/.test(p)) return `${herName()}\u7684\u5DE5\u4F5C\u533A`;
     return p.split("/").filter(Boolean).slice(-2).join("/");
   };
   const titlesOf = (by) => {
@@ -304,7 +314,7 @@ function createAnalysis({ db, now = Date.now, get = () => null }) {
     const w = whereOf({ ...f, model: null, agent: null, source: null, provider: null });
     const col = (c, label) => db.prepare(`SELECT ${c} AS key, COALESCE(SUM(cost), 0) AS cost FROM ledger_steps ${w.sql} GROUP BY key ORDER BY cost DESC`).all(...w.args).filter((r) => r.key !== null).map((r) => ({ key: r.key, label: label(r.key), cost: r.cost }));
     const names = providerNames();
-    return { models: col("model", (k) => k), agents: col(DIMENSIONS.agent.column, (k) => DIMENSIONS.agent.label(k)), sources: col("source", (k) => SOURCES[k] ?? k), providers: col("provider_id", (k) => names[k] ?? k) };
+    return { models: col("model", (k) => k), agents: col(DIMENSIONS.agent.column, (k) => DIMENSIONS.agent.label(k)), sources: col("source", (k) => sourceLabel(k) ?? k), providers: col("provider_id", (k) => names[k] ?? k) };
   }
   function sessions(f, { sort = "cost", limit = 50, offset = 0, q = null } = {}) {
     const w = whereOf(f);
@@ -315,7 +325,7 @@ function createAnalysis({ db, now = Date.now, get = () => null }) {
     const jobTitle = db.prepare("SELECT title, kind, status FROM jobs WHERE session_id = ? ORDER BY created_at LIMIT 1");
     const view = rows.map((r) => {
       const job = jobTitle.get(r.id);
-      return { id: r.id, first: r.first, last: r.last, ...totalsView(r), conversationId: r.conversation_id, title: convo.get(r.conversation_id) ?? job?.title ?? r.id, status: job?.status ?? null, agent: r.agent_id ? agentName(r.agent_id) : "\u603B\u6307\u6325", model: r.model, subagents: Math.max(0, r.session_count - 1) };
+      return { id: r.id, first: r.first, last: r.last, ...totalsView(r), conversationId: r.conversation_id, title: convo.get(r.conversation_id) ?? job?.title ?? r.id, status: job?.status ?? null, agent: r.agent_id ? agentName(r.agent_id) : herName(), model: r.model, subagents: Math.max(0, r.session_count - 1) };
     }).filter((r) => !q || r.title.includes(q) || r.agent.includes(q));
     return { total: view.length, sessions: view.slice(offset, offset + Math.min(limit, 200)) };
   }
@@ -342,7 +352,7 @@ function createAnalysis({ db, now = Date.now, get = () => null }) {
       id,
       conversationId,
       title: titlesOf("conversation").get(conversationId) ?? titles.get(job?.job_id)?.title ?? id,
-      agent: job?.agent_id ? agentName(job.agent_id) : "\u603B\u6307\u6325",
+      agent: job?.agent_id ? agentName(job.agent_id) : herName(),
       totals: totalsView(db.prepare(`SELECT ${TOTALS} FROM ledger_steps WHERE root_session = ?`).get(String(id))),
       first: steps[0].at,
       last: steps.at(-1).at,
@@ -480,7 +490,7 @@ function createAnalysis({ db, now = Date.now, get = () => null }) {
     if (other.n) add({ id: "guess", level: "warning", title: `${other.n} \u6B65\u7528\u7684\u662F\u522B\u5BB6\u7EBF\u8DEF\u7684\u4EF7\u683C`, detail: `\u8FD9\u4E9B\u6B65\u9AA4\uFF08\u7EA6 \xA5${yuan(other.cost)}\uFF09\u4F60\u8D70\u7684\u7EBF\u8DEF\u67E5\u4E0D\u5230\u4EF7\uFF0C\u6682\u65F6\u7528\u4E86\u6A21\u578B\u5E93\u91CC\u522B\u7684\u7EBF\u8DEF\u7684\u4EF7\u3002\u5230\u300C\u4EF7\u683C\u300D\u9875\u6309\u4F60\u7684\u8D26\u5355\u586B\u4E0A\u66F4\u51C6\u3002`, saving: null, action: { label: "\u53BB\u6539\u4EF7\u683C", view: "prices" } });
     if (period.offSaving >= 0.01 && period.cost && period.offSaving / period.cost >= 0.05) {
       const worst = db.prepare(`SELECT source, COALESCE(SUM(off_saving), 0) AS saving FROM ledger_steps ${w.sql} GROUP BY source ORDER BY saving DESC LIMIT 1`).get(...w.args);
-      add({ id: "off-peak", level: "info", title: "\u6709\u7684\u6D3B\u53EF\u4EE5\u632A\u5230\u4F4E\u8C37\u65F6\u6BB5", detail: `\u8FD9\u6BB5\u65F6\u95F4\u9AD8\u5CF0\u65F6\u6BB5\u6BD4\u4F4E\u8C37\u591A\u82B1\u4E86 \xA5${yuan(period.offSaving)}\uFF0C\u5176\u4E2D\u300C${SOURCES[worst.source] ?? worst.source}\u300D\u6700\u591A\u3002\u4E0D\u6025\u7684\u6D3B\uFF08\u5B9A\u65F6\u4EFB\u52A1\u3001\u81EA\u8FDB\u5316\uFF09\u653E\u5230\u4F4E\u8C37\u8DD1\uFF0C\u5355\u4EF7\u662F\u4E00\u534A\u3002`, saving: period.offSaving, action: null });
+      add({ id: "off-peak", level: "info", title: "\u6709\u7684\u6D3B\u53EF\u4EE5\u632A\u5230\u4F4E\u8C37\u65F6\u6BB5", detail: `\u8FD9\u6BB5\u65F6\u95F4\u9AD8\u5CF0\u65F6\u6BB5\u6BD4\u4F4E\u8C37\u591A\u82B1\u4E86 \xA5${yuan(period.offSaving)}\uFF0C\u5176\u4E2D\u300C${sourceLabel(worst.source) ?? worst.source}\u300D\u6700\u591A\u3002\u4E0D\u6025\u7684\u6D3B\uFF08\u5B9A\u65F6\u4EFB\u52A1\u3001\u81EA\u8FDB\u5316\uFF09\u653E\u5230\u4F4E\u8C37\u8DD1\uFF0C\u5355\u4EF7\u662F\u4E00\u534A\u3002`, saving: period.offSaving, action: null });
     }
     const lowCache = db.prepare(`SELECT ${DIMENSIONS.agent.column} AS key, ${TOTALS}, AVG(json_extract(price, '$.input') - json_extract(price, '$.cacheRead')) AS gap FROM ledger_steps ${w.sql} GROUP BY key`).all(...w.args).map((r) => ({ ...r, hit: hitOf(r), label: DIMENSIONS.agent.label(r.key) })).filter((r) => r.hit < 0.8 && num(r.input) > 5e4);
     for (const r of lowCache) {
