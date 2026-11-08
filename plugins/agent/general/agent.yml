@@ -5,12 +5,12 @@ domain: 兜底
 description: 没有对口的 Agent 时先把事办完，并记下能力缺口
 icon: 通
 color: slate
-version: 1.0.0
+version: 1.0.1
 fallback: true
 skills:
   - 整理与摘要
   - 通用检索
-# 路由检索用的词（总指挥派活时按名片匹配，见 core/modules/tasks/router.js）
+# 路由检索用的词（她派活时按名片匹配，见 core/modules/tasks/router.js）
 keywords:
   - 整理
   - 摘要
