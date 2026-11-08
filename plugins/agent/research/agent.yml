@@ -5,11 +5,11 @@ domain: 研究
 description: 检索、读论文和文档，给出可核验的出处
 icon: 研
 color: teal
-version: 1.0.0
+version: 1.0.1
 skills:
   - 文献出处核验
   - 对比表
-# 路由检索用的词（总指挥派活时按名片匹配，见 core/modules/tasks/router.js）
+# 路由检索用的词（她派活时按名片匹配，见 core/modules/tasks/router.js）
 keywords:
   - 研究
   - 调研
