@@ -5,13 +5,13 @@ domain: 视频
 description: 讲解视频：脚本、分镜、Remotion 工程和渲染
 icon: 影
 color: rose
-version: 1.0.0
+version: 1.0.1
 # 不交给执行节点（家里的小主机）：要用这台电脑上的文件和工具
 offload: false
 skills:
   - Remotion 分镜
   - 旁白节奏
-# 路由检索用的词（总指挥派活时按名片匹配，见 core/modules/tasks/router.js）
+# 路由检索用的词（她派活时按名片匹配，见 core/modules/tasks/router.js）
 keywords:
   - 视频
   - 剪辑
