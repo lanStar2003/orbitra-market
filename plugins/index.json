@@ -1,10 +1,10 @@
 {
   "format": "orbitra-plugins/1",
   "software": {
-    "version": "1.17.3",
-    "at": "2026-11-06T01:25:58.479Z",
-    "title": "Mac 用一行命令安装",
-    "size": 2696772
+    "version": "1.20.1",
+    "at": "2026-11-08T12:40:53.598Z",
+    "title": "形象先只用星环：安装包和更新里不再带 Live2D 的代码",
+    "size": 3033462
   },
   "agents": {
     "calendar": {
