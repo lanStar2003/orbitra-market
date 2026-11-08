@@ -70,8 +70,8 @@ curl -fsSL https://github.com/lanStar2003/orbitra-market/releases/latest/downloa
 
 | 名称 | 版本 | 核心 | 安装包 | 说明 | 获取 |
 |---|---|---|---|---|---|
-| [使用情况](plugins/addon/usage) | 1.0.1 | 可选 | 自带 | 每一步模型调用花了多少钱：按模型、线路、Agent、来源、对话、任务、时段拆开看，含缓存、子 Agent、审查，附省钱建议。 | 这个文件夹 |
-| [SSH 终端](plugins/addon/ssh) | 1.1.0 | 可选 | 用到再装 | 连接服务器的终端、文件管理、快捷命令、无代理监控、端口转发和密钥管理，内核直接用 ssh2 连接，不依赖系统的 ssh。密码和私钥加密存在这台电脑，Agent 用 ssh_run 执行的命令都有记录。 | 这个文件夹 |
+| [使用情况](plugins/addon/usage) | 1.0.2 | 可选 | 自带 | 每一步模型调用花了多少钱：按模型、线路、Agent、来源、对话、任务、时段拆开看，含缓存、子 Agent、审查，附省钱建议。 | 这个文件夹 |
+| [SSH 终端](plugins/addon/ssh) | 1.1.1 | 可选 | 用到再装 | 连接服务器的终端、文件管理、快捷命令、无代理监控、端口转发和密钥管理，内核直接用 ssh2 连接，不依赖系统的 ssh。密码和私钥加密存在这台电脑，Agent 用 ssh_run 执行的命令都有记录。 | 这个文件夹 |
 
 ### [能力](plugins/capability)
 
