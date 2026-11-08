@@ -10,7 +10,7 @@
 
 ## [运行方式](harness)
 
-替 Orbitra 跑总指挥和各 Agent 的 harness；默认是 dsh
+替 Orbitra 跑星织和各 Agent 的 harness；默认是 dsh
 
 [dsh 运行时](harness/dsh) · [Claude Code](harness/claude-code)
 

@@ -2,7 +2,7 @@
   "id": "agent-writing",
   "type": "agent",
   "name": "写作 Agent",
-  "description": "学习笔记、文章、周报；按主人的模板和语气写",
+  "description": "学习笔记、文章、周报；按用户的模板和语气写",
   "version": "1.0.0",
   "core": false,
   "bundled": [

@@ -1,7 +1,7 @@
 {
   "format": "orbitra-market/1",
   "repo": "lanStar2003/orbitra-market",
-  "updatedAt": "2026-11-06T01:25:58.479Z",
+  "updatedAt": "2026-11-08T12:41:15.460Z",
   "key": "2838-d425-6b4d-9b6c",
   "categories": [
     {
@@ -12,7 +12,7 @@
     {
       "id": "harness",
       "name": "运行方式",
-      "description": "替 Orbitra 跑总指挥和各 Agent 的 harness；默认是 dsh"
+      "description": "替 Orbitra 跑星织和各 Agent 的 harness；默认是 dsh"
     },
     {
       "id": "agent",
@@ -42,13 +42,13 @@
       "bundled": [
         "full"
       ],
-      "version": "1.17.3",
-      "tag": "v1.17.3",
-      "at": "2026-11-06T01:25:58.479Z",
+      "version": "1.20.1",
+      "tag": "v1.20.1",
+      "at": "2026-11-08T12:40:53.598Z",
       "update": {
         "manifest": "https://raw.githubusercontent.com/lanStar2003/orbitra-market/main/plugins/app/orbitra/manifest.json",
         "bundle": "https://raw.githubusercontent.com/lanStar2003/orbitra-market/main/plugins/app/orbitra/files.zip",
-        "size": 2696772
+        "size": 3033462
       },
       "installers": {
         "full": {
@@ -74,7 +74,8 @@
           }
         }
       },
-      "installersUrl": "https://github.com/lanStar2003/orbitra-market/releases/tag/v1.17.3"
+      "installersUrl": "https://github.com/lanStar2003/orbitra-market/releases/tag/v1.17.3",
+      "installersVersion": "1.17.3"
     },
     {
       "id": "dsh",
@@ -82,18 +83,18 @@
       "path": "plugins/harness/dsh",
       "url": "https://github.com/lanStar2003/orbitra-market/tree/main/plugins/harness/dsh",
       "name": "dsh 运行时",
-      "description": "私有的 dsh（DeepSeek Harness）、dsh-mnemon 和 Mnemon，钉死版本，装在数据文件夹里；Orbitra 的 7 个 dsh 插件随本体。默认的运行方式。",
+      "description": "私有的 dsh（DeepSeek Harness）、dsh-mnemon 和 Mnemon，钉死版本，装在数据文件夹里；Orbitra 的 9 个 dsh 插件随本体。默认的运行方式。",
       "core": true,
       "bundled": [
         "full"
       ],
-      "version": "0.2.1-rc.2",
+      "version": "0.2.2-rc.1",
       "packages": {
-        "@deepseek-ai/dsh": "0.2.1-rc.2",
+        "@deepseek-ai/dsh": "0.2.2-rc.1",
         "@mnemon-dev/mnemon": "0.2.9",
         "dsh-mnemon": "0.5.36"
       },
-      "sizeHint": "解开后约 850 MB"
+      "sizeHint": "解开后约 900 MB"
     },
     {
       "id": "usage",
@@ -153,7 +154,7 @@
       "url": "https://github.com/lanStar2003/orbitra-market/tree/main/plugins/agent/evolve",
       "agent": "evolve",
       "name": "自进化 Agent",
-      "description": "分析运行数据提出优化建议；按主人的需求改 Agent 的做事方式，或直接改 Orbitra 自己的代码（测过、复核过再等主人批准发布）",
+      "description": "分析运行数据提出优化建议；按用户的需求改 Agent 的做事方式，或直接改 Orbitra 自己的代码（测过、复核过再等用户批准发布）",
       "core": true,
       "bundled": [
         "full"
@@ -178,10 +179,10 @@
       "bundled": [
         "full"
       ],
-      "version": "1.0.1",
-      "tag": "agent-code-v1.0.1",
+      "version": "1.0.2",
+      "tag": "agent-code-v1.0.2",
       "published": true,
-      "at": "2026-11-02T11:53:02.560Z",
+      "at": "2026-11-08T12:41:15.460Z",
       "update": {
         "manifest": "https://raw.githubusercontent.com/lanStar2003/orbitra-market/main/plugins/agent/code/manifest.json"
       }
@@ -213,7 +214,7 @@
       "url": "https://github.com/lanStar2003/orbitra-market/tree/main/plugins/agent/writing",
       "agent": "writing",
       "name": "写作 Agent",
-      "description": "学习笔记、文章、周报；按主人的模板和语气写",
+      "description": "学习笔记、文章、周报；按用户的模板和语气写",
       "core": false,
       "bundled": [
         "full"
@@ -233,7 +234,7 @@
       "url": "https://github.com/lanStar2003/orbitra-market/tree/main/plugins/agent/ops",
       "agent": "ops",
       "name": "运维 Agent",
-      "description": "发布、部署、巡检服务器；生产环境的每次变更都要主人批准",
+      "description": "发布、部署、巡检服务器；生产环境的每次变更都要用户批准",
       "core": false,
       "bundled": [
         "full"
@@ -293,15 +294,15 @@
       "url": "https://github.com/lanStar2003/orbitra-market/tree/main/plugins/agent/calendar",
       "agent": "calendar",
       "name": "日程 Agent",
-      "description": "日历、提醒、邮件摘要；替主人排时间，不替主人回复别人",
+      "description": "日历、提醒、邮件摘要；替用户排时间，不替用户回复别人",
       "core": false,
       "bundled": [
         "full"
       ],
-      "version": "1.0.0",
-      "tag": "agent-calendar-v1.0.0",
+      "version": "1.0.1",
+      "tag": "agent-calendar-v1.0.1",
       "published": true,
-      "at": "2026-11-02T05:30:35.257Z",
+      "at": "2026-11-08T12:41:09.335Z",
       "update": {
         "manifest": "https://raw.githubusercontent.com/lanStar2003/orbitra-market/main/plugins/agent/calendar/manifest.json"
       }

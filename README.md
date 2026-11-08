@@ -9,7 +9,7 @@ Orbitra 是以 harness 为核心的个人 AI 助理：桌面级软件，Windows�
 
 ## 下载
 
-Orbitra **1.17.3**，2026-11-06 发布（[Release 页面](https://github.com/lanStar2003/orbitra-market/releases/tag/v1.17.3)）。
+Orbitra **1.17.3**。新版本 1.20.1 的安装包还在打包，下面是 1.17.3 的。
 
 | 平台 | 安装包 |
 |---|---|
@@ -37,15 +37,15 @@ curl -fsSL https://github.com/lanStar2003/orbitra-market/releases/latest/downloa
 
 | 名称 | 版本 | 核心 | 安装包 | 说明 | 获取 |
 |---|---|---|---|---|---|
-| [Orbitra](plugins/app/orbitra) | 1.17.3 | **核心** | 自带 | Orbitra 本体：内核、界面、桌面外壳和 Orbitra 自己的 dsh 插件。 | [安装包](#下载) |
+| [Orbitra](plugins/app/orbitra) | 1.20.1 | **核心** | 自带 | Orbitra 本体：内核、界面、桌面外壳和 Orbitra 自己的 dsh 插件。 | [安装包](#下载) |
 
 ### [运行方式](plugins/harness)
 
-替 Orbitra 跑总指挥和各 Agent 的 harness；默认是 dsh
+替 Orbitra 跑星织和各 Agent 的 harness；默认是 dsh
 
 | 名称 | 版本 | 核心 | 安装包 | 说明 | 获取 |
 |---|---|---|---|---|---|
-| [dsh 运行时](plugins/harness/dsh) | 0.2.1-rc.2 | **核心** | 自带 | 私有的 dsh（DeepSeek Harness）、dsh-mnemon 和 Mnemon，钉死版本，装在数据文件夹里；Orbitra 的 7 个 dsh 插件随本体。默认的运行方式。（解开后约 850 MB） | [@deepseek-ai/dsh](https://www.npmjs.com/package/@deepseek-ai/dsh)、[@mnemon-dev/mnemon](https://www.npmjs.com/package/@mnemon-dev/mnemon)、[dsh-mnemon](https://www.npmjs.com/package/dsh-mnemon) |
+| [dsh 运行时](plugins/harness/dsh) | 0.2.2-rc.1 | **核心** | 自带 | 私有的 dsh（DeepSeek Harness）、dsh-mnemon 和 Mnemon，钉死版本，装在数据文件夹里；Orbitra 的 9 个 dsh 插件随本体。默认的运行方式。（解开后约 900 MB） | [@deepseek-ai/dsh](https://www.npmjs.com/package/@deepseek-ai/dsh)、[@mnemon-dev/mnemon](https://www.npmjs.com/package/@mnemon-dev/mnemon)、[dsh-mnemon](https://www.npmjs.com/package/dsh-mnemon) |
 | [Claude Code](plugins/harness/claude-code) | 稍后 | 可选 | 稍后 | 用 Claude Code 跑指定的 Agent。 | — |
 
 ### [Agent 包](plugins/agent)
@@ -55,14 +55,14 @@ curl -fsSL https://github.com/lanStar2003/orbitra-market/releases/latest/downloa
 | 名称 | 版本 | 核心 | 安装包 | 说明 | 获取 |
 |---|---|---|---|---|---|
 | [通用 Agent](plugins/agent/general) | 1.0.0 | **核心** | 自带 | 没有对口的 Agent 时先把事办完，并记下能力缺口 | 这个文件夹 |
-| [自进化 Agent](plugins/agent/evolve) | 1.1.2 | **核心** | 自带 | 分析运行数据提出优化建议；按主人的需求改 Agent 的做事方式，或直接改 Orbitra 自己的代码（测过、复核过再等主人批准发布） | 这个文件夹 |
-| [编码 Agent](plugins/agent/code) | 1.0.1 | 可选 | 自带 | 读写代码、复现问题、修复和重构 | 这个文件夹 |
+| [自进化 Agent](plugins/agent/evolve) | 1.1.2 | **核心** | 自带 | 分析运行数据提出优化建议；按用户的需求改 Agent 的做事方式，或直接改 Orbitra 自己的代码（测过、复核过再等用户批准发布） | 这个文件夹 |
+| [编码 Agent](plugins/agent/code) | 1.0.2 | 可选 | 自带 | 读写代码、复现问题、修复和重构 | 这个文件夹 |
 | [研究 Agent](plugins/agent/research) | 1.0.0 | 可选 | 自带 | 检索、读论文和文档，给出可核验的出处 | 这个文件夹 |
-| [写作 Agent](plugins/agent/writing) | 1.0.0 | 可选 | 自带 | 学习笔记、文章、周报；按主人的模板和语气写 | 这个文件夹 |
-| [运维 Agent](plugins/agent/ops) | 1.0.0 | 可选 | 自带 | 发布、部署、巡检服务器；生产环境的每次变更都要主人批准 | 这个文件夹 |
+| [写作 Agent](plugins/agent/writing) | 1.0.0 | 可选 | 自带 | 学习笔记、文章、周报；按用户的模板和语气写 | 这个文件夹 |
+| [运维 Agent](plugins/agent/ops) | 1.0.0 | 可选 | 自带 | 发布、部署、巡检服务器；生产环境的每次变更都要用户批准 | 这个文件夹 |
 | [测试 Agent](plugins/agent/test) | 1.0.1 | 可选 | 自带 | 写测试、跑回归和端到端测试，给出能复现的失败报告 | 这个文件夹 |
 | [视频 Agent](plugins/agent/video) | 1.0.0 | 可选 | 自带 | 讲解视频：脚本、分镜、Remotion 工程和渲染 | 这个文件夹 |
-| [日程 Agent](plugins/agent/calendar) | 1.0.0 | 可选 | 自带 | 日历、提醒、邮件摘要；替主人排时间，不替主人回复别人 | 这个文件夹 |
+| [日程 Agent](plugins/agent/calendar) | 1.0.1 | 可选 | 自带 | 日历、提醒、邮件摘要；替用户排时间，不替用户回复别人 | 这个文件夹 |
 
 ### [功能插件](plugins/addon)
 
@@ -84,4 +84,4 @@ curl -fsSL https://github.com/lanStar2003/orbitra-market/releases/latest/downloa
 
 ---
 
-目录：[market.json](market.json)（格式 `orbitra-market/1`） · 发布机公钥指纹 `2838-d425-6b4d-9b6c` · 更新于 2026-11-06
+目录：[market.json](market.json)（格式 `orbitra-market/1`） · 发布机公钥指纹 `2838-d425-6b4d-9b6c` · 更新于 2026-11-08
