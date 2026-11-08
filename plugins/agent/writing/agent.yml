@@ -2,14 +2,14 @@
 id: writing
 name: 写作 Agent
 domain: 写作
-description: 学习笔记、文章、周报；按主人的模板和语气写
+description: 学习笔记、文章、周报；按用户的模板和语气写
 icon: 写
 color: violet
-version: 1.0.0
+version: 1.0.1
 skills:
   - 学习笔记模板
   - 周报
-# 路由检索用的词（总指挥派活时按名片匹配，见 core/modules/tasks/router.js）
+# 路由检索用的词（她派活时按名片匹配，见 core/modules/tasks/router.js）
 keywords:
   - 写作
   - 文章
