@@ -3,7 +3,7 @@
   "type": "agent",
   "name": "通用 Agent",
   "description": "没有对口的 Agent 时先把事办完，并记下能力缺口",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "core": true,
   "bundled": [
     "full"

@@ -1,7 +1,7 @@
 {
   "format": "orbitra-market/1",
   "repo": "lanStar2003/orbitra-market",
-  "updatedAt": "2026-11-08T12:41:15.460Z",
+  "updatedAt": "2026-11-08T12:41:35.847Z",
   "key": "2838-d425-6b4d-9b6c",
   "categories": [
     {
@@ -139,10 +139,10 @@
       "bundled": [
         "full"
       ],
-      "version": "1.0.0",
-      "tag": "agent-general-v1.0.0",
+      "version": "1.0.1",
+      "tag": "agent-general-v1.0.1",
       "published": true,
-      "at": "2026-11-02T05:30:53.429Z",
+      "at": "2026-11-08T12:41:28.713Z",
       "update": {
         "manifest": "https://raw.githubusercontent.com/lanStar2003/orbitra-market/main/plugins/agent/general/manifest.json"
       }
@@ -159,10 +159,10 @@
       "bundled": [
         "full"
       ],
-      "version": "1.1.2",
-      "tag": "agent-evolve-v1.1.2",
+      "version": "1.1.3",
+      "tag": "agent-evolve-v1.1.3",
       "published": true,
-      "at": "2026-11-04T08:10:58.815Z",
+      "at": "2026-11-08T12:41:21.994Z",
       "update": {
         "manifest": "https://raw.githubusercontent.com/lanStar2003/orbitra-market/main/plugins/agent/evolve/manifest.json"
       }
@@ -239,10 +239,10 @@
       "bundled": [
         "full"
       ],
-      "version": "1.0.0",
-      "tag": "agent-ops-v1.0.0",
+      "version": "1.0.1",
+      "tag": "agent-ops-v1.0.1",
       "published": true,
-      "at": "2026-11-02T05:31:00.118Z",
+      "at": "2026-11-08T12:41:35.847Z",
       "update": {
         "manifest": "https://raw.githubusercontent.com/lanStar2003/orbitra-market/main/plugins/agent/ops/manifest.json"
       }
