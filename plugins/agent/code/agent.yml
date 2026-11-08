@@ -5,15 +5,15 @@ domain: 开发
 description: 读写代码、复现问题、修复和重构
 icon: 码
 color: blue
-version: 1.0.1
+version: 1.0.2
 # 不交给执行节点（家里的小主机）：要用这台电脑上的文件和工具
 offload: false
-# 建议的模型档位（快 / 强）：主人在设置 › 模型里设了强档，这个 Agent 就用强档；单独给它选过的优先
+# 建议的模型档位（快 / 强）：用户在设置 › 模型里设了强档，这个 Agent 就用强档；单独给它选过的优先
 tier: strong
 skills:
   - 改动后跑测试
   - 提交信息
-# 路由检索用的词（总指挥派活时按名片匹配，见 core/modules/tasks/router.js）
+# 路由检索用的词（她派活时按名片匹配，见 core/modules/tasks/router.js）
 keywords:
   - 代码
   - 编程
