@@ -3,7 +3,7 @@
   "type": "agent",
   "name": "测试 Agent",
   "description": "写测试、跑回归和端到端测试，给出能复现的失败报告",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "core": false,
   "bundled": [
     "full"

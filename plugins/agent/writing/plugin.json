@@ -3,7 +3,7 @@
   "type": "agent",
   "name": "写作 Agent",
   "description": "学习笔记、文章、周报；按用户的模板和语气写",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "core": false,
   "bundled": [
     "full"

@@ -57,11 +57,11 @@ curl -fsSL https://github.com/lanStar2003/orbitra-market/releases/latest/downloa
 | [通用 Agent](plugins/agent/general) | 1.0.1 | **核心** | 自带 | 没有对口的 Agent 时先把事办完，并记下能力缺口 | 这个文件夹 |
 | [自进化 Agent](plugins/agent/evolve) | 1.1.3 | **核心** | 自带 | 分析运行数据提出优化建议；按用户的需求改 Agent 的做事方式，或直接改 Orbitra 自己的代码（测过、复核过再等用户批准发布） | 这个文件夹 |
 | [编码 Agent](plugins/agent/code) | 1.0.2 | 可选 | 自带 | 读写代码、复现问题、修复和重构 | 这个文件夹 |
-| [研究 Agent](plugins/agent/research) | 1.0.0 | 可选 | 自带 | 检索、读论文和文档，给出可核验的出处 | 这个文件夹 |
-| [写作 Agent](plugins/agent/writing) | 1.0.0 | 可选 | 自带 | 学习笔记、文章、周报；按用户的模板和语气写 | 这个文件夹 |
+| [研究 Agent](plugins/agent/research) | 1.0.1 | 可选 | 自带 | 检索、读论文和文档，给出可核验的出处 | 这个文件夹 |
+| [写作 Agent](plugins/agent/writing) | 1.0.1 | 可选 | 自带 | 学习笔记、文章、周报；按用户的模板和语气写 | 这个文件夹 |
 | [运维 Agent](plugins/agent/ops) | 1.0.1 | 可选 | 自带 | 发布、部署、巡检服务器；生产环境的每次变更都要用户批准 | 这个文件夹 |
-| [测试 Agent](plugins/agent/test) | 1.0.1 | 可选 | 自带 | 写测试、跑回归和端到端测试，给出能复现的失败报告 | 这个文件夹 |
-| [视频 Agent](plugins/agent/video) | 1.0.0 | 可选 | 自带 | 讲解视频：脚本、分镜、Remotion 工程和渲染 | 这个文件夹 |
+| [测试 Agent](plugins/agent/test) | 1.0.2 | 可选 | 自带 | 写测试、跑回归和端到端测试，给出能复现的失败报告 | 这个文件夹 |
+| [视频 Agent](plugins/agent/video) | 1.0.1 | 可选 | 自带 | 讲解视频：脚本、分镜、Remotion 工程和渲染 | 这个文件夹 |
 | [日程 Agent](plugins/agent/calendar) | 1.0.1 | 可选 | 自带 | 日历、提醒、邮件摘要；替用户排时间，不替用户回复别人 | 这个文件夹 |
 
 ### [功能插件](plugins/addon)
