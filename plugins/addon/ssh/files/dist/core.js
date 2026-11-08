@@ -23934,8 +23934,8 @@ function authFailure({ username, address, tried = [], allowed = [] }) {
 }
 var hostkeyUnknown = (address) => new SshFailure("hostkey", "hostkey-unknown", `${address} \u7684\u6307\u7EB9\u8FD8\u6CA1\u786E\u8BA4\uFF1A\u5148\u5728\u7EC8\u7AEF\u9875\u8FDE\u4E00\u6B21\u786E\u8BA4\u6307\u7EB9`, { permanent: true });
 var hostkeyChanged = (address) => new SshFailure("hostkey", "hostkey-changed", `${address} \u7684\u6307\u7EB9\u53D8\u4E86\uFF1A\u53EF\u80FD\u662F\u91CD\u88C5\u4E86\u7CFB\u7EDF\uFF0C\u4E5F\u53EF\u80FD\u6709\u4EBA\u5728\u4E2D\u95F4\u5192\u5145\u3002\u786E\u8BA4\u6CA1\u95EE\u9898\u540E\u5728\u7EC8\u7AEF\u9875\u9009"\u4FE1\u4EFB\u65B0\u6307\u7EB9"`, { permanent: true });
-var hostkeyRejected = (address, changed = false) => new SshFailure("hostkey", "hostkey-rejected", changed ? `${address} \u7684\u6307\u7EB9\u53D8\u4E86\uFF0C\u4E3B\u4EBA\u6CA1\u6709\u653E\u884C` : `\u4E3B\u4EBA\u6CA1\u6709\u786E\u8BA4 ${address} \u7684\u6307\u7EB9`, { permanent: true });
-var cancelled = (step, why = "\u4E3B\u4EBA\u53D6\u6D88\u4E86") => new SshFailure(step, "cancelled", why, { permanent: true });
+var hostkeyRejected = (address, changed = false) => new SshFailure("hostkey", "hostkey-rejected", changed ? `${address} \u7684\u6307\u7EB9\u53D8\u4E86\uFF0C\u4F60\u6CA1\u6709\u653E\u884C` : `\u4F60\u6CA1\u6709\u786E\u8BA4 ${address} \u7684\u6307\u7EB9`, { permanent: true });
+var cancelled = (step, why = "\u4F60\u53D6\u6D88\u4E86") => new SshFailure(step, "cancelled", why, { permanent: true });
 function needsHuman(why = "\u8FD9\u53F0\u4E3B\u673A\u8981\u4EBA\u56DE\u7B54\uFF08\u5BC6\u7801\u3001\u53E3\u4EE4\u6216\u4E24\u6B65\u9A8C\u8BC1\uFF09") {
   return new SshFailure("auth", "needs-human", `${why}\uFF0CAgent \u4E0D\u80FD\u4EE3\u7B54\uFF1A\u5148\u5728\u7EC8\u7AEF\u9875\u8FDE\u4E0A\u5B83\uFF0C\u8FDE\u63A5\u4F1A\u5171\u7528`, { permanent: true });
 }
@@ -24105,14 +24105,14 @@ function createBastion({ db, prompts, connector, log, now = Date.now, timing = {
     if (stored) return stored;
     if (!interactive) throw needsHuman(`\u76EE\u6807\u673A ${row.username}@${row.host}:${row.port} \u7684\u5BC6\u7801\u6CA1\u6709\u4FDD\u5B58`);
     const a = await prompts.ask({ hostId: row.id, address: `${row.host}:${row.port}`, username: row.username, kind: "password", canRemember: true });
-    if (a?.cancel || typeof a.answer !== "string") throw cancelled("bastion", a?.expired ? "\u7B49\u4E86\u592A\u4E45\u6CA1\u4EBA\u56DE\u7B54\u76EE\u6807\u673A\u7684\u5BC6\u7801" : "\u4E3B\u4EBA\u53D6\u6D88\u4E86");
+    if (a?.cancel || typeof a.answer !== "string") throw cancelled("bastion", a?.expired ? "\u7B49\u4E86\u592A\u4E45\u6CA1\u4EBA\u56DE\u7B54\u76EE\u6807\u673A\u7684\u5BC6\u7801" : "\u4F60\u53D6\u6D88\u4E86");
     if (a.remember) db.hosts.rememberPassword(row.id, a.answer);
     return a.answer;
   }
   async function oneTimeCode(row, bastion, { interactive, hint }) {
     if (!interactive) throw needsHuman(`\u5821\u5792\u673A ${bastion.username}@${bastion.host}:${bastion.port} \u8981\u52A8\u6001\u53E3\u4EE4`);
     const a = await prompts.ask({ hostId: row.id, address: `${bastion.host}:${bastion.port}`, username: bastion.username, kind: "otp", name: bastion.name, hint });
-    if (a?.cancel || typeof a.answer !== "string") throw cancelled("bastion", a?.expired ? "\u7B49\u4E86\u592A\u4E45\u6CA1\u4EBA\u8F93\u5165\u52A8\u6001\u53E3\u4EE4" : "\u4E3B\u4EBA\u53D6\u6D88\u4E86");
+    if (a?.cancel || typeof a.answer !== "string") throw cancelled("bastion", a?.expired ? "\u7B49\u4E86\u592A\u4E45\u6CA1\u4EBA\u8F93\u5165\u52A8\u6001\u53E3\u4EE4" : "\u4F60\u53D6\u6D88\u4E86");
     return a.answer;
   }
   return {
@@ -25339,7 +25339,7 @@ function createConnector({ db, prompts, settings, log, now = Date.now, timing = 
         const quick = db.hosts.isQuick(row.id);
         const a = await asked({ kind: "password", canRemember: !quick });
         if (a.cancel || typeof a.answer !== "string") {
-          failWith(cancelled("auth", a.expired ? "\u7B49\u4E86\u592A\u4E45\u6CA1\u4EBA\u56DE\u7B54" : "\u4E3B\u4EBA\u53D6\u6D88\u4E86"));
+          failWith(cancelled("auth", a.expired ? "\u7B49\u4E86\u592A\u4E45\u6CA1\u4EBA\u56DE\u7B54" : "\u4F60\u53D6\u6D88\u4E86"));
           return null;
         }
         if (a.remember || quick) remember.push(() => db.hosts.rememberPassword(row.id, a.answer));
@@ -25374,7 +25374,7 @@ function createConnector({ db, prompts, settings, log, now = Date.now, timing = 
           }
           const a = await asked({ kind: "kbd", name: name || null, instructions: instructions || null, prompts: list.map(({ prompt, echo }) => ({ prompt, echo: Boolean(echo) })) });
           if (a.cancel) {
-            failWith(cancelled("auth", a.expired ? "\u7B49\u4E86\u592A\u4E45\u6CA1\u4EBA\u56DE\u7B54" : "\u4E3B\u4EBA\u53D6\u6D88\u4E86"));
+            failWith(cancelled("auth", a.expired ? "\u7B49\u4E86\u592A\u4E45\u6CA1\u4EBA\u56DE\u7B54" : "\u4F60\u53D6\u6D88\u4E86"));
             return;
           }
           const answers = a.answers ?? (a.answer !== void 0 ? [a.answer] : []);
@@ -25404,7 +25404,7 @@ function createConnector({ db, prompts, settings, log, now = Date.now, timing = 
         if (parsed instanceof Error && /no passphrase given/i.test(parsed.message)) {
           if (!interactive) throw needsHuman();
           const a = await asked({ kind: "passphrase", canRemember: true });
-          if (a.cancel || typeof a.answer !== "string") throw cancelled("auth", a.expired ? "\u7B49\u4E86\u592A\u4E45\u6CA1\u4EBA\u56DE\u7B54" : "\u4E3B\u4EBA\u53D6\u6D88\u4E86");
+          if (a.cancel || typeof a.answer !== "string") throw cancelled("auth", a.expired ? "\u7B49\u4E86\u592A\u4E45\u6CA1\u4EBA\u56DE\u7B54" : "\u4F60\u53D6\u6D88\u4E86");
           parsed = utils.parseKey(data, a.answer);
           if (!(parsed instanceof Error) && a.remember) remember.push(() => keyId ? db.keys.rememberPassphrase(keyId, a.answer) : db.hosts.rememberPassphrase(row.id, a.answer));
         }
