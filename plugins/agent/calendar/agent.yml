@@ -2,13 +2,13 @@
 id: calendar
 name: 日程 Agent
 domain: 日程
-description: 日历、提醒、邮件摘要；替主人排时间，不替主人回复别人
+description: 日历、提醒、邮件摘要；替用户排时间，不替用户回复别人
 icon: 程
 color: amber
-version: 1.0.0
+version: 1.0.1
 skills:
   - 排程偏好
-# 路由检索用的词（总指挥派活时按名片匹配，见 core/modules/tasks/router.js）
+# 路由检索用的词（她派活时按名片匹配，见 core/modules/tasks/router.js）
 keywords:
   - 日程
   - 日历

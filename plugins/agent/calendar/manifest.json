@@ -1,20 +1,20 @@
 {
   "format": "orbitra-agent/3",
   "id": "calendar",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "from": null,
   "title": "",
-  "at": "2026-11-02T05:30:35.257Z",
+  "at": "2026-11-08T12:41:09.335Z",
   "key": "2838-d425-6b4d-9b6c",
   "files": {
     "agent.yml": {
-      "sha256": "988040b6bb363bbe4ad8fe3a500edd2028d718bc2efa8171db3c2405a1e37ea1",
-      "size": 555
+      "sha256": "845efb946c2791e4261b4756ac16b4424fba42ea1dc098d5939381d4c57be0a9",
+      "size": 549
     },
     "AGENTS.md": {
-      "sha256": "110f69ebe37b688408a92712ad748bd9ff6caa04a359487ac048626ba12a3181",
-      "size": 610
+      "sha256": "824a8d54d0fedf07c95da8616e98939877e1f18e23b93c0b2850e8f27dded88b",
+      "size": 607
     }
   },
-  "signature": "vic5_WNqmosIbLX_kHsUxuFqhKt3_RJiDFD6cz94twHsMCCk4U8xzs34P4EgHH92HvJDVxQrv7wdRawCNNJdAw"
+  "signature": "KgxdEuafu_gYP6EoE13TaLBZL2PkpivBDpUy-s9IdILZhP-EtYEW38-RWwQD9dbSrW8OD2xgyy63-aCAPwlXCQ"
 }
